@@ -16,7 +16,7 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | member1      |               |                 |
-| member2      |               |                 |
+| Rinay Kumar  | rkumar4@mail.sfsu.edu | rinaykumar |
 | member3      |               |                 |
 | member4      |               |                 |
 | member5      |               |                 |

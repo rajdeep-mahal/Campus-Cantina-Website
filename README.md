@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      |               |                 |
+| Rajdeep Singh| rsingh12@mail.sfsu.edu | rajdeep0303 |
 | Rinay Kumar  | rkumar4@mail.sfsu.edu | rinaykumar |
 | member3      |               |                 |
 | member4      |               |                 |

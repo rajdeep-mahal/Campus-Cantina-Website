@@ -5,6 +5,7 @@ const About = () => {
   return (
     <div>
       <h1>About</h1>
+      <h3>CSC 648 - Team 04</h3>
       <h4>(Styling will be changed later to match rest of app)</h4>
       <br/>
       <Link to='/rajdeep'>Rajdeep Singh</Link> - Team Lead

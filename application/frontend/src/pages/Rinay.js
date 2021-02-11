@@ -25,6 +25,7 @@ const Rinay = () => {
             class="rounded-circle img-fluid"
             src={Profile}
             width="150"
+            alt="Profile"
           />
           <h1 class="card-title name">Rinay Kumar</h1>
           <h6 class="text-muted card-subtitle mb-2">(he/him/his)</h6>
@@ -34,13 +35,14 @@ const Rinay = () => {
               class="rounded-circle"
               src={Discord}
               height="20"
+              alt="Discord logo"
             />
             <div class="text-center d-flex">
               <p class="links">&nbsp;rinaykumar#6920</p>
             </div>
           </div>
           <div class="d-flex profile-links" id="profile-links-1">
-            <img src={Github} height="20" />
+            <img src={Github} height="20" alt="Github logo" />
             <div class="text-center d-flex">
               <p class="links">
                 &nbsp;<a
@@ -57,6 +59,7 @@ const Rinay = () => {
               class="rounded-circle"
               src={Linkedin}
               height="20"
+              alt="LinkedIn logo"
             />
             <div class="text-center d-flex">
               <p class="links">
@@ -74,6 +77,7 @@ const Rinay = () => {
               class="rounded-circle"
               src={Email}
               height="20"
+              alt="Email symbol"
             />
             <div class="text-center d-flex">
               <p class="links">
@@ -94,7 +98,7 @@ const Rinay = () => {
       <div class="card text-center edu-card">
         <div class="card-body text-center">
           <h4 class="text-left card-title">Education</h4>
-          <img class="ed-img" src={SFSU} />
+          <img class="ed-img" src={SFSU} alt="SFSU section"/>
         </div>
       </div>
     </section>
@@ -106,7 +110,7 @@ const Rinay = () => {
       <div class="card text-center edu-card">
         <div class="card-body text-center ed-img">
           <h4 class="text-left card-title">Experience</h4>
-          <img class="ed-img" src={Apple} />
+          <img class="ed-img" src={Apple} alt="Apple section"/>
         </div>
       </div>
     </section>
@@ -198,14 +202,14 @@ const Rinay = () => {
               <img
                 class="w-100 d-block"
                 src={Soda}
-                alt="Slide Image"
+                alt="Slide"
               />
             </div>
             <div class="carousel-item">
               <img
                 class="w-100 d-block"
                 src={Chainz}
-                alt="Slide Image"
+                alt="Slide"
               />
             </div>
           </div>

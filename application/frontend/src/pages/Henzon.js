@@ -32,6 +32,10 @@ const Henzon = () => {
       </header>
 
       <div className = "info">
+
+      <h2>Education</h2>
+      <img class = "sfsu" src = {Education} width = "800" alt = "sfsu"/>
+
       <h2>Projects</h2>
         <ul>
           <li><a href = "https://github.com/henzonz/Super-Rainbow-Reef-Game"> Super Rainbow Reef Game </a></li>

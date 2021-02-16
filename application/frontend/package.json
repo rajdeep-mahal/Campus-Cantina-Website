@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
     "mysql": "^2.18.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",

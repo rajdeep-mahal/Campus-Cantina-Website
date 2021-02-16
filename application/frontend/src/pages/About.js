@@ -20,7 +20,7 @@ const About = () => {
   
   return (
     <div>
-      <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+      {/* <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
         <div className="container">
           <a className="navbar-brand" href="/">
             TEAM 04
@@ -41,7 +41,7 @@ const About = () => {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <header
         className="masthead"
         style={{ backgroundImage: `url(${Backdrop})`, height: '100vh' }}
@@ -52,6 +52,7 @@ const About = () => {
             <div className="col-md-10 col-lg-8 mx-auto">
               <div className="site-heading">
                 <h1 style={{fontWeight: '800'}}>CSC 648</h1>
+                <h3 style={{fontWeight: '800'}}>TEAM 04</h3>
                 <span className="subheading">
                   <strong>San Francisco State University</strong>
                   <br />
@@ -93,7 +94,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">Rajdeep</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>Rajdeep</h4>
                   <p className="card-text">Team Lead</p>
                   <Link to='/rajdeep'>
                   <button className="btn btn-info" type="button">
@@ -109,7 +110,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">Rinay</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>Rinay</h4>
                   <p className="card-text">Backend Lead</p>
                   <Link to='/rinay'>
                   <button className="btn btn-info" type="button">
@@ -125,7 +126,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">Bhavani</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>Bhavani</h4>
                   <p className="card-text">Frontend Lead</p>
                   <Link to='/bhavani'>
                   <button className="btn btn-info" type="button">
@@ -144,7 +145,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">Frederick</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>Frederick</h4>
                   <p className="card-text">Github Master</p>
                   <Link to='/frederick'>
                   <button className="btn btn-info" type="button">
@@ -160,7 +161,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">German</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>German</h4>
                   <p className="card-text">Frontend Team</p>
                   <Link to='/german'>
                   <button className="btn btn-info" type="button">
@@ -176,7 +177,7 @@ const About = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h4 className="card-title">Henzon</h4>
+                  <h4 className="card-title" style={{fontWeight: '800'}}>Henzon</h4>
                   <p className="card-text">Backend Team</p>
                   <Link to='/henzon'>
                   <button className="btn btn-info" type="button">

@@ -1,0 +1,41 @@
+@media (min-width: 300px) {
+  .card-group {
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 300px) {
+  img {
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    margin-right: 150px;
+    margin-left: 150px;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-group {
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+  }
+}
+
+@media (min-width: 300px) {
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    width: auto;
+    height: auto;
+  }
+}
+

@@ -16,13 +16,13 @@
 7. Database name: <strong>648team04</strong>
 8. Instructions on how to use the above information:
 
-## Set permissions for pem file (if linux/mac)
+### Set permissions for pem file (if linux/mac)
 - `sudo chmod 400 648team04.pem`
-## Connect to instance
+### Connect to instance
 - `ssh -i 648team04.pem ubuntu@54.219.159.229`
-## Application folder
+### Application folder
 - `csc-648-03-sp21-team04`
-## Login to mysql server
+### Login to mysql server
 - `sudo mysql -u root -p`
 
 # Most important things to Remember

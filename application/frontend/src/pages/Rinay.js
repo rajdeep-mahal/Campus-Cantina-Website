@@ -1,6 +1,7 @@
 import React from 'react';
-import '../assets/bootstrap/bootstrap.min.css';
+import '../assets/bootstrap/bootstrap-rinay.min.css';
 import '../assets/css/rinay.css';
+import { useLayoutEffect } from 'react'
 // Images
 import Profile from '../assets/img/rinay/profile.jpeg';
 import Discord from '../assets/img/rinay/discord.png';
@@ -11,6 +12,11 @@ import SFSU from '../assets/img/rinay/sfsu.png';
 import Apple from '../assets/img/rinay/apple.png';
 
 const Rinay = () => {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  });
+  
   return (
     <div>
       <section id="header" style={{ textAlign: 'center' }}>

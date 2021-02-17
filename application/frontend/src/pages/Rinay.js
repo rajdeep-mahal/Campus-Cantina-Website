@@ -10,6 +10,9 @@ import Linkedin from '../assets/img/rinay/linkedin.png';
 import Email from '../assets/img/rinay/email2.png';
 import SFSU from '../assets/img/rinay/sfsu.png';
 import Apple from '../assets/img/rinay/apple.png';
+import Chainz from '../assets/img/rinay/chainz.gif';
+import Soda from '../assets/img/rinay/soda.gif';
+import Word from '../assets/img/rinay/word.png';
 
 const Rinay = () => {
   useLayoutEffect(() => {
@@ -130,8 +133,12 @@ const Rinay = () => {
         <div className="card text-center edu-card">
           <div className="card-body text-center">
             <h4 className="text-left card-title">Projects</h4>
-            <div className="text-center">
+            <br />
+            <div className="text-left">
               <div>
+                <img src={Chainz} className="img-fluid" alt="" />
+                <br />
+                <br />
                 <h5 className="text-left proj-title">2CHAINZ OR BOT</h5>
                 <div className="edu-info" style={{ textAlign: 'left' }}>
                   <p className="text-left proj-p">
@@ -152,7 +159,11 @@ const Rinay = () => {
                 </div>
               </div>
             </div>
-            <div className="text-center soda-div">
+            <br />
+            <div className="text-left soda-div">
+              <img src={Soda} className="img-fluid" alt="" />
+              <br />
+              <br />
               <h5 className="text-left proj-title">sodaChat</h5>
               <div className="edu-info" style={{ textAlign: 'left' }}>
                 <p className="text-left proj-p">
@@ -172,7 +183,16 @@ const Rinay = () => {
                 </p>
               </div>
             </div>
-            <div className="text-center word-div">
+            <br />
+            <div className="text-left word-div">
+              <img
+                src={Word}
+                className="img-fluid"
+                style={{ width: '612px' }}
+                alt=""
+              />
+              <br />
+              <br />
               <h5 className="text-left proj-title">Word Blast</h5>
               <div className="edu-info" style={{ textAlign: 'left' }}>
                 <p className="text-left proj-p">
@@ -197,7 +217,7 @@ const Rinay = () => {
         </div>
       </section>
       <footer>
-        <p className="text-center footer-text">©2021 rinaykumar</p>
+        <p className="text-center footer-text">© 2021 rinaykumar</p>
       </footer>
     </div>
   );

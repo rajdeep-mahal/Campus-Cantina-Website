@@ -1,41 +1,33 @@
-@media (min-width: 300px) {
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: smaller;
+}
+
+.border {
+  border: lightgrey;
+  border-radius: solid 1px;
+  padding: 2px;
+}
+
+.about-text {
+  font-size: large;
+  font-weight: 200;
+}
+
+.card-group {
+  padding: 1px;
+}
+
+.card {
+  text-align: center;
+}
+
+@media (max-width: 575px) {
   .card-group {
-    width: auto;
-    height: auto;
-    margin: 10px;
-    padding: 20px;
+    width: 85%;
+  }
+  .about-text {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
-
-@media (min-width: 300px) {
-  img {
-    width: auto;
-    height: auto;
-  }
-}
-
-@media (min-width: 992px) {
-  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-    margin-right: 150px;
-    margin-left: 150px;
-    width: auto;
-    height: auto;
-  }
-}
-
-@media (min-width: 992px) {
-  .card-group {
-    width: auto;
-    height: auto;
-    margin: 10px;
-    padding: 10px;
-  }
-}
-
-@media (min-width: 300px) {
-  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-    width: auto;
-    height: auto;
-  }
-}
-

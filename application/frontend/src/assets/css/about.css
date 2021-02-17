@@ -1,18 +1,33 @@
-header.masthead .page-heading .subheading, header.masthead .site-heading .subheading {
-    font-size: smaller;
-  }
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: smaller;
+}
 
 .border {
-    border: lightgrey;
-    border-radius: solid 1px;
-    padding: 2px;
+  border: lightgrey;
+  border-radius: solid 1px;
+  padding: 2px;
 }
 
 .about-text {
-    font-size: large;
-    font-weight: 200;
+  font-size: large;
+  font-weight: 200;
 }
 
 .card-group {
-    padding: 1px;
+  padding: 1px;
+}
+
+.card {
+  text-align: center;
+}
+
+@media (max-width: 575px) {
+  .card-group {
+    width: 85%;
+  }
+  .about-text {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

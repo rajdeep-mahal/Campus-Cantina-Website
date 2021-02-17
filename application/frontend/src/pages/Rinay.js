@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/bootstrap/bootstrap-rinay.min.css';
 import '../assets/css/rinay.css';
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react';
 // Images
 import Profile from '../assets/img/rinay/profile.jpeg';
 import Discord from '../assets/img/rinay/discord.png';
@@ -12,11 +12,10 @@ import SFSU from '../assets/img/rinay/sfsu.png';
 import Apple from '../assets/img/rinay/apple.png';
 
 const Rinay = () => {
-
   useLayoutEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   });
-  
+
   return (
     <div>
       <section id="header" style={{ textAlign: 'center' }}>
@@ -30,7 +29,9 @@ const Rinay = () => {
             />
             <h1 className="card-title name">Rinay Kumar</h1>
             <h6 className="text-muted card-subtitle mb-2">(he/him/his)</h6>
-            <p className="card-text">Student at San Francisco State University</p>
+            <p className="card-text">
+              Student at San Francisco State University
+            </p>
             <div className="d-flex profile-links">
               <img
                 className="rounded-circle"

@@ -28,7 +28,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 
 #header {
@@ -155,12 +154,27 @@ body {
     color: #999;
 }
 
-#wrapper div {
-    width: 100vh;
-
+#work {
+    background-size: cover;
+    position: relative;
+    background-color: #111;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
-#wrapper {
-    display: flex;
-    height: 100vh;
+#skills {
+    padding-top: 5%;
 }
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .fa-linkedin {
+      background: #55ACEE;
+      color: white;
+  }

@@ -6,7 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'font-awesome/css/font-awesome.min.css';
 // Images
-import Backdrop from '../assets/img/about/backdrop.jpeg';
+import Backdrop from '../assets/img/about/backdrop.jpg';
 import Rajdeep from '../assets/img/about/rajdeep.jpg';
 import Rinay from '../assets/img/about/rinay.jpg';
 import Bhavani from '../assets/img/about/bhavani.jpg';

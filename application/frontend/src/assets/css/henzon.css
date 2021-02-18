@@ -8,48 +8,53 @@ header{
   
   .profile_pic{
     border-radius: 40%;
-  }
+  } 
 
-  .sfsu{
-    padding-left: 30px;
-  }
-  
-  ul{
-    margin-right: 250px;
-  }
-  
-  li{
+.sfsu{
+padding-left: 20px;
+}
+
+.contacts_text{
+margin-left: 20px;
+}
+
+.contacts_linkedin{
+  margin-right: 152px;
+  margin-top: 10px;
+}  
+.contacts_github{
+ margin-right: 165px;
+ margin-top: 10px;
+}
+
+.contacts_mail{
+  margin-right: 25px;
+  margin-top: 10px;
+}
+
+li{
     list-style: none;
-  }
+}
   
-  .linkedin{
-    margin: 0px 15px 10px 30px;
-  }
-  
-  .github{
-    margin: 0px 15px 10px 15px;
-  }
-  .mail{
-    margin: 0px 15px 10px 155px;
-  }
-  
-  li a{
+li a{
   text-decoration: none;
   color: blue;
-  }
+}
   
-  h2{
-  font-size: 35px;
-  padding-left: 30px;
-  }
+h2{
+font-size: 35px;
+padding-left: 30px;
+}
 
-  .info{
-    margin: 150px;
-  }
+.info{
+margin: 150px;
+}
   
-  .About_me{
-    background-image: linear-gradient(#f8ebe3,white);
+/* @media (max-width: 600px) {
+.sfsu{
+  
   }
+}  */
   
   
   

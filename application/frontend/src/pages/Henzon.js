@@ -1,52 +1,82 @@
+import '../assets/css/henzon.css';
+import '../assets/bootstrap/css/bootstrap.min.css';
+
+//images
 import Profile from '../assets/img_henzon/portrait_pic.jpeg';
 import Linkedin from '../assets/img_henzon/linkedin_ic.png';
 import Github from '../assets/img_henzon/github_ic.png';
 import Education from '../assets/img_henzon/education.png';
 import Mail from '../assets/img_henzon/mail.png';
-import '../assets/css/henzon.css';
+import RainbowReef from '../assets/img_henzon/rainbowreef_game.png';
+import Calculator from '../assets/img_henzon/calculator.png';
+import FitApp from '../assets/img_henzon/fitapp.png';
+import FitApp_pushup from '../assets/img_henzon/fitapp_pushup.png';
+
+
 import React from 'react';
 
 
 
 const Henzon = () => {
   return (
-    <div className='About_me'>
-      <header>
-        <img class = "profile_pic" src = {Profile} width = "150" alt = "profile_pic"/>
+    <div class= "about_me">
+      <header class = "container">
+
+        <img class = "rounded-circle" src = {Profile} width = "170" alt = "profile_pic"/>
         
         <h1>Henzon Zambrano</h1>
-        <ul>
-        <li><img class = "linkedin" src = {Linkedin} width = "30" alt = "linkedin"/>
-        <a href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/">
+        
+        <ul class = "container">
+        <li class = "contacts_linkedin">
+          <img class = "linkedin" src = {Linkedin} width = "30" alt = "linkedin"/>
+        <a class = "contacts_text" href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/">
           Linkedin
         </a></li>
-        <li><img class = "github" src = {Github} width = "30" alt = "github"/>
-        <a href = "https://github.com/henzonz">
+        <li class = "contacts_github"><img class = "github" src = {Github} width = "30" alt = "github"/>
+        <a class = "contacts_text" href = "https://github.com/henzonz">
           Github
         </a></li>
-        <li><img class = "mail" src = {Mail} width = "30" alt = "mail"/>
-        <a href = "mailto: zhenzon26@gmail.com">
-          zhenzon8991@gmail.com
+        
+        <li class = "contacts_mail"><img class = "mail" src = {Mail} width = "30" alt = "mail"/>
+        <a class = "contacts_text" href = "mailto: zhenzon26@gmail.com">
+        zhenzon8991@gmail.com
         </a></li>
+
+        
         </ul>
+        
       </header>
 
-      <div className = "info">
+      <div class = "info">
 
       <h2>Education</h2>
-      <img class = "sfsu" src = {Education} width = "800" alt = "sfsu"/>
+      <img class = "sfsu img-fluid" src = {Education} width = "500" alt = "sfsu"/>
 
       <h2>Projects</h2>
         <ul>
-          <li><a href = "https://github.com/henzonz/Super-Rainbow-Reef-Game"> Super Rainbow Reef Game </a></li>
-          <p>A simple 2-D game created using Java to practice object oriented programming.   </p>
+          <li><a href = "https://github.com/henzonz/Super-Rainbow-Reef-Game">Super Rainbow Reef Game </a>
+          <br></br>
+          <img class = "img-fluid" src = {RainbowReef} width = "500"/>
+          </li>
+          <p class = "project_desc">A simple 2-D game created using Java to practice object oriented programming.   </p>
 
-          <li><a href = "https://github.com/henzonz/Calculator-GUI-asmt-"> Calculator </a></li>
-          <p>A simple calculator GUI that properly evaluates mathematical expressions by following the correct order of operations.   </p>
+          <li><a href = "https://github.com/henzonz/Calculator-GUI-asmt-"> Calculator </a>
+          <br></br>
+          <img class = "img-fluid" src = {Calculator} width = "500"/></li>
+          <p class = "project_desc">A simple calculator GUI that properly evaluates mathematical expressions by following the correct order of operations.   </p>
         
         
-          <li><a href = "https://sites.google.com/d/1fT0q9McLlsaqFR7TymBE8HUAwA1LUbFi/p/1jC9TGeGSuDAWNaaCqpRhbtXnWeY6OXJX/edit"> Fit App </a></li>
-          <p> A simple fitness app that utilizes the three iPhone sensors: proximity sensor, gyroscope and touch screen. The app is created using the Swift language that allow users to workout without having to count repetitions of the mentioned workouts.    </p>
+          <li><a href = "https://sites.google.com/d/1fT0q9McLlsaqFR7TymBE8HUAwA1LUbFi/p/1jC9TGeGSuDAWNaaCqpRhbtXnWeY6OXJX/edit"> Fit App </a>
+          <br></br>
+          <img class = "img-fluid" src = {FitApp} width = "600"/></li>
+          
+          <p class = "project_desc"> A simple fitness app rep counter that utilizes the three iPhone sensors: proximity sensor, gyroscope and touch screen. The app is created using the Swift language that allow users to workout without having to count repetitions of the mentioned workouts.</p>
+          <br>
+          </br>
+          This is the sample product of the rep counter page for push up counter which utilizes the proximity sensor to count repetitions:
+          <br></br>
+          <img class = "img-fluid" src = {FitApp_pushup} width = "600"/>
+
         </ul>
 
         

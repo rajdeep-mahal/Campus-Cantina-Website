@@ -30,4 +30,16 @@ header.masthead .site-heading .subheading {
     padding-left: 10px;
     padding-right: 10px;
   }
+
+}
+
+.chevron {
+  text-align: center;
+  font-size: 70px;
+}
+
+@media (max-width: 768px) {
+  .chevron {
+    padding-top: 90px;
+  }
 }

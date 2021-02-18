@@ -13,6 +13,7 @@ import Bhavani from '../assets/img/about/bhavani.jpg';
 import Frederick from '../assets/img/about/frederick.jpg';
 import German from '../assets/img/about/german.jpg';
 import Henzon from '../assets/img/about/henzon.jpg';
+import Chevron from '../assets/img/about/chevron.png';
 
 const About = () => {
   AOS.init();
@@ -59,7 +60,11 @@ const About = () => {
                   <br />
                   Spring 2021
                 </span>
-                <p></p>
+                <br />
+                <br />
+              </div>
+              <div className="chevron">
+                <img src={Chevron} height="40px" alt=""/>
               </div>
             </div>
           </div>

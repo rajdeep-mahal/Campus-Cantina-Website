@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap");
+
+.bhvpage {
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1.6;
+  background-color: rgb(212, 214, 238);
+}
+
+.bhvheader {
+  height: 350px;
+  background-color: rgb(112, 114, 146);
+  color: #fff;
+  padding: 40px;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+}
+
+.bhavabt {
+  height: 300px;
+  width: 300px;
+  animation: slideInFromLeft 1s ease-in;
+  overflow: visible;
+}
+
+.bhvheader .grid {
+  grid-template-columns: 55% auto;
+  display: grid;
+  grid-template-columns: repeat(2, 4fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+}
+
+.bhavabt img {
+  width: 250px;
+  height: 250px;
+}
+
+.bhvabout-text {
+  animation: slideInFromRight 1s ease-in;
+}
+
+h4 {
+  font-size: larger;
+  font-weight: 400;
+}
+
+.bhvheader::before,
+.bhvheader::after {
+  content: "";
+  position: absolute;
+  height: 90px;
+  bottom: -20px;
+  right: 0;
+  left: 0;
+  background: rgb(112, 114, 146);
+  transform: skewY(-3deg);
+  -webkit-transform: skewY(-3deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+}
+
+.desc {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  overflow: visible;
+}
+
+.desc-card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+  overflow: visible;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+.skillcard {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  transition: transform 0.2s ease-in;
+  text-align: center;
+  margin: 18px 10px 40px;
+  font-size: 13px;
+}
+
+.bhvskills .flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.bhvskills .skillcard:hover {
+  transform: translateY(-15px);
+}
+
+.card {
+  padding: 20px;
+  margin: 30px;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

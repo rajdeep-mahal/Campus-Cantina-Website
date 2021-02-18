@@ -1,16 +1,16 @@
 import '../assets/css/henzon.css';
-import '../assets/bootstrap/css/bootstrap.min.css';
+import '../assets/bootstrap/bootstrap.min.css';
 
 //images
-import Profile from '../assets/img_henzon/portrait_pic.jpeg';
-import Linkedin from '../assets/img_henzon/linkedin_ic.png';
-import Github from '../assets/img_henzon/github_ic.png';
-import Education from '../assets/img_henzon/education.png';
-import Mail from '../assets/img_henzon/mail.png';
-import RainbowReef from '../assets/img_henzon/rainbowreef_game.png';
-import Calculator from '../assets/img_henzon/calculator.png';
-import FitApp from '../assets/img_henzon/fitapp.png';
-import FitApp_pushup from '../assets/img_henzon/fitapp_pushup.png';
+import Profile from '../assets/img/henzon/portrait_pic.jpeg';
+import Linkedin from '../assets/img/henzon/linkedin_ic.png';
+import Github from '../assets/img/henzon/github_ic.png';
+import Education from '../assets/img/henzon/education.png';
+import Mail from '../assets/img/henzon/mail.png';
+import RainbowReef from '../assets/img/henzon/rainbowreef_game.png';
+import Calculator from '../assets/img/henzon/calculator.png';
+import FitApp from '../assets/img/henzon/fitapp.png';
+import FitApp_pushup from '../assets/img/henzon/fitapp_pushup.png';
 
 
 import React from 'react';
@@ -56,26 +56,26 @@ const Henzon = () => {
         <ul>
           <li><a href = "https://github.com/henzonz/Super-Rainbow-Reef-Game">Super Rainbow Reef Game </a>
           <br></br>
-          <img class = "img-fluid" src = {RainbowReef} width = "500"/>
+          <img class = "img-fluid" src = {RainbowReef} width = "500" alt=""/>
           </li>
           <p class = "project_desc">A simple 2-D game created using Java to practice object oriented programming.   </p>
 
           <li><a href = "https://github.com/henzonz/Calculator-GUI-asmt-"> Calculator </a>
           <br></br>
-          <img class = "img-fluid" src = {Calculator} width = "500"/></li>
+          <img class = "img-fluid" src = {Calculator} width = "500" alt=""/></li>
           <p class = "project_desc">A simple calculator GUI that properly evaluates mathematical expressions by following the correct order of operations.   </p>
         
         
           <li><a href = "https://sites.google.com/d/1fT0q9McLlsaqFR7TymBE8HUAwA1LUbFi/p/1jC9TGeGSuDAWNaaCqpRhbtXnWeY6OXJX/edit"> Fit App </a>
           <br></br>
-          <img class = "img-fluid" src = {FitApp} width = "600"/></li>
+          <img class = "img-fluid" src = {FitApp} width = "600" alt=""/></li>
           
           <p class = "project_desc"> A simple fitness app rep counter that utilizes the three iPhone sensors: proximity sensor, gyroscope and touch screen. The app is created using the Swift language that allow users to workout without having to count repetitions of the mentioned workouts.</p>
           <br>
           </br>
           This is the sample product of the rep counter page for push up counter which utilizes the proximity sensor to count repetitions:
           <br></br>
-          <img class = "img-fluid" src = {FitApp_pushup} width = "600"/>
+          <img class = "img-fluid" src = {FitApp_pushup} width = "600" alt=""/>
 
         </ul>
 

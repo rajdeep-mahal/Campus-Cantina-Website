@@ -14,16 +14,16 @@ header.masthead .site-heading .subheading {
   font-weight: 200;
 }
 
-.card-group {
+.team {
   padding: 1px;
 }
 
-.card {
+.cardalign {
   text-align: center;
 }
 
 @media (max-width: 575px) {
-  .card-group {
+  .team {
     width: 85%;
   }
   .about-text {

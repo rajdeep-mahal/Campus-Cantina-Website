@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.card {
+.noborder {
   border: none;
 }
 
@@ -60,9 +60,8 @@
   padding-top: 5px;
 }
 
-.projects-header {
+.ects-header {
   width: 65%;
-  /*text-align: center;*/
   align-items: center;
 }
 
@@ -128,17 +127,20 @@
     color: gray;
     font-size: x-small;
   }
+  .name {
+    font-size: 30px;
+  }
 }
 
 .year {
   color: gray;
 }
 
-.h5 {
+.rinay h5 {
   font-weight: 200;
 }
 
-h4 {
+.rinay h4 {
   font-weight: 200;
 }
 

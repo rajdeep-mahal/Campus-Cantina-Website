@@ -20,9 +20,9 @@ const Rinay = () => {
   });
 
   return (
-    <div>
+    <div className="rinay">
       <section id="header" style={{ textAlign: 'center' }}>
-        <div className="card">
+        <div className="card noborder">
           <div className="card-body text-center justify-content-center align-self-center header-card">
             <img
               className="rounded-circle img-fluid"
@@ -106,7 +106,7 @@ const Rinay = () => {
         id="education"
         style={{ textAlign: 'center' }}
       >
-        <div className="card text-center edu-card">
+        <div className="card text-center edu-card noborder">
           <div className="card-body text-center">
             <h4 className="text-left card-title">Education</h4>
             <img className="ed-img" src={SFSU} alt="SFSU section" />
@@ -118,7 +118,7 @@ const Rinay = () => {
         id="experience"
         style={{ textAlign: 'center' }}
       >
-        <div className="card text-center edu-card">
+        <div className="card text-center edu-card noborder">
           <div className="card-body text-center ed-img">
             <h4 className="text-left card-title">Experience</h4>
             <img className="ed-img" src={Apple} alt="Apple section" />
@@ -130,7 +130,7 @@ const Rinay = () => {
         id="projects"
         style={{ textAlign: 'center' }}
       >
-        <div className="card text-center edu-card">
+        <div className="card text-center edu-card noborder">
           <div className="card-body text-center">
             <h4 className="text-left card-title">Projects</h4>
             <br />

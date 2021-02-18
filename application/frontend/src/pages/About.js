@@ -64,7 +64,7 @@ const About = () => {
                 <br />
               </div>
               <div className="chevron">
-                <img src={Chevron} height="40px" alt=""/>
+                <img src={Chevron} height="40px" alt="" />
               </div>
             </div>
           </div>
@@ -112,11 +112,11 @@ const About = () => {
             </p>
             <div className="d-flex justify-content-center align-items-center">
               <div
-                className="card-group"
+                className="card-group team"
                 data-aos="fade-up"
                 data-aos-duration="1000"
               >
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Rajdeep}
@@ -134,7 +134,7 @@ const About = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Rinay}
@@ -152,7 +152,7 @@ const About = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Bhavani}
@@ -175,11 +175,11 @@ const About = () => {
             <p></p>
             <div className="d-flex justify-content-center align-items-center">
               <div
-                className="card-group"
+                className="card-group team"
                 data-aos="fade-up"
                 data-aos-duration="1000"
               >
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Frederick}
@@ -189,7 +189,7 @@ const About = () => {
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Frederick
                     </h4>
-                    <p className="card-text">Github Master</p>
+                    <p className="card-text">GitHub Master</p>
                     <Link to="/frederick">
                       <button className="btn btn-info" type="button">
                         More
@@ -197,7 +197,7 @@ const About = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={German}
@@ -215,7 +215,7 @@ const About = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="card border">
+                <div className="card border cardalign">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Henzon}

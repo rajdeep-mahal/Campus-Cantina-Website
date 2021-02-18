@@ -9,8 +9,12 @@ import JinjaLogo from "../assets/img/bhavani/jinja.png";
 import FlaskLogo from "../assets/img/bhavani/flask.png";
 import ReactLogo from "../assets/img/bhavani/react.png";
 import "../assets/css/bhavani.css";
+import { useLayoutEffect } from "react";
 
 const Bhavani = () => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div className="bhvpage">
       <section className="bhvheader">
@@ -32,10 +36,7 @@ const Bhavani = () => {
         </div>
       </section>
       <section className="desc">
-        <div
-          className="container grid"
-          style={{ maxWidth: 1100, margin: "0 auto" }}
-        >
+        <div className="container grid" style={{ margin: "0 auto" }}>
           <section className="desc-card">
             <i
               className="fa fa-university"

@@ -20,7 +20,7 @@
   height: 300px;
   width: 300px;
   animation: slideInFromLeft 1s ease-in;
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 .bhvheader .grid {
@@ -65,7 +65,7 @@ h4 {
 .desc {
   padding-top: 50px;
   padding-bottom: 30px;
-  overflow: visible;
+  /* overflow: visible; */
 }
 
 .desc-card {
@@ -75,7 +75,7 @@ h4 {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   margin: 10px;
-  overflow: visible;
+  /* overflow: visible; */
   animation: slideInFromBottom 1s ease-in;
 }
 

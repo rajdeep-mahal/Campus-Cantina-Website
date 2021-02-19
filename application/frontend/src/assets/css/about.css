@@ -38,8 +38,8 @@ header.masthead .site-heading .subheading {
   font-size: 70px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .chevron {
     padding-top: 90px;
   }
-}
+} */

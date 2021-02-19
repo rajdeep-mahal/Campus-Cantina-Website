@@ -3,7 +3,7 @@
     box-sizing: border-box;
 } */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 10px;
 } 
 
@@ -17,7 +17,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(24, 24, 24);
-}
+} */
 
  body {
     height: 100%;
@@ -31,7 +31,7 @@
     background-size: cover;
 }
 
- #header {
+ #fredheader {
     padding: 0 0;
     height: 92px;
     position: fixed;
@@ -41,11 +41,11 @@
     z-index: 997;
 }
 
- #header #logo {
+ #fredheader #logo {
     float: left;
     position: fixed;
 }
- #header #logo {
+ #fredheader #logo {
     font-size: 34px;
     margin: 0;
     padding: 6px 0;
@@ -58,7 +58,7 @@
     text-transform: uppercase;
 }
 
- #header.header-fixed {
+ #fredheader.header-fixed {
     background: rgba(31, 30, 30, 0.9);
     padding: 15px 0;
     height: 72px;

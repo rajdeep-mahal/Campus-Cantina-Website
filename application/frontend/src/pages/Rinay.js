@@ -15,10 +15,6 @@ import Soda from '../assets/img/rinay/soda.gif';
 import Word from '../assets/img/rinay/word.png';
 
 const Rinay = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   return (
     <div className="rinay">
       <section id="header" style={{ textAlign: 'center' }}>

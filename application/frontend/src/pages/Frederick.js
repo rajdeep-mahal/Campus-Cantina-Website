@@ -15,13 +15,10 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import FreddieImage from '../assets/img/frederick/freddiePhoto.jpg';
 
 const Frederick = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
   return (
     <div>
       <body className="bg">
-          <header id="header">
+          <header id="fredheader">
             <Navbar bg="dark" variant="dark" stick="top">
               <Navbar.Brand id="logo">Frederick</Navbar.Brand>
               <Nav className="ml-auto">

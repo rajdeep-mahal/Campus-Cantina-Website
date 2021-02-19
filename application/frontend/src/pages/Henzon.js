@@ -13,10 +13,6 @@ import FitApp from '../assets/img/henzon/fitapp.png';
 import FitApp_pushup from '../assets/img/henzon/fitapp_pushup.png';
 
 const Henzon = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   return (
     <div class="about_me">
       <header class="container heading">

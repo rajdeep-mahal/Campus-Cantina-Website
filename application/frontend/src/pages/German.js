@@ -27,21 +27,21 @@ const German = () => {
               width="15"
               alt="Github"
             />
-            <a href = "https://github.com/germanp123"> Github </a> 
+            <a className="germanA" href = "https://github.com/germanp123"> Github </a> 
             <img
               class=" img-fluid "
               src={Linkedin}
               width="15"
               alt="Linkedin"
             />
-            <a href = "https://www.linkedin.com/in/germanperezm/"> LinkedIn </a>  <br/>
+            <a className="germanA" href = "https://www.linkedin.com/in/germanperezm/"> LinkedIn </a>  <br/>
             <img
               class=" img-fluid "
               src={Email}
               width="15"
               alt="Email"
             />
-            <a href = "mailto:gperez8@mail.sfsu.edu"> Email </a> 
+            <a className="germanA" href = "mailto:gperez8@mail.sfsu.edu"> Email </a> 
           </section>
         </div>
         <div className =""></div>

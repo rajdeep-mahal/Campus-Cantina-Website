@@ -19,10 +19,6 @@ import Portfolio from '../assets/img/rajdeep/portfolio.png';
 const Rajdeep = () => {
   AOS.init();
 
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   return (
     <div>
       <section data-aos="fade-up" data-aos-duration="500">

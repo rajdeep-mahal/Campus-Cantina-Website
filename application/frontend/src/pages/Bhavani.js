@@ -9,12 +9,8 @@ import JinjaLogo from "../assets/img/bhavani/jinja.png";
 import FlaskLogo from "../assets/img/bhavani/flask.png";
 import ReactLogo from "../assets/img/bhavani/react.png";
 import "../assets/css/bhavani.css";
-import { useLayoutEffect } from "react";
 
 const Bhavani = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
   return (
     <div className="bhvpage">
       <section className="bhvheader">

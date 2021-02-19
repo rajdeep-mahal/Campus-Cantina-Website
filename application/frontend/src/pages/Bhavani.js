@@ -38,11 +38,7 @@ const Bhavani = () => {
       <section className="bhvdesc">
         <div className="container grid" style={{ margin: "0 auto" }}>
           <section className="desc-card">
-            <i
-              className="fa fa-university"
-              aria-hidden="true"
-              style={{ paddingRight: 20 }}
-            ></i>
+            <i className="fas fa-university" style={{ paddingRight: 20 }}></i>
             <i className="fas fa-server" style={{ paddingRight: 20 }}></i>
             <i className="fas fa-heart" style={{ paddingRight: 20 }} />
             <i className="fas fa-music"></i>
@@ -116,81 +112,80 @@ const Bhavani = () => {
               <h3>
                 <strong>Photobook</strong>
               </h3>
-              <p>
-                <blockquote>
-                  A Photobook Website enables users to upload a photo (stored in
-                  Cloud Storage) and its metadata (stored in Cloud Datastore).
-                  The images are passed on to Google Vision API and are
-                  automatically categorized based on the labels returned by the
-                  API.
-                </blockquote>
-              </p>
-              <a href="https://github.com/bhavani-goruganthu/CSC847_GAE_Proj2_VisionAPI">
-                <i
-                  class="fa fa-github"
-                  aria-hidden="true"
-                  style={{ fontSize: "36px", paddingBottom: "20px" }}
-                ></i>
-              </a>
+              <blockquote>
+                A Photobook Website enables users to upload a photo (stored in
+                Cloud Storage) and its metadata (stored in Cloud Datastore). The
+                images are passed on to Google Vision API and are automatically
+                categorized based on the labels returned by the API.
+              </blockquote>
+              <div>
+                <a href="https://github.com/bhavani-goruganthu/CSC847_GAE_Proj2_VisionAPI">
+                  <i
+                    className="fa fa-github"
+                    aria-hidden="true"
+                    style={{ fontSize: "36px", paddingBottom: "20px" }}
+                  ></i>
+                </a>
+              </div>
             </div>
             <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>Student Directory</strong>
               </h3>
-              <p>
-                <blockquote>
-                  A Student Directory Website has been developed which is hosted
-                  on the GCE’s instances and enables users to display all the
-                  students, add a student and search for students using Cloud
-                  SQL for MySQL.
-                </blockquote>
-              </p>
-              <a href="https://github.com/bhavani-goruganthu/gce_studentapp">
-                <i
-                  class="fa fa-github"
-                  aria-hidden="true"
-                  style={{ fontSize: "36px", paddingBottom: "20px" }}
-                ></i>
-              </a>
+              <blockquote>
+                A Student Directory Website has been developed which is hosted
+                on the GCE’s instances and enables users to display all the
+                students, add a student and search for students using Cloud SQL
+                for MySQL.
+              </blockquote>
+              <div>
+                <a href="https://github.com/bhavani-goruganthu/gce_studentapp">
+                  <i
+                    className="fa fa-github"
+                    aria-hidden="true"
+                    style={{ fontSize: "36px", paddingBottom: "20px" }}
+                  ></i>
+                </a>
+              </div>
             </div>
             <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>Quote Keeper</strong>
               </h3>
-              <p>
-                <blockquote>
-                  This website saves Quotes on-the-go by using Google Cloud
-                  Machine Learning API's. It can be a picture of a quote, a
-                  downloaded image, a hand-written quote or a recorded one. All
-                  quotes are saved in free text mode in Google Cloud Datastore.
-                </blockquote>
-              </p>
-              <a href="https://github.com/bhavani-goruganthu/Flask-Projects/tree/master/CloudComputing/GP">
-                <i
-                  class="fa fa-github"
-                  aria-hidden="true"
-                  style={{ fontSize: "36px", paddingBottom: "20px" }}
-                ></i>
-              </a>
+              <blockquote>
+                This website saves Quotes on-the-go by using Google Cloud
+                Machine Learning API's. It can be a picture of a quote, a
+                downloaded image, a hand-written quote or a recorded one. All
+                quotes are saved in free text mode in Google Cloud Datastore.
+              </blockquote>
+              <div>
+                <a href="https://github.com/bhavani-goruganthu/Flask-Projects/tree/master/CloudComputing/GP">
+                  <i
+                    className="fa fa-github"
+                    aria-hidden="true"
+                    style={{ fontSize: "36px", paddingBottom: "20px" }}
+                  ></i>
+                </a>
+              </div>
             </div>
             <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>eCommerce Website</strong>
               </h3>
-              <p>
-                <blockquote>
-                  This is a single page React app with distributed microservices
-                  back end which is developed based on latest technologies like
-                  Redis, Kafka, WebSocket, ReacttJS, ExpressJS, Mongodb.
-                </blockquote>
-              </p>
-              <a href="https://github.com/bhavani-goruganthu/final-project-listy">
-                <i
-                  class="fa fa-github"
-                  aria-hidden="true"
-                  style={{ fontSize: "36px", paddingBottom: "20px" }}
-                ></i>
-              </a>
+              <blockquote>
+                This is a single page React app with distributed microservices
+                back end which is developed based on latest technologies like
+                Redis, Kafka, WebSocket, ReacttJS, ExpressJS, Mongodb.
+              </blockquote>
+              <div>
+                <a href="https://github.com/bhavani-goruganthu/final-project-listy">
+                  <i
+                    className="fa fa-github"
+                    aria-hidden="true"
+                    style={{ fontSize: "36px", paddingBottom: "20px" }}
+                  ></i>
+                </a>
+              </div>
             </div>
           </div>
         </section>

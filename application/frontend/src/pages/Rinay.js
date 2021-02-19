@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/bootstrap/css/bootstrap.min.css';
+//import '../assets/bootstrap/css/bootstrap.min.css';
 import '../assets/css/rinay.css';
 // Images
 import Profile from '../assets/img/rinay/profile.jpeg';

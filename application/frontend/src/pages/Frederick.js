@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/bootstrap/css/bootstrap.min.css';
+import '../assets/bootstrap/bootstrap.min.css';
 import '../assets/css/frederick.css';
 
 import Navbar from "react-bootstrap/Navbar"

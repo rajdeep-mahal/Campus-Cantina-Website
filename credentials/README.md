@@ -24,7 +24,7 @@
 - `csc-648-03-sp21-team04`
 ### Login to mysql server
 - `sudo mysql -u root -p`
-### Databse name
+### Database name
 - `648team04`
 
 # Most important things to Remember

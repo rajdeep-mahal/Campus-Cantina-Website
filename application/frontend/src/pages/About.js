@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../assets/bootstrap/bootstrap-about.min.css';
-import '../assets/css/about.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import 'font-awesome/css/font-awesome.min.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../assets/bootstrap/bootstrap-about.min.css";
+import "../assets/css/about.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "font-awesome/css/font-awesome.min.css";
 // Images
 import Backdrop from '../assets/img/about/backdrop.jpg';
 import Rajdeep from '../assets/img/about/rajdeep.jpg';
@@ -47,15 +47,15 @@ const About = () => {
       </nav> */}
       <header
         className="masthead"
-        style={{ backgroundImage: `url(${Backdrop})`, height: '100vh' }}
+        style={{ backgroundImage: `url(${Backdrop})`, height: "100vh" }}
       >
         <div className="overlay"></div>
         <div className="container">
           <div className="row">
             <div className="col-md-10 col-lg-8 mx-auto">
               <div className="site-heading">
-                <h1 style={{ fontWeight: '800' }}>CSC 648</h1>
-                <h3 style={{ fontWeight: '800' }}>TEAM 04</h3>
+                <h1 style={{ fontWeight: "800" }}>CSC 648</h1>
+                <h3 style={{ fontWeight: "800" }}>TEAM 04</h3>
                 <span className="subheading">
                   <strong>San Francisco State University</strong>
                   <br />
@@ -81,7 +81,7 @@ const About = () => {
               data-aos="fade-up"
               data-aos-duration="1000"
               className="text-center"
-              style={{ fontWeight: '800' }}
+              style={{ fontWeight: "800" }}
             >
               About
             </h1>
@@ -127,12 +127,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Rajdeep
                     </h4>
                     <p className="card-text">Team Lead</p>
                     <Link to="/rajdeep">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -145,12 +148,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Rinay
                     </h4>
                     <p className="card-text">Backend Lead</p>
                     <Link to="/rinay">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -163,12 +169,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Bhavani
                     </h4>
                     <p className="card-text">Frontend Lead</p>
                     <Link to="/bhavani">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -190,12 +199,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Frederick
                     </h4>
                     <p className="card-text">GitHub Master</p>
                     <Link to="/frederick">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -208,12 +220,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       German
                     </h4>
                     <p className="card-text">Frontend Team</p>
                     <Link to="/german">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -226,12 +241,15 @@ const About = () => {
                     alt=""
                   />
                   <div className="card-body">
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Henzon
                     </h4>
                     <p className="card-text">Backend Team</p>
                     <Link to="/henzon">
-                      <button className="btn btn-info" type="button">
+                      <button
+                        className="btn btn-info stretched-link"
+                        type="button"
+                      >
                         More
                       </button>
                     </Link>
@@ -248,7 +266,7 @@ const About = () => {
             <div className="col-md-10 col-lg-8 mx-auto">
               <p
                 className="text-muted copyright"
-                style={{ fontSize: 'x-small' }}
+                style={{ fontSize: "x-small" }}
               >
                 © 2021 Team 04
               </p>

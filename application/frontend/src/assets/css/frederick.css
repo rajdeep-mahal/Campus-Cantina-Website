@@ -1,0 +1,201 @@
+
+ * {
+    box-sizing: border-box;
+} */
+
+/* ::-webkit-scrollbar {
+    width: 10px;
+} */
+
+/* ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(31, 31, 31);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(24, 24, 24);
+} */
+
+ body {
+    height: 100%;
+}
+
+.bg {
+    background-image: url('../img/frederick/cityImage.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.freddie #header {
+    padding: 0 0;
+    height: 92px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 997;
+}
+
+.freddie #header #logo {
+    float: left;
+    position: fixed;
+}
+
+.freddie #header #logo {
+    font-size: 34px;
+    margin: 0;
+    padding: 6px 0;
+    position: fixed;
+    left: 5%;
+    line-height: 1;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.freddie #header.header-fixed {
+    background: rgba(31, 30, 30, 0.9);
+    padding: 15px 0;
+    height: 72px;
+
+}
+
+#hero {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: relative;
+}
+
+#hero .hero-container {
+    position: relative;
+    bottom: 0;
+    top: 30%;
+    left: 0;
+    right: 0;
+    
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    
+    justify-content: center;
+    
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    
+    align-items: center;
+    
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    
+    flex-direction: column;
+    text-align: center;
+}
+#hero h1 {
+    margin: 30px 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+#hero h2 {
+    color: #eee;
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+#hero .btn-get-started {
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+#hero .btn-get-started:hover {
+    background: #000000;
+    border: 2px solid #fdfdfd;
+}
+
+.section-header .section-title {
+    font-size: 32px;
+    color: #111;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.section-header .section-description {
+    text-align: center;
+    padding-bottom: 40px;
+    color: #999;
+}
+
+#work {
+    background-size: cover;
+    position: relative;
+    background-color: #111;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    
+}
+
+#skills {
+    padding-top: 5%;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .fa-linkedin {
+      background: #55ACEE;
+      color: white;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+
+  #aboutMeInfo {
+    display: flex;
+    background-color: #111;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-color: #111;
+  }
+
+  #aboutMeInfo p {
+      color: #eee;
+  }

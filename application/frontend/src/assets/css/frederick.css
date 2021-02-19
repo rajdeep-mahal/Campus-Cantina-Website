@@ -3,11 +3,11 @@
     box-sizing: border-box;
 } */
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 10px;
-} */
+} 
 
-/* ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
@@ -17,7 +17,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(24, 24, 24);
-} */
+}
 
  body {
     height: 100%;
@@ -31,7 +31,7 @@
     background-size: cover;
 }
 
-.freddie #header {
+ #header {
     padding: 0 0;
     height: 92px;
     position: fixed;
@@ -41,12 +41,11 @@
     z-index: 997;
 }
 
-.freddie #header #logo {
+ #header #logo {
     float: left;
     position: fixed;
 }
-
-.freddie #header #logo {
+ #header #logo {
     font-size: 34px;
     margin: 0;
     padding: 6px 0;
@@ -59,7 +58,7 @@
     text-transform: uppercase;
 }
 
-.freddie #header.header-fixed {
+ #header.header-fixed {
     background: rgba(31, 30, 30, 0.9);
     padding: 15px 0;
     height: 72px;

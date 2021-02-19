@@ -15,34 +15,35 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import FreddieImage from '../assets/img/frederick/freddiePhoto.jpg';
 
 const Frederick = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
-      
       <body className="bg">
-      <div className="freddie">
-        <header id="header">
-          <Navbar bg="dark" variant="dark" stick="top">
-            <Navbar.Brand id="logo">Frederick</Navbar.Brand>
-            <Nav className="ml-auto">
-              <Nav.Link href="#aboutMe">About Me</Nav.Link>
-              <Nav.Link href="#portfolio">Portfolio</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar>
-        </header>
+          <header id="header">
+            <Navbar bg="dark" variant="dark" stick="top">
+              <Navbar.Brand id="logo">Frederick</Navbar.Brand>
+              <Nav className="ml-auto">
+                <Nav.Link href="#aboutMe">About Me</Nav.Link>
+                <Nav.Link href="#portfolio">Portfolio</Nav.Link>
+                <Nav.Link href="#contact">Contact</Nav.Link>
+              </Nav>
+            </Navbar>
+          </header>
 
-        <section id="hero">
-          <div className="hero-container">
-            <h1>
-              frederick.portfolio<span class="blinking"> .</span>
-            </h1>
-            <h2>Software Engineer</h2>
-            <a href="#aboutMe" class="btn-get-started">
-              About Me
-            </a>
-          </div>
-        </section>
-        </div>
+          <section id="hero">
+            <div className="hero-container">
+              <h1>
+                frederick.portfolio<span class="blinking"> .</span>
+              </h1>
+              <h2>Software Engineer</h2>
+              <a href="#aboutMe" class="btn-get-started">
+                About Me
+              </a>
+            </div>
+          </section>
+        
         <div id="aboutMe">
           <section id="work">
             <Container fluid>

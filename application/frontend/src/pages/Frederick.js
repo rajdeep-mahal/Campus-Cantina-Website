@@ -1,17 +1,19 @@
 import React from 'react';
 import '../assets/bootstrap/css/bootstrap.min.css';
 import '../assets/css/frederick.css';
+
 import Navbar from "react-bootstrap/Navbar"
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
-//import Row from 'react-bootstrap/Row'
-//import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-//import CardGroup from 'react-bootstrap/CardGroup'
-import CardDeck from 'react-bootstrap/CardDeck'
+//import CardDeck from 'react-bootstrap/CardDeck'
+import CardColumns from 'react-bootstrap/CardColumns'
+import Row from 'react-bootstrap/Row'
+//import Image from 'react-bootstrap/Image'
+import {FaGithub, FaLinkedin} from 'react-icons/fa'
+//import Media from 'react-bootstrap/Media'
+import FreddieImage from '../assets/img/frederick/freddiePhoto.jpg'
 
-
-//import image here
 
 const Frederick = () => {
   return (
@@ -39,9 +41,34 @@ const Frederick = () => {
     </div>
   </section>
 
+<div id="aboutMe">
+  
 <section id="work">
+  
   <Container fluid>
-        <CardDeck>
+    
+        <CardColumns>
+        <Card className="bg-dark text-white text-center" style={{width: '100%' }} >
+          <Card.Header>Frederick White</Card.Header>
+          <img
+      className="rounded-circle img-fluid"
+      src={FreddieImage}
+      width="50%"
+      alt="Profile"
+    />
+<Card.Body>
+<Card.Text>
+I am a computer science student in my senior year at SFSU. I
+    enjoy creating mobile apps and learning new technologies. In my free 
+    time I like to program, rock climb, read, and listen to music.
+</Card.Text>
+<Row className="justify-content-center">
+  <a href="https://github.com/fwhite95"><FaGithub></FaGithub></a>
+  <a href="https://www.linkedin.com/in/frederick-white-982aa4102/"><FaLinkedin></FaLinkedin></a>
+  
+</Row>
+</Card.Body>
+</Card>
           <Card bg="dark" text="white">
             <Card.Header as="h3">Work Experience</Card.Header>
             <Card.Body>
@@ -64,7 +91,7 @@ const Frederick = () => {
             </Card.Body>
           </Card>
           <Card bg="dark" text="white">
-            <Card.Header as="h3">Skils</Card.Header>
+            <Card.Header as="h3">Skills</Card.Header>
             <Card.Body>
               <Card.Text>
               <h5>LANGUAGES/FRAMEWORKS</h5>
@@ -82,29 +109,53 @@ const Frederick = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-        </CardDeck>
-        
+        </CardColumns>
   </Container>
   </section>
+  </div>
   
   </body>
   
-  <footer>
-    
-  </footer>
   </div>
   );
 };
 
 export default Frederick;
 
-/* <Card className="bg-dark text-white" style={{width: '50%' }} >
-<Card.Img variant="top" rounded/>
+/* <div className="aboutMeInfo">
+<Card className="bg-dark text-white" style={{width: '50%' }} >
+<img
+      className="rounded-circle img-fluid"
+      src={FreddieImage}
+      width="20%"
+      alt="Profile"
+    />
 <Card.Body>
-  <Card.Text>
-  I am a computer science student in my senior year at SFSU. I
+<Card.Text>
+I am a computer science student in my senior year at SFSU. I
+    enjoy creating mobile apps and learning new technologies. In my free 
+    time I like to program, rock climb, read, and listen to music.
+</Card.Text>
+</Card.Body>
+</Card>  
+</div> */
+
+/* <div id="aboutMeInfo">
+  <Container fluid>
+    <Row className="justify-content-center">
+      <div>
+      <img
+        className="rounded-circle img-fluid"
+        src={FreddieImage}
+        width="20%"
+        alt="Profile"
+      />
+      </div>
+      <p>
+      I am a computer science student in my senior year at SFSU. I
       enjoy creating mobile apps and learning new technologies. In my free 
       time I like to program, rock climb, read, and listen to music.
-  </Card.Text>
-</Card.Body>
-</Card>  */
+      </p>
+    </Row>
+  </Container>
+  </div> */

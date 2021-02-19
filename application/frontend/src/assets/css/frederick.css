@@ -158,8 +158,9 @@ body {
     background-size: cover;
     position: relative;
     background-color: #111;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    
 }
 
 #skills {
@@ -177,4 +178,23 @@ body {
   .fa-linkedin {
       background: #55ACEE;
       color: white;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+
+  #aboutMeInfo {
+    display: flex;
+    background-color: #111;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-color: #111;
+  }
+
+  #aboutMeInfo p {
+      color: #eee;
   }

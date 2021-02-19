@@ -18,6 +18,8 @@ import Chevron from '../assets/img/about/chevron.png';
 const About = () => {
   AOS.init();
 
+ 
+
   return (
     <div>
       {/* NAVBAR */}
@@ -64,13 +66,15 @@ const About = () => {
                 <br />
               </div>
               <div className="chevron">
-                <img src={Chevron} height="40px" alt="" />
+                <a href="#about-section">
+                <img src={Chevron} height="40px" alt=""/>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <div className="container">
+      <div className="container" id="about-section">
         <div className="row">
           <div className="col-md-10 col-lg-8 mx-auto">
             <h1

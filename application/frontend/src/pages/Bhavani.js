@@ -28,14 +28,14 @@ const Bhavani = () => {
           </div>
           <div className="bhvabout-text">
             <h1>About Me</h1>
-            <h4>Bhavani Goruganthu</h4>
+            <h4 className="bhvh4">Bhavani Goruganthu</h4>
             <p>
               Graduate Student <br /> San Francisco State University
             </p>
           </div>
         </div>
       </section>
-      <section className="desc">
+      <section className="bhvdesc">
         <div className="container grid" style={{ margin: "0 auto" }}>
           <section className="desc-card">
             <i
@@ -66,37 +66,37 @@ const Bhavani = () => {
           <h2 className="text-center" style={{ padding: "15px" }}>
             Skillset
           </h2>
-          <div className="container flex">
+          <div className="container bhvflex">
             <div className="skillcard">
-              <h4>HTML</h4>
+              <h4 className="bhvh4">HTML</h4>
               <img src={HTMLLogo} width="74" height="80" alt="" />
             </div>
             <div className="skillcard">
-              <h4>CSS</h4>
+              <h4 className="bhvh4">CSS</h4>
               <img src={CSSLogo} width="74" height="80" alt="" />
             </div>
             <div className="skillcard">
-              <h4>Javascript</h4>
+              <h4 className="bhvh4">Javascript</h4>
               <img src={JSLogo} width="74" height="80" alt="" />
             </div>
             <div className="skillcard">
-              <h4>React.js</h4>
+              <h4 className="bhvh4">React.js</h4>
               <img src={ReactLogo} width="74" height="80" alt="" />
             </div>
             <div className="skillcard">
-              <h4>Node.js</h4>
+              <h4 className="bhvh4">Node.js</h4>
               <img src={NodeLogo} alt="" />
             </div>
             <div className="skillcard">
-              <h4>Python</h4>
+              <h4 className="bhvh4">Python</h4>
               <img src={PythonLogo} alt="" />
             </div>
             <div className="skillcard">
-              <h4>Flask</h4>
+              <h4 className="bhvh4">Flask</h4>
               <img src={FlaskLogo} width="74" height="80" alt="" />
             </div>
             <div className="skillcard">
-              <h4>Jinja</h4>
+              <h4 className="bhvh4">Jinja</h4>
               <img src={JinjaLogo} width="74" height="80" alt="" />
             </div>
           </div>
@@ -112,7 +112,7 @@ const Bhavani = () => {
               justifyContent: "center",
             }}
           >
-            <div className="col-sm-6 col-lg-2 card">
+            <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>Photobook</strong>
               </h3>
@@ -133,7 +133,7 @@ const Bhavani = () => {
                 ></i>
               </a>
             </div>
-            <div className="col-sm-6 col-lg-2 card">
+            <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>Student Directory</strong>
               </h3>
@@ -153,7 +153,7 @@ const Bhavani = () => {
                 ></i>
               </a>
             </div>
-            <div className="col-sm-6 col-lg-2 card">
+            <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>Quote Keeper</strong>
               </h3>
@@ -173,7 +173,7 @@ const Bhavani = () => {
                 ></i>
               </a>
             </div>
-            <div className="col-sm-6 col-lg-2 card">
+            <div className="col-sm-6 col-lg-2 bhvcard">
               <h3>
                 <strong>eCommerce Website</strong>
               </h3>

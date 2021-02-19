@@ -25,11 +25,12 @@
 
 .bhvheader .grid {
   grid-template-columns: 55% auto;
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(2, 4fr);
   justify-content: center;
   align-items: center;
   justify-items: center;
+  /* flex-wrap: wrap; */
   height: 100%;
 }
 
@@ -42,7 +43,7 @@
   animation: slideInFromRight 1s ease-in;
 }
 
-h4 {
+.bhvh4 {
   font-size: larger;
   font-weight: 400;
 }
@@ -62,7 +63,7 @@ h4 {
   -ms-transform: skewY(-3deg);
 }
 
-.desc {
+.bhvdesc {
   padding-top: 50px;
   padding-bottom: 30px;
   /* overflow: visible; */
@@ -91,9 +92,10 @@ h4 {
   font-size: 13px;
 }
 
-.bhvskills .flex {
+.bhvflex {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
   height: 100%;
 }
@@ -102,7 +104,7 @@ h4 {
   transform: translateY(-15px);
 }
 
-.card {
+.bhvcard {
   padding: 20px;
   margin: 30px;
 }

@@ -1,16 +1,12 @@
-#content {
+#Gcontent {
     padding: 13px 20%;
     font-family: Arial, Helvetica, sans-serif;
     align-content: center;
    
     overflow-wrap: break-word;
 }
-/* change padding: 20% 20%; after we have fixed space  */
-p {
-    overflow-wrap: normal;
-}
 
-#Links {
+#GLinks {
     color: #83b9f0;
     border-radius: 40px;
     border: 1px solid white;
@@ -25,11 +21,11 @@ a {
     color: black;
 }
 
-h3 {
+.titles {
     color: #83b9f0;
 }
 
-#myheader {
+#Gheader {
     grid-row: 1 / 2;
     text-align: center;
     padding: 2rem 1rem;

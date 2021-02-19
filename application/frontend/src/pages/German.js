@@ -8,9 +8,9 @@ import Linkedin from '../assets/img/rinay/linkedin.png';
 import Email from '../assets/img/rinay/email2.png';
 
 const German = () => {
-  return (
+  return ( 
     <div>
-      <section id="myheader" style={{ textAlign: 'center' }}>
+      <section id="Gheader" style={{ textAlign: 'center' }}>
         
         <div className ="Headertitle">
         <img
@@ -20,7 +20,7 @@ const German = () => {
               alt="portrait"
             />
           <h1>German Perez</h1> 
-          <section id="Links"> 
+          <section id="GLinks"> 
           <img
               class=" img-fluid "
               src={Github}
@@ -47,19 +47,19 @@ const German = () => {
         <div className =""></div>
       </section>
 
-      <section id="content" style={{ textAlign: 'left' }}>
+      <section id="Gcontent" style={{ textAlign: 'left' }}>
         <div className ="Contents"> 
         
-        <h3> About Me</h3>
+        <div className ="titles"> <h3> About Me</h3> </div>
         <p> Hi there. I am a Computer Science major at SFSU who's interested in the Data Analytics field. 
           When I'm not behind a computer, I enjoy long distance running or finding the next foodie hotspot 
-          in San Francisco. Feel free to shoot me an email if you have any questions!</p>
+          in San Francisco. </p>
 
-        <h3> <br/> Education </h3>
+        <div className ="titles"> <h3> <br/> Education </h3> </div>
         <h5> San Francisco State University - Exp May 2021 </h5>
         <p> Bachelor of Science - Computer Science <br/> Mathematics Minor</p>
 
-        <h3> <br/> Experience </h3>
+        <div className ="titles"> <h3> <br/> Experience </h3> </div>
         <h5> Teacher Assistant (Computer Science) - Spring 2021</h5>
         <p>  Acted as TA for 2 courses/sections of 120 students. 
           <br/> Served as a point of contact for students 

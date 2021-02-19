@@ -23,7 +23,7 @@ body {
 }
 
 .bg {
-    background-image: url('D:/Development/MilestoneZero/csc648-03-sp21-team04/application/frontend/src/assets/img/frederick/cityImage.jpg');
+    background-image: url('../img/frederick/cityImage.jpg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;

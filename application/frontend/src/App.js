@@ -1,37 +1,36 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import About from "./pages/About";
-// import Rajdeep from "./pages/Rajdeep";
-// import Rinay from "./pages/Rinay";
+import Rajdeep from "./pages/Rajdeep";
+import Rinay from "./pages/Rinay";
 import Bhavani from "./pages/Bhavani";
-// import Frederick from "./pages/Frederick";
-// import German from "./pages/German";
-// import Henzon from "./pages/Henzon";
+import Frederick from "./pages/Frederick";
+import German from "./pages/German";
+import Henzon from "./pages/Henzon";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/rajdeep">
+          <Route path="/rajdeep">
             <Rajdeep />
           </Route>
           <Route path="/rinay">
             <Rinay />
-          </Route> */}
+          </Route>
           <Route path="/bhavani">
             <Bhavani />
           </Route>
-          {/* <Route path="/frederick">
+          <Route path="/frederick">
             <Frederick />
-          </Route> */}
-          {/* <Route path="/german">
+          </Route>
+          <Route path="/german">
             <German />
           </Route>
           <Route path="/henzon">
             <Henzon />
-          </Route> */}
+          </Route>
           <Route path="/">
-            {" "}
             {/* Root set to About page for M0 */}
             <About />
           </Route>

@@ -138,7 +138,7 @@ const About = () => {
                       Frederick
                     </h4>
                     <p className="card-text">GitHub Master</p>
-                    <a href="/henzon">
+                    <a href="/frederick">
                       <button
                         className="btn btn-info stretched-link"
                         type="button"

@@ -183,7 +183,7 @@ const Bhavani = () => {
                   aria-hidden="true"
                 ></i>
               </a>
-            </div>{" "}
+            </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
               <h4 className="about-skill-name">
                 <strong>eCommerce Website</strong>

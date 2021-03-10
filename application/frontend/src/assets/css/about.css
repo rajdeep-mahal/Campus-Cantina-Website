@@ -1,0 +1,45 @@
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: smaller;
+}
+
+.border {
+  border: lightgrey;
+  border-radius: solid 1px;
+  padding: 2px;
+}
+
+.about-text {
+  font-size: large;
+  font-weight: 200;
+}
+
+.team {
+  padding: 1px;
+}
+
+.cardalign {
+  text-align: center;
+}
+
+@media (max-width: 575px) {
+  .team {
+    width: 85%;
+  }
+  .about-text {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+.chevron {
+  text-align: center;
+  font-size: 70px;
+}
+
+@media (max-width: 768px) {
+  .chevron {
+    padding-top: 90px;
+  }
+}

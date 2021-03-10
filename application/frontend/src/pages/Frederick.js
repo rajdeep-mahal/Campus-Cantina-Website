@@ -6,12 +6,9 @@ import Navbar from "react-bootstrap/Navbar"
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
-//import CardDeck from 'react-bootstrap/CardDeck'
 import CardColumns from 'react-bootstrap/CardColumns'
 import Row from 'react-bootstrap/Row'
-//import Image from 'react-bootstrap/Image'
 import {FaGithub, FaLinkedin} from 'react-icons/fa'
-//import Media from 'react-bootstrap/Media'
 import FreddieImage from '../assets/img/frederick/freddiePhoto.jpg'
 
 

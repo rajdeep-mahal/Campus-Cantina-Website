@@ -3,9 +3,9 @@ import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/rinay/rinay.jpg";
 
 const Rinay = () => {
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   return (
     <div className="about-page">

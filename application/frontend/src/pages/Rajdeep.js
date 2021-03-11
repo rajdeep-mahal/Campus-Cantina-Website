@@ -3,7 +3,7 @@ import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/rajdeep/rajdeep.jpg";
 
 const Rajdeep = () => {
-  AOS.init();
+  //AOS.init();
 
   React.useLayoutEffect(() => {
     window.scrollTo(0, 0);

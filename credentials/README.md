@@ -7,16 +7,23 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP
-2. SSH username
-3. SSH password or key.
-    <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used.
-    <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username
-6. Database password
-7. Database name (basically the name that contains all your tables)
-8. Instructions on how to use the above information.
+1. Server URL or IP: <strong>54.219.159.229</strong>
+2. SSH username: <strong>ubuntu</strong>
+3. SSH password or key: <strong>648team04.pem</strong>
+4. Database URL or IP and port used: <strong>default localhost on EC2</strong>
+5. Database username: <strong>root</strong>
+6. Database password: <strong>CSC648team042021</strong>
+7. Database name: <strong>648team04</strong>
+8. Instructions on how to use the above information:
+
+### Set permissions for pem file (if linux/mac)
+- `sudo chmod 400 648team04.pem`
+### Connect to instance
+- `ssh -i 648team04.pem ubuntu@54.219.159.229`
+### Application folder
+- `csc-648-03-sp21-team04`
+### Login to mysql server
+- `sudo mysql -u root -p`
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>

@@ -14,7 +14,7 @@
 5. Database username: <strong>root</strong>
 6. Database password: <strong>CSC648team042021</strong>
 7. Database name: <strong>648team04</strong>
-8. Instructions on how to use the above information:
+8. Instructions on how to use the above information: <strong>instructions.pdf or see below</strong>
 
 ### Set permissions for pem file (if linux/mac)
 - `sudo chmod 400 648team04.pem`
@@ -24,6 +24,8 @@
 - `csc-648-03-sp21-team04`
 ### Login to mysql server
 - `sudo mysql -u root -p`
+### Database name
+- `648team04`
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>

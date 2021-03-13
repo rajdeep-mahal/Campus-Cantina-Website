@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/henzon/henzon.jpg";
@@ -50,9 +49,9 @@ const Henzon = () => {
             className="card-header"
             style={{ backgroundColor: "rgb(172, 155, 223)" }}
           >
-            <a class = "hz-contacts" href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/"><img src = {Linkedin} width = "25"></img></a>
-            <a class = "hz-contacts" href = "https://github.com/henzonz"><img src = {Github} width = "25"></img></a>
-            <a class = "hz-contacts" href = "mailto:henzon.zno26@gmail.com"><img src = {Mail} width = "25"></img></a>
+            <a class = "hz-contacts" href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/"><img src = {Linkedin} width = "25" alt = ""></img></a>
+            <a class = "hz-contacts" href = "https://github.com/henzonz"><img src = {Github} width = "25" alt = ""></img></a>
+            <a class = "hz-contacts" href = "mailto:henzon.zno26@gmail.com"><img src = {Mail} width = "25" alt = ""></img></a>
 
           </div>
           <div className="card-body bg-light">
@@ -114,7 +113,7 @@ const Henzon = () => {
               <blockquote className="card-body bg-light font-italic">
                 A simple 2D game created using Java to practice object oriented programming.
               </blockquote><br/>
-              <img src = {RainbowReef}/>
+              <img src = {RainbowReef} alt = ""/>
             </div>
 
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
@@ -124,7 +123,7 @@ const Henzon = () => {
 
               <blockquote className="card-body bg-light font-italic">
               A simple calculator GUI that properly evaluates mathematical expressions by following the correct order of operations.              </blockquote><br/>
-              <img src = {Calculator}/>
+              <img src = {Calculator} alt = ""/>
             </div>
 
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
@@ -134,7 +133,7 @@ const Henzon = () => {
 
               <blockquote className="card-body bg-light font-italic">
               A simple fitness app rep counter that utilizes the three iPhone sensors: proximity sensor, gyroscope and touch screen. The app is created using the Swift language that allow users to workout without having to count repetitions of the mentioned workouts.              </blockquote><br/>
-              <img src = {Hercules}/>
+              <img src = {Hercules} alt = ""/>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/rinay/rinay.jpg";
 
+
 const Rinay = () => {
   return (
     <div className="about-page">

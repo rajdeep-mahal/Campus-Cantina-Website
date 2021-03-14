@@ -52,7 +52,7 @@ const Rinay = () => {
           <div className="card-body bg-light">
             <p>
               <img src={Linked} alt="" height="18px"/>  
-              <a href="https://www.linkedin.com/in/rinaykumar" target="_blank"> linkedin.com/in/rinaykumar</a> 
+              <a href="https://www.linkedin.com/in/rinaykumar" target="_blank" rel="noopener noreferrer"> linkedin.com/in/rinaykumar</a> 
             </p>
             <p>
               <i>
@@ -105,7 +105,7 @@ const Rinay = () => {
               </h4>
 
               <blockquote className="card-body bg-light font-italic">
-              <a href="https://www.2chainzorbot.com" target="_blank">2chainzorbot.com</a>
+              <a href="https://www.2chainzorbot.com" target="_blank" rel="noopener noreferrer">2chainzorbot.com</a>
               <br/>
               <br/>
               A fullstack web application built with Python3 and Flask for the backend, 
@@ -122,6 +122,7 @@ const Rinay = () => {
                 className="text-dark mt-3"
                 href="https://github.com/rinaykumar/2chainz-or-bot"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <i
                   className="fab fa-github about-projects-link"
@@ -134,7 +135,7 @@ const Rinay = () => {
                 <strong>sodaChat</strong>
               </h4>
               <blockquote className="card-body bg-light font-italic">
-              <a href="https://sodachat.net" target="_blank">sodchat.net</a>
+              <a href="https://sodachat.net" target="_blank" rel="noopener noreferrer">sodchat.net</a>
               <br/>
               <br/>
               Fullstack live chat web application built with a great team. Backend: Java, 
@@ -151,6 +152,7 @@ const Rinay = () => {
                 className="text-dark mt-3"
                 href="https://github.com/rinaykumar/sodaChat"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <i
                   className="fab fa-github about-projects-link"
@@ -178,6 +180,7 @@ const Rinay = () => {
                 className="text-dark mt-3"
                 href="https://github.com/rinaykumar/word-blast"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <i
                   className="fab fa-github about-projects-link"

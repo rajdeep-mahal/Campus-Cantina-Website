@@ -31,6 +31,12 @@
 }
 
 /* image */
+.about-img {
+  height: 250px;
+  width: 250px;
+  animation: slideInFromLeft 1s ease-in;
+}
+
 .hz-about-img {
   height: 250px;
   width: 250px;
@@ -44,6 +50,10 @@
 }
 
 /* about page body section */
+.about-body {
+  width: fit-content;
+}
+
 .hz-about-body {
   width: fit-content;
 }
@@ -127,6 +137,12 @@
 }
 
 /* recent projects*/
+.about-projects {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  background-color: rgb(209, 206, 218);
+}
+
 .hz-about-projects {
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
@@ -134,6 +150,14 @@
 }
 
 /* github icon link*/
+.about-projects-link {
+  font-size: 30px;
+}
+.about-projects-link:hover {
+  background-color: blue;
+  color: white;
+}
+
 .hz-about-projects-link {
   font-size: 30px;
 }

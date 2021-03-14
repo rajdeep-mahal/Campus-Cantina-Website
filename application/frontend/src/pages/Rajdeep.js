@@ -15,6 +15,10 @@ import imgur from "../assets/img/about/rajdeep/imgur.png";
 import portfolio from "../assets/img/about/rajdeep/portfolio.png";
 
 const Rajdeep = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

@@ -8,6 +8,10 @@ import JavaLogo from "../assets/img/about/german/java.jpg";
 import RLogo from "../assets/img/about/german/rstudio.svg";
 
 const German = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

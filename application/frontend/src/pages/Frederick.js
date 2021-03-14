@@ -13,6 +13,10 @@ import CSSLogo from "../assets/img/about/bhavani/css.png";
 import HTMLLogo from "../assets/img/about/bhavani/html.png";
 
 const Frederick = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

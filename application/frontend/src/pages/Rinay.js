@@ -15,9 +15,9 @@ import Linked from "../assets/img/about/rinay/linkedin.png";
 
 
 const Rinay = () => {
-  // useLayoutEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div className="about-page">

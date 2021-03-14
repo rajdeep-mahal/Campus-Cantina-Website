@@ -109,7 +109,7 @@ const Henzon = () => {
         <div className="container">
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
-            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
+            <div className="hz-about-projects card col-sm-6 col-lg-4 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links" href = "https://github.com/henzonz/Super-Rainbow-Reef-Game"> <strong>Super Rainbow Reef Game</strong> </a>
               </h4>
@@ -120,7 +120,7 @@ const Henzon = () => {
               <img src = {RainbowReef} alt = ""/>
             </div>
 
-            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
+            <div className="hz-about-projects card col-sm-6 col-lg-4 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links" href = "https://github.com/henzonz/Calculator-GUI-asmt-"> <strong>Calculator</strong> </a>
               </h4>
@@ -130,7 +130,7 @@ const Henzon = () => {
               <img src = {Calculator} alt = ""/>
             </div>
 
-            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
+            <div className="hz-about-projects card col-sm-6 col-lg-4 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links text-decoration-none" href = "https://sites.google.com/view/fitapp-repcounter/design?authuser=0"> <strong>Hercules App</strong> </a>
               </h4>

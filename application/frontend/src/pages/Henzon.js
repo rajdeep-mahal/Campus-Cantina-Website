@@ -28,7 +28,7 @@ const Henzon = () => {
         <div className="d-flex flex-wrap justify-content-center">
           <div className="mx-5">
             <img
-              className="rounded-circle about-img"
+              className="rounded-circle hz-about-img"
               src={ProfilePic}
               alt="profilepicture"
             />
@@ -43,15 +43,15 @@ const Henzon = () => {
         </div>
       </div>
 
-      <div className="about-body container-fluid">
+      <div className="hz-about-body container-fluid">
         <div className="about-desc card">
           <div
             className="card-header"
             style={{ backgroundColor: "rgb(172, 155, 223)" }}
           >
-            <a class = "hz-contacts" href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/"><img src = {Linkedin} width = "25" alt = ""></img></a>
-            <a class = "hz-contacts" href = "https://github.com/henzonz"><img src = {Github} width = "25" alt = ""></img></a>
-            <a class = "hz-contacts" href = "mailto:henzon.zno26@gmail.com"><img src = {Mail} width = "25" alt = ""></img></a>
+            <a href = "https://www.linkedin.com/in/henzon-zambrano-06b116105/"><img class = "hz-contacts" src = {Linkedin} alt = ""></img></a>
+            <a href = "https://github.com/henzonz"><img class = "hz-contacts" src = {Github} alt = ""></img></a>
+            <a href = "mailto:henzon.zno26@gmail.com"><img class = "hz-contacts" src = {Mail} alt = ""></img></a>
 
           </div>
           <div className="card-body bg-light">
@@ -105,7 +105,7 @@ const Henzon = () => {
         <div className="container">
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
-            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links" href = "https://github.com/henzonz/Super-Rainbow-Reef-Game"> <strong>Super Rainbow Reef Game</strong> </a>
               </h4>
@@ -116,7 +116,7 @@ const Henzon = () => {
               <img src = {RainbowReef} alt = ""/>
             </div>
 
-            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links" href = "https://github.com/henzonz/Calculator-GUI-asmt-"> <strong>Calculator</strong> </a>
               </h4>
@@ -126,7 +126,7 @@ const Henzon = () => {
               <img src = {Calculator} alt = ""/>
             </div>
 
-            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+            <div className="hz-about-projects card col-sm-6 col-lg-3 py-2 m-1">
               <h4 className="about-skill-name">
                <a className = "hz-project-links text-decoration-none" href = "https://sites.google.com/view/fitapp-repcounter/design?authuser=0"> <strong>Hercules App</strong> </a>
               </h4>

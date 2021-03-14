@@ -3,6 +3,12 @@ import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/rajdeep/rajdeep.jpg";
 
 const Rajdeep = () => {
+  //AOS.init();
+
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

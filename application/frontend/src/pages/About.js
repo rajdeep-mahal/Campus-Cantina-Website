@@ -8,8 +8,11 @@ import Frederick from "../assets/img/about/frederick/frederick.jpg";
 import German from "../assets/img/about/german/german.jpg";
 import Henzon from "../assets/img/about/henzon/henzon.jpg";
 import Chevron from "../assets/img/about/chevron.png";
+//import AOS from "aos";
 
 const About = () => {
+  //AOS.init();
+
   return (
     <div className="about-home">
       <header className="masthead">

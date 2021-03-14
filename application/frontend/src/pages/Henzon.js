@@ -3,6 +3,10 @@ import "../assets/css/about_individual.css";
 import ProfilePic from "../assets/img/about/henzon/henzon.jpg";
 
 const Henzon = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

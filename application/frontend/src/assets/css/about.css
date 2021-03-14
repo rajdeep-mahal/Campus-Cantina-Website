@@ -72,8 +72,12 @@ header.masthead .disclaimer {
 }
 
 .chevron {
-  text-align: center;
+  /* text-align: center; */
   font-size: 70px;
+  /* Places the arrow down  */
+  position: absolute;
+  top: 50vh;
+  left: 44%;
 }
 
 /* animation */

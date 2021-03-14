@@ -13,6 +13,7 @@ import Soda from "../assets/img/about/rinay/soda.gif";
 import Word from "../assets/img/about/rinay/word.png";
 import Linked from "../assets/img/about/rinay/linkedin.png";
 
+
 const Rinay = () => {
   // useLayoutEffect(() => {
   //   window.scrollTo(0, 0);

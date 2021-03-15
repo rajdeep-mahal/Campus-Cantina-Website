@@ -31,13 +31,12 @@ function App() {
           <Route path="/henzon">
             <Henzon />
           </Route>
-          <Route path="/vphome">
-            {/* VPHome route for M2 */}
-            <VPHome />
+          <Route path="/about">
+            <About />
           </Route>
           <Route path="/">
-            {/* Root set to About page for M0 */}
-            <About />
+            {/* Root set to VP home page for M2 */}
+            <VPHome />
           </Route>
         </Switch>
       </BrowserRouter>

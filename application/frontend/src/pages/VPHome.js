@@ -1,5 +1,4 @@
-// TODO: Retrieve and display images for restaurants from database
-//       Retrieve addresses and display with Google Maps API
+// TODO: Retrieve addresses and display with Google Maps API
 //       Validate search terms before sending to backend
 //       Optional: Autocomplete / Suggestions in search bar
 //       Frontend styling
@@ -47,6 +46,7 @@ const VPHome = () => {
     <div style={{padding: '10px'}}>
         <h1>VP Home</h1>
         <h3>CSC 648 <br/> Spring 2021 <br/> Team 04</h3>
+        <a href='/about'><h5>About Page</h5></a>
         <p style={{fontSize: '8px'}}>All images are free-use.</p>
         <br/>
 

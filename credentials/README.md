@@ -27,8 +27,7 @@
 
 ## Connecting to Database
 
-### First way:
-### Connect to EC2
+### First way (Connect via EC2):
 ### Login to MySQL
 - `sudo mysql -u user -p`
 ### Enter password
@@ -36,8 +35,10 @@
 ### Development Database
 - `campuscantina_test`
 
-### Second way:
-### Connect vis MySQL Workbench
+### Second way (Connect via MySQL Workbench):
+
+![Alt text](./mysql-workbench.png?raw=true "mysql-workbench")
+
 ### Connection Method
 - `Standard TCP/IP over SSH`
 ### SSH Hostname

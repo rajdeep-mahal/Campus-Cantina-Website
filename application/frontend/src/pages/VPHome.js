@@ -47,6 +47,7 @@ const VPHome = () => {
     <div style={{padding: '10px'}}>
         <h1>VP Home</h1>
         <h3>CSC 648 <br/> Spring 2021 <br/> Team 04</h3>
+        <p style={{fontSize: '8px'}}>All images are free-use.</p>
         <br/>
 
         {/* Category Dropdown List */}
@@ -68,7 +69,14 @@ const VPHome = () => {
         {/* Search Results */}
         <div>
             {searchResults.map((item, i) => (
-              <p key={i}> <strong>{item.Name}</strong> <br/> {item.Price_Level} • {item.Category}, {item.Tags}</p>
+              <div key={i}>
+                <img src={'data:image/jpeg;base64,' + new Buffer(item.Pic1).toString('base64')}
+                  alt=''
+                  width='400px'
+                  height='250px'
+                />
+                <p><strong>{item.Name}</strong><br/>{item.Price_Level} • {item.Category}, {item.Tags}</p>
+              </div>
             ))}
             {noResult}
         </div>

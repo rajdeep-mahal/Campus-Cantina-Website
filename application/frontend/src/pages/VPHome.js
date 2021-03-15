@@ -50,26 +50,25 @@ const VPHome = () => {
         <p style={{fontSize: '8px'}}>All images are free-use.</p>
         <br/>
 
-        {/* Category Dropdown List */}
-        <label htmlFor='categoryDropDown'>Category</label>
-        <select name='categoryDropDown' id='categoryDropDown' onChange={handleCategory}>
-          <option value=''>Select</option>
-          {categories.map((category, i) => (
-            <option value={category.Category} key={i}>{category.Category}</option>
-          ))}
-        </select>
-        <br/>
-
-        {/* Search Bar */}
-        <input type='text' onChange={e => setSearchTerm(e.target.value)}></input>   
-        <button onClick={handleSearch}>Search</button>
-        <br/>
-        <br/>
+        <div style={{display: 'flex'}}>
+          {/* Category Dropdown List */}
+          <select name='categoryDropDown' id='categoryDropDown' onChange={handleCategory}>
+            <option value=''>All Categories</option>
+            {categories.map((category, i) => (
+              <option value={category.Category} key={i}>{category.Category}</option>
+            ))}
+          </select>
+          
+          {/* Search Bar */}
+          <input type='text' size='25' onChange={e => setSearchTerm(e.target.value)}></input>   
+          <button onClick={handleSearch}>Search</button>
+        </div> 
 
         {/* Search Results */}
+        <br/>
         <div>
             {searchResults.map((item, i) => (
-              <div key={i}>
+              <div key={i} style={{border: '1px solid lightgrey', width: '406px', padding: '2px', marginBottom: '10px'}}>
                 <img src={'data:image/jpeg;base64,' + new Buffer(item.Pic1).toString('base64')}
                   alt=''
                   width='400px'

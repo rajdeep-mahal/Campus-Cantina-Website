@@ -7,14 +7,16 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: <strong>54.219.159.229</strong>
+1. Server URL or IP: <strong>54.219.159.229 or campuscantina.com</strong>
 2. SSH username: <strong>ubuntu</strong>
 3. SSH password or key: <strong>648team04.pem</strong>
-4. Database URL or IP and port used: <strong>default localhost on EC2</strong>
-5. Database username: <strong>root</strong>
-6. Database password: <strong>CSC648team042021</strong>
-7. Database name: <strong>648team04</strong>
-8. Instructions on how to use the above information: <strong>instructions.pdf or see below</strong>
+4. Database URL or IP and port used: <strong>54.219.159.229 port 3306</strong>
+5. Database username: <strong>user</strong>
+6. Database password: <strong>CampusCantina2021$</strong>
+7. Database name: <strong>campuscantina_test</strong>
+8. Instructions on how to use the above information: <strong>instructions.pdf and mysql-workbench.png, or see below</strong>
+
+## Connecting to EC2
 
 ### Set permissions for pem file (if linux/mac)
 - `sudo chmod 400 648team04.pem`
@@ -22,10 +24,40 @@
 - `ssh -i 648team04.pem ubuntu@54.219.159.229`
 ### Application folder
 - `csc-648-03-sp21-team04`
-### Login to mysql server
-- `sudo mysql -u root -p`
-### Database name
-- `648team04`
+
+## Connecting to Database
+
+### First way:
+### Connect to EC2
+### Login to MySQL
+- `sudo mysql -u user -p`
+### Enter password
+- `CampusCantina2021$`
+### Development Database
+- `campuscantina_test`
+
+### Second way:
+### Connect vis MySQL Workbench
+### Connection Method
+- `Standard TCP/IP over SSH`
+### SSH Hostname
+- `54.219.159.229`
+### SSH Username
+- `ubuntu`
+### No SSH Password
+### SSH Key File
+- `648team04.pem`
+### MySQL Hostname:
+- `127.0.0.1`
+### MySQL Server Port:
+- `3306`
+### Username
+- `user`
+### Password
+- `CampusCantina2021$`
+### Development Database
+- `campuscantina_test`
+
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>

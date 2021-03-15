@@ -1,6 +1,5 @@
 // TODO: Retrieve and display images for restaurants from database
 //       Retrieve addresses and display with Google Maps API
-//       Line when no search results
 //       Validate search terms before sending to backend
 //       Optional: Autocomplete / Suggestions in search bar
 //       Frontend styling
@@ -15,12 +14,19 @@ const VPHome = () => {
   const [categories, setCategories] = React.useState([]);
   const [selectedCategory, setSelectedCategory] = React.useState('');
   const [searchTerm, setSearchTerm] = React.useState('');
+  const [noResult, setNoResult] = React.useState('');
 
   const handleSearch = () => {
     axios.get('http://localhost:3001/search', {params: {searchTerm: searchTerm, category: selectedCategory}} )
       .then((res) => {
         //console.log(JSON.stringify(res.data));
-        setSearchResults(res.data);
+        if (res.data.length === 0) {
+          setSearchResults([]);
+          setNoResult('No results found.');
+        } else {
+          setSearchResults(res.data);
+          setNoResult('');
+        }
       })
   };
 
@@ -64,6 +70,7 @@ const VPHome = () => {
             {searchResults.map((item, i) => (
               <p key={i}> <strong>{item.Name}</strong> <br/> {item.Price_Level} • {item.Category}, {item.Tags}</p>
             ))}
+            {noResult}
         </div>
     </div>
   );

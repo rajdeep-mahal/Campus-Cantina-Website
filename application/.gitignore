@@ -4,6 +4,9 @@
 /.pnp
 .pnp.js
 
+# config file api key
+/frontend/src/config.js
+
 # testing
 /coverage
 

@@ -6,6 +6,7 @@
 import React from 'react';
 import axios from 'axios';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import config from '../config';
 
 const VPHome = () => {
   const [searchResults, setSearchResults] = React.useState([]);
@@ -47,7 +48,7 @@ const VPHome = () => {
       <h3>
         CSC 648 <br /> Spring 2021 <br /> Team 04
       </h3>
-      <a href="/about">
+      <a href='/about'>
         <h5>About Page</h5>
       </a>
       <p style={{ fontSize: '8px' }}>All images are free-use.</p>
@@ -56,11 +57,10 @@ const VPHome = () => {
       <div style={{ display: 'flex' }}>
         {/* Category Dropdown List */}
         <select
-          name="categoryDropDown"
-          id="categoryDropDown"
+          id='categoryDropDown'
           onChange={handleCategory}
         >
-          <option value="">All Categories</option>
+          <option value=''>All Categories</option>
           {categories.map((category, i) => (
             <option value={category.Category} key={i}>
               {category.Category}
@@ -69,10 +69,11 @@ const VPHome = () => {
         </select>
         {/* Search Bar */}
         <input
-          type="text"
-          size="25"
+          id='searchInput'
+          type='text'
+          size='25'
           onChange={(e) => setSearchTerm(e.target.value)}
-        ></input>
+        />
         <button onClick={handleSearch}>Search</button>
       </div>
       {/* Search Results */}
@@ -93,9 +94,9 @@ const VPHome = () => {
                 'data:image/jpeg;base64,' +
                 new Buffer(item.Pic1).toString('base64')
               }
-              alt=""
-              width="400px"
-              height="250px"
+              alt=''
+              width='400px'
+              height='250px'
             />
             <p>
               <strong>{item.Name}</strong>
@@ -104,8 +105,7 @@ const VPHome = () => {
             </p>
             {/* Google Maps */}
             <LoadScript
-              // **Dont push API Key to GitHub**
-              googleMapsApiKey='API KEY'
+              googleMapsApiKey={config.googleAPI}
             >
               <GoogleMap
                 mapContainerStyle={{ height: '250px', width: '400px' }}

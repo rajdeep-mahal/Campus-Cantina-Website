@@ -33,7 +33,7 @@ app.get('/search', (req, res) => {
     let query = 'SELECT * FROM Restaurants';
 
     if (searchTerm != '' && category != '') {
-        query = `SELECT * FROM Restaurants WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%')`;
+        query = `SELECT * FROM Restaurants WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
     } 
     else if (searchTerm != '' && category == '' ) {
         query = `SELECT * FROM Restaurants WHERE Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;

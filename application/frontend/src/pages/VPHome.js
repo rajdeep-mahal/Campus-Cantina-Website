@@ -10,15 +10,15 @@ import config from '../config';
 
 const VPHome = () => {
   const [searchResults, setSearchResults] = React.useState([]);
-  const [categories, setCategories] = React.useState([]);
-  const [selectedCategory, setSelectedCategory] = React.useState('');
+  const [cuisines, setCuisines] = React.useState([]);
+  const [selectedCuisine, setSelectedCuisine] = React.useState('');
   const [searchTerm, setSearchTerm] = React.useState('');
   const [noResult, setNoResult] = React.useState('');
 
   const handleSearch = () => {
     axios
       .get('http://localhost:3001/search', {
-        params: { searchTerm: searchTerm, category: selectedCategory },
+        params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
         if (res.data.length === 0) {
@@ -31,14 +31,14 @@ const VPHome = () => {
       });
   };
 
-  const handleCategory = () => {
-    let e = document.getElementById('categoryDropDown');
-    setSelectedCategory(e.options[e.selectedIndex].value);
+  const handleCuisine = () => {
+    let e = document.getElementById('cuisineDropDown');
+    setSelectedCuisine(e.options[e.selectedIndex].value);
   };
 
   React.useEffect(() => {
-    axios.get('http://localhost:3001/categories').then((res) => {
-      setCategories(res.data);
+    axios.get('http://localhost:3001/cuisines').then((res) => {
+      setCuisines(res.data);
     });
   }, []);
 
@@ -48,22 +48,22 @@ const VPHome = () => {
       <h3>
         CSC 648 <br /> Spring 2021 <br /> Team 04
       </h3>
-      <a href='/about'>
+      {/* <a href='/about'>
         <h5>About Page</h5>
-      </a>
+      </a> */}
       <p style={{ fontSize: '8px' }}>All images are free-use.</p>
       <br />
 
       <div style={{ display: 'flex' }}>
-        {/* Category Dropdown List */}
+        {/* Cuisine Dropdown List */}
         <select
-          id='categoryDropDown'
-          onChange={handleCategory}
+          id='cuisineDropDown'
+          onChange={handleCuisine}
         >
-          <option value=''>All Categories</option>
-          {categories.map((category, i) => (
-            <option value={category.Category} key={i}>
-              {category.Category}
+          <option value=''>All Cuisines</option>
+          {cuisines.map((cuisine, i) => (
+            <option value={cuisine.Cuisine} key={i}>
+              {cuisine.Cuisine}
             </option>
           ))}
         </select>
@@ -83,10 +83,10 @@ const VPHome = () => {
           <div
             key={i}
             style={{
-              border: '1px solid lightgrey',
+              border: '1px solid grey',
               width: '406px',
               padding: '2px',
-              marginBottom: '12px',
+              marginBottom: '15px',
             }}
           >
             <img
@@ -101,7 +101,7 @@ const VPHome = () => {
             <p>
               <strong>{item.Name}</strong>
               <br />
-              {item.Price_Level} • {item.Category}, {item.Tags}
+              {item.Price_Level} • {item.Cuisine}, {item.Tags}
             </p>
             {/* Google Maps */}
             <LoadScript

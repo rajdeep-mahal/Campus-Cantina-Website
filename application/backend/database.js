@@ -19,27 +19,27 @@ database.connect((err) => {
     console.log('Connected to DB!');
 });
 
-app.get('/categories', (req, res) => {
-    database.query('SELECT * FROM Food_Categories', (err, result) => {
-        console.log('Called categories endpoint');
+app.get('/cuisines', (req, res) => {
+    database.query('SELECT * FROM Food_Cuisines', (err, result) => {
+        console.log('Called cuisines endpoint');
         res.send(result);
     });
 });
 
 app.get('/search', (req, res) => {
     let searchTerm = req.query.searchTerm;
-    let category = req.query.category;
+    let cuisine = req.query.cuisine;
 
     let query = 'SELECT * FROM Restaurants';
 
-    if (searchTerm != '' && category != '') {
-        query = `SELECT * FROM Restaurants WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
+    if (searchTerm != '' && cuisine != '') {
+        query = `SELECT * FROM Restaurants WHERE Cuisine = '` + cuisine + `' AND ( Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Cuisine LIKE '%` + searchTerm + `%')`;
     } 
-    else if (searchTerm != '' && category == '' ) {
-        query = `SELECT * FROM Restaurants WHERE Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;
+    else if (searchTerm != '' && cuisine == '' ) {
+        query = `SELECT * FROM Restaurants WHERE Name LIKE '%` + searchTerm + `%' OR Tags LIKE '%` + searchTerm + `%' OR Cuisine LIKE '%` + searchTerm + `%'`;
     }
-    else if (searchTerm == '' && category != '') {
-        query = `SELECT * FROM Restaurants WHERE Category = '` + category + `'`;
+    else if (searchTerm == '' && cuisine != '') {
+        query = `SELECT * FROM Restaurants WHERE Cuisine = '` + cuisine + `'`;
     }
 
     database.query(query, (err, result) => {

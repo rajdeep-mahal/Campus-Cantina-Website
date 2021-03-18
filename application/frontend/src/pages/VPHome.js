@@ -5,7 +5,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import config from '../config';
 
 const VPHome = () => {
@@ -15,9 +15,13 @@ const VPHome = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [noResult, setNoResult] = React.useState('');
 
+  const { loadError } = useLoadScript({
+    googleMapsApiKey: config.googleAPI,
+  });
+
   const handleSearch = () => {
     axios
-      .get('http://localhost:3001/search', {
+      .get('http://localhost:3001/api/search', {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
@@ -37,7 +41,7 @@ const VPHome = () => {
   };
 
   React.useEffect(() => {
-    axios.get('http://localhost:3001/cuisines').then((res) => {
+    axios.get('http://localhost:3001/api/cuisines').then((res) => {
       setCuisines(res.data);
     });
   }, []);
@@ -48,19 +52,12 @@ const VPHome = () => {
       <h3>
         CSC 648 <br /> Spring 2021 <br /> Team 04
       </h3>
-      {/* <a href='/about'>
-        <h5>About Page</h5>
-      </a> */}
       <p style={{ fontSize: '8px' }}>All images are free-use.</p>
       <br />
-
       <div style={{ display: 'flex' }}>
         {/* Cuisine Dropdown List */}
-        <select
-          id='cuisineDropDown'
-          onChange={handleCuisine}
-        >
-          <option value=''>All Cuisines</option>
+        <select id="cuisineDropDown" onChange={handleCuisine}>
+          <option value="">All Cuisines</option>
           {cuisines.map((cuisine, i) => (
             <option value={cuisine.Cuisine} key={i}>
               {cuisine.Cuisine}
@@ -69,9 +66,9 @@ const VPHome = () => {
         </select>
         {/* Search Bar */}
         <input
-          id='searchInput'
-          type='text'
-          size='25'
+          id="searchInput"
+          type="text"
+          size="27"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
@@ -94,9 +91,9 @@ const VPHome = () => {
                 'data:image/jpeg;base64,' +
                 new Buffer(item.Pic1).toString('base64')
               }
-              alt=''
-              width='400px'
-              height='250px'
+              alt=""
+              width="400px"
+              height="250px"
             />
             <p>
               <strong>{item.Name}</strong>
@@ -104,17 +101,14 @@ const VPHome = () => {
               {item.Price_Level} • {item.Cuisine}, {item.Tags}
             </p>
             {/* Google Maps */}
-            <LoadScript
-              googleMapsApiKey={config.googleAPI}
+            <GoogleMap
+              mapContainerStyle={{ height: '250px', width: '400px' }}
+              zoom={17}
+              center={{ lat: item.Lat, lng: item.Lng }}
             >
-              <GoogleMap
-                mapContainerStyle={{ height: '250px', width: '400px' }}
-                zoom={17}
-                center={{ lat: item.Lat, lng: item.Lng }}
-              >
-                <Marker position={{ lat: item.Lat, lng: item.Lng }} />
-              </GoogleMap>
-            </LoadScript>
+              <Marker position={{ lat: item.Lat, lng: item.Lng }} />
+            </GoogleMap>
+            {loadError && <p>Map cannot be displayed at this time.</p>}
           </div>
         ))}
         {noResult}

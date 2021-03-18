@@ -31,7 +31,7 @@
 }
 
 /* image */
-.hz-about-img {
+.about-img {
   height: 250px;
   width: 250px;
   animation: slideInFromLeft 1s ease-in;
@@ -44,7 +44,7 @@
 }
 
 /* about page body section */
-.hz-about-body {
+.about-body {
   width: fit-content;
 }
 
@@ -63,45 +63,8 @@
   margin:10px;
   width: 25px;
 }
-.hz-project-links:hover{
+.project-links:hover{
   text-decoration: none;
-}
-
-@media (max-width: 1790px)
-{
-  .hz-about-body{
-    width: 60vw;
-  }
-}
-
-@media (max-width: 577px)
-{
-  .hz-about-body{
-    width: 70vw;
-  }
-  .hz-about-img{
-    width: auto;
-    height: 30vh;
-  }
-}
-@media (max-width: 400px)
-{
-  .hz-about-img{
-    width: 50vw;
-    height: auto;
-  }
-  .hz-about-body{
-    font-size: x-small;
-  }
-  .hz-contacts{
-    width: 6vw;
-  }
-}
-
-@media(max-width: 258px){
-  .hz-about-projects{
-    width:60vw;
-  }
 }
 
 /* about skill set logo and name */
@@ -127,17 +90,17 @@
 }
 
 /* recent projects*/
-.hz-about-projects {
+.about-projects {
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
   background-color: rgb(209, 206, 218);
 }
 
 /* github icon link*/
-.hz-about-projects-link {
+.about-project-links {
   font-size: 30px;
 }
-.hz-about-projects-link:hover {
+.about-project-links:hover {
   background-color: blue;
   color: white;
 }

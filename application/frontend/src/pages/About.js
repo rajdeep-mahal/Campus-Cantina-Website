@@ -12,7 +12,7 @@ import Henzon from "../assets/img/about/henzon/henzon.jpg";
 const About = () => {
   return (
     <div className="" >
-      <header className="jumbotron jumbotron-fluid about-header" style={{textAlign: 'center'}}>
+      <header className="jumbotron jumbotron-fluid about-header2" style={{textAlign: 'center'}}>
         <div className="container">
           <div className="centered disclaimer">
             <p className="text-white" style={{fontSize: 'small'}}>
@@ -70,7 +70,7 @@ const About = () => {
                     <p className="card-text">Team Lead</p>
                     <a href="/rajdeep">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -91,7 +91,7 @@ const About = () => {
                     <p className="card-text">Backend Lead</p>
                     <a href="/rinay">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -112,7 +112,7 @@ const About = () => {
                     <p className="card-text">Frontend Lead</p>
                     <a href="/bhavani">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -138,7 +138,7 @@ const About = () => {
                     <p className="card-text">GitHub Master</p>
                     <a href="/frederick">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -159,7 +159,7 @@ const About = () => {
                     <p className="card-text">Frontend Team</p>
                     <a href="/german">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -180,7 +180,7 @@ const About = () => {
                     <p className="card-text">Backend Team</p>
                     <a href="/henzon">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More

@@ -14,6 +14,12 @@
   padding: 28px;
 }
 
+.about-header2 {
+  background-color: #552583;
+  position: relative;
+  padding: 28px;
+}
+
 /* skewing header section */
 .about-header::before,
 .about-header::after {
@@ -24,6 +30,21 @@
   right: 0;
   left: 0;
   background: rgb(212, 174, 5);
+  transform: skewY(1.5deg);
+  -webkit-transform: skewY(1.5deg);
+  -moz-transform: skewY(1.8deg);
+  -ms-transform: skewY(1.8deg);
+}
+
+.about-header2::before,
+.about-header2::after {
+  content: "";  
+  position: absolute;
+  height: 45px;
+  bottom: -24px;
+  right: 0;
+  left: 0;
+  background: #FDB927;
   transform: skewY(1.5deg);
   -webkit-transform: skewY(1.5deg);
   -moz-transform: skewY(1.8deg);
@@ -190,4 +211,17 @@
   100% {
     transform: translateX(0);
   }
+}
+
+/* More button */
+.more-btn {
+  background-color: white;
+  color: #552583;
+  border: 1px solid #552583;
+  transition-duration: 0.3s;
+}
+
+.more-btn:hover {
+  background-color: #552582;
+  color: white;
 }

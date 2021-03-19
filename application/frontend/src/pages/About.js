@@ -1,134 +1,85 @@
 import React from 'react';
-import '../assets/bootstrap/bootstrap-about.min.css';
-import '../assets/css/about.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import 'font-awesome/css/font-awesome.min.css';
+import '../assets/css/about_individual.css';
 // Images
-import Backdrop from '../assets/img/about/backdrop.jpg';
-import Rajdeep from '../assets/img/about/rajdeep.jpg';
-import Rinay from '../assets/img/about/rinay.jpg';
-import Bhavani from '../assets/img/about/bhavani.jpg';
-import Frederick from '../assets/img/about/frederick.jpg';
-import German from '../assets/img/about/german.jpg';
-import Henzon from '../assets/img/about/henzon.jpg';
-import Chevron from '../assets/img/about/chevron.png';
+import Rajdeep from '../assets/img/about/rajdeep/rajdeep.jpg';
+import Rinay from '../assets/img/about/rinay/rinay.jpg';
+import Bhavani from '../assets/img/about/bhavani/bhavani.jpg';
+import Frederick from '../assets/img/about/frederick/frederick.jpg';
+import German from '../assets/img/about/german/german.jpg';
+import Henzon from '../assets/img/about/henzon/henzon.jpg';
 
 const About = () => {
-  AOS.init();
-
   return (
-    <div>
-      {/* NAVBAR */}
-      {/* <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-        <div className="container">
-          <a className="navbar-brand" href="/">
-            TEAM 04
-          </a>
-          <button
-            data-toggle="collapse"
-            data-target="#navbarResponsive"
-            className="navbar-toggler"
-            aria-controls="navbarResponsive"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i className="fa fa-bars"></i>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
-            <ul className="nav navbar-nav ml-auto">
-              <li className="nav-item"></li>
-            </ul>
-          </div>
-        </div>
-      </nav> */}
+    <div className="">
       <header
-        className="masthead"
-        style={{ backgroundImage: `url(${Backdrop})`, height: '100vh' }}
+        className="jumbotron jumbotron-fluid about-header2"
+        style={{ textAlign: 'center' }}
       >
-        <div className="overlay"></div>
         <div className="container">
-          <div className="row">
-            <div className="col-md-10 col-lg-8 mx-auto">
-              <div className="site-heading">
-                <h1 style={{ fontWeight: '800' }}>CSC 648</h1>
-                <h3 style={{ fontWeight: '800' }}>TEAM 04</h3>
-                <span className="subheading">
-                  <strong>San Francisco State University</strong>
-                  <br />
-                  <br />
-                  Spring 2021
-                </span>
-                <div className="chevron">
-                  <a href="#about-section">
-                    <img src={Chevron} height="40px" alt="" />
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="centered disclaimer">
+            <p className="text-white" style={{ fontSize: 'xx-small' }}>
+              SFSU Software Engineering Project CSC 648-848 | Spring 2021 | For
+              Demonstration Only
+            </p>
+          </div>
+          <div className="centered site-heading text-white">
+            <h1 className="h1-csc" style={{ fontWeight: '800', fontSize: '' }}>
+              CSC 648
+            </h1>
+            <h3 style={{ fontWeight: '800' }}>TEAM 04</h3>
+            <span className="subheading">
+              <strong>San Francisco State University</strong>
+              <br />
+              Spring 2021
+              <br />
+              <br />
+            </span>
           </div>
         </div>
       </header>
       <div className="container" id="about-section">
         <div className="row">
           <div className="col-md-10 col-lg-8 mx-auto">
+            <br />
             <h1
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className="text-center"
+              className="about_animate text-center"
               style={{ fontWeight: '800' }}
             >
               About
             </h1>
             <br />
-            <p
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className="text-center about-text"
-            >
-              We're Team 04 in CSC 648, Section 03, Spring 2021.
+            <p className="about_animate text-center about-text">
+              We're Team 04 in CSC 648-848, Section 03, Spring 2021.
             </p>
-            <p
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className="text-justify about-text"
-            >
+            <p className="about_animate text-justify about-text">
               We're all senior undergrad or grad Computer Science majors at San
               Francisco State University. This web app serves as a capstone
               project.
               <br />
             </p>
-            <p
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className="text-justify about-text"
-            >
-              The backend is built with JavaScript and MySQL served on an
-              Express framework with NGINX, hosted on an AWS EC2 instance, with
-              the frontend built with Node, React, and Bootstrap.
+            <p className="about_animate text-justify about-text">
+              The backend is built with ExpressJS and MySQL served on an Express
+              framework with NGINX, hosted on an AWS EC2 instance, with the
+              frontend built with React, and Bootstrap.
               <br />
               <br />
             </p>
-            <div className="d-flex justify-content-center align-items-center">
-              <div
-                className="card-group team"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                <div className="card border cardalign">
+            <div className="about_animate d-flex justify-content-center align-items-center">
+              <div className="card-group team">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Rajdeep}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body " style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Rajdeep
                     </h4>
                     <p className="card-text">Team Lead</p>
                     <a href="/rajdeep">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -136,20 +87,20 @@ const About = () => {
                     </a>
                   </div>
                 </div>
-                <div className="card border cardalign">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Rinay}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body" style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Rinay
                     </h4>
                     <p className="card-text">Backend Lead</p>
                     <a href="/rinay">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -157,20 +108,20 @@ const About = () => {
                     </a>
                   </div>
                 </div>
-                <div className="card border cardalign">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Bhavani}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body" style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Bhavani
                     </h4>
                     <p className="card-text">Frontend Lead</p>
                     <a href="/bhavani">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -181,26 +132,22 @@ const About = () => {
               </div>
             </div>
             <p></p>
-            <div className="d-flex justify-content-center align-items-center">
-              <div
-                className="card-group team"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                <div className="card border cardalign">
+            <div className="about_animate d-flex justify-content-center align-items-center">
+              <div className="card-group team">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Frederick}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body" style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Frederick
                     </h4>
                     <p className="card-text">GitHub Master</p>
                     <a href="/frederick">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -208,20 +155,20 @@ const About = () => {
                     </a>
                   </div>
                 </div>
-                <div className="card border cardalign">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={German}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body" style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       German
                     </h4>
                     <p className="card-text">Frontend Team</p>
                     <a href="/german">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -229,20 +176,20 @@ const About = () => {
                     </a>
                   </div>
                 </div>
-                <div className="card border cardalign">
+                <div className="card border cardalign about-card mx-auto">
                   <img
                     className="card-img-top w-100 d-block"
                     src={Henzon}
                     alt=""
                   />
-                  <div className="card-body">
+                  <div className="card-body" style={{ textAlign: 'center' }}>
                     <h4 className="card-title" style={{ fontWeight: '800' }}>
                       Henzon
                     </h4>
                     <p className="card-text">Backend Team</p>
                     <a href="/henzon">
                       <button
-                        className="btn btn-info stretched-link"
+                        className="btn more-btn stretched-link"
                         type="button"
                       >
                         More
@@ -258,7 +205,11 @@ const About = () => {
       <footer>
         <div className="container">
           <div className="row">
-            <div className="col-md-10 col-lg-8 mx-auto">
+            <div
+              className="col-md-10 col-lg-8 mx-auto"
+              style={{ textAlign: 'center' }}
+            >
+              <br />
               <p
                 className="text-muted copyright"
                 style={{ fontSize: 'x-small' }}

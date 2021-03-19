@@ -1,75 +1,136 @@
-import React from 'react';
-import '../assets/css/german.css';
-
-//Images
-import portrait from '../assets/img/german/portrait.jpg';
-import Github from '../assets/img/rinay/github.png';
-import Linkedin from '../assets/img/rinay/linkedin.png';
-import Email from '../assets/img/rinay/email2.png';
+import React from "react";
+import "../assets/css/about_individual.css";
+import ProfilePic from "../assets/img/about/german/german.jpg";
+import PythonLogo from "../assets/img/about/bhavani/python.png";
+import SQLLogo from "../assets/img/about/german/sql.png";
+import CPPLogo from "../assets/img/about/german/cpp.png";
+import JavaLogo from "../assets/img/about/german/java.jpg";
+import RLogo from "../assets/img/about/german/rstudio.svg";
 
 const German = () => {
-  return ( 
-    <div>
-      <section id="Gheader" style={{ textAlign: 'center' }}>
-        
-        <div className ="Headertitle">
-        <img
-              class=" img-fluid rounded-circle"
-              src={portrait}
-              width="150"
-              alt="portrait"
-            />
-          <h1>German Perez</h1> 
-          <section id="GLinks"> 
-          <img
-              class=" img-fluid "
-              src={Github}
-              width="15"
-              alt="Github"
-            />
-            <a className="germanA" href = "https://github.com/germanp123"> Github </a> 
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
+  return (
+    <div className="about-page">
+      <div className="jumbotron jumbotron-fluid about-header">
+        <div className="d-flex flex-wrap justify-content-center">
+          <div className="mx-5">
             <img
-              class=" img-fluid "
-              src={Linkedin}
-              width="15"
-              alt="Linkedin"
+              className="rounded-circle about-img"
+              src={ProfilePic}
+              alt="profilepicture"
             />
-            <a className="germanA" href = "https://www.linkedin.com/in/germanperezm/"> LinkedIn </a>  <br/>
-            <img
-              class=" img-fluid "
-              src={Email}
-              width="15"
-              alt="Email"
-            />
-            <a className="germanA" href = "mailto:gperez8@mail.sfsu.edu"> Email </a> 
-          </section>
+          </div>
+          <div className="about-me-text pt-5 text-white">
+            <h1 className="text-warning">About Me</h1>
+            <h4>German Perez</h4>
+            <p>
+              Undergraduate Student <br /> San Francisco State University
+            </p>
+          </div>
         </div>
-        <div className =""></div>
-      </section>
-
-      <section id="Gcontent" style={{ textAlign: 'left' }}>
-        <div className ="Contents"> 
-        
-        <div className ="titles"> <h3> About Me</h3> </div>
-        <p> Hi there. I am a Computer Science major at SFSU who's interested in the Data Analytics field. 
-          When I'm not behind a computer, I enjoy long distance running or finding the next foodie hotspot 
-          in San Francisco. </p>
-
-        <div className ="titles"> <h3> <br/> Education </h3> </div>
-        <h5> San Francisco State University - Exp May 2021 </h5>
-        <p> Bachelor of Science - Computer Science <br/> Mathematics Minor</p>
-
-        <div className ="titles"> <h3> <br/> Experience </h3> </div>
-        <h5> Teacher Assistant (Computer Science) - Spring 2021</h5>
-        <p>  Acted as TA for 2 courses/sections of 120 students. 
-          <br/> Served as a point of contact for students 
-          <br/> and provided knowledge and insight for course concepts via zoom. </p>
-            
-        <h5> Tutor (Mathematics) - 2018 through 2021</h5>
-        <p> Assisted first and second year college students in probability, statistics, and calculus. </p>
-
+      </div>
+      <div className="about-body container-fluid">
+        <div className="about-desc card">
+          <div
+            className="card-header"
+            style={{ backgroundColor: "rgb(172, 155, 223)" }}
+          >
+            <i className="fas fa-university mr-2" />
+            <i className="fas fa-server mr-2" />
+            <i className="fas fa-heart mr-2" />
+            <i className="fas fa-music mr-2" />
+          </div>
+          <div className="card-body bg-light">
+            <p>
+              <i>
+                Hello there, I'm a Computer Science student at SFSU with a minor in mathematics. 
+                <br />
+                My fields of interest are in data analytics as well as statistical analysis.
+                <br />
+                About myself, I was born and raised in the city of Los Angeles and I decided to move to San Francisco in 2017.
+                <br />
+                Some of my favorite pastimes include long distance running, watching cult classics, and finding the next foodie hotspot.
+              </i>
+            </p>
+          </div>
         </div>
-      </section>
+        <div>
+          <h2 className="text-center pt-4">Skillset</h2>
+          <div className="container d-flex flex-wrap pt-2">
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Java</h4>
+              <img src={JavaLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">C++</h4>
+              <img src={CPPLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Python</h4>
+              <img src={PythonLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">R Code</h4>
+              <img src={RLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">SQL</h4>
+              <img src={SQLLogo} width="74" height="74" alt="" />
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <h2 className="text-center pt-4">Recent Projects</h2>
+          <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>Calculator</strong>
+              </h4>
+              <blockquote className="card-body bg-light font-italic">
+               A simple calculator with a basic calculator GUI. The data structures used 
+               to implement this calculator were two stacks and a hashmap. Using the 
+               operator priority chart, a hierarchy of operator importance was created 
+               to help adhere to the PEMDAS mathematical order. 
+              </blockquote>
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/germanp123/calculator"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>Virtual Memory Manager</strong>
+              </h4>
+              <blockquote className="card-body bg-light font-italic">
+              This project consists of writing a program that translates logical to 
+              physical addresses for a virtual address space. Using a TLB as well 
+              as a page table, it will translate each logical address to its corresponding 
+              physical address and output the value of the byte stored at the 
+              translated physical address.
+              </blockquote>
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/csc415-01-SU2020/csc415-p4-germanp123"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

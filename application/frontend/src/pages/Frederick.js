@@ -1,186 +1,226 @@
-import React from 'react';
-import '../assets/bootstrap/bootstrap-about.min.css';
-import '../assets/css/frederick.css';
+import React from "react";
+import "../assets/css/about_individual.css";
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
-//import CardDeck from 'react-bootstrap/CardDeck'
-import CardColumns from 'react-bootstrap/CardColumns';
-import Row from 'react-bootstrap/Row';
-//import Image from 'react-bootstrap/Image'
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-//import Media from 'react-bootstrap/Media'
-import FreddieImage from '../assets/img/frederick/freddiePhoto.jpg';
+import ProfilePic from "../assets/img/about/frederick/frederick.jpg";
+import FlutterLogo from "../assets/img/about/frederick/flutter.png";
+import JavaLogo from "../assets/img/about/frederick/java.png";
+import AndroidLogo from "../assets/img/about/frederick/android.png";
+import CPlusPlusLogo from "../assets/img/about/frederick/cplusplus.png";
+
+import ReactLogo from "../assets/img/about/bhavani/react.png";
+import PythonLogo from "../assets/img/about/bhavani/python.png";
+import CSSLogo from "../assets/img/about/bhavani/css.png";
+import HTMLLogo from "../assets/img/about/bhavani/html.png";
 
 const Frederick = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
-    <div>
-      <body className="bg">
-          <header id="fredheader">
-            <Navbar bg="dark" variant="dark" stick="top">
-              <Navbar.Brand id="logo">Frederick</Navbar.Brand>
-              <Nav className="ml-auto">
-                <Nav.Link href="#aboutMe">About Me</Nav.Link>
-                <Nav.Link href="#portfolio">Portfolio</Nav.Link>
-                <Nav.Link href="#contact">Contact</Nav.Link>
-              </Nav>
-            </Navbar>
-          </header>
-
-          <section id="hero">
-            <div className="hero-container">
-              <h1>
-                frederick.portfolio<span class="blinking"> .</span>
-              </h1>
-              <h2>Software Engineer</h2>
-              <a href="#aboutMe" class="btn-get-started">
-                About Me
+    <div className="about-page">
+      <div className="jumbotron jumbotron-fluid about-header">
+        <div className="d-flex flex-wrap justify-content-center">
+          <div className="mx-5">
+            <img
+              className="rounded-circle about-img"
+              src={ProfilePic}
+              alt="profilepicture"
+            />
+          </div>
+          <div className="about-me-text pt-5 text-white">
+            <h1 className="text-warning">About Me</h1>
+            <h4>Frederick White</h4>
+            <p>
+              Undergraduate Student <br /> San Francisco State University
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="about-body container-fluid">
+        <div className="about-desc card">
+          <div
+            className="card-header"
+            style={{ backgroundColor: "rgb(172, 155, 223)" }}
+          >
+            <i className="fas fa-university mr-2" />
+            <i className="fas fa-mountain mr-2" />
+            <i className="fas fa-guitar mr-2" />
+            <i className="fas fa-music mr-2" />
+          </div>
+          <div className="card-body bg-light">
+            <p>
+              <i>
+                Hello I am a senior studying Computer Science at SFSU.
+                <br />
+                I am interested in mobile app development and I also want to
+                learn more about full-stack development.
+                <br />
+                Some more about me, I grew up in Florida before moving to
+                California in 2015. I currently live and hope to work in
+                the Bay Area.
+                <br />
+                Outside of programming I enjoy going rock climbing and being
+                outdoors. I also like to listen to music and go to concerts.
+              </i>
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-center pt-4">Skillset</h2>
+          <div className="container d-flex flex-wrap pt-2">
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Flutter</h4>
+              <img src={FlutterLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Java</h4>
+              <img src={JavaLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">C++</h4>
+              <img src={CPlusPlusLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Android</h4>
+              <img src={AndroidLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">HTML</h4>
+              <img src={HTMLLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">CSS</h4>
+              <img src={CSSLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">React.js</h4>
+              <img src={ReactLogo} width="74" height="74" alt="" />
+            </div>
+            <div className="card about-skill-set mt-2">
+              <h4 className="about-skill-name">Python</h4>
+              <img src={PythonLogo} width="74" height="74" alt="" />
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <h2 className="text-center pt-4">Recent Projects</h2>
+          <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>Mask Helper</strong>
+              </h4>
+              <blockquote className="card-body bg-light font-italic">
+                A mobile app that gives users a notification to wear a mask
+                when they leave. Users can choose which locations they want 
+                to receive a notification for. Utilizes Google maps and 
+                places API. 
+              </blockquote>
+              {/* <img
+                className="card-img-bottom"
+                src={Calculator}
+                width="200"
+                height="200"
+                alt=""
+              /> */}
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/fwhite95/teamflutterfa_sfhacks2021"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
               </a>
             </div>
-          </section>
-        
-        <div id="aboutMe">
-          <section id="work">
-            <Container fluid>
-              <CardColumns>
-                <Card
-                  className="bg-dark text-white text-center"
-                  style={{ width: '100%' }}
-                >
-                  <Card.Header>Frederick White</Card.Header>
-                  <img
-                    className="rounded-circle img-fluid"
-                    src={FreddieImage}
-                    width="50%"
-                    alt="Profile"
-                  />
-                  <Card.Body>
-                    <Card.Text>
-                      I am a computer science student in my senior year at SFSU.
-                      I enjoy creating mobile apps and learning new
-                      technologies. In my free time I like to program, rock
-                      climb, read, and listen to music.
-                    </Card.Text>
-                    <Row className="justify-content-center">
-                      <a href="https://github.com/fwhite95">
-                        <FaGithub></FaGithub>
-                      </a>
-                      <a href="https://www.linkedin.com/in/frederick-white-982aa4102/">
-                        <FaLinkedin></FaLinkedin>
-                      </a>
-                    </Row>
-                  </Card.Body>
-                </Card>
-                <Card bg="dark" text="white">
-                  <Card.Header as="h3">Work Experience</Card.Header>
-                  <Card.Body>
-                    <Card.Text>
-                      <h5>SOFTWARE ENGINEERING INTERN, ROOSTOO LABS LIMITED</h5>
-                      <ul>
-                        <li>
-                          Worked as a software engineering intern on a mobile
-                          app that focused on mock cryptocurrency trading
-                        </li>
-                        <li>
-                          Worked on the existing app that uses the Flutter
-                          framework
-                        </li>
-                        <li>
-                          Helped to design and implement various new features
-                          for the app
-                        </li>
-                        <li>
-                          Utilized Flutter, API’s, MVVM design, Android, and IOS
-                        </li>
-                      </ul>
-                      <h5>INTERN, GOLDEN GATE ELECTRIC VEHICLE ASSOCIATION</h5>
-                      <ul>
-                        <li>
-                          Collected information on EV parking by utilizing GIS
-                          and open data
-                        </li>
-                        <li>
-                          Implemented a Java front end with SQL database to
-                          collect and sort data
-                        </li>
-                        <li>
-                          Utilized Excel and created software to present
-                          information to team leaders
-                        </li>
-                        <li>Leveraged knowledge in Java, SQL, and Excel</li>
-                      </ul>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <Card bg="dark" text="white">
-                  <Card.Header as="h3">Skills</Card.Header>
-                  <Card.Body>
-                    <Card.Text>
-                      <h5>LANGUAGES/FRAMEWORKS</h5>
-                      <ul>
-                        <li>Flutter and Dart</li>
-                        <li>Web stack: React, Javascript, Html, Css</li>
-                        <li>Languages: C++, Java, Ruby, C, Python</li>
-                      </ul>
-                      <h5>Technologies</h5>
-                      <ul>
-                        <li>
-                          IDE's: VS Code, Intellij, Webstorm, Pycharm, Android
-                          Studio
-                        </li>
-                        <li>Google Firebase, AWS</li>
-                        <li>Design Architecutre: BLoC, Redux, MVC, MVVM</li>
-                      </ul>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </CardColumns>
-            </Container>
-          </section>
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>Evented</strong>
+              </h4>
+              <blockquote className="card-body bg-light font-italic">
+                A mobile application that allows users to search for local
+                events at bars, clubs, and venues. Users can lookup events,
+                add them to a list, and follow locations to see new events. 
+                Utilizes Flutter and Google Firebase to hold user information
+              </blockquote>
+              {/* <img
+                className="card-img-bottom"
+                src={Calculator}
+                width="200"
+                height="200"
+                alt=""
+              /> */}
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/fwhite95/evented"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>Bookmera</strong>
+              </h4>
+              <blockquote className="card-body bg-light font-italic">
+                Mobile application that allows users to sign in with Google
+                sign in and look up gooks using Google books API. Users can 
+                search for books or see the books in their reading lists.
+                Also utilizes a Firebase ML kit to allow users to search for 
+                books through a photo of the book cover. 
+              </blockquote>
+              {/* <img
+                className="card-img-bottom"
+                src={Calculator}
+                width="200"
+                height="200"
+                alt=""
+              /> */}
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/fwhite95/bookmera"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+            <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
+              <h4 className="about-skill-name">
+                <strong>DoodleBug</strong>
+              </h4>  
+              
+              <blockquote className="card-body bg-light font-italic">
+                This is a C++ project that simulates Doodle bugs. This means
+                that it is a simulation of predator/prey interations. 
+              </blockquote>
+              
+
+              {/* <img
+                className="card-img-bottom"
+                src={Calculator}
+                width="200"
+                height="200"
+                alt=""
+              /> */}
+              <a
+                className="text-dark mt-3"
+                href="https://github.com/fwhite95/DoodleBug_CPP"
+              >
+                <i
+                  className="fab fa-github about-projects-link"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </body>
-    </div>
+      </div >
+    </div >
   );
 };
 
 export default Frederick;
-
-/* <div className="aboutMeInfo">
-<Card className="bg-dark text-white" style={{width: '50%' }} >
-<img
-      className="rounded-circle img-fluid"
-      src={FreddieImage}
-      width="20%"
-      alt="Profile"
-    />
-<Card.Body>
-<Card.Text>
-I am a computer science student in my senior year at SFSU. I
-    enjoy creating mobile apps and learning new technologies. In my free 
-    time I like to program, rock climb, read, and listen to music.
-</Card.Text>
-</Card.Body>
-</Card>  
-</div> */
-
-/* <div id="aboutMeInfo">
-  <Container fluid>
-    <Row className="justify-content-center">
-      <div>
-      <img
-        className="rounded-circle img-fluid"
-        src={FreddieImage}
-        width="20%"
-        alt="Profile"
-      />
-      </div>
-      <p>
-      I am a computer science student in my senior year at SFSU. I
-      enjoy creating mobile apps and learning new technologies. In my free 
-      time I like to program, rock climb, read, and listen to music.
-      </p>
-    </Row>
-  </Container>
-  </div> */

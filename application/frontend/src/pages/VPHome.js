@@ -105,6 +105,10 @@ const VPHome = () => {
               mapContainerStyle={{ height: '250px', width: '400px' }}
               zoom={17}
               center={{ lat: item.Lat, lng: item.Lng }}
+              options={{
+                streetViewControl: false,
+                mapTypeControl: false,
+              }}
             >
               <Marker position={{ lat: item.Lat, lng: item.Lng }} />
             </GoogleMap>

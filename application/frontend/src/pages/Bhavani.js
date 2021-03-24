@@ -12,6 +12,10 @@ import ReactLogo from "../assets/img/about/bhavani/react.png";
 // import Calculator from "../assets/img/about/calculator.png";
 
 const Bhavani = () => {
+  React.useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">

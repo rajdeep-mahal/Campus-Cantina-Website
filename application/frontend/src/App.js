@@ -6,6 +6,7 @@ import Bhavani from "./pages/Bhavani";
 import Frederick from "./pages/Frederick";
 import German from "./pages/German";
 import Henzon from "./pages/Henzon";
+import VPHome from "./pages/VPHome";
 
 function App() {
   return (
@@ -30,9 +31,12 @@ function App() {
           <Route path="/henzon">
             <Henzon />
           </Route>
-          <Route path="/">
-            {/* Root set to About page for M0 */}
+          <Route path="/about">
             <About />
+          </Route>
+          <Route path="/">
+            {/* Root set to VP home page for M2 */}
+            <VPHome />
           </Route>
         </Switch>
       </BrowserRouter>

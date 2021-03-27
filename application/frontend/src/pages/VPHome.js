@@ -124,7 +124,7 @@ const VPHome = () => {
                       <img
                         src={
                           'data:image/jpeg;base64,' +
-                          new Buffer(item.Pic1).toString('base64')
+                          new Buffer(item.Small_Pic).toString('base64')
                         }
                         alt=""
                         width="400px"

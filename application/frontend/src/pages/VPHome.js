@@ -28,6 +28,9 @@ const VPHome = () => {
         if (res.data.length === 0) {
           setSearchResults([]);
           setNoResult('No results found.');
+        } else if (res.data === 'Invalid') {
+          setSearchResults([]);
+          setNoResult('Invalid search entry.');
         } else {
           setSearchResults(res.data);
           setNoResult('');

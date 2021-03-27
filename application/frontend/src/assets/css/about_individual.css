@@ -58,12 +58,6 @@
   animation: slideInFromLeft 1s ease-in;
 }
 
-.hz-about-img {
-  height: 250px;
-  width: 250px;
-  animation: slideInFromLeft 1s ease-in;
-}
-
 /* header text */
 .about-me-text {
   text-align: center;
@@ -72,10 +66,6 @@
 
 /* about page body section */
 .about-body {
-  width: fit-content;
-}
-
-.hz-about-body {
   width: fit-content;
 }
 
@@ -94,63 +84,14 @@
   margin: 10px;
   width: 25px;
 }
-.hz-project-links:hover {
+
+.project-links:hover{
   text-decoration: none;
 }
 
-.h1-csc {
-  font-size: 80px;
-}
 
-@media (max-width: 1790px) {
-  .hz-about-body {
-    width: 60vw;
-  }
-}
 
-@media (max-width: 577px) {
-  .hz-about-body {
-    width: 70vw;
-  }
-  .hz-about-img {
-    width: auto;
-    height: 30vh;
-  }
-  .h1-csc {
-    font-size: 60px;
-  }
-  .about-card {
-    width: 80vw;
-  }
-  .about-text {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-  .disclaimer {
-    font-size: xx-sma;
-  }
-}
-@media (max-width: 400px) {
-  .hz-about-img {
-    width: 50vw;
-    height: auto;
-  }
-  .hz-about-body {
-    font-size: x-small;
-  }
-  .hz-contacts {
-    width: 6vw;
-  }
-  .h1-csc {
-    font-size: 50px;
-  }
-}
 
-@media (max-width: 258px) {
-  .hz-about-projects {
-    width: 60vw;
-  }
-}
 
 /* about skill set logo and name */
 .about-skill-set {
@@ -181,11 +122,7 @@
   background-color: rgb(209, 206, 218);
 }
 
-.hz-about-projects {
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-  background-color: rgb(209, 206, 218);
-}
+
 
 /* github icon link*/
 .about-projects-link {
@@ -196,13 +133,6 @@
   color: white;
 }
 
-.hz-about-projects-link {
-  font-size: 30px;
-}
-.hz-about-projects-link:hover {
-  background-color: blue;
-  color: white;
-}
 
 /* sliding CSS animations */
 @keyframes slideInFromLeft {

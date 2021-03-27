@@ -11,7 +11,7 @@
 
 .vp-header::before,
 .vp-header::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 45px;
   bottom: -24px;
@@ -20,8 +20,8 @@
   background: #fdb927;
   transform: skewY(1.5deg);
   -webkit-transform: skewY(1.5deg);
-  -moz-transform: skewY(1.8deg);
-  -ms-transform: skewY(1.8deg);
+  -moz-transform: skewY(1.5deg);
+  -ms-transform: skewY(1.5deg);
 }
 
 .vp-card {
@@ -37,5 +37,5 @@
 .vp-search-result {
   width: auto;
   padding: 2px;
-  margin-bottom: '5px';
+  margin-bottom: "5px";
 }

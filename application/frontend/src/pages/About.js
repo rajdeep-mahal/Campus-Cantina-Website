@@ -1,32 +1,32 @@
-import React from 'react';
-import '../assets/css/about_individual.css';
+import React from "react";
+import "../assets/css/about_individual.css";
 // Images
-import Rajdeep from '../assets/img/about/rajdeep/rajdeep.jpg';
-import Rinay from '../assets/img/about/rinay/rinay.jpg';
-import Bhavani from '../assets/img/about/bhavani/bhavani.jpg';
-import Frederick from '../assets/img/about/frederick/frederick.jpg';
-import German from '../assets/img/about/german/german.jpg';
-import Henzon from '../assets/img/about/henzon/henzon.jpg';
+import Rajdeep from "../assets/img/about/rajdeep/rajdeep.jpg";
+import Rinay from "../assets/img/about/rinay/rinay.jpg";
+import Bhavani from "../assets/img/about/bhavani/bhavani.jpg";
+import Frederick from "../assets/img/about/frederick/frederick.jpg";
+import German from "../assets/img/about/german/german.jpg";
+import Henzon from "../assets/img/about/henzon/henzon.jpg";
 
 const About = () => {
   return (
     <div className="">
       <header
-        className="jumbotron jumbotron-fluid about-header2"
-        style={{ textAlign: 'center' }}
+        className="jumbotron jumbotron-fluid about-header"
+        style={{ textAlign: "center" }}
       >
         <div className="container">
           <div className="centered disclaimer">
-            <p className="text-white" style={{ fontSize: 'xx-small' }}>
+            <p className="text-white" style={{ fontSize: "xx-small" }}>
               SFSU Software Engineering Project CSC 648-848 | Spring 2021 | For
               Demonstration Only
             </p>
           </div>
           <div className="centered site-heading text-white">
-            <h1 className="h1-csc" style={{ fontWeight: '800', fontSize: '' }}>
+            <h1 className="h1-csc" style={{ fontWeight: "800", fontSize: "" }}>
               CSC 648
             </h1>
-            <h3 style={{ fontWeight: '800' }}>TEAM 04</h3>
+            <h3 style={{ fontWeight: "800" }}>TEAM 04</h3>
             <span className="subheading">
               <strong>San Francisco State University</strong>
               <br />
@@ -43,7 +43,7 @@ const About = () => {
             <br />
             <h1
               className="about_animate text-center"
-              style={{ fontWeight: '800' }}
+              style={{ fontWeight: "800" }}
             >
               About
             </h1>
@@ -72,8 +72,8 @@ const About = () => {
                     src={Rajdeep}
                     alt=""
                   />
-                  <div className="card-body " style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body " style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Rajdeep
                     </h4>
                     <p className="card-text">Team Lead</p>
@@ -93,8 +93,8 @@ const About = () => {
                     src={Rinay}
                     alt=""
                   />
-                  <div className="card-body" style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body" style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Rinay
                     </h4>
                     <p className="card-text">Backend Lead</p>
@@ -114,8 +114,8 @@ const About = () => {
                     src={Bhavani}
                     alt=""
                   />
-                  <div className="card-body" style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body" style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Bhavani
                     </h4>
                     <p className="card-text">Frontend Lead</p>
@@ -140,8 +140,8 @@ const About = () => {
                     src={Frederick}
                     alt=""
                   />
-                  <div className="card-body" style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body" style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Frederick
                     </h4>
                     <p className="card-text">GitHub Master</p>
@@ -161,8 +161,8 @@ const About = () => {
                     src={German}
                     alt=""
                   />
-                  <div className="card-body" style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body" style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       German
                     </h4>
                     <p className="card-text">Frontend Team</p>
@@ -182,8 +182,8 @@ const About = () => {
                     src={Henzon}
                     alt=""
                   />
-                  <div className="card-body" style={{ textAlign: 'center' }}>
-                    <h4 className="card-title" style={{ fontWeight: '800' }}>
+                  <div className="card-body" style={{ textAlign: "center" }}>
+                    <h4 className="card-title" style={{ fontWeight: "800" }}>
                       Henzon
                     </h4>
                     <p className="card-text">Backend Team</p>
@@ -207,12 +207,12 @@ const About = () => {
           <div className="row">
             <div
               className="col-md-10 col-lg-8 mx-auto"
-              style={{ textAlign: 'center' }}
+              style={{ textAlign: "center" }}
             >
               <br />
               <p
                 className="text-muted copyright"
-                style={{ fontSize: 'x-small' }}
+                style={{ fontSize: "x-small" }}
               >
                 © 2021 Team 04
               </p>

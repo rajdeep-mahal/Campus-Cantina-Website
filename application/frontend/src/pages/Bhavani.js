@@ -9,13 +9,12 @@ import JSLogo from "../assets/img/about/bhavani/javascript.png";
 import JinjaLogo from "../assets/img/about/bhavani/jinja.png";
 import FlaskLogo from "../assets/img/about/bhavani/flask.png";
 import ReactLogo from "../assets/img/about/bhavani/react.png";
-// import Calculator from "../assets/img/about/calculator.png";
 
 const Bhavani = () => {
   React.useLayoutEffect(() => {
     window.scrollTo(0, 0);
   });
-  
+
   return (
     <div className="about-page">
       <div className="jumbotron jumbotron-fluid about-header">
@@ -117,13 +116,6 @@ const Bhavani = () => {
                 images are passed on to Google Vision API and are automatically
                 categorized based on the labels returned by the API.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
                 className="text-dark mt-3"
                 href="https://github.com/bhavani-goruganthu/CSC847_GAE_Proj2_VisionAPI"

@@ -8,3 +8,9 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   line-height: 1.6;
 }
+
+:root {
+  --primary-color: #552583;
+  --secondary-color: #fdb927;
+  --inactive-color: #cdcdcd;
+}

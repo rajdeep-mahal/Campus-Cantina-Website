@@ -12,17 +12,17 @@ const About = () => {
   return (
     <div className="">
       <header
-        className="jumbotron jumbotron-fluid about-header"
+        className="jumbotron jumbotron-fluid bg-light"
         style={{ textAlign: "center" }}
       >
         <div className="container">
           <div className="centered disclaimer">
-            <p className="text-white" style={{ fontSize: "xx-small" }}>
+            <p className="text-dark" style={{ fontSize: "xx-small" }}>
               SFSU Software Engineering Project CSC 648-848 | Spring 2021 | For
               Demonstration Only
             </p>
           </div>
-          <div className="centered site-heading text-white">
+          <div className="centered site-heading text-dark">
             <h1 className="h1-csc" style={{ fontWeight: "800", fontSize: "" }}>
               CSC 648
             </h1>
@@ -77,7 +77,7 @@ const About = () => {
                       Rajdeep
                     </h4>
                     <p className="card-text">Team Lead</p>
-                    <a href="/rajdeep">
+                    <a href="/about/rajdeep">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"
@@ -98,7 +98,7 @@ const About = () => {
                       Rinay
                     </h4>
                     <p className="card-text">Backend Lead</p>
-                    <a href="/rinay">
+                    <a href="/about/rinay">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"
@@ -119,7 +119,7 @@ const About = () => {
                       Bhavani
                     </h4>
                     <p className="card-text">Frontend Lead</p>
-                    <a href="/bhavani">
+                    <a href="/about/bhavani">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"
@@ -145,7 +145,7 @@ const About = () => {
                       Frederick
                     </h4>
                     <p className="card-text">GitHub Master</p>
-                    <a href="/frederick">
+                    <a href="/about/frederick">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"
@@ -166,7 +166,7 @@ const About = () => {
                       German
                     </h4>
                     <p className="card-text">Frontend Team</p>
-                    <a href="/german">
+                    <a href="/about/german">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"
@@ -187,7 +187,7 @@ const About = () => {
                       Henzon
                     </h4>
                     <p className="card-text">Backend Team</p>
-                    <a href="/henzon">
+                    <a href="/about/henzon">
                       <button
                         className="btn more-btn stretched-link"
                         type="button"

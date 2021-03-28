@@ -1,0 +1,17 @@
+@import "../../index.css";
+
+.logo-name {
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.navbar-search-btn {
+  background-color: var(--secondary-color);
+  color: black !important;
+  text-decoration: none;
+}
+
+/* #navbardrop {
+  background-color: var(--secondary-color);
+  color: black !important;
+} */

@@ -1,0 +1,71 @@
+@import "../../index.css";
+
+/* COMMON CSS CLASS -- CHECK*/
+.navbar {
+  display: flex;
+  background-color: var(--primary-color);
+  position: relative;
+  padding-top: 0rem;
+  padding-bottom: 2.7rem;
+}
+
+/* skewing navbar section */
+.navbar::before,
+.navbar::after {
+  content: "";
+  position: absolute;
+  height: 48px;
+  bottom: -24.5px;
+  right: 0;
+  left: 0;
+  background: var(--secondary-color);
+  transform: skewY(1.5deg);
+  -webkit-transform: skewY(1.5deg);
+  -moz-transform: skewY(1.5deg);
+  -ms-transform: skewY(1.5deg);
+}
+
+/* side menu section*/
+.side-menu {
+  background-color: var(--primary-color);
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+.side-menu.open {
+  left: 0;
+  transition: 350ms;
+}
+
+.side-logo-img {
+  background-color: var(--primary-color);
+}
+
+.cc-logo-bg {
+  background-color: var(--secondary-color);
+}
+
+/* side menu items link hover effect*/
+.menu-item a:hover {
+  text-decoration: none !important;
+}
+
+/* side menu icons color*/
+.nav-menu-icon {
+  color: var(--secondary-color);
+}
+
+/* side menu text color*/
+.side-menu-text {
+  color: white;
+}
+.side-menu-text:hover {
+  background-color: var(--secondary-color);
+  color: black;
+}

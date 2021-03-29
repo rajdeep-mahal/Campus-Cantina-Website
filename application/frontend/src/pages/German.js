@@ -8,36 +8,31 @@ import JavaLogo from "../assets/img/about/german/java.jpg";
 import RLogo from "../assets/img/about/german/rstudio.svg";
 
 const German = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  
+  // React.useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
+
   return (
-    <div className="about-page">
-      <div className="jumbotron jumbotron-fluid about-header">
-        <div className="d-flex flex-wrap justify-content-center">
-          <div className="mx-5">
-            <img
-              className="rounded-circle about-img"
-              src={ProfilePic}
-              alt="profilepicture"
-            />
-          </div>
-          <div className="about-me-text pt-5 text-white">
-            <h1 className="text-warning">About Me</h1>
-            <h4>German Perez</h4>
-            <p>
-              Undergraduate Student <br /> San Francisco State University
-            </p>
-          </div>
+    <div className="about-page m-5">
+      <div className="d-flex flex-wrap justify-content-center">
+        <div className="mx-5">
+          <img
+            className="card-border-size rounded-circle about-img"
+            src={ProfilePic}
+            alt="profilepicture"
+          />
+        </div>
+        <div className="about-me-text pt-5 text-dark">
+          <p className="h1 primary-color">About Me</p>
+          <h4 className="primary-color">German Perez</h4>
+          <p className="primary-color">
+            Undergraduate Student <br /> San Francisco State University
+          </p>
         </div>
       </div>
       <div className="about-body container-fluid">
         <div className="about-desc card">
-          <div
-            className="card-header"
-            style={{ backgroundColor: "rgb(172, 155, 223)" }}
-          >
+          <div className="card-header primary-color-bg secondary-color">
             <i className="fas fa-university mr-2" />
             <i className="fas fa-server mr-2" />
             <i className="fas fa-heart mr-2" />
@@ -46,13 +41,17 @@ const German = () => {
           <div className="card-body bg-light">
             <p>
               <i>
-                Hello there, I'm a Computer Science student at SFSU with a minor in mathematics. 
+                Hello there, I'm a Computer Science student at SFSU with a minor
+                in mathematics.
                 <br />
-                My fields of interest are in data analytics as well as statistical analysis.
+                My fields of interest are in data analytics as well as
+                statistical analysis.
                 <br />
-                About myself, I was born and raised in the city of Los Angeles and I decided to move to San Francisco in 2017.
+                About myself, I was born and raised in the city of Los Angeles
+                and I decided to move to San Francisco in 2017.
                 <br />
-                Some of my favorite pastimes include long distance running, watching cult classics, and finding the next foodie hotspot.
+                Some of my favorite pastimes include long distance running,
+                watching cult classics, and finding the next foodie hotspot.
               </i>
             </p>
           </div>
@@ -86,17 +85,18 @@ const German = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Calculator</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Calculator
+              </span>
               <blockquote className="card-body bg-light font-italic">
-               A simple calculator with a basic calculator GUI. The data structures used 
-               to implement this calculator were two stacks and a hashmap. Using the 
-               operator priority chart, a hierarchy of operator importance was created 
-               to help adhere to the PEMDAS mathematical order. 
+                A simple calculator with a basic calculator GUI. The data
+                structures used to implement this calculator were two stacks and
+                a hashmap. Using the operator priority chart, a hierarchy of
+                operator importance was created to help adhere to the PEMDAS
+                mathematical order.
               </blockquote>
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/germanp123/calculator"
               >
                 <i
@@ -106,18 +106,18 @@ const German = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Virtual Memory Manager</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Virtual Memory Manager
+              </span>
               <blockquote className="card-body bg-light font-italic">
-              This project consists of writing a program that translates logical to 
-              physical addresses for a virtual address space. Using a TLB as well 
-              as a page table, it will translate each logical address to its corresponding 
-              physical address and output the value of the byte stored at the 
-              translated physical address.
+                This project consists of writing a program that translates
+                logical to physical addresses for a virtual address space. Using
+                a TLB as well as a page table, it will translate each logical
+                address to its corresponding physical address and output the
+                value of the byte stored at the translated physical address.
               </blockquote>
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/csc415-01-SU2020/csc415-p4-germanp123"
               >
                 <i
@@ -126,8 +126,6 @@ const German = () => {
                 ></i>
               </a>
             </div>
-
-
           </div>
         </div>
       </div>

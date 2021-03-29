@@ -58,7 +58,8 @@ const Henzon = () => {
               <i>
               Hello! I'm Henzon and I'm an undergraduate student pursuing a B.S in Computer Engineering at SFSU.
                 <br />
-                I'm from the Philippines and moved to the U.S in 2007. I currently live in the beautiful city of San Francisco, California.
+                During my free time, I enjoy working out, watching tv
+                shows/movies, photography and playing video games!
                 <br />
                 During my free time, I enjoy working out, watching tv shows/movies, photography and playing video games!
                 <br />

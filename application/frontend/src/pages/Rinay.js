@@ -13,53 +13,53 @@ import Soda from "../assets/img/about/rinay/soda.gif";
 import Word from "../assets/img/about/rinay/word.png";
 import Linked from "../assets/img/about/rinay/linkedin.png";
 
-
 const Rinay = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // React.useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   return (
-    <div className="about-page">
-      <div className="jumbotron jumbotron-fluid about-header">
-        <div className="d-flex flex-wrap justify-content-center">
-          <div className="mx-5">
-            <img
-              className="rounded-circle about-img"
-              src={ProfilePic}
-              alt="profilepicture"
-            />
-          </div>
-          <div className="about-me-text pt-5 text-white">
-            <h1 className="text-warning">About Me</h1>
-            <h4>Rinay Kumar</h4>
-            <p>
-              Undergraduate Student <br /> San Francisco State University
-            </p>
-          </div>
+    <div className="about-page m-5">
+      <div className="d-flex flex-wrap justify-content-center">
+        <div className="mx-5">
+          <img
+            className="card-border-size rounded-circle about-img"
+            src={ProfilePic}
+            alt="profilepicture"
+          />
+        </div>
+        <div className="about-me-text pt-5 text-dark">
+          <p className="h1 primary-color">About Me</p>
+          <h4 className="primary-color">Rinay Kumar</h4>
+          <p className="primary-color">
+            Undergraduate Student <br /> San Francisco State University
+          </p>
         </div>
       </div>
+
       <div className="about-body container-fluid">
         <div className="about-desc card">
-          <div
-            className="card-header"
-            style={{ backgroundColor: "rgb(172, 155, 223)" }}
-          >
+          <div className="card-header primary-color-bg secondary-color">
             <i className="fas fa-university mr-2" />
             <i className="fas fa-server mr-2" />
-            <i className="fas fa-heart mr-2" />
-            <i className="fas fa-music mr-2" />
+            {/* <i className="fas fa-heart mr-2" /> */}
+            {/* <i className="fas fa-music mr-2" /> */}
           </div>
           <div className="card-body bg-light">
             <p>
-              <img src={Linked} alt="" height="18px"/>  
-              <a href="https://www.linkedin.com/in/rinaykumar" target="_blank" rel="noopener noreferrer"> linkedin.com/in/rinaykumar</a> 
+              <img src={Linked} alt="" height="18px" />
+              <a
+                href="https://www.linkedin.com/in/rinaykumar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/rinaykumar
+              </a>
             </p>
             <p>
               <i>
-                Hello there, I'm a senior undergrad student in Computer
-                Science at SFSU.
-                <br />
+                Hello there, I'm a senior undergrad student in Computer Science
+                at SFSU.
               </i>
             </p>
           </div>
@@ -101,16 +101,20 @@ const Rinay = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>2CHAINZ OR BOT</strong>
-              </h4>
-
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                2CHAINZ OR BOT
+              </span>
               <blockquote className="card-body bg-light font-italic">
-              <a href="https://www.2chainzorbot.com" target="_blank" rel="noopener noreferrer">2chainzorbot.com</a>
-              <br/>
-              <br/>
-              A fullstack web application built with Python3 and Flask for the backend, 
-              and with Node.js and React.js for the frontend.
+                <a
+                  href="https://www.2chainzorbot.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  2chainzorbot.com
+                </a>
+                <br />
+                <br />A fullstack web application built with Python3 and Flask
+                for the backend, and with Node.js and React.js for the frontend.
               </blockquote>
               <img
                 className="card-img-bottom img-fluid"
@@ -120,7 +124,7 @@ const Rinay = () => {
                 alt=""
               />
               <a
-                className="text-dark mt-3"
+                className="text-white mt-3"
                 href="https://github.com/rinaykumar/2chainz-or-bot"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -132,15 +136,22 @@ const Rinay = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>sodaChat</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                sodaChat
+              </span>
               <blockquote className="card-body bg-light font-italic">
-              <a href="https://sodachat.net" target="_blank" rel="noopener noreferrer">sodchat.net</a>
-              <br/>
-              <br/>
-              Fullstack live chat web application built with a great team. Backend: Java, 
-              Spark, Maven, MongoDB, WebSocket. Frontend: React.js, Node.js, Express.js, HTML, CSS
+                <a
+                  href="https://sodachat.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  sodchat.net
+                </a>
+                <br />
+                <br />
+                Fullstack live chat web application built with a great team.
+                Backend: Java, Spark, Maven, MongoDB, WebSocket. Frontend:
+                React.js, Node.js, Express.js, HTML, CSS
               </blockquote>
               <img
                 className="card-img-bottom img-fluid"
@@ -150,7 +161,7 @@ const Rinay = () => {
                 alt=""
               />
               <a
-                className="text-dark mt-3"
+                className="text-white mt-3"
                 href="https://github.com/rinaykumar/sodaChat"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -162,13 +173,14 @@ const Rinay = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Word Blast</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Word Blast
+              </span>
               <blockquote className="card-body bg-light font-italic">
-              A CLI program built with C, pthreads, and Linux system calls. Takes a text file, 
-              parses it, finds words with 6 or more characters, counts their occurrences, then 
-              displays the top 10 most used 6+ character words, using concurrent threads.
+                A CLI program built with C, pthreads, and Linux system calls.
+                Takes a text file, parses it, finds words with 6 or more
+                characters, counts their occurrences, then displays the top 10
+                most used 6+ character words, using concurrent threads.
               </blockquote>
               <img
                 className="card-img-bottom img-fluid"
@@ -178,7 +190,7 @@ const Rinay = () => {
                 alt=""
               />
               <a
-                className="text-dark mt-3"
+                className="text-white mt-3"
                 href="https://github.com/rinaykumar/word-blast"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -6,41 +6,45 @@ import Bhavani from "./pages/Bhavani";
 import Frederick from "./pages/Frederick";
 import German from "./pages/German";
 import Henzon from "./pages/Henzon";
-import VPHome from "./pages/VPHome";
+// import VPHome from "./pages/VPHome";
+import Home from "./pages/Home";
+import MenuSideBar from "./components/MenuSideBar";
 
 function App() {
   return (
-    <div>
+    <>
       <BrowserRouter>
+        <MenuSideBar />
         <Switch>
-          <Route path="/rajdeep">
+          <Route path="/about/rajdeep">
             <Rajdeep />
           </Route>
-          <Route path="/rinay">
+          <Route path="/about/rinay">
             <Rinay />
           </Route>
-          <Route path="/bhavani">
+          <Route path="/about/bhavani">
             <Bhavani />
           </Route>
-          <Route path="/frederick">
+          <Route path="/about/frederick">
             <Frederick />
           </Route>
-          <Route path="/german">
+          <Route path="/about/german">
             <German />
           </Route>
-          <Route path="/henzon">
+          <Route path="/about/henzon">
             <Henzon />
           </Route>
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/">
+          <Route path="/home">
             {/* Root set to VP home page for M2 */}
-            <VPHome />
+            {/* <VPHome /> */}
+            <Home />
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

@@ -1,48 +1,41 @@
 import React from "react";
 import "../assets/css/about_individual.css";
-
 import ProfilePic from "../assets/img/about/frederick/frederick.jpg";
 import FlutterLogo from "../assets/img/about/frederick/flutter.png";
 import JavaLogo from "../assets/img/about/frederick/java.png";
 import AndroidLogo from "../assets/img/about/frederick/android.png";
 import CPlusPlusLogo from "../assets/img/about/frederick/cplusplus.png";
-
 import ReactLogo from "../assets/img/about/bhavani/react.png";
 import PythonLogo from "../assets/img/about/bhavani/python.png";
 import CSSLogo from "../assets/img/about/bhavani/css.png";
 import HTMLLogo from "../assets/img/about/bhavani/html.png";
 
 const Frederick = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  
+  // React.useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
+
   return (
-    <div className="about-page">
-      <div className="jumbotron jumbotron-fluid about-header">
-        <div className="d-flex flex-wrap justify-content-center">
-          <div className="mx-5">
-            <img
-              className="rounded-circle about-img"
-              src={ProfilePic}
-              alt="profilepicture"
-            />
-          </div>
-          <div className="about-me-text pt-5 text-white">
-            <h1 className="text-warning">About Me</h1>
-            <h4>Frederick White</h4>
-            <p>
-              Undergraduate Student <br /> San Francisco State University
-            </p>
-          </div>
+    <div className="about-page m-5">
+      <div className="d-flex flex-wrap justify-content-center">
+        <div className="mx-5">
+          <img
+            className="card-border-size rounded-circle about-img"
+            src={ProfilePic}
+            alt="profilepicture"
+          />
+        </div>
+        <div className="about-me-text pt-5 text-dark">
+          <p className="h1 primary-color">About Me</p>
+          <h4 className="primary-color">Frederick White</h4>
+          <p className="primary-color">
+            Undergraduate Student <br /> San Francisco State University
+          </p>
         </div>
       </div>
       <div className="about-body container-fluid">
         <div className="about-desc card">
-          <div
-            className="card-header"
-            style={{ backgroundColor: "rgb(172, 155, 223)" }}
-          >
+          <div className="card-header primary-color-bg secondary-color">
             <i className="fas fa-university mr-2" />
             <i className="fas fa-mountain mr-2" />
             <i className="fas fa-guitar mr-2" />
@@ -57,8 +50,8 @@ const Frederick = () => {
                 learn more about full-stack development.
                 <br />
                 Some more about me, I grew up in Florida before moving to
-                California in 2015. I currently live and hope to work in
-                the Bay Area.
+                California in 2015. I currently live and hope to work in the Bay
+                Area.
                 <br />
                 Outside of programming I enjoy going rock climbing and being
                 outdoors. I also like to listen to music and go to concerts.
@@ -107,24 +100,16 @@ const Frederick = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Mask Helper</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Mask Helper
+              </span>
               <blockquote className="card-body bg-light font-italic">
-                A mobile app that gives users a notification to wear a mask
-                when they leave. Users can choose which locations they want 
-                to receive a notification for. Utilizes Google maps and 
-                places API. 
+                A mobile app that gives users a notification to wear a mask when
+                they leave. Users can choose which locations they want to
+                receive a notification for. Utilizes Google maps and places API.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/fwhite95/teamflutterfa_sfhacks2021"
               >
                 <i
@@ -134,24 +119,17 @@ const Frederick = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Evented</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Evented
+              </span>
               <blockquote className="card-body bg-light font-italic">
                 A mobile application that allows users to search for local
-                events at bars, clubs, and venues. Users can lookup events,
-                add them to a list, and follow locations to see new events. 
-                Utilizes Flutter and Google Firebase to hold user information
+                events at bars, clubs, and venues. Users can lookup events, add
+                them to a list, and follow locations to see new events. Utilizes
+                Flutter and Google Firebase to hold user information
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/fwhite95/evented"
               >
                 <i
@@ -161,25 +139,18 @@ const Frederick = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Bookmera</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Bookmera
+              </span>
               <blockquote className="card-body bg-light font-italic">
-                Mobile application that allows users to sign in with Google
-                sign in and look up gooks using Google books API. Users can 
-                search for books or see the books in their reading lists.
-                Also utilizes a Firebase ML kit to allow users to search for 
-                books through a photo of the book cover. 
+                Mobile application that allows users to sign in with Google sign
+                in and look up gooks using Google books API. Users can search
+                for books or see the books in their reading lists. Also utilizes
+                a Firebase ML kit to allow users to search for books through a
+                photo of the book cover.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/fwhite95/bookmera"
               >
                 <i
@@ -189,25 +160,15 @@ const Frederick = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>DoodleBug</strong>
-              </h4>  
-              
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                DoodleBug
+              </span>
               <blockquote className="card-body bg-light font-italic">
                 This is a C++ project that simulates Doodle bugs. This means
-                that it is a simulation of predator/prey interations. 
+                that it is a simulation of predator/prey interations.
               </blockquote>
-              
-
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/fwhite95/DoodleBug_CPP"
               >
                 <i
@@ -218,8 +179,8 @@ const Frederick = () => {
             </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

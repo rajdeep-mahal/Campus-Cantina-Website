@@ -11,36 +11,31 @@ import FlaskLogo from "../assets/img/about/bhavani/flask.png";
 import ReactLogo from "../assets/img/about/bhavani/react.png";
 
 const Bhavani = () => {
-  React.useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // React.useLayoutEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   return (
-    <div className="about-page">
-      <div className="jumbotron jumbotron-fluid about-header">
-        <div className="d-flex flex-wrap justify-content-center">
-          <div className="mx-5">
-            <img
-              className="rounded-circle about-img"
-              src={ProfilePic}
-              alt="profilepicture"
-            />
-          </div>
-          <div className="about-me-text pt-5 text-white">
-            <h1 className="text-warning">About Me</h1>
-            <h4>Bhavani Goruganthu</h4>
-            <p>
-              Graduate Student <br /> San Francisco State University
-            </p>
-          </div>
+    <div className="about-page m-5">
+      <div className="d-flex flex-wrap justify-content-center">
+        <div className="mx-5">
+          <img
+            className="card-border-size rounded-circle about-img"
+            src={ProfilePic}
+            alt="profilepicture"
+          />
+        </div>
+        <div className="about-me-text pt-5 text-dark">
+          <p className="h1 primary-color">About Me</p>
+          <h4 className="primary-color">Bhavani Goruganthu</h4>
+          <p className="primary-color">
+            Graduate Student <br /> San Francisco State University
+          </p>
         </div>
       </div>
       <div className="about-body container-fluid">
         <div className="about-desc card">
-          <div
-            className="card-header"
-            style={{ backgroundColor: "rgb(172, 155, 223)" }}
-          >
+          <div className="card-header primary-color-bg secondary-color">
             <i className="fas fa-university mr-2" />
             <i className="fas fa-server mr-2" />
             <i className="fas fa-heart mr-2" />
@@ -106,10 +101,9 @@ const Bhavani = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Photobook</strong>
-              </h4>
-
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Photobook
+              </span>
               <blockquote className="card-body bg-light font-italic">
                 A Photobook Website enables users to upload a photo (stored in
                 Cloud Storage) and its metadata (stored in Cloud Datastore). The
@@ -117,7 +111,7 @@ const Bhavani = () => {
                 categorized based on the labels returned by the API.
               </blockquote>
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/bhavani-goruganthu/CSC847_GAE_Proj2_VisionAPI"
               >
                 <i
@@ -127,24 +121,17 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Student Directory on GCP</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Student Directory on GCP
+              </span>
               <blockquote className="card-body bg-light font-italic">
                 A Student Directory Website has been developed which is hosted
                 on the GCE’s instances and enables users to display all the
                 students, add a student and search for students using Cloud SQL
                 for MySQL.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/bhavani-goruganthu/gce_studentapp"
               >
                 <i
@@ -154,24 +141,17 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>Quote Keeper</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                Quote Keeper
+              </span>
               <blockquote className="card-body bg-light font-italic">
                 This website saves Quotes on-the-go by using Google Cloud
                 Machine Learning API's. It can be a picture of a quote, a
                 downloaded image, a hand-written quote or a recorded one. All
                 quotes are saved in free text mode in Google Cloud Datastore.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/bhavani-goruganthu/Flask-Projects/tree/master/CloudComputing/GP"
               >
                 <i
@@ -181,23 +161,17 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <h4 className="about-skill-name">
-                <strong>eCommerce Website</strong>
-              </h4>
+              <span className="h4 about-skill-name text-white font-weight-bold">
+                eCommerce Website
+              </span>
+
               <blockquote className="card-body bg-light font-italic">
                 This is a single page React app with distributed microservices
                 back end which is developed based on latest technologies like
                 Redis, Kafka, WebSocket, ReacttJS, ExpressJS, Mongodb.
               </blockquote>
-              {/* <img
-                className="card-img-bottom"
-                src={Calculator}
-                width="200"
-                height="200"
-                alt=""
-              /> */}
               <a
-                className="text-dark mt-3"
+                className="text-white"
                 href="https://github.com/bhavani-goruganthu/final-project-listy"
               >
                 <i

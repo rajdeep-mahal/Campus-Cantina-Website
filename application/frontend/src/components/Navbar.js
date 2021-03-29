@@ -1,20 +1,12 @@
 import React from "react";
-import CCLogo from "../assets/img/CC_Logo.png";
 import "../assets/css/navbar.css";
-
 function Navbar() {
   return (
     <>
-      <a className="navbar-brand" href="/">
-        <img src={CCLogo} alt="logo" width="125" height="65" />
-        <span className="navbar-brand mb-0 h1 logo-name text-white">
-          Campus Cantina
-        </span>
-      </a>
-      <ul className="navbar-nav">
-        <li className="nav-item dropdown">
+      <ul className="navbar-nav search-bar-align">
+        <li className="nav-item dropdown h6 pt-lg-2 pt-xl-2 pt-md-2">
           <a
-            className="nav-link dropdown-toggle  text-white"
+            className="nav-link dropdown-toggle text-white"
             href="/"
             id="navbardrop"
             data-toggle="dropdown"
@@ -43,27 +35,29 @@ function Navbar() {
               placeholder="Search ..."
             />
             <a href="/search">
-              <button
-                className="btn navbar-search-btn my-2 my-sm-0"
-                type="submit"
-              >
+              <button className="btn navbar-search-btn my-2" type="submit">
                 Search
               </button>
             </a>
           </form>
         </li>
-        <li className="nav-item d-none d-lg-block d-xl-block">
+      </ul>
+      <ul className="navbar-nav">
+        <li className="nav-item d-none h6 d-lg-none d-xl-block">
           <a className="nav-link text-white" href="/about">
+            <i className="fas fa-users mr-1 nav-menu-icon" />
             About Us
           </a>
         </li>
-        <li className="nav-item d-none d-lg-block d-xl-block">
+        <li className="nav-item d-none h6 d-lg-none d-xl-block">
           <a className="nav-link text-white" href="/login">
+            <i className="fas fa-sign-in-alt mr-1 nav-menu-icon" />
             Login
           </a>
         </li>
-        <li className="nav-item d-none d-lg-block d-xl-block">
+        <li className="nav-item d-none h6 d-lg-none d-xl-block">
           <a className="nav-link text-white" href="/signup">
+            <i className="fas fa-user-plus mr-1 nav-menu-icon" />
             Sign up
           </a>
         </li>

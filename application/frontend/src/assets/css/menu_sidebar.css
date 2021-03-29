@@ -1,5 +1,28 @@
 @import "../../index.css";
 
+.navbar-header {
+  text-align: end;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 11px;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-header {
+    text-align: center;
+  }
+}
+
+.navbar-align {
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-align {
+    justify-content: left;
+  }
+}
+
 /* COMMON CSS CLASS -- CHECK*/
 .navbar {
   display: flex;
@@ -14,7 +37,7 @@
 .navbar::after {
   content: "";
   position: absolute;
-  height: 48px;
+  height: 48.5px;
   bottom: -24.5px;
   right: 0;
   left: 0;
@@ -31,8 +54,9 @@
   width: 300px;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   position: fixed;
   top: 0;
   left: -100%;
@@ -49,6 +73,7 @@
 
 .cc-logo-bg {
   background-color: var(--secondary-color);
+  height: max-content;
 }
 
 /* side menu items link hover effect*/

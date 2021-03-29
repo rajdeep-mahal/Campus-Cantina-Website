@@ -10,19 +10,28 @@ const MenuSideBar = () => {
   const showMenu = () => setMenu(!menu);
   return (
     <>
-      <div className="navbar navbar-expand-lg justify-content-start">
-        <Link to="#">
-          <i
-            className="fas fa-bars text-white h2 mx-3 mt-1"
-            onClick={showMenu}
-          ></i>
-        </Link>
+      <div className="navbar-header p-0 m-0">
+        <span>
+          SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
+          Demonstration Only
+        </span>
+      </div>
+      <div className="navbar navbar-expand-md navbar-align">
+        <div>
+          <Link to="#">
+            <i className="fas fa-bars text-white h3" onClick={showMenu}></i>
+          </Link>
+          <a className="navbar-brand" href="/">
+            <img src={CCLogo} alt="logo" width="125" height="65" />
+            <span className="logo-name text-white">Campus Cantina</span>
+          </a>
+        </div>
         <Navbar />
       </div>
       <nav
         className={menu ? "side-menu open text-white" : "side-menu text-white"}
       >
-        <div className="cc-logo-bg container-fluid d-flex flex-wrap justify-content-center pt-2">
+        <div className="cc-logo-bg container-fluid d-flex flex-wrap justify-content-center pt-2 pb-1">
           <a href="/home">
             <img
               src={CCLogo}
@@ -42,7 +51,7 @@ const MenuSideBar = () => {
 
           {MenuItems.map((item, index) => {
             return (
-              <li key={index} className="menu-item p-2 m-2">
+              <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
                 <Link to={item.path}>
                   <i className={item.cName} />
                   {index === 4 ? (

@@ -9,6 +9,7 @@ import Henzon from "./pages/Henzon";
 // import VPHome from "./pages/VPHome";
 import Home from "./pages/Home";
 import MenuSideBar from "./components/MenuSideBar";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/searchresults">
+            <SearchResults />
           </Route>
           <Route path="/home">
             {/* Root set to VP home page for M2 */}

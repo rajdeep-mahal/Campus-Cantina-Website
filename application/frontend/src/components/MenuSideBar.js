@@ -10,7 +10,7 @@ const MenuSideBar = () => {
   const showMenu = () => setMenu(!menu);
   return (
     <>
-      <div className="navbar-header p-0 m-0">
+      <div className="navbar-header text-center" style={{fontSize: '10px', color: 'grey'}}>
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
@@ -21,17 +21,28 @@ const MenuSideBar = () => {
           <Link to="#">
             <i className="fas fa-bars text-white h3" onClick={showMenu}></i>
           </Link>
-          <a className="navbar-brand" href="/">
-            <img src={CCLogo} alt="logo" width="125" height="65" />
-            <span className="logo-name text-white">Campus Cantina</span>
-          </a>
         </div>
-        <Navbar />
+          <div className="text-center mx-auto" style={{display: 'flex'}}>
+          {/* <a className="navbar-brand" href="/"> */}
+            <img src={CCLogo} alt="logo" height="45" />
+            <h2 className="campus">campus cantina</h2>
+          {/* </a> */}
+          </div>
+          <div>
+          <i class="fas fa-shopping-cart text-white h3"></i>
+          </div>
+        
+        
       </div>
+      {/* <Navbar /> */}
+      <div className="second-bar">
+      <Navbar />
+      </div>
+      
       <nav
         className={menu ? "side-menu open text-white" : "side-menu text-white"}
       >
-        <div className="cc-logo-bg container-fluid d-flex flex-wrap justify-content-center pt-2 pb-1">
+        {/* <div className="cc-logo-bg container-fluid d-flex flex-wrap justify-content-center pt-2 pb-1">
           <a href="/home">
             <img
               src={CCLogo}
@@ -41,11 +52,11 @@ const MenuSideBar = () => {
               className="rounded-circle side-logo-img p-1"
             />
           </a>
-        </div>
+        </div> */}
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showMenu}>
             <Link to="#">
-              <i className=" fas fa-times text-white float-right h4"></i>
+              <i className=" fas fa-times close float-right h4"></i>
             </Link>
           </li>
 
@@ -60,9 +71,7 @@ const MenuSideBar = () => {
                         {item.title}
                       </span>
                       <br />
-                      <span className="text-white p-2 m-5 h5">
-                        --Partner with us
-                      </span>
+                      
                     </>
                   ) : index === 5 ? (
                     <>
@@ -70,9 +79,7 @@ const MenuSideBar = () => {
                         {item.title}
                       </span>
                       <br />
-                      <span className="text-white p-2 m-5 h5">
-                        --Signup to Deliver
-                      </span>
+                      
                     </>
                   ) : (
                     <>
@@ -87,7 +94,7 @@ const MenuSideBar = () => {
           })}
           <li className="small pt-5 m-4 text-center">
             <i className="fas fa-copyright"></i>
-            <span className="text-white ml-2">
+            <span style={{color: "gray"}}>
               Campus Cantina CSC648/848 Team 04 Spring 2021
             </span>
           </li>

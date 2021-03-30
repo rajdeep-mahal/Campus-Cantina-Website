@@ -46,62 +46,47 @@ const Navbar = () => {
   }, []);
 
   return (
-    <>
-      <div style={{ display: 'flex' }} className="text-center">
-        {/* Cuisine Dropdown List */}
-        <select
-          id="cuisineDropDown"
-          onChange={handleCuisine}
-          className="custom-select"
-          style={{ width: '120px' }}
-        >
-          <option value="">All Cuisines</option>
-          {cuisines.map((cuisine, i) => (
-            <option value={cuisine.Cuisine} key={i}>
-              {cuisine.Cuisine}
-            </option>
-          ))}
-        </select>
-        {/* Search Bar */}
-        <input
-          id="searchInput"
-          type="text"
-          className="form-control"
-          style={{ width: '300px' }}
-          size="30"
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        {/* Search Button */}
-        <div className="input-group-append">
-          <button className="btn nav-search-btn" onClick={handleSearch}>
-            Search
-          </button>
-        </div>
+      <div className='container'>
+        <div className="row">
+          <div className="mx-auto">
+            <div style={{ display: 'flex' }} className="text-center">
+              {/* Cuisine Dropdown List */}
+              <select
+                id="cuisineDropDown"
+                onChange={handleCuisine}
+                className="custom-select"
+                style={{ width: '120px' }}
+              >
+                <option value="">All Cuisines</option>
+                {cuisines.map((cuisine, i) => (
+                  <option value={cuisine.Cuisine} key={i}>
+                    {cuisine.Cuisine}
+                  </option>
+                ))}
+              </select>
+              {/* Search Bar */}
+              <input
+                id="searchInput"
+                type="text"
+                className="form-control"
+                style={{ width: '300px' }}
+                size="30"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {/* Search Button */}
+              <div className="input-group-append">
+                <button className="btn nav-search-btn" onClick={handleSearch}>
+                  Search
+                </button>
+              </div>
+          </div>
       </div>
-      <ul className="navbar-nav">
-        <li className="nav-item d-none h6 d-lg-none d-xl-block">
-          <a className="nav-link text-white" href="/about">
-            <i className="fas fa-users mr-1 nav-menu-icon" />
-            About Us
-          </a>
-        </li>
-        <li className="nav-item d-none h6 d-lg-none d-xl-block">
-          <a className="nav-link text-white" href="/login">
-            <i className="fas fa-sign-in-alt mr-1 nav-menu-icon" />
-            Login
-          </a>
-        </li>
-        <li className="nav-item d-none h6 d-lg-none d-xl-block">
-          <a className="nav-link text-white" href="/signup">
-            <i className="fas fa-user-plus mr-1 nav-menu-icon" />
-            Sign up
-          </a>
-        </li>
-      </ul>
+      </div>
+      
       {redirect && (
         <Redirect to='/searchresults'/>
       )}
-    </>
+      </div>
   );
 };
 

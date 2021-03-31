@@ -155,3 +155,11 @@
 .campus-home-link:hover {
   text-decoration: none;
 }
+
+.cart-text {
+  color: var(--primary-color);
+}
+
+.hamburger {
+  padding-bottom: 7px;
+}

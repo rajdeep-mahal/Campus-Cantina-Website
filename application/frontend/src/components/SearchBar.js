@@ -1,11 +1,11 @@
 import React from 'react';
-import '../assets/css/navbar.css';
+import '../assets/css/searchbar.css';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSearchResults, setNoResult } from '../redux/actions/searchActions';
 
-const Navbar = () => {
+const SearchBar = () => {
   const [cuisines, setCuisines] = React.useState([]);
   const [selectedCuisine, setSelectedCuisine] = React.useState('');
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -94,4 +94,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default SearchBar;

@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import CCLogo from '../assets/img/CC_Logo.png';
 
-const MenuSideBar = () => {
+const TopBarNoCart = () => {
   const [menu, setMenu] = useState(false);
-  const [cart, setCart] = useState(false);
   const showMenu = () => setMenu(!menu);
-  const showCart = () => setCart(!cart);
 
   return (
     <>
@@ -28,18 +26,16 @@ const MenuSideBar = () => {
           </Link>
         </div>
         <Link to="/home" className="campus-home-link">
-        <div className="mx-auto text-center" style={{ display: 'flex' }}>
-          <img src={CCLogo} alt="logo" height="45" className="logopic" />
-          <h3 className="campus">campus cantina</h3>
-        </div>
+          <div className="mx-auto text-center" style={{ display: 'flex' }}>
+            <img src={CCLogo} alt="logo" height="45" className="logopic" />
+            <h3 className="campus">campus cantina</h3>
+          </div>
         </Link>
         <div style={{ paddingLeft: '10px' }}>
-          <Link to="#">
-            <i
-              className="fas fa-shopping-cart text-white h3"
-              onClick={showCart}
-            ></i>
-          </Link>
+          <i
+            style={{ color: '#552583' }}
+            className="fas fa-shopping-cart h3"
+          ></i>
         </div>
       </div>
       {/* Side Menu */}
@@ -90,24 +86,8 @@ const MenuSideBar = () => {
           </li>
         </ul>
       </nav>
-      {/* Cart */}
-      <nav className={cart ? 'cart open text-white' : 'cart text-white'}>
-        <ul className="navbar-nav">
-          <li className="px-3 pt-1" onClick={showCart}>
-            <Link to="#">
-              <i className=" fas fa-times close float-left h4"></i>
-            </Link>
-          </li>
-          <li>
-            <br/>
-            <span className="cart-text p-2 m-1 h5">
-              Your Cart is empty
-            </span>
-          </li>
-        </ul>
-      </nav>
     </>
   );
 };
 
-export default MenuSideBar;
+export default TopBarNoCart;

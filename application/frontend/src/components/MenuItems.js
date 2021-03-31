@@ -6,12 +6,12 @@ export const MenuItems = [
   },
   {
     title: "Login",
-    path: "/login",
+    path: "/sfsulogin",
     cName: "nav-menu-icon fas fa-sign-in-alt",
   },
   {
     title: "Signup",
-    path: "/signup",
+    path: "/sfsusignup",
     cName: "nav-menu-icon fas fa-user-plus",
   },
   {
@@ -21,12 +21,12 @@ export const MenuItems = [
   },
   {
     title: "Own a Restaurant?",
-    path: "/owner",
+    path: "/ownerlogin",
     cName: "nav-menu-icon fas fa-utensils",
   },
   {
     title: "Earn by Delivering Food",
-    path: "/driver",
+    path: "/driverlogin",
     cName: "nav-menu-icon fas fa-biking",
   },
 ];

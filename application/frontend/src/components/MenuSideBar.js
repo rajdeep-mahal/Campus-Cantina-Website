@@ -1,16 +1,21 @@
-import React, { useState } from "react";
-import "../assets/css/menu_sidebar.css";
-import { Link } from "react-router-dom";
-import { MenuItems } from "./MenuItems";
-import Navbar from "./Navbar";
-import CCLogo from "../assets/img/CC_Logo.png";
+import React, { useState } from 'react';
+import '../assets/css/menu_sidebar.css';
+import { Link } from 'react-router-dom';
+import { MenuItems } from './MenuItems';
+import CCLogo from '../assets/img/CC_Logo.png';
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
+  const [cart, setCart] = useState(false);
   const showMenu = () => setMenu(!menu);
+  const showCart = () => setCart(!cart);
+
   return (
     <>
-      <div className="navbar-header text-center" style={{fontSize: '10px', color: 'grey'}}>
+      <div
+        className="navbar-header text-center"
+        style={{ fontSize: '10px', color: 'grey' }}
+      >
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
@@ -22,44 +27,31 @@ const MenuSideBar = () => {
             <i className="fas fa-bars text-white h3" onClick={showMenu}></i>
           </Link>
         </div>
-          <div className="text-center mx-auto" style={{display: 'flex'}}>
-          {/* <a className="navbar-brand" href="/"> */}
-            <img src={CCLogo} alt="logo" height="45" />
-            <h2 className="campus">campus cantina</h2>
-          {/* </a> */}
-          </div>
-          <div>
-          <i class="fas fa-shopping-cart text-white h3"></i>
-          </div>
-        
-        
+        <Link to="/home" className="campus-home-link">
+        <div className="mx-auto text-center" style={{ display: 'flex' }}>
+          <img src={CCLogo} alt="logo" height="45" className="logopic" />
+          <h3 className="campus">campus cantina</h3>
+        </div>
+        </Link>
+        <div style={{ paddingLeft: '10px' }}>
+          <Link to="#">
+            <i
+              className="fas fa-shopping-cart text-white h3"
+              onClick={showCart}
+            ></i>
+          </Link>
+        </div>
       </div>
-      {/* <Navbar /> */}
-      <div className="second-bar">
-      <Navbar />
-      </div>
-      
+      {/* Side Menu */}
       <nav
-        className={menu ? "side-menu open text-white" : "side-menu text-white"}
+        className={menu ? 'side-menu open text-white' : 'side-menu text-white'}
       >
-        {/* <div className="cc-logo-bg container-fluid d-flex flex-wrap justify-content-center pt-2 pb-1">
-          <a href="/home">
-            <img
-              src={CCLogo}
-              alt="logo"
-              width="180"
-              height="100"
-              className="rounded-circle side-logo-img p-1"
-            />
-          </a>
-        </div> */}
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showMenu}>
             <Link to="#">
               <i className=" fas fa-times close float-right h4"></i>
             </Link>
           </li>
-
           {MenuItems.map((item, index) => {
             return (
               <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
@@ -71,7 +63,6 @@ const MenuSideBar = () => {
                         {item.title}
                       </span>
                       <br />
-                      
                     </>
                   ) : index === 5 ? (
                     <>
@@ -79,7 +70,6 @@ const MenuSideBar = () => {
                         {item.title}
                       </span>
                       <br />
-                      
                     </>
                   ) : (
                     <>
@@ -92,10 +82,26 @@ const MenuSideBar = () => {
               </li>
             );
           })}
-          <li className="small pt-5 m-4 text-center">
+          <li className="small pt-5 m-4 text-center copytext">
             <i className="fas fa-copyright"></i>
-            <span style={{color: "gray"}}>
+            <span style={{ color: 'gray' }}>
               Campus Cantina CSC648/848 Team 04 Spring 2021
+            </span>
+          </li>
+        </ul>
+      </nav>
+      {/* Cart */}
+      <nav className={cart ? 'cart open text-white' : 'cart text-white'}>
+        <ul className="navbar-nav">
+          <li className="px-3 pt-1" onClick={showCart}>
+            <Link to="#">
+              <i className=" fas fa-times close float-left h4"></i>
+            </Link>
+          </li>
+          <li>
+            <br/>
+            <span className="side-menu-text p-2 m-1 h5">
+              Your Cart is empty
             </span>
           </li>
         </ul>
@@ -103,4 +109,5 @@ const MenuSideBar = () => {
     </>
   );
 };
+
 export default MenuSideBar;

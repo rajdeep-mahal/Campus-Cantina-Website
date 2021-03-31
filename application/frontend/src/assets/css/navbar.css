@@ -1,4 +1,4 @@
-@import "../../index.css";
+@import '../../index.css';
 
 .logo-name {
   font-weight: bolder;
@@ -34,3 +34,6 @@
   color: white;
 }
 
+.nav-container {
+  padding-top: 10px;
+}

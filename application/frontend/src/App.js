@@ -1,15 +1,16 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import About from "./pages/About";
-import Rajdeep from "./pages/Rajdeep";
-import Rinay from "./pages/Rinay";
-import Bhavani from "./pages/Bhavani";
-import Frederick from "./pages/Frederick";
-import German from "./pages/German";
-import Henzon from "./pages/Henzon";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import About from './pages/About';
+import Rajdeep from './pages/Rajdeep';
+import Rinay from './pages/Rinay';
+import Bhavani from './pages/Bhavani';
+import Frederick from './pages/Frederick';
+import German from './pages/German';
+import Henzon from './pages/Henzon';
 // import VPHome from "./pages/VPHome";
-import Home from "./pages/Home";
-import MenuSideBar from "./components/MenuSideBar";
-import SearchResults from "./pages/SearchResults";
+import Home from './pages/Home';
+import MenuSideBar from './components/MenuSideBar';
+import SearchResults from './pages/SearchResults';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -39,11 +40,11 @@ function App() {
             <About />
           </Route>
           <Route path="/searchresults">
+            <Navbar />
             <SearchResults />
           </Route>
           <Route path="/home">
-            {/* Root set to VP home page for M2 */}
-            {/* <VPHome /> */}
+            <Navbar />
             <Home />
           </Route>
         </Switch>

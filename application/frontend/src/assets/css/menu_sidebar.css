@@ -1,4 +1,4 @@
-@import "../../index.css";
+@import '../../index.css';
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
 
 .navbar-header {
@@ -6,6 +6,7 @@
   background-color: var(--primary-color);
   color: white;
   font-size: 11px;
+  padding-bottom: 5px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -30,26 +31,16 @@
   background-color: var(--primary-color);
   position: relative;
   padding-top: 0rem;
-  padding-bottom: 0.5rem;
-}
-
-.second-bar {
-  position: absolute;
-  height: 48px;
-  display: flex;
-  right: 0;
-  left: 0;
-  background: var(--secondary-color);
-  padding-top: 5px;
+  padding-bottom: 1.8rem;
 }
 
 /* skewing navbar section */
-/* .navbar::before,
+.navbar::before,
 .navbar::after {
-  content: "";
+  content: '';
   position: absolute;
-  height: 31.5px;
-  bottom: -15.5px;
+  height: 29.5px;
+  bottom: -14.5px;
   right: 0;
   left: 0;
   background: var(--secondary-color);
@@ -57,7 +48,9 @@
   -webkit-transform: skewY(1.5deg);
   -moz-transform: skewY(1.5deg);
   -ms-transform: skewY(1.5deg);
-} */
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+}
 
 /* side menu section*/
 .side-menu {
@@ -74,6 +67,7 @@
   transition: 850ms;
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
+  z-index: 1;
 }
 .side-menu.open {
   left: 0;
@@ -105,15 +99,59 @@
 }
 .side-menu-text:hover {
   background-color: var(--primary-color);
-  color: white
+  color: white;
 }
 
 .campus {
   font-family: 'Ubuntu', sans-serif;
   color: white;
   font-weight: 900;
+  padding-bottom: 5px;
+  margin-left: -6px;
+  text-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 .close {
   color: var(--primary-color);
+}
+
+.searchbar {
+  padding-right: 200px;
+  padding-bottom: 8px;
+}
+
+.logopic {
+  padding-bottom: 6px;
+  
+}
+
+.copytext {
+  padding-right: 25px;
+}
+
+.cart {
+  background-color: white;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  z-index: 1;
+}
+
+.cart.open {
+  right: 0;
+  transition: 350ms;
+}
+
+.campus-home-link:hover {
+  text-decoration: none;
 }

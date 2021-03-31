@@ -39,6 +39,11 @@ const Navbar = () => {
       });
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter')
+      handleSearch();
+  }
+
   React.useEffect(() => {
     axios.get('http://localhost:3001/api/cuisines').then((res) => {
       setCuisines(res.data);
@@ -46,47 +51,46 @@ const Navbar = () => {
   }, []);
 
   return (
-      <div className='container'>
-        <div className="row">
-          <div className="mx-auto">
-            <div style={{ display: 'flex' }} className="text-center">
-              {/* Cuisine Dropdown List */}
-              <select
-                id="cuisineDropDown"
-                onChange={handleCuisine}
-                className="custom-select"
-                style={{ width: '120px' }}
-              >
-                <option value="">All Cuisines</option>
-                {cuisines.map((cuisine, i) => (
-                  <option value={cuisine.Cuisine} key={i}>
-                    {cuisine.Cuisine}
-                  </option>
-                ))}
-              </select>
-              {/* Search Bar */}
-              <input
-                id="searchInput"
-                type="text"
-                className="form-control"
-                style={{ width: '300px' }}
-                size="30"
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              {/* Search Button */}
-              <div className="input-group-append">
-                <button className="btn nav-search-btn" onClick={handleSearch}>
-                  Search
-                </button>
-              </div>
+    <div className="container">
+      <br />
+      <div className="row nav-container">
+        <div className="mx-auto">
+          <div style={{ display: 'flex' }} className="text-center container">
+            {/* Cuisine Dropdown List */}
+            <select
+              id="cuisineDropDown"
+              onChange={handleCuisine}
+              className="custom-select"
+              style={{ width: '120px' }}
+            >
+              <option value="">All Cuisines</option>
+              {cuisines.map((cuisine, i) => (
+                <option value={cuisine.Cuisine} key={i}>
+                  {cuisine.Cuisine}
+                </option>
+              ))}
+            </select>
+            {/* Search Bar */}
+            <input
+              id="searchInput"
+              type="text"
+              className="form-control"
+              style={{ width: '300px' }}
+              size="30"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            {/* Search Button */}
+            <div className="input-group-append">
+              <button className="btn nav-search-btn" onClick={handleSearch}>
+              <i className="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
+        </div>
       </div>
-      </div>
-      
-      {redirect && (
-        <Redirect to='/searchresults'/>
-      )}
-      </div>
+      {redirect && <Redirect to="/searchresults" />}
+    </div>
   );
 };
 

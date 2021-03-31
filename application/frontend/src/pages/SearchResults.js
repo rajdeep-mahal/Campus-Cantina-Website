@@ -1,4 +1,3 @@
-
 import React from 'react';
 // import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';     // For Google Maps
 // import config from '../config';                                                // For Google Maps
@@ -6,9 +5,10 @@ import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
 
 const SearchResults = () => {
-
-  const searchResults = useSelector(state => state.searchReducer.searchResults);
-  const noResult = useSelector(state => state.searchReducer.noResult);
+  const searchResults = useSelector(
+    (state) => state.searchReducer.searchResults
+  );
+  const noResult = useSelector((state) => state.searchReducer.noResult);
 
   // For Google Maps
   // const { loadError } = useLoadScript({
@@ -17,12 +17,10 @@ const SearchResults = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container searchresults">
         <div className="row">
           <div className="mx-auto">
             {/* Search Results */}
-            <br />
-            <br />
             <br />
             <div>
               {searchResults.map((item, i) => (
@@ -67,14 +65,14 @@ const SearchResults = () => {
                       )}
                       */}
                     </div>
-                    <h6
+                    <h5
                       className="text-align-left"
                       style={{ paddingTop: '10px' }}
                     >
                       <strong>{item.Name}</strong>
                       <br />
-                    </h6>
-                    <p style={{ padding: '0px' }}>
+                    </h5>
+                    <p style={{ padding: '0px', color: 'grey' }}>
                       {item.Price_Level} • {item.Cuisine}, {item.Tags}
                     </p>
                   </div>

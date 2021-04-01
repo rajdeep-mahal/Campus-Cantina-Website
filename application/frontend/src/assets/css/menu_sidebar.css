@@ -6,7 +6,7 @@
   background-color: var(--primary-color);
   color: white;
   font-size: 11px;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -29,9 +29,9 @@
 .navbar {
   display: flex;
   background-color: var(--primary-color);
-  position: relative;
-  padding-top: 0rem;
-  padding-bottom: 1.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.3rem;
+  z-index: 1;
 }
 
 /* skewing navbar section */
@@ -106,7 +106,8 @@
   font-family: 'Ubuntu', sans-serif;
   color: white;
   font-weight: 900;
-  padding-bottom: 11px;
+  padding-bottom: 0px;
+  margin-top: -2px;
   margin-left: -6px;
   text-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
@@ -117,7 +118,8 @@
 }
 
 .logopic {
-  padding-bottom: 9px;
+  padding-bottom: 16px;
+  margin-left: -5px;
 }
 
 .copytext {
@@ -181,8 +183,8 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-right: 245px;   /* Trying to center searchbar */
-  padding-bottom: 5px;
+  padding-right: 240px;   /* Trying to center searchbar */
+  padding-bottom: 2px;
 }
 
 .nav-right {

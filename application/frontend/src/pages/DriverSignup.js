@@ -5,7 +5,7 @@ const DriverSignup = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>Driver Signup</h1>
+      <h1>Driver Sign Up</h1>
     </div>
   );
 };

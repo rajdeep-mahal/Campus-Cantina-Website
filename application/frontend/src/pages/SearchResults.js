@@ -3,6 +3,7 @@ import React from 'react';
 // import config from '../config';                                                // For Google Maps
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SearchResults = () => {
   const searchResults = useSelector(
@@ -73,13 +74,25 @@ const SearchResults = () => {
                       <strong>{item.Name}</strong>
                       <br />
                     </h5>
+                    <div style={{display: ''}}>
                     <p style={{ padding: '0px', color: 'grey' }}>
                       {item.Price_Level} • {item.Cuisine}, {item.Tags}
+                      <p className="float-right" style={{paddingRight: '2px'}}>Free Delivery</p>
                     </p>
+                    </div>
                   </div>
                 </div>
               ))}
               {noResult}
+              {noResult && (
+                <div>
+                  <br/>
+                  <Link to="/" style={{ textDecoration: 'none' }}
+                    ><h5 className="text-center"><i class="fas fa-chevron-left h6 "></i> Back</h5>
+                  </Link>
+                </div>
+                )
+              }
             </div>
           </div>
         </div>

@@ -15,25 +15,25 @@ const MenuSideBar = () => {
     <>
       <div
         className="navbar-header text-center"
-        style={{ fontSize: '10px', color: 'grey' }}
+        style={{ fontSize: '11px', color: 'grey' }}
       >
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
         </span>
       </div>
-      <div className="navbar navbar-expand-lg">
+      <div className="navbar sticky-top navbar-expand-lg">
         <div className="nav-left">
           <Link to="#">
             <i
-              className="fas fa-bars text-white hamburger h3"
+              className="fas fa-bars text-white hamburger h4"
               onClick={showMenu}
             ></i>
           </Link>
         </div>
         <div>
           <div className="mx-auto text-center" style={{ display: 'flex' }}>
-            <img src={CCLogo} alt="logo" height="45" className="logopic" />
+            <img src={CCLogo} alt="logo" height="50" className="logopic" />
             <Link to="/" className="campus-home-link">
               <h3 className="campus">campus cantina</h3>
             </Link>
@@ -45,7 +45,7 @@ const MenuSideBar = () => {
         <div className="nav-right">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart text-white h3"
+              className="fas fa-shopping-cart text-white h4"
               onClick={showCart}
             ></i>
           </Link>
@@ -100,7 +100,7 @@ const MenuSideBar = () => {
         </ul>
       </nav>
       {/* Cart */}
-      <nav className={cart ? 'cart open text-white' : 'cart text-white'}>
+      <nav className={cart ? 'cart open' : 'cart'}>
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showCart}>
             <Link to="#">
@@ -108,8 +108,9 @@ const MenuSideBar = () => {
             </Link>
           </li>
           <li>
-            <br />
+            <br/>
             <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
+            <p className="cart-text p-2 m-1">Add items to get started</p>
           </li>
         </ul>
       </nav>

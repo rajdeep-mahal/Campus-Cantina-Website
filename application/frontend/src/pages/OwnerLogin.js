@@ -6,7 +6,7 @@ const OwnerLogin = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>Restaurant Login</h1>
+      <h1>Restaurant Sign In</h1>
       <Link to="/ownersignup">Sign Up</Link>
     </div>
   );

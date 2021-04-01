@@ -5,14 +5,9 @@ export const MenuItems = [
     cName: "nav-menu-icon fas fa-home",
   },
   {
-    title: "Login",
+    title: "Sign Up or Sign In",
     path: "/sfsulogin",
     cName: "nav-menu-icon fas fa-sign-in-alt",
-  },
-  {
-    title: "Signup",
-    path: "/sfsusignup",
-    cName: "nav-menu-icon fas fa-user-plus",
   },
   {
     title: "About Us",

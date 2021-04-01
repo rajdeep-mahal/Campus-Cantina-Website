@@ -16,11 +16,13 @@ router.get('/cuisines', (req, res) => {
 // API call to search database
 router.get('/search', (req, res) => {
   let searchTerm = req.query.searchTerm;
+  searchTerm = searchTerm.trim();
+  let searchTermNoSpaces = searchTerm.replace(/\s+/g, '');
 
   // Check if search input is alphanumeric and less than 40 characters, or empty
   if (
-    (validator.isLength(searchTerm, { max: 40 }) &&
-      validator.isAlphanumeric(searchTerm)) ||
+    (validator.isLength(searchTermNoSpaces, { max: 40 }) &&
+      validator.isAlphanumeric(searchTermNoSpaces)) ||
     searchTerm === ''
   ) {
     let cuisine = req.query.cuisine;

@@ -6,7 +6,7 @@ const DriverLogin = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>Driver Login</h1>
+      <h1>Driver Sign In</h1>
       <Link to="/driversignup">Sign Up</Link>
     </div>
   );

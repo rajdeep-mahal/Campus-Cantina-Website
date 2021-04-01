@@ -6,7 +6,7 @@ const SFSULogin = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>SFSU Login</h1>
+      <h1>SFSU Sign In</h1>
       <Link to="/sfsusignup">Sign Up</Link>
     </div>
   );

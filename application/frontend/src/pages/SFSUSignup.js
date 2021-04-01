@@ -5,7 +5,7 @@ const SFSUSignup = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>SFSU Signup</h1>
+      <h1>SFSU Sign Up</h1>
     </div>
   );
 };

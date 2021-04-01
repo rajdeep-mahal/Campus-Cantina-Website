@@ -5,7 +5,7 @@ const OwnerSignup = () => {
   return (
     <div className="text-center">
       <br/>
-      <h1>Restaurant Signup</h1>
+      <h1>Restaurant Sign Up</h1>
     </div>
   );
 };

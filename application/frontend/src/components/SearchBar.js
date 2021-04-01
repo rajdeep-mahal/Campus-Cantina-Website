@@ -59,7 +59,7 @@ const SearchBar = () => {
               id="cuisineDropDown"
               onChange={handleCuisine}
               className="custom-select"
-              style={{ width: '120px' }}
+              style={{ width: '125px' }}
             >
               <option value="">All Cuisines</option>
               {cuisines.map((cuisine, i) => (

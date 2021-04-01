@@ -26,7 +26,7 @@ const MenuSideBar = () => {
         <div className="nav-left">
           <Link to="#">
             <i
-              className="fas fa-bars text-white hamburger h4"
+              className="fas fa-bars text-white hamburger h3"
               onClick={showMenu}
             ></i>
           </Link>
@@ -35,7 +35,7 @@ const MenuSideBar = () => {
           <div className="mx-auto text-center" style={{ display: 'flex' }}>
             <img src={CCLogo} alt="logo" height="45" className="logopic" />
             <Link to="/" className="campus-home-link">
-              <h4 className="campus">campus cantina</h4>
+              <h3 className="campus">campus cantina</h3>
             </Link>
           </div>
         </div>
@@ -45,7 +45,7 @@ const MenuSideBar = () => {
         <div className="nav-right">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart text-white h4"
+              className="fas fa-shopping-cart text-white h3"
               onClick={showCart}
             ></i>
           </Link>

@@ -30,12 +30,8 @@
 }
 
 .nav-search-btn {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: white;
-}
-
-.nav-container {
-  padding-top: 10px;
 }
 
 .form-control:focus {

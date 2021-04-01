@@ -106,7 +106,7 @@
   font-family: 'Ubuntu', sans-serif;
   color: white;
   font-weight: 900;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
   margin-left: -6px;
   text-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
@@ -122,7 +122,7 @@
 }
 
 .logopic {
-  padding-bottom: 6px;
+  padding-bottom: 11px;
   
 }
 
@@ -162,4 +162,41 @@
 
 .hamburger {
   padding-bottom: 7px;
+}
+
+.nav-left {
+  display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: static;
+    float: none;
+}
+
+.nav-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+padding-right: 240px;
+padding-bottom: 5px;
+}
+
+.nav-right {
+  display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: static;
+    float: none;
 }

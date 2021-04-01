@@ -10,88 +10,68 @@ import Henzon from './pages/About/Henzon';
 import Home from './pages/Home';
 import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
-import SearchBar from './components/SearchBar';
 import SFSULogin from './pages/SFSULogin';
-import TopBarNoMenu from './components/TopBarNoMenu';
 import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
-import TopBarNoCart from './components/TopBarNoCart';
 import Splash from './pages/Splash';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <MenuSideBar />
         <Switch>
-          <Route path="/about/rajdeep">
-            <TopBarNoCart />
+          <Route path="/about/rajdeep">  
             <Rajdeep />
           </Route>
-          <Route path="/about/rinay">
-            <TopBarNoCart />
+          <Route path="/about/rinay">      
             <Rinay />
           </Route>
-          <Route path="/about/bhavani">
-            <TopBarNoCart />
+          <Route path="/about/bhavani">      
             <Bhavani />
           </Route>
-          <Route path="/about/frederick">
-            <TopBarNoCart />
+          <Route path="/about/frederick">      
             <Frederick />
           </Route>
-          <Route path="/about/german">
-            <TopBarNoCart />
+          <Route path="/about/german">    
             <German />
           </Route>
           <Route path="/about/henzon">
-            <TopBarNoCart />
             <Henzon />
           </Route>
-          <Route path="/about">
-            <TopBarNoCart />
+          <Route path="/about">    
             <About />
           </Route>
           <Route path="/sfsulogin">
-            <TopBarNoMenu />
             <SFSULogin />
           </Route>
           <Route path="/sfsusignup">
-            <TopBarNoMenu />
             <SFSUSignup />
           </Route>
           <Route path="/ownerlogin">
-            <TopBarNoMenu />
             <OwnerLogin />
           </Route>
           <Route path="/ownersignup">
-            <TopBarNoMenu />
             <OwnerSignup />
           </Route>
           <Route path="/driverlogin">
-            <TopBarNoMenu />
             <DriverLogin />
           </Route>
           <Route path="/driversignup">
-            <TopBarNoMenu />
             <DriverSignup />
           </Route>
           <Route path="/searchresults">
-            <MenuSideBar />
-            <SearchBar />
             <SearchResults />
           </Route>
           <Route path="/splash">
             <Splash />
           </Route>
           <Route path="/">
-            <MenuSideBar />
-            <SearchBar />
             <Home />
           </Route>
-          
         </Switch>
       </BrowserRouter>
     </>

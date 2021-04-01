@@ -18,6 +18,7 @@ const SearchResults = () => {
   return (
     <div>
       <div className="container searchresults">
+        <br />
         <div className="row">
           <div className="mx-auto">
             {/* Search Results */}

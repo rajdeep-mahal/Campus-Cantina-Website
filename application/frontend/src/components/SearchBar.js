@@ -52,8 +52,7 @@ const SearchBar = () => {
 
   return (
     <div className="container">
-      <br />
-      <div className="row nav-container">
+      <div className="row">
         <div className="mx-auto">
           <div style={{ display: 'flex' }} className="text-center container">
             {/* Cuisine Dropdown List */}
@@ -75,7 +74,7 @@ const SearchBar = () => {
               id="searchInput"
               type="text"
               className="form-control"
-              style={{ width: '300px' }}
+              style={{ width: '250px' }}
               size="30"
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}

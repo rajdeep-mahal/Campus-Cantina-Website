@@ -3,6 +3,7 @@ import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import CCLogo from '../assets/img/CC_Logo.png';
+import SearchBar from '../components/SearchBar';
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
@@ -21,22 +22,30 @@ const MenuSideBar = () => {
           Demonstration Only
         </span>
       </div>
-      <div className="navbar navbar-expand-md navbar-align">
-        <div>
-          <Link to="#">
-            <i className="fas fa-bars text-white hamburger h3" onClick={showMenu}></i>
-          </Link>
-        </div>
-        <Link to="/home" className="campus-home-link">
-        <div className="mx-auto text-center" style={{ display: 'flex' }}>
-          <img src={CCLogo} alt="logo" height="45" className="logopic" />
-          <h3 className="campus">campus cantina</h3>
-        </div>
-        </Link>
-        <div style={{ paddingLeft: '10px' }}>
+      <div className="navbar navbar-expand-lg">
+        <div className="nav-left">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart text-white h3"
+              className="fas fa-bars text-white hamburger h4"
+              onClick={showMenu}
+            ></i>
+          </Link>
+        </div>
+        <div>
+          <Link to="/home" className="campus-home-link">
+            <div className="mx-auto text-center" style={{ display: 'flex' }}>
+              <img src={CCLogo} alt="logo" height="45" className="logopic" />
+              <h4 className="campus">campus cantina</h4>
+            </div>
+          </Link>
+        </div>
+        <div className="nav-center">
+          <SearchBar />
+        </div>
+        <div className="nav-right">
+          <Link to="#">
+            <i
+              className="fas fa-shopping-cart text-white h4"
               onClick={showCart}
             ></i>
           </Link>
@@ -99,10 +108,8 @@ const MenuSideBar = () => {
             </Link>
           </li>
           <li>
-            <br/>
-            <span className="cart-text p-2 m-1 h5">
-              Your Cart is empty
-            </span>
+            <br />
+            <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
           </li>
         </ul>
       </nav>

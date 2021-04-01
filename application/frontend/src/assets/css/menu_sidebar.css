@@ -116,14 +116,8 @@
   color: var(--primary-color);
 }
 
-.searchbar {
-  padding-right: 200px;
-  padding-bottom: 8px;
-}
-
 .logopic {
   padding-bottom: 11px;
-  
 }
 
 .copytext {
@@ -166,12 +160,12 @@
 
 .nav-left {
   display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    position: static;
-    float: none;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
 }
 
 .nav-center {
@@ -187,16 +181,16 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-padding-right: 240px;
-padding-bottom: 5px;
+  padding-right: 220px;   /* Trying to center searchbar */
+  padding-bottom: 5px;
 }
 
 .nav-right {
   display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    position: static;
-    float: none;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
 }

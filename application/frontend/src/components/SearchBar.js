@@ -19,7 +19,7 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     axios
-      .get('http://localhost:3001/api/search', {
+      .get('http://localhost:3001/api/searchbar/search', {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
@@ -45,7 +45,7 @@ const SearchBar = () => {
   }
 
   React.useEffect(() => {
-    axios.get('http://localhost:3001/api/cuisines').then((res) => {
+    axios.get('http://localhost:3001/api/searchbar/cuisines').then((res) => {
       setCuisines(res.data);
     });
   }, []);

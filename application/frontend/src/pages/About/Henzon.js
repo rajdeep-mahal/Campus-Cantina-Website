@@ -1,21 +1,21 @@
 import React from "react";
-import "../assets/css/about_individual.css";
-import ProfilePic from "../assets/img/about/henzon/henzon.jpg";
-import Java from "../assets/img/about/henzon/java-icon.png"
-import HTML from "../assets/img/about/henzon/html-icon.png"
-import CSS from "../assets/img/about/henzon/css-icon.png"
-import C from "../assets/img/about/henzon/c-icon.png"
-import Swift from "../assets/img/about/henzon/swift-icon.png"
-import Cpp from "../assets//img/about/henzon/cpp-icon.png"
+import "../../assets/css/about_individual.css";
+import ProfilePic from "../../assets/img/about/henzon/henzon.jpg";
+import Java from "../../assets/img/about/henzon/java-icon.png"
+import HTML from "../../assets/img/about/henzon/html-icon.png"
+import CSS from "../../assets/img/about/henzon/css-icon.png"
+import C from "../../assets/img/about/henzon/c-icon.png"
+import Swift from "../../assets/img/about/henzon/swift-icon.png"
+import Cpp from "../../assets/img/about/henzon/cpp-icon.png"
 
-import Linkedin from "../assets/img/about/henzon/linkedin-icon.png"
-import Github from "../assets//img/about/henzon/github-icon.png"
-import Mail from "../assets/img/about/henzon/mail.png"
+import Linkedin from "../../assets/img/about/henzon/linkedin-icon.png"
+import Github from "../../assets/img/about/henzon/github-icon.png"
+import Mail from "../../assets/img/about/henzon/mail.png"
 
 
-import RainbowReef from "../assets/img/about/henzon/rainbowreef_game.png"
-import Calculator from "../assets/img/about/henzon/calculator.png"
-import Hercules from "../assets/img/about/henzon/hercules-app.png"
+import RainbowReef from "../../assets/img/about/henzon/rainbowreef_game.png"
+import Calculator from "../../assets/img/about/henzon/calculator.png"
+import Hercules from "../../assets/img/about/henzon/hercules-app.png"
 
 const Henzon = () => {
   React.useLayoutEffect(() => {

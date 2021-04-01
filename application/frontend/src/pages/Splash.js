@@ -1,5 +1,6 @@
+/* May not be necessary */
+
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import '../assets/css/splash.css';
 import CCLogo from '../assets/img/CC_Logo.png';
 
@@ -21,8 +22,6 @@ const Splash = () => {
           <img src={CCLogo} alt="logo" height="55" className="splash-logopic" />
           <h1 className="splash-campus">campus cantina</h1>
         </div>
-       
-        
       </div>
     </div>
   );

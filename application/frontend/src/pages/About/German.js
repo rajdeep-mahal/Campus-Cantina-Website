@@ -1,11 +1,11 @@
 import React from "react";
-import "../assets/css/about_individual.css";
-import ProfilePic from "../assets/img/about/german/german.jpg";
-import PythonLogo from "../assets/img/about/bhavani/python.png";
-import SQLLogo from "../assets/img/about/german/sql.png";
-import CPPLogo from "../assets/img/about/german/cpp.png";
-import JavaLogo from "../assets/img/about/german/java.jpg";
-import RLogo from "../assets/img/about/german/rstudio.svg";
+import "../../assets/css/about_individual.css";
+import ProfilePic from "../../assets/img/about/german/german.jpg";
+import PythonLogo from "../../assets/img/about/bhavani/python.png";
+import SQLLogo from "../../assets/img/about/german/sql.png";
+import CPPLogo from "../../assets/img/about/german/cpp.png";
+import JavaLogo from "../../assets/img/about/german/java.jpg";
+import RLogo from "../../assets/img/about/german/rstudio.svg";
 
 const German = () => {
   // React.useLayoutEffect(() => {

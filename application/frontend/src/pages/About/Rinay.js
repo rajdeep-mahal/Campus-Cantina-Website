@@ -1,17 +1,17 @@
 import React from "react";
-import "../assets/css/about_individual.css";
-import ProfilePic from "../assets/img/about/rinay/rinay.jpg";
-import PythonLogo from "../assets/img/about/bhavani/python.png";
-import NodeLogo from "../assets/img/about/bhavani/node.png";
-import CSSLogo from "../assets/img/about/bhavani/css.png";
-import HTMLLogo from "../assets/img/about/bhavani/html.png";
-import JSLogo from "../assets/img/about/bhavani/javascript.png";
-import FlaskLogo from "../assets/img/about/bhavani/flask.png";
-import ReactLogo from "../assets/img/about/bhavani/react.png";
-import Chainz from "../assets/img/about/rinay/chainz.gif";
-import Soda from "../assets/img/about/rinay/soda.gif";
-import Word from "../assets/img/about/rinay/word.png";
-import Linked from "../assets/img/about/rinay/linkedin.png";
+import "../../assets/css/about_individual.css";
+import ProfilePic from "../../assets/img/about/rinay/rinay.jpg";
+import PythonLogo from "../../assets/img/about/bhavani/python.png";
+import NodeLogo from "../../assets/img/about/bhavani/node.png";
+import CSSLogo from "../../assets/img/about/bhavani/css.png";
+import HTMLLogo from "../../assets/img/about/bhavani/html.png";
+import JSLogo from "../../assets/img/about/bhavani/javascript.png";
+import FlaskLogo from "../../assets/img/about/bhavani/flask.png";
+import ReactLogo from "../../assets/img/about/bhavani/react.png";
+import Chainz from "../../assets/img/about/rinay/chainz.gif";
+import Soda from "../../assets/img/about/rinay/soda.gif";
+import Word from "../../assets/img/about/rinay/word.png";
+import Linked from "../../assets/img/about/rinay/linkedin.png";
 
 const Rinay = () => {
   // React.useLayoutEffect(() => {

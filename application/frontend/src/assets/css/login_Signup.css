@@ -19,8 +19,9 @@ legend{
     margin:5px;
     text-align: left;
 }
+
 .login_fieldset-form {
-    border: 5px solid #fdb927;
+    border: 5px solid var(--secondary-color);
     border-radius: 50px;
     padding: 4%;
     display: grid;
@@ -35,7 +36,7 @@ legend{
 }
 
 .login_fieldset-form2 {
-    border: 5px solid #fdb927;
+    border: 5px solid var(--secondary-color);
     border-radius: 50px;
     padding: 3%;
     display: grid;
@@ -48,7 +49,6 @@ legend{
     grid-column: 2/3;
     font-size: 120%;
 }
-
 
 .login_page-title {
     font-family: Georgia, serif;
@@ -65,7 +65,7 @@ login_label {
 
 .login_input-field {
     width: 100%;
-    border: 2px solid #fdb927;
+    border: 2px solid var(--primary-color);
     border-radius: 3px;
     box-sizing: border-box;
     padding: 6px;
@@ -80,7 +80,7 @@ login_label {
 
 .login_button {
     border-radius: 5px;
-    background-color: #fdb927;
+    background-color: var(--secondary-color);
     padding: 10px 2px;
     text-align: center;
     text-decoration: none;

@@ -50,7 +50,7 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container" style={{paddingBottom: '10px'}}>
       <div className="row">
         <div className="mx-auto">
           <div style={{ display: 'flex' }} className="text-center container">

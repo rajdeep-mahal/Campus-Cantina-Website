@@ -10,7 +10,7 @@ const DriverSignup = () => {
               <input className="login_input-field" id="redirect-input" type="hidden" name="redirect" />
 
               <fieldset className="login_fieldset-form2">
-                  <legend className="login_page-title">Register my account</legend>
+                  <legend className="login_page-title">Register Driver account</legend>
                   <login_label htmlFor="Drivername"> Driver Name
                       <input id="Drivername" className="login_input-field" type="text" placeholder="Driver Name" required name="Driver Name" />
                   </login_label>

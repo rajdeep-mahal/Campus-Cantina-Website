@@ -32,12 +32,12 @@ const MenuSideBar = () => {
           </Link>
         </div>
         <div>
-          <Link to="/home" className="campus-home-link">
-            <div className="mx-auto text-center" style={{ display: 'flex' }}>
-              <img src={CCLogo} alt="logo" height="45" className="logopic" />
+          <div className="mx-auto text-center" style={{ display: 'flex' }}>
+            <img src={CCLogo} alt="logo" height="45" className="logopic" />
+            <Link to="/" className="campus-home-link">
               <h4 className="campus">campus cantina</h4>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
         <div className="nav-center">
           <SearchBar />

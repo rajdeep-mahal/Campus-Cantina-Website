@@ -1,16 +1,16 @@
 import React from 'react';
 import '../assets/css/searchbar.css';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSearchResults, setNoResult } from '../redux/actions/searchActions';
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
   const [cuisines, setCuisines] = React.useState([]);
   const [selectedCuisine, setSelectedCuisine] = React.useState('');
   const [searchTerm, setSearchTerm] = React.useState('');
-  const [redirect, setRedirect] = React.useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleCuisine = () => {
     let e = document.getElementById('cuisineDropDown');
@@ -35,14 +35,13 @@ const SearchBar = () => {
         }
       })
       .then(() => {
-        setRedirect(true);
+        history.push('/searchresults');
       });
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter')
-      handleSearch();
-  }
+    if (e.key === 'Enter') handleSearch();
+  };
 
   React.useEffect(() => {
     axios.get('http://localhost:3001/api/searchbar/cuisines').then((res) => {
@@ -82,13 +81,12 @@ const SearchBar = () => {
             {/* Search Button */}
             <div className="input-group-append">
               <button className="btn nav-search-btn" onClick={handleSearch}>
-              <i className="fa fa-search" aria-hidden="true"></i>
+                <i className="fa fa-search" aria-hidden="true"></i>
               </button>
             </div>
           </div>
         </div>
       </div>
-      {redirect && <Redirect to="/searchresults" />}
     </div>
   );
 };

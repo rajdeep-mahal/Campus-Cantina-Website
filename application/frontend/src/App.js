@@ -22,27 +22,30 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <MenuSideBar />
+        <MenuSideBar />
         <Switch>
-          <Route path="/about/rajdeep">  
+          <Route path="/searchresults">
+            <SearchResults />
+          </Route>
+          <Route path="/about/rajdeep">
             <Rajdeep />
           </Route>
-          <Route path="/about/rinay">      
+          <Route path="/about/rinay">
             <Rinay />
           </Route>
-          <Route path="/about/bhavani">      
+          <Route path="/about/bhavani">
             <Bhavani />
           </Route>
-          <Route path="/about/frederick">      
+          <Route path="/about/frederick">
             <Frederick />
           </Route>
-          <Route path="/about/german">    
+          <Route path="/about/german">
             <German />
           </Route>
           <Route path="/about/henzon">
             <Henzon />
           </Route>
-          <Route path="/about">    
+          <Route path="/about">
             <About />
           </Route>
           <Route path="/sfsulogin">
@@ -62,9 +65,6 @@ function App() {
           </Route>
           <Route path="/driversignup">
             <DriverSignup />
-          </Route>
-          <Route path="/searchresults">
-            <SearchResults />
           </Route>
           <Route path="/splash">
             <Splash />

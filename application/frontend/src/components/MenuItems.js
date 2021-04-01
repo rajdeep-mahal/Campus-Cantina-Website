@@ -1,7 +1,7 @@
 export const MenuItems = [
   {
     title: "Home",
-    path: "/home",
+    path: "/",
     cName: "nav-menu-icon fas fa-home",
   },
   {

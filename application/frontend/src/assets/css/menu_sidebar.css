@@ -111,8 +111,7 @@
   padding-bottom: 0px;
   margin-top: -1px;
   margin-left: -6px;
-  text-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
+  text-shadow: 1px 1px var(--secondary-color)
 }
 
 .close {
@@ -188,7 +187,7 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-right: 220px; /* Trying to center searchbar */
+  padding-right: 215px; /* Trying to center searchbar */
   padding-bottom: 2px;
 }
 

@@ -44,7 +44,7 @@ const MenuSideBar = () => {
         <div className="nav-right">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart text-white h4"
+              className="fas fa-shopping-cart hamburger text-white h4"
               onClick={showCart}
             ></i>
           </Link>

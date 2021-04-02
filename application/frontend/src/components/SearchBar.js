@@ -59,7 +59,7 @@ const SearchBar = () => {
               id="cuisineDropDown"
               onChange={handleCuisine}
               className="custom-select"
-              style={{ width: '125px' }}
+              style={{ width: '125px', height: '35px', fontSize: '15px' }}
             >
               <option value="">All Cuisines</option>
               {cuisines.map((cuisine, i) => (
@@ -73,15 +73,15 @@ const SearchBar = () => {
               id="searchInput"
               type="text"
               className="form-control"
-              style={{ width: '250px' }}
+              style={{ width: '250px', height: '35px' }}
               size="30"
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
             />
             {/* Search Button */}
-            <div className="input-group-append">
+            <div className="input-group-append" style={{display: 'flex', height: '35px'}}>
               <button className="btn nav-search-btn" onClick={handleSearch}>
-                <i className="fa fa-search" aria-hidden="true"></i>
+                <i className="fa fa-search h5" aria-hidden="true"></i>
               </button>
             </div>
           </div>

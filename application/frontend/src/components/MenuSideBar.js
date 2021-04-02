@@ -13,10 +13,7 @@ const MenuSideBar = () => {
 
   return (
     <>
-      <div
-        className="navbar-header text-center"
-        style={{ fontSize: '11px', color: 'white' }}
-      >
+      <div className="navbar-header text-center">
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
@@ -108,7 +105,7 @@ const MenuSideBar = () => {
             </Link>
           </li>
           <li>
-            <br/>
+            <br />
             <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
             <p className="cart-text p-2 m-1">Add items to get started</p>
           </li>

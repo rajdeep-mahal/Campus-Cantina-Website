@@ -39,7 +39,7 @@ const SearchResults = () => {
                         }
                         alt=""
                         width="350px"
-                        height="250px"
+                        height="200px"
                       />
                       <img
                         src={
@@ -48,7 +48,7 @@ const SearchResults = () => {
                         }
                         alt=""
                         width="350px"
-                        height="250px"
+                        height="200px"
                       />
                       {/* Google Maps removed for now */}
                       {/* <GoogleMap
@@ -74,11 +74,16 @@ const SearchResults = () => {
                       <strong>{item.Name}</strong>
                       <br />
                     </h5>
-                    <div style={{display: ''}}>
-                    <p style={{ padding: '0px', color: 'grey' }}>
-                      {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                      <p className="float-right" style={{paddingRight: '2px'}}>Free Delivery</p>
-                    </p>
+                    <div style={{ display: '' }}>
+                      <p style={{ padding: '0px', color: 'grey' }}>
+                        {item.Price_Level} • {item.Cuisine}, {item.Tags}
+                        <p
+                          className="float-right"
+                          style={{ paddingRight: '2px' }}
+                        >
+                          Free Delivery
+                        </p>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -86,13 +91,14 @@ const SearchResults = () => {
               {noResult}
               {noResult && (
                 <div>
-                  <br/>
-                  <Link to="/" style={{ textDecoration: 'none' }}
-                    ><h5 className="text-center"><i class="fas fa-chevron-left h6 "></i> Back</h5>
+                  <br />
+                  <Link to="/" style={{ textDecoration: 'none' }}>
+                    <h5 className="text-center">
+                      <i class="fas fa-chevron-left h6 "></i> Back
+                    </h5>
                   </Link>
                 </div>
-                )
-              }
+              )}
             </div>
           </div>
         </div>

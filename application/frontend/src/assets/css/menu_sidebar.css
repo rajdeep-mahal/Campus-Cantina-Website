@@ -3,8 +3,8 @@
 
 .navbar-header {
   text-align: end;
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 11px;
   padding-bottom: 0px;
 }
@@ -30,27 +30,29 @@
   display: flex;
   background-color: var(--primary-color);
   padding-top: 0.6rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.1rem; /*0.5*/
   z-index: 1;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 /* skewing navbar section */
-.navbar::before,
+/* .navbar::before,
 .navbar::after {
   content: '';
   position: absolute;
-  height: 20px;
+  height: 0px;
   bottom: -15.5px;
   right: 0;
   left: 0;
   background: var(--secondary-color);
-  /* transform: skewY(1.2deg);
+  transform: skewY(1.2deg);
   -webkit-transform: skewY(1.2deg);
   -moz-transform: skewY(1.2deg);
-  -ms-transform: skewY(1.2deg);  */
+  -ms-transform: skewY(1.2deg); 
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
-}
+} */
 
 /* side menu section*/
 .side-menu {
@@ -120,7 +122,7 @@
 .logopic {
   padding-bottom: 10px;
   margin-left: -5px;
-  margin-top: -8px;
+  margin-top: -7px;
 }
 
 .copytext {
@@ -184,7 +186,7 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-right: 240px;   /* Trying to center searchbar */
+  padding-right: 240px; /* Trying to center searchbar */
   padding-bottom: 2px;
 }
 

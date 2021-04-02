@@ -1,12 +1,12 @@
 import React from "react";
-import "../assets/css/about_individual.css";
+import "../../assets/css/about_individual.css";
 // Images
-import Rajdeep from "../assets/img/about/rajdeep/rajdeep.jpg";
-import Rinay from "../assets/img/about/rinay/rinay.jpg";
-import Bhavani from "../assets/img/about/bhavani/bhavani.jpg";
-import Frederick from "../assets/img/about/frederick/frederick.jpg";
-import German from "../assets/img/about/german/german.jpg";
-import Henzon from "../assets/img/about/henzon/henzon.jpg";
+import Rajdeep from "../../assets/img/about/rajdeep/rajdeep.jpg";
+import Rinay from "../../assets/img/about/rinay/rinay.jpg";
+import Bhavani from "../../assets/img/about/bhavani/bhavani.jpg";
+import Frederick from "../../assets/img/about/frederick/frederick.jpg";
+import German from "../../assets/img/about/german/german.jpg";
+import Henzon from "../../assets/img/about/henzon/henzon.jpg";
 
 const About = () => {
   return (

@@ -1,18 +1,13 @@
 export const MenuItems = [
   {
     title: "Home",
-    path: "/home",
+    path: "/",
     cName: "nav-menu-icon fas fa-home",
   },
   {
-    title: "Login",
-    path: "/login",
+    title: "Sign Up or Sign In",
+    path: "/sfsulogin",
     cName: "nav-menu-icon fas fa-sign-in-alt",
-  },
-  {
-    title: "Signup",
-    path: "/signup",
-    cName: "nav-menu-icon fas fa-user-plus",
   },
   {
     title: "About Us",
@@ -21,12 +16,12 @@ export const MenuItems = [
   },
   {
     title: "Own a Restaurant?",
-    path: "/owner",
+    path: "/ownerlogin",
     cName: "nav-menu-icon fas fa-utensils",
   },
   {
     title: "Earn by Delivering Food",
-    path: "/driver",
+    path: "/driverlogin",
     cName: "nav-menu-icon fas fa-biking",
   },
 ];

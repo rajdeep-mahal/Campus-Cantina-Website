@@ -1,10 +1,12 @@
-@import "../../index.css";
+@import '../../index.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
 
 .navbar-header {
   text-align: end;
   background-color: var(--primary-color);
   color: white;
   font-size: 11px;
+  padding-bottom: 0px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -27,30 +29,32 @@
 .navbar {
   display: flex;
   background-color: var(--primary-color);
-  position: relative;
-  padding-top: 0rem;
-  padding-bottom: 2.7rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
+  z-index: 1;
 }
 
 /* skewing navbar section */
 .navbar::before,
 .navbar::after {
-  content: "";
+  content: '';
   position: absolute;
-  height: 48.5px;
-  bottom: -24.5px;
+  height: 20px;
+  bottom: -15.5px;
   right: 0;
   left: 0;
   background: var(--secondary-color);
-  transform: skewY(1.5deg);
-  -webkit-transform: skewY(1.5deg);
-  -moz-transform: skewY(1.5deg);
-  -ms-transform: skewY(1.5deg);
+  /* transform: skewY(1.2deg);
+  -webkit-transform: skewY(1.2deg);
+  -moz-transform: skewY(1.2deg);
+  -ms-transform: skewY(1.2deg);  */
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
 /* side menu section*/
 .side-menu {
-  background-color: var(--primary-color);
+  background-color: white;
   width: 300px;
   height: 100vh;
   display: flex;
@@ -61,6 +65,9 @@
   top: 0;
   left: -100%;
   transition: 850ms;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  z-index: 1;
 }
 .side-menu.open {
   left: 0;
@@ -68,11 +75,11 @@
 }
 
 .side-logo-img {
-  background-color: var(--primary-color);
+  background-color: white;
 }
 
 .cc-logo-bg {
-  background-color: var(--secondary-color);
+  background-color: white;
   height: max-content;
 }
 
@@ -83,14 +90,110 @@
 
 /* side menu icons color*/
 .nav-menu-icon {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* side menu text color*/
 .side-menu-text {
-  color: white;
+  color: var(--primary-color);
 }
 .side-menu-text:hover {
-  background-color: var(--secondary-color);
-  color: black;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.campus {
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  font-weight: 900;
+  padding-bottom: 0px;
+  margin-top: -2px;
+  margin-left: -6px;
+  text-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.close {
+  color: var(--primary-color);
+}
+
+.logopic {
+  padding-bottom: 10px;
+  margin-left: -5px;
+  margin-top: -8px;
+}
+
+.copytext {
+  padding-right: 25px;
+}
+
+.cart {
+  background-color: white;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  z-index: 1;
+}
+
+.cart.open {
+  right: 0;
+  transition: 350ms;
+}
+
+.campus-home-link:hover {
+  text-decoration: none;
+}
+
+.cart-text {
+  color: var(--primary-color);
+}
+
+.hamburger {
+  padding-bottom: 7px;
+}
+
+.nav-left {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
+}
+
+.nav-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
+  -webkit-box: 1;
+  -moz-box: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding-right: 240px;   /* Trying to center searchbar */
+  padding-bottom: 2px;
+}
+
+.nav-right {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: static;
+  float: none;
 }

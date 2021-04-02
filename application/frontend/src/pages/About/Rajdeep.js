@@ -1,18 +1,18 @@
 import React from "react";
-import "../assets/css/about_individual.css";
-import ProfilePic from "../assets/img/about/rajdeep/rajdeep.jpg";
-import HTMLLogo from "../assets/img/about/rajdeep/html.png";
-import CSSLogo from "../assets/img/about/rajdeep/css.png";
-import JSLogo from "../assets/img/about/rajdeep/javascript.png";
-import ReactLogo from "../assets/img/about/rajdeep/react.png";
-import NodeLogo from "../assets/img/about/rajdeep/node.png";
-import BootstrapLogo from "../assets/img/about/rajdeep/BootstrapLogo.png";
-import JavaLogo from "../assets/img/about/rajdeep/JavaLogo.png";
-import CLogo from "../assets/img/about/rajdeep/CLogo.png";
-import calc from "../assets/img/about/rajdeep/calc.png";
-import gpa from "../assets/img/about/rajdeep/gpa.png";
-import imgur from "../assets/img/about/rajdeep/imgur.png";
-import portfolio from "../assets/img/about/rajdeep/portfolio.png";
+import "../../assets/css/about_individual.css";
+import ProfilePic from "../../assets/img/about/rajdeep/rajdeep.jpg";
+import HTMLLogo from "../../assets/img/about/rajdeep/html.png";
+import CSSLogo from "../../assets/img/about/rajdeep/css.png";
+import JSLogo from "../../assets/img/about/rajdeep/javascript.png";
+import ReactLogo from "../../assets/img/about/rajdeep/react.png";
+import NodeLogo from "../../assets/img/about/rajdeep/node.png";
+import BootstrapLogo from "../../assets/img/about/rajdeep/BootstrapLogo.png";
+import JavaLogo from "../../assets/img/about/rajdeep/JavaLogo.png";
+import CLogo from "../../assets/img/about/rajdeep/CLogo.png";
+import calc from "../../assets/img/about/rajdeep/calc.png";
+import gpa from "../../assets/img/about/rajdeep/gpa.png";
+import imgur from "../../assets/img/about/rajdeep/imgur.png";
+import portfolio from "../../assets/img/about/rajdeep/portfolio.png";
 
 const Rajdeep = () => {
   // React.useLayoutEffect(() => {

@@ -28,11 +28,15 @@ const MenuSideBar = () => {
             ></i>
           </Link>
         </div>
-        <div className="mx-auto text-center d-flex">
-          <img src={CCLogo} alt="logo" height="50" className="logopic" />
-          <Link to="/" className="campus-home-link">
-            <h4 className="campus">campus cantina</h4>
-          </Link>
+        <div>
+          <div className="mx-auto text-center" style={{ display: "flex" }}>
+            <Link to="/">
+              <img src={CCLogo} alt="logo" height="50" className="logopic" />
+            </Link>
+            <Link to="/" className="campus-home-link">
+              <h4 className="campus">campus cantina</h4>
+            </Link>
+          </div>
         </div>
         <div className="nav-center">
           <SearchBar />
@@ -40,7 +44,7 @@ const MenuSideBar = () => {
         <div className="nav-right">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart text-white h4"
+              className="fas fa-shopping-cart hamburger text-white h4"
               onClick={showCart}
             ></i>
           </Link>

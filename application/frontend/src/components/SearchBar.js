@@ -23,6 +23,8 @@ const SearchBar = () => {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
+        let element = document.getElementById("root");
+        element.scrollIntoView(true);
         if (res.data.length === 0) {
           dispatch(setSearchResults([]));
           dispatch(setNoResult('No results found.'));
@@ -58,7 +60,7 @@ const SearchBar = () => {
             <select
               id="cuisineDropDown"
               onChange={handleCuisine}
-              className="custom-select"
+              className="custom-select form-control"
               style={{ width: '125px', height: '35px', fontSize: '15px' }}
             >
               <option value="">All Cuisines</option>

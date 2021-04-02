@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-import config from '../config';
+import config from '../config.js';
 import '../assets/css/vphome.css';
 
 const VPHome = () => {

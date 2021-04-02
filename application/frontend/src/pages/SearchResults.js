@@ -38,7 +38,7 @@ const SearchResults = () => {
                           new Buffer(item.Small_Pic).toString('base64')
                         }
                         alt=""
-                        width="350px"
+                        width="300px"
                         height="200px"
                       />
                       <img
@@ -47,7 +47,7 @@ const SearchResults = () => {
                           new Buffer(item.Large_Pic).toString('base64')
                         }
                         alt=""
-                        width="350px"
+                        width="300px"
                         height="200px"
                       />
                       {/* Google Maps removed for now */}

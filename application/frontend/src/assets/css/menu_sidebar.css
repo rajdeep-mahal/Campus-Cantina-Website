@@ -1,5 +1,5 @@
-@import '../../index.css';
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
+@import "../../index.css";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap");
 
 .navbar-header {
   text-align: end;
@@ -105,7 +105,7 @@
 }
 
 .campus {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: white;
   font-weight: 900;
   padding-bottom: 0px;
@@ -126,7 +126,7 @@
 }
 
 .copytext {
-  padding-right: 25px;
+  padding: 20vh 25px 0px 20px;
 }
 
 .cart {

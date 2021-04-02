@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import '../assets/css/menu_sidebar.css';
-import { Link } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
-import CCLogo from '../assets/img/CC_Logo.png';
-import SearchBar from '../components/SearchBar';
+import React, { useState } from "react";
+import "../assets/css/menu_sidebar.css";
+import { Link } from "react-router-dom";
+import { MenuItems } from "./MenuItems";
+import CCLogo from "../assets/img/CC_Logo.png";
+import SearchBar from "../components/SearchBar";
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
@@ -28,13 +28,11 @@ const MenuSideBar = () => {
             ></i>
           </Link>
         </div>
-        <div>
-          <div className="mx-auto text-center" style={{ display: 'flex' }}>
-            <img src={CCLogo} alt="logo" height="50" className="logopic" />
-            <Link to="/" className="campus-home-link">
-              <h4 className="campus">campus cantina</h4>
-            </Link>
-          </div>
+        <div className="mx-auto text-center d-flex">
+          <img src={CCLogo} alt="logo" height="50" className="logopic" />
+          <Link to="/" className="campus-home-link">
+            <h4 className="campus">campus cantina</h4>
+          </Link>
         </div>
         <div className="nav-center">
           <SearchBar />
@@ -50,10 +48,10 @@ const MenuSideBar = () => {
       </div>
       {/* Side Menu */}
       <nav
-        className={menu ? 'side-menu open text-white' : 'side-menu text-white'}
+        className={menu ? "side-menu open text-white" : "side-menu text-white"}
       >
         <ul className="navbar-nav">
-          <li className="px-3 pt-1" onClick={showMenu}>
+          <li className="px-3 pt-3" onClick={showMenu}>
             <Link to="#">
               <i className=" fas fa-times close float-right h4"></i>
             </Link>
@@ -63,41 +61,23 @@ const MenuSideBar = () => {
               <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
                 <Link to={item.path}>
                   <i className={item.cName} />
-                  {index === 4 ? (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                      <br />
-                    </>
-                  ) : index === 5 ? (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                      <br />
-                    </>
-                  ) : (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                    </>
-                  )}
+                  <span className="side-menu-text p-2 m-1 h5">
+                    {item.title}
+                  </span>
                 </Link>
               </li>
             );
           })}
-          <li className="small pt-5 m-4 text-center copytext">
-            <i className="fas fa-copyright"></i>
-            <span style={{ color: 'gray' }}>
+          <li className="small mr-1 text-center copytext">
+            <i className="fas fa-copyright text-muted pr-1"></i>
+            <span className="text-muted">
               Campus Cantina CSC648/848 Team 04 Spring 2021
             </span>
           </li>
         </ul>
       </nav>
       {/* Cart */}
-      <nav className={cart ? 'cart open' : 'cart'}>
+      <nav className={cart ? "cart open" : "cart"}>
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showCart}>
             <Link to="#">

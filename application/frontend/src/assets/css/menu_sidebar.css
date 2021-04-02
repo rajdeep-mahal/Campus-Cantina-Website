@@ -186,7 +186,7 @@
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding-right: 240px; /* Trying to center searchbar */
+  padding-right: 220px; /* Trying to center searchbar */
   padding-bottom: 2px;
 }
 

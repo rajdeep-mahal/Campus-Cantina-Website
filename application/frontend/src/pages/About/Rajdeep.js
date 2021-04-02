@@ -105,7 +105,7 @@ const Rajdeep = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Calculator
               </span>
               <img
@@ -133,7 +133,7 @@ const Rajdeep = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 GPA-Calculator
               </span>
               <img
@@ -160,7 +160,7 @@ const Rajdeep = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Imgur Clone
               </span>
               <img
@@ -186,7 +186,7 @@ const Rajdeep = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Portfolio
               </span>
               <img

@@ -6,7 +6,7 @@ import Bhavani from './pages/About/Bhavani';
 import Frederick from './pages/About/Frederick';
 import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
-//import VPHome from "./pages/VPHome";
+import VPHome from "./pages/VPHome";
 import Home from './pages/Home';
 import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
@@ -16,13 +16,14 @@ import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
-import Splash from './pages/Splash';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <MenuSideBar />
+        <ScrollToTop />
         <Switch>
           <Route path="/searchresults">
             <SearchResults />
@@ -48,6 +49,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/vphome">
+            <VPHome />
+          </Route>
           <Route path="/sfsulogin">
             <SFSULogin />
           </Route>
@@ -65,9 +69,6 @@ function App() {
           </Route>
           <Route path="/driversignup">
             <DriverSignup />
-          </Route>
-          <Route path="/splash">
-            <Splash />
           </Route>
           <Route path="/">
             <Home />

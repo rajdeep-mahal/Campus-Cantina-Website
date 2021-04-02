@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-@import '../../index.css';
+@import '../css/index.css';
 
 .primary-color {
   color: var(--primary-color);

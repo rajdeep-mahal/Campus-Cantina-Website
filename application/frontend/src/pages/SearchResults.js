@@ -19,12 +19,11 @@ const SearchResults = () => {
   return (
     <div>
       <div className="container searchresults">
-        <br />
         <div className="row">
           <div className="mx-auto">
             {/* Search Results */}
             <br />
-            <div>
+            <div style={{paddingTop: '10px'}}>
               {searchResults.map((item, i) => (
                 <div key={i} className="vp-search-result">
                   <div

@@ -23,6 +23,8 @@ const SearchBar = () => {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
+        let element = document.getElementById("root");
+        element.scrollIntoView(true);
         if (res.data.length === 0) {
           dispatch(setSearchResults([]));
           dispatch(setNoResult('No results found.'));

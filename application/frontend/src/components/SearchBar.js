@@ -81,7 +81,7 @@ const SearchBar = () => {
             {/* Search Button */}
             <div className="input-group-append" style={{display: 'flex', height: '35px'}}>
               <button className="btn nav-search-btn" onClick={handleSearch}>
-                <i className="fa fa-search h5" aria-hidden="true"></i>
+                <i className="fa fa-search h5 text-dark" aria-hidden="true"></i>
               </button>
             </div>
           </div>

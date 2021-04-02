@@ -15,7 +15,7 @@ const MenuSideBar = () => {
     <>
       <div
         className="navbar-header text-center"
-        style={{ fontSize: '11px', color: 'grey' }}
+        style={{ fontSize: '11px', color: 'white' }}
       >
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
@@ -35,7 +35,7 @@ const MenuSideBar = () => {
           <div className="mx-auto text-center" style={{ display: 'flex' }}>
             <img src={CCLogo} alt="logo" height="50" className="logopic" />
             <Link to="/" className="campus-home-link">
-              <h3 className="campus">campus cantina</h3>
+              <h4 className="campus">campus cantina</h4>
             </Link>
           </div>
         </div>

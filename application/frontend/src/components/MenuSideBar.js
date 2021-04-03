@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import "../assets/css/menu_sidebar.css";
-import { Link } from "react-router-dom";
-import { MenuItems } from "./MenuItems";
-import CCLogo from "../assets/img/CC_Logo.png";
-import SearchBar from "../components/SearchBar";
+import React, { useState } from 'react';
+import '../assets/css/menu_sidebar.css';
+import { Link } from 'react-router-dom';
+import { MenuItems } from './MenuItems';
+import CCLogo from '../assets/img/CC_Logo.png';
+import SearchBar from '../components/SearchBar';
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
@@ -13,51 +13,48 @@ const MenuSideBar = () => {
 
   return (
     <>
-      <div className="navbar-header text-center">
+      <div className="primary-color secondary-color-bg text-center small">
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
         </span>
       </div>
-      <div className="navbar sticky-top navbar-expand-lg">
-        <div className="nav-left">
+      <div className="navbar sticky-top navbar-expand-lg justify-content-between align-items-center">
+        <section>
           <Link to="#">
-            <i
-              className="fas fa-bars text-white hamburger h4"
-              onClick={showMenu}
-            ></i>
+            <i className="fas fa-bars text-white h4" onClick={showMenu}></i>
           </Link>
-        </div>
-        <div>
-          <div className="mx-auto text-center" style={{ display: "flex" }}>
-            <Link to="/">
-              <img src={CCLogo} alt="logo" height="50" className="logopic" />
-            </Link>
-            <Link to="/" className="campus-home-link">
-              <h4 className="campus">campus cantina</h4>
-            </Link>
-          </div>
-        </div>
-        <div className="nav-center">
+          <Link to="/" className="ml-3 mr-1">
+            <img src={CCLogo} alt="logo" height="45" width="50" className="" />
+          </Link>
+          <Link to="/" className="campus-home-links">
+            <span className="campus text-white h4">campus cantina</span>
+          </Link>
+        </section>
+        <div className="pt-2">
           <SearchBar />
         </div>
-        <div className="nav-right">
+        <div className="p-1 m-1 cart-float secondary-color-bg rounded">
           <Link to="#">
             <i
-              className="fas fa-shopping-cart hamburger text-white h4"
+              className="fas fa-shopping-cart primary-color h4 my-2"
               onClick={showCart}
             ></i>
+            <span className="badge badge-pill bg-white primary-color m-1">
+              5
+            </span>
           </Link>
         </div>
       </div>
+
       {/* Side Menu */}
       <nav
-        className={menu ? "side-menu open text-white" : "side-menu text-white"}
+        className={menu ? 'side-menu open text-white' : 'side-menu text-white'}
       >
         <ul className="navbar-nav">
-          <li className="px-3 pt-3" onClick={showMenu}>
+          <li className="nav-item" onClick={showMenu}>
             <Link to="#">
-              <i className=" fas fa-times close float-right h4"></i>
+              <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
           {MenuItems.map((item, index) => {
@@ -65,7 +62,7 @@ const MenuSideBar = () => {
               <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
                 <Link to={item.path}>
                   <i className={item.cName} />
-                  <span className="side-menu-text p-2 m-1 h5">
+                  <span className="side-menu-text primary-color p-2 m-1 h5">
                     {item.title}
                   </span>
                 </Link>
@@ -80,18 +77,19 @@ const MenuSideBar = () => {
           </li>
         </ul>
       </nav>
+
       {/* Cart */}
-      <nav className={cart ? "cart open" : "cart"}>
+      <nav className={cart ? 'cart open' : 'cart'}>
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showCart}>
             <Link to="#">
-              <i className=" fas fa-times close float-left h4"></i>
+              <i className="nav-link fas fa-times primary-color float-left h4 my-3"></i>
             </Link>
           </li>
           <li>
             <br />
-            <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
-            <p className="cart-text p-2 m-1">Add items to get started</p>
+            <span className="primary-color p-2 m-1 h5">Your Cart is empty</span>
+            <p className="primary-color p-2 m-1">Add items to get started</p>
           </li>
         </ul>
       </nav>

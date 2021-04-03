@@ -23,7 +23,7 @@ const SearchBar = () => {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
-        let element = document.getElementById("root");
+        let element = document.getElementById('root');
         element.scrollIntoView(true);
         if (res.data.length === 0) {
           dispatch(setSearchResults([]));
@@ -74,9 +74,7 @@ const SearchBar = () => {
             <input
               id="searchInput"
               type="text"
-              className="form-control"
-              style={{ width: '250px', height: '35px' }}
-              size="30"
+              className="form-control search-bar"
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
             />

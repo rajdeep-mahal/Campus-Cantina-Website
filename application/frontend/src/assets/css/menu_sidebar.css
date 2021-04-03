@@ -1,58 +1,28 @@
-@import "../css/index.css";
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap");
+@import '../css/index.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
 
-.navbar-header {
-  text-align: end;
-  background-color: var(--secondary-color);
+/* ready to use color classes */
+.primary-color {
   color: var(--primary-color);
-  font-size: 11px;
-  padding-bottom: 0px;
 }
-
-@media only screen and (max-width: 600px) {
-  .navbar-header {
-    text-align: center;
-  }
+.secondary-color {
+  color: var(--secondary-color);
 }
-
-.navbar-align {
-  justify-content: space-between;
+.primary-color-bg {
+  background-color: var(--primary-color);
 }
-
-@media only screen and (max-width: 600px) {
-  .navbar-align {
-    justify-content: left;
-  }
+.secondary-color-bg {
+  background-color: var(--secondary-color);
 }
 
 /* COMMON CSS CLASS -- CHECK*/
 .navbar {
   display: flex;
   background-color: var(--primary-color);
-  padding-top: 0.6rem;
-  padding-bottom: 0.1rem; /*0.5*/
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   z-index: 1;
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
 }
-
-/* skewing navbar section */
-/* .navbar::before,
-.navbar::after {
-  content: '';
-  position: absolute;
-  height: 0px;
-  bottom: -15.5px;
-  right: 0;
-  left: 0;
-  background: var(--secondary-color);
-  transform: skewY(1.2deg);
-  -webkit-transform: skewY(1.2deg);
-  -moz-transform: skewY(1.2deg);
-  -ms-transform: skewY(1.2deg); 
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2);
-} */
 
 /* side menu section*/
 .side-menu {
@@ -75,59 +45,36 @@
   left: 0;
   transition: 350ms;
 }
-
-.side-logo-img {
-  background-color: white;
-}
-
-.cc-logo-bg {
-  background-color: white;
-  height: max-content;
-}
-
 /* side menu items link hover effect*/
 .menu-item a:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 }
-
-/* side menu icons color*/
-.nav-menu-icon {
-  color: var(--primary-color);
-}
-
-/* side menu text color*/
-.side-menu-text {
-  color: var(--primary-color);
-}
+/* side menu items color on hover*/
 .side-menu-text:hover {
   background-color: var(--primary-color);
   color: white;
 }
 
-.campus {
-  font-family: "Ubuntu", sans-serif;
-  color: white;
-  font-weight: 900;
-  padding-bottom: 0px;
-  margin-top: -1px;
-  margin-left: -6px;
-  text-shadow: 1px 1px var(--secondary-color);
-}
-
-.close {
-  color: var(--primary-color);
-}
-
-.logopic {
-  padding-bottom: 10px;
-  margin-left: 0px;
-  margin-right: 10px;
-  margin-top: -7px;
-}
-
+/*copy right text*/
 .copytext {
   padding: 20vh 25px 0px 20px;
 }
+
+/* logo-brand */
+.campus {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 900;
+  text-shadow: 1px 1px var(--secondary-color);
+}
+.campus-home-link:hover {
+  text-decoration: none;
+}
+
+/* floating for cart icon*/
+/* @media only screen and (max-width: 496px) {
+  .cart-float {
+  }
+} */
 
 .cart {
   background-color: white;
@@ -145,58 +92,7 @@
     0 15px 40px rgba(166, 173, 201, 0.2);
   z-index: 1;
 }
-
 .cart.open {
   right: 0;
   transition: 350ms;
-}
-
-.campus-home-link:hover {
-  text-decoration: none;
-}
-
-.cart-text {
-  color: var(--primary-color);
-}
-
-.hamburger {
-  padding-bottom: 5px;
-  padding-right: 10px;
-}
-
-.nav-left {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: static;
-  float: none;
-}
-
-.nav-center {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: static;
-  float: none;
-  -webkit-box: 1;
-  -moz-box: 1;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding-right: 211px; /* Trying to center searchbar */
-  padding-bottom: 2px;
-}
-
-.nav-right {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: static;
-  float: none;
 }

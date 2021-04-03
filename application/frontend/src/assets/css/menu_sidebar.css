@@ -109,19 +109,17 @@
   margin-top: 7px;
 }
 
-/* searchbar div widths */
-/* @media (max-width: 767px) {
-  .msb-searchbar {
-    width: 120px;
+/* for mobile width */
+@media (max-width: 490px) {
+  .logo-pic {
+    height: 33px;
+    margin-top: -6px;
+    margin-left: -5px;
+  }
+  .hamburger {
+    margin-left: -8px;
+  }
+  .msb-cart-icon {
+    margin-right: -8px;
   }
 }
-@media (max-width: 414px) {
-  .msb-searchbar {
-    width: 20px;
-  }
-}
-@media (min-width: 768px) {
-  .msb-searchbar {
-    width: 900px;
-  }
-} */

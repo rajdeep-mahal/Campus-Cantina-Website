@@ -34,9 +34,13 @@ const SearchResults = () => {
             <h4 className="pt-3 text-center" style={{ fontWeight: '800' }}>
               Results for "{searchedTerm}"
             </h4>
-            <p className="text-center  pr-2 primary-color">
-              {searchResults.length} STORES NEARBY
-            </p>
+            {searchResults.length === 1 ? (
+              <p className="text-center  pr-2 primary-color">1 STORE NEARBY</p>
+            ) : (
+              <p className="text-center  pr-2 primary-color">
+                {searchResults.length} STORES NEARBY
+              </p>
+            )}
           </div>
         ) : (
           <div>
@@ -54,9 +58,15 @@ const SearchResults = () => {
                 <h4 className="pt-3 text-center" style={{ fontWeight: '800' }}>
                   Results for "{searchedCuisine}"
                 </h4>
-                <p className="text-center  pr-2 primary-color">
-                  {searchResults.length} STORES NEARBY
-                </p>
+                {searchResults.length === 1 ? (
+                  <p className="text-center  pr-2 primary-color">
+                    1 STORE NEARBY
+                  </p>
+                ) : (
+                  <p className="text-center  pr-2 primary-color">
+                    {searchResults.length} STORES NEARBY
+                  </p>
+                )}
               </>
             )}
           </div>
@@ -104,7 +114,7 @@ const SearchResults = () => {
               </div>
               <h5 className="text-align-left pt-1">
                 <strong>{item.Name}</strong>
-                <small className="float-right pr-1 pt-1 text-muted">
+                <small className="float-right pr-1 pt-1 primary-color">
                   Free Delivery
                 </small>
                 <br />

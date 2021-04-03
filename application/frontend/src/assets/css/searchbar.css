@@ -17,10 +17,6 @@
 }
 
 /* search-bar widths */
-/* .search-container {
-  width: 900px;
-} */
-
 .search-bar {
   width: 500px;
   height: 35px;
@@ -32,19 +28,12 @@
 }
 @media (max-width: 767px) {
   .search-bar {
-    width: 200px;
+    width: 140px;
   }
 }
 @media (max-width: 414px) {
   .search-bar {
-    width: 160px;
-  }
-}
-
-/* hide dropdown menu */
-@media (max-width: 528px) {
-  .custom-select {
-    display: none;
+    width: 105px;
   }
 }
 

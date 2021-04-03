@@ -23,7 +23,10 @@ const MenuSideBar = () => {
         <section className="pt-2 col-md-3">
           <div className="row">
             <Link to="#" className="">
-              <i className="fas fa-bars text-white h4" onClick={showMenu}></i>
+              <i
+                className="fas fa-bars text-white h4 hamburger"
+                onClick={showMenu}
+              ></i>
             </Link>
             <Link to="/" className="">
               <img

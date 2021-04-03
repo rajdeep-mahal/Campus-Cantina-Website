@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/css/searchbar.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setSearchResults, setNoResult } from '../redux/actions/searchActions';
+import { setSearchResults, setNoResult, setSearchedTerm, setSearchedCuisine } from '../redux/actions/searchActions';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -25,6 +25,8 @@ const SearchBar = () => {
       .then((res) => {
         let element = document.getElementById('root');
         element.scrollIntoView(true);
+        dispatch(setSearchedTerm(searchTerm));
+        dispatch(setSearchedCuisine(selectedCuisine));
         if (res.data.length === 0) {
           dispatch(setSearchResults([]));
           dispatch(setNoResult('No results found.'));
@@ -52,13 +54,13 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="d-inline-flex container justify-content-center align-items-center py-1">
+    <div className="d-flex container justify-content-center align-items-center py-1 search-containter">
       {/* Cuisine Dropdown List */}
       <select
         id="cuisineDropDown"
         onChange={handleCuisine}
         className="custom-select form-control"
-        style={{ width: '125px', height: '35px', fontSize: '15px' }}
+        style={{ width: '115px', height: '35px', fontSize: '15px' }}
       >
         <option value="">All Cuisines</option>
         {cuisines.map((cuisine, i) => (

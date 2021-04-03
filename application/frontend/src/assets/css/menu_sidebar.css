@@ -68,7 +68,7 @@
   margin-top: -10px;
   position: absolute;
 }
-@media (max-width: 872px) {
+@media (max-width: 1011px) {
   .campus {
     display: none;
   }
@@ -110,7 +110,7 @@
 }
 
 /* searchbar div widths */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .msb-searchbar {
     width: 120px;
   }
@@ -124,4 +124,4 @@
   .msb-searchbar {
     width: 900px;
   }
-}
+} */

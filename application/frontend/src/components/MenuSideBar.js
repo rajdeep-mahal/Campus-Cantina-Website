@@ -20,7 +20,7 @@ const MenuSideBar = () => {
         </span>
       </div>
       <div className="navbar sticky-top flex-nowrap">
-        <section className="pt-2 col-md-4">
+        <section className="pt-2 col-md-3">
           <div className="row">
             <Link to="#" className="">
               <i className="fas fa-bars text-white h4" onClick={showMenu}></i>
@@ -41,10 +41,10 @@ const MenuSideBar = () => {
             </div>
           </div>
         </section>
-        <div className="col-md-4 msb-searchbar">
+        <div className="col-md-5 msb-searchbar">
           <SearchBar />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <Link to="#">
             <i
               className="fas fa-shopping-cart h4 float-right secondary-color msb-cart-icon"

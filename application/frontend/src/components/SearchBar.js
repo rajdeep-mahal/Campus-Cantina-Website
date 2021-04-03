@@ -52,46 +52,34 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="container" style={{ paddingBottom: '10px' }}>
-      <div className="row">
-        <div className="mx-auto">
-          <div style={{ display: 'flex' }} className="text-center container">
-            {/* Cuisine Dropdown List */}
-            <select
-              id="cuisineDropDown"
-              onChange={handleCuisine}
-              className="custom-select form-control"
-              style={{ width: '125px', height: '35px', fontSize: '15px' }}
-            >
-              <option value="">All Cuisines</option>
-              {cuisines.map((cuisine, i) => (
-                <option value={cuisine.Cuisine} key={i}>
-                  {cuisine.Cuisine}
-                </option>
-              ))}
-            </select>
-            {/* Search Bar */}
-            <input
-              id="searchInput"
-              type="text"
-              className="form-control search-bar"
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            {/* Search Button */}
-            <div
-              className="input-group-append"
-              style={{ display: 'flex', height: '35px' }}
-            >
-              <button className="btn nav-search-btn" onClick={handleSearch}>
-                <i
-                  className="fa fa-search h5 sb-icon-color"
-                  aria-hidden="true"
-                ></i>
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="d-inline-flex container justify-content-center align-items-center py-2">
+      {/* Cuisine Dropdown List */}
+      <select
+        id="cuisineDropDown"
+        onChange={handleCuisine}
+        className="custom-select form-control"
+        style={{ width: '125px', height: '35px', fontSize: '15px' }}
+      >
+        <option value="">All Cuisines</option>
+        {cuisines.map((cuisine, i) => (
+          <option value={cuisine.Cuisine} key={i}>
+            {cuisine.Cuisine}
+          </option>
+        ))}
+      </select>
+      {/* Search Bar */}
+      <input
+        id="searchInput"
+        type="text"
+        className="form-control search-bar"
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
+      />
+      {/* Search Button */}
+      <div className="d-flex input-group-append" style={{ height: '35px' }}>
+        <button className="btn nav-search-btn" onClick={handleSearch}>
+          <i className="fa fa-search h5 sb-icon-color" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   );

@@ -61,6 +61,10 @@
 }
 
 /* logo-brand */
+.logo-pic {
+  margin-top: -10px;
+}
+
 .campus {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 900;
@@ -69,12 +73,6 @@
 .campus-home-link:hover {
   text-decoration: none;
 }
-
-/* floating for cart icon*/
-/* @media only screen and (max-width: 496px) {
-  .cart-float {
-  }
-} */
 
 .cart {
   background-color: white;

@@ -19,31 +19,38 @@ const MenuSideBar = () => {
           Demonstration Only
         </span>
       </div>
-      <div className="navbar sticky-top navbar-expand-lg justify-content-between align-items-center">
-        <section>
-          <Link to="#">
-            <i className="fas fa-bars text-white h4" onClick={showMenu}></i>
-          </Link>
-          <Link to="/" className="ml-3 mr-1">
-            <img src={CCLogo} alt="logo" height="45" width="50" className="" />
-          </Link>
-          <Link to="/" className="campus-home-links">
-            <span className="campus text-white h4">campus cantina</span>
-          </Link>
+      <div className="navbar sticky-top row">
+        <section className="pt-2 col-md-3">
+          <div className="row flex-nowrap">
+            <Link to="#" className="col-1">
+              <i
+                className="fas fa-bars text-white h4 mt-1"
+                onClick={showMenu}
+              ></i>
+            </Link>
+            <Link to="/" className="col-1 ml-1 mr-3">
+              <img src={CCLogo} alt="logo" height="45" className="logo-pic" />
+            </Link>
+            <Link to="/" className="col-9 campus-home-link">
+              <span className="campus text-white h4 ml-1">campus cantina</span>
+            </Link>
+          </div>
         </section>
-        <div className="pt-2">
+        <div className="col-md-6">
           <SearchBar />
         </div>
-        <div className="p-1 m-1 cart-float secondary-color-bg rounded">
-          <Link to="#">
-            <i
-              className="fas fa-shopping-cart primary-color h4 my-2"
-              onClick={showCart}
-            ></i>
-            <span className="badge badge-pill bg-white primary-color m-1">
-              5
-            </span>
-          </Link>
+        <div className="py-1 col-md-3">
+          <div className="secondary-color-bg rounded float-right mr-3">
+            <Link to="#">
+              <i
+                className="fas fa-shopping-cart primary-color h3 my-1"
+                onClick={showCart}
+              ></i>
+              <span className="badge badge-pill bg-white primary-color m-1">
+                5
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
 

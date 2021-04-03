@@ -52,7 +52,7 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="d-inline-flex container justify-content-center align-items-center py-2">
+    <div className="d-inline-flex container justify-content-center align-items-center py-1">
       {/* Cuisine Dropdown List */}
       <select
         id="cuisineDropDown"

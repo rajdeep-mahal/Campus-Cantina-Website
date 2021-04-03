@@ -13,44 +13,44 @@ const MenuSideBar = () => {
 
   return (
     <>
-      <div className="primary-color secondary-color-bg text-center small">
+      <div className="primary-color secondary-color-bg text-center disclaimer">
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
         </span>
       </div>
-      <div className="navbar sticky-top row">
-        <section className="pt-2 col-md-3">
-          <div className="row flex-nowrap">
-            <Link to="#" className="col-1">
-              <i
-                className="fas fa-bars text-white h4 mt-1"
-                onClick={showMenu}
-              ></i>
+      <div className="navbar sticky-top flex-nowrap">
+        <section className="pt-2 col-md-4">
+          <div className="row">
+            <Link to="#" className="">
+              <i className="fas fa-bars text-white h4" onClick={showMenu}></i>
             </Link>
-            <Link to="/" className="col-1 ml-1 mr-3">
-              <img src={CCLogo} alt="logo" height="45" className="logo-pic" />
+            <Link to="/" className="">
+              <img
+                src={CCLogo}
+                alt="logo"
+                height="40"
+                className="logo-pic"
+                style={{ paddingLeft: '10px' }}
+              />
             </Link>
-            <Link to="/" className="col-9 campus-home-link">
-              <span className="campus text-white h4 ml-1">campus cantina</span>
-            </Link>
+            <div style={{ marginTop: '-4px' }}>
+              <Link to="/" className=" campus-home-link">
+                <span className="campus text-white h4">campus cantina</span>
+              </Link>
+            </div>
           </div>
         </section>
-        <div className="col-md-6">
+        <div className="col-md-4 msb-searchbar">
           <SearchBar />
         </div>
-        <div className="py-1 col-md-3">
-          <div className="secondary-color-bg rounded float-right mr-3">
-            <Link to="#">
-              <i
-                className="fas fa-shopping-cart primary-color h3 my-1"
-                onClick={showCart}
-              ></i>
-              <span className="badge badge-pill bg-white primary-color m-1">
-                5
-              </span>
-            </Link>
-          </div>
+        <div className="col-md-4">
+          <Link to="#">
+            <i
+              className="fas fa-shopping-cart h4 float-right secondary-color msb-cart-icon"
+              onClick={showCart}
+            ></i>
+          </Link>
         </div>
       </div>
 

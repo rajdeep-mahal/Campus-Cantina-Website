@@ -63,7 +63,7 @@ const MenuSideBar = () => {
               />
             </Link>
             <div style={{ marginTop: '-4px' }}>
-              <Link to="/" className=" campus-home-link">
+              <Link to="/" className="campus-home-link">
                 <span className="campus text-white h4">campus cantina</span>
               </Link>
             </div>
@@ -72,17 +72,20 @@ const MenuSideBar = () => {
         <div className="col-md-5 msb-searchbar">
           <SearchBar />
         </div>
-        <div className="col-md-3 ">
+        <div className="col-md-3">
           <Link to="#" className="float-right cart-icon-container">
-            <button className="btn secondary-color-bg primary-color cart-btn-container">
-              <i
-                className="fas fa-shopping-cart h4 primary-color msb-cart-icon"
-                onClick={showCart}
-              >
-                <span class="" id="lblCartCount">
-                  5
-                </span>
-              </i>
+            <button
+              className="btn secondary-color-bg primary-color cart-btn-container"
+              onClick={showCart}
+            >
+              <div style={{ display: 'flex' }}>
+                <div style={{ marginTop: '-1px' }}>
+                  <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
+                </div>
+                <div style={{ marginTop: '-6px' }}>
+                  <span class="lblCartCount">0</span>
+                </div>
+              </div>
             </button>
           </Link>
         </div>

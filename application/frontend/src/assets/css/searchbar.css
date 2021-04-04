@@ -16,24 +16,36 @@
   color: var(--primary-color);
 }
 
-/* search-bar widths */
+/* search-bar styling */
 .search-bar {
-  width: 500px;
+  width: 400px;
   height: 35px;
+  background-image: url('../img/search-icon.png');
+  background-repeat: no-repeat;
+  background-size: 18px; 
+  background-position-y: center;
+  background-position-x: 6px;
+  text-indent: 19px;
+  line-height: 45px;
 }
 @media only screen and (min-width: 1000px) {
   .search-bar {
-    width: 500px;
+    width: 400px;
   }
 }
 @media (max-width: 767px) {
   .search-bar {
-    width: 140px;
+    width: 160px;
   }
 }
 @media (max-width: 414px) {
   .search-bar {
-    width: 105px;
+    width: 140px;
+  }
+}
+@media (max-width: 400px) {
+  .search-bar {
+    width: 114px;
   }
 }
 

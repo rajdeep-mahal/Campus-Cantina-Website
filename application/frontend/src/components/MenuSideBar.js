@@ -44,7 +44,7 @@ const MenuSideBar = () => {
             </div>
           </div>
         </section>
-        <div className="col-md-5 msb-searchbar">
+        <div className="col-md-4 msb-searchbar">
           <SearchBar />
         </div>
         <div className="col-md-3">

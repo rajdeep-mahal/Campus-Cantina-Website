@@ -113,13 +113,21 @@
 @media (max-width: 490px) {
   .logo-pic {
     height: 33px;
-    margin-top: -6px;
+    margin-top: -7px;
     margin-left: -5px;
   }
   .hamburger {
     margin-left: -8px;
+    margin-top: -1px;
   }
   .msb-cart-icon {
-    margin-right: -8px;
+    margin-right: -20px;
+    margin-top: 6px; 
+  }
+}
+@media (max-width: 430px) {
+  .msb-cart-icon {
+    margin-left: -10px;
+    margin-top: 6px; 
   }
 }

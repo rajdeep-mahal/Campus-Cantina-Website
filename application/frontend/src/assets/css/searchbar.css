@@ -10,7 +10,7 @@
 .nav-search-btn {
   background-color: var(--secondary-color);
   color: white;
-  width: 35px;
+  width: 33px;
 }
 .nav-search-btn:hover {
   background-color: rgb(255, 198, 55);

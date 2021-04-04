@@ -105,20 +105,20 @@ const MenuSideBar = () => {
           </li>
           {MenuItems.map((item, index) => {
             return (
-              <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
+              <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
                 <Link to={item.path}>
-                  <i className={item.cName} />
-                  <span className="side-menu-text primary-color p-2 m-1 h5">
+                  <i className={item.cName} style={{width: '10px'}}/>
+                  <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
                     {item.title}
                   </span>
                 </Link>
               </li>
             );
           })}
-          <li className="small mr-1 text-center copytext">
-            <i className="fas fa-copyright text-muted pr-1"></i>
-            <span className="text-muted">
-              Campus Cantina CSC648/848 Team 04 Spring 2021
+          <li className="small mr-1 text-center copytext" style={{fontSize: '10px'}}>
+            <i className="fas fa-copyright text-muted pr-1 "></i>
+            <span className="text-muted" >
+              Campus Cantina | CSC648/848 Team 04 | Spring 2021 <br/>All images free-use
             </span>
           </li>
         </ul>
@@ -132,9 +132,8 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-left h4 my-3"></i>
             </Link>
           </li>
-          <li>
-            <br />
-            <span className="primary-color p-2 m-1 h5">Your Cart is empty</span>
+          <li style={{marginTop: '10px'}}>
+            <span className=" p-2 m-1 h5">Your Cart is empty</span>
             <p className="primary-color p-2 m-1">Add items to get started</p>
           </li>
         </ul>

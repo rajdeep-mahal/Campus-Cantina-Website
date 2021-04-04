@@ -127,7 +127,22 @@
 }
 @media (max-width: 430px) {
   .msb-cart-icon {
-    margin-left: -10px;
+    margin-left: -50px;
+    margin-top: 6px; 
+  }
+  .cart-icon-container {
+    margin-left: -15px;
+  }
+}
+@media (max-width: 400px) {
+  .msb-cart-icon {
+    margin-left: -100px;
     margin-top: 6px; 
   }
 }
+@media (max-width: 395px) {
+  .cart-icon-container {
+    margin-left: -30px;
+  }
+}
+

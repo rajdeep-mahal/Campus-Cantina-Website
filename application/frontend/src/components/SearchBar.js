@@ -76,14 +76,14 @@ const SearchBar = () => {
         className="form-control search-bar"
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyPress={handleKeyPress}
-        placeholder='Search'
+        // placeholder='Search'
       />
       {/* Search Button */}
-      {/* <div className="d-flex input-group-append" style={{ height: '35px' }}>
+      <div className="d-flex input-group-append" style={{ height: '35px' }}>
         <button className="btn nav-search-btn" onClick={handleSearch}>
           <i className="fa fa-search h5 sb-icon-color" aria-hidden="true"></i>
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

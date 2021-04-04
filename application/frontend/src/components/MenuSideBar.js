@@ -47,7 +47,7 @@ const MenuSideBar = () => {
         <div className="col-md-5 msb-searchbar">
           <SearchBar />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 cart-icon-container">
           <Link to="#">
             <i
               className="fas fa-shopping-cart h4 float-right secondary-color msb-cart-icon"

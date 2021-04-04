@@ -18,14 +18,16 @@ const DriverSignup = () => {
           name="redirect"
         />
         <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title">Register Driver account</legend>
+          <legend className="login_page-title text-center">
+            Register Driver account
+          </legend>
           <login_label htmlFor="Drivername">
             Driver Name
             <input
               id="Drivername"
               className="login_input-field"
               type="text"
-              placeholder="Driver Name"
+              placeholder="e.g. Jane Doe"
               required
               name="Driver Name"
             />
@@ -33,9 +35,9 @@ const DriverSignup = () => {
 
           <login_label htmlFor="chooseRestaurant" id="chooseRestaurant">
             Choose a Restaurant
-            <select>
-              <option value="Choose a Restaurant" selected>
-                Choose a Restaurant
+            <select className="m-2 text-muted driver-restaurant-list rounded">
+              <option value="" selected>
+                Select Restaurant...
               </option>
               <option value="Indian">Indian</option>
               <option value="Mexican">Mexican</option>
@@ -45,24 +47,23 @@ const DriverSignup = () => {
           </login_label>
 
           <login_label htmlFor="DriverContactNumber">
-            {' '}
             Driver Contact Number
             <input
               id="DriverContactNumber"
               className="login_input-field"
               type="text"
-              placeholder="Driver Contact Number"
+              placeholder="e.g. 415-999-9999"
               required
               name="Driver Contact Number"
             />
           </login_label>
 
-          <login_label htmlFor="OwnerEmail"> Owner Email </login_label>
+          <login_label htmlFor="DriverEmail"> Driver Email </login_label>
           <input
             className="login_input-field"
-            id="OwnerEmail"
+            id="DriverEmail"
             type="email"
-            placeholder="Owner Email"
+            placeholder="e.g. jane.doe@gmail.com"
             required
             name="email"
           />
@@ -73,7 +74,7 @@ const DriverSignup = () => {
               className="login_input-field"
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder="must have atleast 6 characters"
               required
               name="Password"
             />
@@ -84,7 +85,7 @@ const DriverSignup = () => {
               className="login_input-field"
               id="PassConfirmation"
               type="password"
-              placeholder="Confirm Password"
+              placeholder="must have atleast 6 characters"
               required
               name="cpassword"
             />

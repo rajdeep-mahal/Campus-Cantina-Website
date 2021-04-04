@@ -13,7 +13,7 @@ const OwnerSignup = () => {
           name="redirect"
         />
         <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title">
+          <legend className="login_page-title  text-center">
             Register Restaurant account
           </legend>
           <login_label htmlFor="name">
@@ -22,7 +22,7 @@ const OwnerSignup = () => {
               id="name"
               className="login_input-field"
               type="text"
-              placeholder="Restaurant Name"
+              placeholder="e.g. Chipotoplay"
               required
               name="Restaurant Name"
             />
@@ -34,19 +34,19 @@ const OwnerSignup = () => {
               id="address"
               className="login_input-field"
               type="text"
-              placeholder="Restaurant Address"
+              placeholder="e.g. 2090 Chestnut St, San Francisco, CA"
               required
               name="Restaurant Address"
             />
           </login_label>
 
           <login_label htmlFor="contactNumber">
-            Restaurant Address
+            Restaurant Contact Number
             <input
               id="contactNumber"
               className="login_input-field"
               type="text"
-              placeholder="Restaurant Contact Number"
+              placeholder="e.g. 415-999-9999"
               required
               name="Restaurant Contact Number"
             />
@@ -57,7 +57,7 @@ const OwnerSignup = () => {
             className="login_input-field"
             id="email"
             type="email"
-            placeholder="Email"
+            placeholder="e.g. john.doe@gmail.com"
             required
             name="email"
           />
@@ -68,7 +68,7 @@ const OwnerSignup = () => {
               className="login_input-field"
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder="must have atleast 6 characters"
               required
               name="Password"
             />
@@ -80,7 +80,7 @@ const OwnerSignup = () => {
               className="login_input-field"
               id="PassConfirmation"
               type="password"
-              placeholder="Confirm Password"
+              placeholder="must have atleast 6 characters"
               required
               name="cpassword"
             />

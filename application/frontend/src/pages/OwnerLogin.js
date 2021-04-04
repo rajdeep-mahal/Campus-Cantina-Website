@@ -13,7 +13,9 @@ const OwnerLogin = () => {
         <input id="redirect-input" type="hidden" name="redirect" />
 
         <fieldset className="login_fieldset-form">
-          <legend className="login_page-title">Restaurant Owner Login</legend>
+          <legend className="login_page-title text-center">
+            Restaurant Owner Login
+          </legend>
 
           <login_label>Email</login_label>
           <input
@@ -21,7 +23,7 @@ const OwnerLogin = () => {
             type="text"
             id="displayNameInput"
             name="displayName"
-            placeholder="Email"
+            placeholder="e.g. john.doe@gmail.com"
             required
           />
 
@@ -31,7 +33,7 @@ const OwnerLogin = () => {
             type="password"
             id="passwordInput"
             name="password"
-            placeholder="Password"
+            placeholder="must have atleast 6 characters"
             required
           />
           <br />

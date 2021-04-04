@@ -44,7 +44,7 @@ legend {
     0 2px 8px var(--secondary-color);
   padding: 2.5rem;
   display: grid;
-  width: 50%;
+  width: 35%;
   height: auto;
   margin-top: 3%;
   margin-left: auto;
@@ -58,6 +58,7 @@ legend {
   /* font-family: Georgia, serif; */
   font-weight: bold;
   font-size: 130%;
+  color: var(--primary-color);
 }
 
 login_label {
@@ -70,7 +71,8 @@ login_label {
 .login_input-field {
   width: 100%;
   border: 2px solid var(--primary-color);
-  border-radius: 3px;
+  height: fit-content;
+  border-radius: 15px;
   box-sizing: border-box;
   padding: 6px;
   resize: vertical;
@@ -83,18 +85,23 @@ login_label {
 }
 
 .login_button {
-  border-radius: 5px;
+  border-radius: 40px;
   background-color: var(--secondary-color);
   padding: 10px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border: none;
-  color: white;
+  color: var(--primary-color);
   font-weight: bold;
   width: 30%;
   margin: auto;
   position: relative;
   text-transform: uppercase;
   font-size: 90%;
+}
+
+.driver-restaurant-list {
+  font-size: medium;
+  border: 2px solid var(--primary-color);
 }

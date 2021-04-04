@@ -12,7 +12,7 @@ const SFSULogin = () => {
       >
         <input id="redirect-input" type="hidden" name="redirect" />
         <fieldset className="login_fieldset-form">
-          <legend className="login_page-title">Login</legend>
+          <legend className="login_page-title  text-center">Login</legend>
 
           <login_label>Email "@mail.sfsu.edu"</login_label>
           <input
@@ -20,7 +20,7 @@ const SFSULogin = () => {
             type="text"
             id="displayNameInput"
             name="displayName"
-            placeholder="john.doe@mail.sfsu.edu"
+            placeholder="e.g. john.doe@mail.sfsu.edu"
             required
           />
 
@@ -30,7 +30,7 @@ const SFSULogin = () => {
             type="password"
             id="passwordInput"
             name="password"
-            placeholder="Password"
+            placeholder="must have atleast 6 characters"
             required
           />
           <br />

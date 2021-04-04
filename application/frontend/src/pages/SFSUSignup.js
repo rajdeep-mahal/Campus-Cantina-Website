@@ -13,27 +13,31 @@ const SFSUSignup = () => {
           name="redirect"
         />
         <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title">Register my account</legend>
+          <legend className="login_page-title text-center">
+            Register Account
+          </legend>
           <login_label htmlFor="username">
             Name
             <input
               id="username"
               className="login_input-field"
               type="text"
-              placeholder="Name"
+              placeholder="e.g. John Doe"
               required
               name="Name"
             />
           </login_label>
 
-          <login_label htmlFor="email"> Email "@mail.sfsu.edu" </login_label>
+          <login_label htmlFor="email">
+            Email <span>"@mail.sfsu.edu" </span>
+          </login_label>
           <input
             className="login_input-field"
             id="email"
             type="email"
-            placeholder="Email"
+            placeholder="e.g. john.doe@mail.sfsu.edu"
             required
-            name="email ''@mail.sfsu.edu'' "
+            name="email"
           />
 
           <login_label htmlFor="password">
@@ -42,7 +46,7 @@ const SFSUSignup = () => {
               className="login_input-field"
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder="must have atleast 6 characters"
               required
               name="Password"
             />
@@ -54,13 +58,12 @@ const SFSUSignup = () => {
               className="login_input-field"
               id="PassConfirmation"
               type="password"
-              placeholder="Confirm Password"
+              placeholder="must have atleast 6 characters"
               required
               name="cpassword"
             />
           </login_label>
           <br />
-
           <Link to="/SFSULogin">Have an account?</Link>
           <br />
           <button type="submit" className="login_button" value="Register">

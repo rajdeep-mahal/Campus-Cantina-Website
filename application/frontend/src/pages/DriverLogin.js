@@ -12,7 +12,7 @@ const DriverLogin = () => {
       >
         <input id="redirect-input" type="hidden" name="redirect" />
         <fieldset className="login_fieldset-form">
-          <legend className="login_page-title">Driver Login</legend>
+          <legend className="login_page-title text-center">Driver Login</legend>
 
           <login_label>Email</login_label>
           <input
@@ -20,7 +20,7 @@ const DriverLogin = () => {
             type="text"
             id="displayNameInput"
             name="displayName"
-            placeholder="Email"
+            placeholder="e.g. john.doe@gmail.com"
             required
           />
 
@@ -30,7 +30,7 @@ const DriverLogin = () => {
             type="password"
             id="passwordInput"
             name="password"
-            placeholder="Password"
+            placeholder="must have atleast 6 characters"
             required
           />
           <br />

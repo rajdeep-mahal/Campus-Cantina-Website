@@ -72,12 +72,19 @@ const MenuSideBar = () => {
         <div className="col-md-5 msb-searchbar">
           <SearchBar />
         </div>
-        <div className="col-md-3 cart-icon-container">
-          <Link to="#">
+        <div className="col-md-3 ">
+          <Link to="#" className="float-right cart-icon-container">
+            {/* <div className="badge badge-pill bg-white primary-color m-1"> */}
             <i
-              className="fas fa-shopping-cart h4 float-right secondary-color msb-cart-icon"
+              className="fas fa-shopping-cart h4 secondary-color msb-cart-icon"
               onClick={showCart}
-            ></i>
+            >
+              <span class="badge" id="lblCartCount">
+                5
+              </span>
+            </i>
+
+            {/* </div> */}
           </Link>
         </div>
       </div>

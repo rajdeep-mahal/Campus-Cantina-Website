@@ -12,6 +12,9 @@
   color: white;
   width: 35px;
 }
+.nav-search-btn:hover {
+  background-color: rgb(255, 198, 55);
+}
 /* search icon color */
 .sb-icon-color {
   color: var(--primary-color);

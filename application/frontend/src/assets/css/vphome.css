@@ -45,3 +45,9 @@
 .searchresults {
   z-index: -1;
 }
+
+@media (max-width: 767px) {
+  .rest-desc-text {
+    display: none;
+  }
+}

@@ -114,15 +114,15 @@ const SearchResults = () => {
               </div>
               <h5 className="text-align-left pt-1">
                 <strong>{item.Name}</strong>
-                <small className="float-right pr-1 pt-1 primary-color">
+                {/* <small className="float-right pr-1 pt-1 text-muted">
                   Free Delivery
-                </small>
+                </small> */}
                 <br />
               </h5>
               <div>
-                <p className="text-muted p-0 ">
+                <p className="text-muted  p-0 ">
                   {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                  {/* <p className="float-right pr-1">Free Delivery</p> */}
+                  <p className="float-right pr-1 rest-desc-text">Free Delivery</p>
                 </p>
               </div>
             </div>

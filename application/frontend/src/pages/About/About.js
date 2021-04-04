@@ -11,9 +11,9 @@ import Henzon from "../../assets/img/about/henzon/henzon.jpg";
 const About = () => {
   return (
     <div className="text-center m-4">
-      <div className="container-fluid centered text-dark">
+      <div className="container-fluid centered">
         <span
-          className="h1 text-center primary-color"
+          className="h1 text-center"
           style={{ fontWeight: "800" }}
         >
           About Us

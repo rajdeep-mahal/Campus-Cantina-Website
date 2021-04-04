@@ -65,7 +65,7 @@
 
 /* logo-brand */
 .logo-pic {
-  margin-top: -10px;
+  margin-top: -11px;
   position: absolute;
 }
 @media (max-width: 1011px) {
@@ -77,10 +77,15 @@
   font-family: 'Ubuntu', sans-serif;
   font-weight: 900;
   text-shadow: 1px 1px var(--secondary-color);
-  margin-left: 60px;
+  margin-left: 50px;
 }
 .campus-home-link:hover {
   text-decoration: none;
+}
+
+/* hamburger icon */
+.hamburger {
+  margin-top: -2px;
 }
 
 /* cart section */
@@ -112,7 +117,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   color: var(--primary-color);
-  padding-left: 2px;
+  padding-left: 5px;
 }
 .cart-btn-container {
   border-radius: 30px;

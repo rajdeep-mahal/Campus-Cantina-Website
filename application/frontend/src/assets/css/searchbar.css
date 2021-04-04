@@ -45,9 +45,9 @@
     width: 175px;
   }
 }
-@media (max-width: 539px) {
+@media (max-width: 572px) {
   .search-bar {
-    width: 125px;
+    width: 115px;
   }
 }
 @media (max-width: 414px) {

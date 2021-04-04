@@ -53,16 +53,17 @@ const MenuSideBar = () => {
                 onClick={showMenu}
               ></i>
             </Link>
-            <Link to="/" className="">
+            <Link to="/" className="" style={{marginLeft: '10px'}}>
               <img
                 src={CCLogo}
                 alt="logo"
                 height="40"
                 className="logo-pic"
-                style={{ paddingLeft: '10px' }}
+                style={{ marginLeft: '0px' }}
+                onClick
               />
             </Link>
-            <div style={{ marginTop: '-4px' }}>
+            <div style={{ marginTop: '-6px' }}>
               <Link to="/" className="campus-home-link">
                 <span className="campus text-white h4">campus cantina</span>
               </Link>
@@ -82,7 +83,7 @@ const MenuSideBar = () => {
                 <div style={{ marginTop: '-1px' }}>
                   <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
                 </div>
-                <div style={{ marginTop: '-6px' }}>
+                <div style={{ marginTop: '-6px'}}>
                   <span class="lblCartCount">0</span>
                 </div>
               </div>

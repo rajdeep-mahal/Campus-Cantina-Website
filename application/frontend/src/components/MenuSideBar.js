@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
@@ -10,6 +10,31 @@ const MenuSideBar = () => {
   const [cart, setCart] = useState(false);
   const showMenu = () => setMenu(!menu);
   const showCart = () => setCart(!cart);
+  const ref = useRef(null);
+  const handleClickOutsideMenu = (event) => {
+    if (!ref.current.contains(event.target)) {
+      showMenu();
+    }
+  };
+  const handleClickOutsideCart = (event) => {
+    if (!ref.current.contains(event.target)) {
+      showCart();
+    }
+  };
+  useEffect(() => {
+    if (menu) {
+      document.addEventListener('click', handleClickOutsideMenu);
+      return () => {
+        document.removeEventListener('click', handleClickOutsideMenu);
+      };
+    }
+    if (cart) {
+      document.addEventListener('click', handleClickOutsideCart);
+      return () => {
+        document.removeEventListener('click', handleClickOutsideCart);
+      };
+    }
+  });
 
   return (
     <>
@@ -60,6 +85,7 @@ const MenuSideBar = () => {
       {/* Side Menu */}
       <nav
         className={menu ? 'side-menu open text-white' : 'side-menu text-white'}
+        ref={ref}
       >
         <ul className="navbar-nav">
           <li className="nav-item" onClick={showMenu}>
@@ -89,7 +115,7 @@ const MenuSideBar = () => {
       </nav>
 
       {/* Cart */}
-      <nav className={cart ? 'cart open' : 'cart'}>
+      <nav className={cart ? 'cart open' : 'cart'} ref={ref}>
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showCart}>
             <Link to="#">

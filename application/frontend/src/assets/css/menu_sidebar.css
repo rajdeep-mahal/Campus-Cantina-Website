@@ -115,7 +115,7 @@
   color: var(--primary-color);
   padding: 0px 3px;
   vertical-align: top;
-  /* margin-top: -5px; */
+  margin-top: -5px;
 }
 
 /* for mobile width */

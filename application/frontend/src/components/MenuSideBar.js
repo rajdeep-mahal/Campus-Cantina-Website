@@ -74,17 +74,16 @@ const MenuSideBar = () => {
         </div>
         <div className="col-md-3 ">
           <Link to="#" className="float-right cart-icon-container">
-            {/* <div className="badge badge-pill bg-white primary-color m-1"> */}
-            <i
-              className="fas fa-shopping-cart h4 secondary-color msb-cart-icon"
-              onClick={showCart}
-            >
-              <span class="badge" id="lblCartCount">
-                5
-              </span>
-            </i>
-
-            {/* </div> */}
+            <button className="btn secondary-color-bg primary-color cart-btn-container">
+              <i
+                className="fas fa-shopping-cart h4 primary-color msb-cart-icon"
+                onClick={showCart}
+              >
+                <span class="" id="lblCartCount">
+                  5
+                </span>
+              </i>
+            </button>
           </Link>
         </div>
       </div>

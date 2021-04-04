@@ -11,7 +11,6 @@
   background-color: var(--secondary-color);
   color: white;
   width: 35px;
-  
 }
 /* search icon color */
 .sb-icon-color {
@@ -32,6 +31,7 @@
   background-position-x: 6px;
   text-indent: 19px; */
 }
+/* for mobile widths */
 @media only screen and (min-width: 1000px) {
   .search-bar {
     width: 400px;
@@ -39,7 +39,12 @@
 }
 @media (max-width: 767px) {
   .search-bar {
-    width: 155px;
+    width: 175px;
+  }
+}
+@media (max-width: 539px) {
+  .search-bar {
+    width: 125px;
   }
 }
 @media (max-width: 414px) {

@@ -3,6 +3,7 @@ import React from 'react';
 // import config from '../config';                                                // For Google Maps
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SearchResults = () => {
   const searchResults = useSelector(

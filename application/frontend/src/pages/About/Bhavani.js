@@ -101,7 +101,7 @@ const Bhavani = () => {
           <h2 className="text-center pt-4">Recent Projects</h2>
           <div className="d-flex justify-content-around row text-center flex-wrap mt-3">
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Photobook
               </span>
               <blockquote className="card-body bg-light font-italic">
@@ -121,7 +121,7 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Student Directory on GCP
               </span>
               <blockquote className="card-body bg-light font-italic">
@@ -141,7 +141,7 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 Quote Keeper
               </span>
               <blockquote className="card-body bg-light font-italic">
@@ -161,7 +161,7 @@ const Bhavani = () => {
               </a>
             </div>
             <div className="about-projects card col-sm-6 col-lg-3 py-3 m-2">
-              <span className="h4 about-skill-name text-white font-weight-bold">
+              <span className="h4 about-skill-name font-weight-bold">
                 eCommerce Website
               </span>
 

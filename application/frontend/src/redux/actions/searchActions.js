@@ -7,3 +7,13 @@ export const setNoResult = (noResult) => ({
     type: 'NO_RESULT_SET',
     noResult,
 });
+
+export const setSearchedTerm = (searchedTerm) => ({
+    type: 'SEARCHED_TERM_SET',
+    searchedTerm,
+});
+
+export const setSearchedCuisine = (searchedCuisine) => ({
+    type: 'SEARCHED_CUISINE_SET',
+    searchedCuisine,
+});

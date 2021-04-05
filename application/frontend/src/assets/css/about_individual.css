@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-@import '../../index.css';
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import "../css/index.css";
 
 .primary-color {
   color: var(--primary-color);
@@ -25,7 +25,7 @@
 
 /* entire page */
 .about-page {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   line-height: 1.6;
   background-color: rgb(255, 255, 255);
 }
@@ -59,11 +59,6 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
-.hz-contacts {
-  margin: 10px;
-  width: 25px;
-}
-
 .project-links:hover {
   text-decoration: none;
 }
@@ -88,6 +83,7 @@
 .about-skill-name {
   font-size: large;
   font-weight: 400;
+  color: var(--primary-color);
 }
 
 /* recent projects*/
@@ -100,10 +96,20 @@
 /* github icon link*/
 .about-projects-link {
   font-size: 30px;
+  color: var(--primary-color);
 }
 .about-projects-link:hover {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   color: var(--secondary-color);
+}
+
+.hz-project-links {
+  color: var(--primarycolor);
+}
+
+.hz-project-links:hover {
+  text-decoration: none;
+  color: rgb(192, 163, 0);
 }
 
 /* sliding CSS animations */

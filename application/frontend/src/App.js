@@ -14,6 +14,9 @@ import SFSULogin from './pages/SFSULogin';
 import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
+import OwnerEditProfile from './pages/OwnerEditProfile';
+import OwnerProfile from './pages/OwnerProfile';
+import OwnerOrderHistory from './pages/OwnerOrderHistory';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import Splash from './pages/Splash';
@@ -59,6 +62,15 @@ function App() {
           </Route>
           <Route path="/ownersignup">
             <OwnerSignup />
+          </Route>
+          <Route path="/ownereditprofile">
+            <OwnerEditProfile />
+          </Route>
+          <Route path="/ownerprofile">
+            <OwnerProfile />
+          </Route>
+          <Route path="/ownerorderhistory">
+            <OwnerOrderHistory />
           </Route>
           <Route path="/driverlogin">
             <DriverLogin />

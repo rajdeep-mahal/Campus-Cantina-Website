@@ -13,4 +13,7 @@ body {
   --primary-color: #552583;
   --secondary-color: #fdb927;
   --inactive-color: #cdcdcd;
+  --primary-color-opac:  rgb(85,37,130, 0.5);
+  --primary-color-opac-2:  rgb(85,37,130, 0.8);
+  --secondary-color-opac: rgb(253,185,39,0.85);
 }

@@ -1,0 +1,88 @@
+/* OwnerEditProfile styling */
+
+.editprofile {
+  color: white;
+  background-color: var(--primary-color-opac-2);
+  border-radius: 15px;
+  padding: 3%;
+  width: 80%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 110%;
+}
+
+/* save button */
+.save-btn {
+  background-color: var(--secondary-color-opac);
+  color: white;
+}
+.save-btn:hover {
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* OwnerProfile styling */
+
+/* content border */
+.profile-content {
+  margin-left: auto;
+  padding: 1%;
+  border-radius: 15px;
+}
+
+/* content position breakpoint */
+@media (min-width: 1000px) {
+  .profile-content {
+    text-align: center;
+  }
+}
+
+/* OwnerOrderHistory styling */
+
+/* table head */
+.order-list-title {
+  background-color: var(--primary-color);
+  opacity: 0.9;
+  color: white;
+}
+
+/* table body */
+.table-striped > tbody > tr:nth-child(odd) {
+  background-color: white;
+}
+.table-striped > tbody > tr:nth-child(even) {
+  background-color: var(--primary-color-opac);
+  color: white;
+}
+
+/* view button */
+.view-btn {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.view-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* pending button */
+.pending-btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* modal title */
+.modal-header {
+  background-color: var(--primary-color-opac);
+  color: white;
+}
+
+/* modal confirm button */
+.modal-confirm-btn {
+  background-color: var(--primary-color-opac);
+  color: white;
+}

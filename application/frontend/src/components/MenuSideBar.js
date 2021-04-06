@@ -53,7 +53,7 @@ const MenuSideBar = () => {
                 onClick={showMenu}
               ></i>
             </Link>
-            <Link to="/" className="" style={{marginLeft: '10px'}}>
+            <Link to="/" className="" style={{ marginLeft: '10px' }}>
               <img
                 src={CCLogo}
                 alt="logo"
@@ -70,8 +70,20 @@ const MenuSideBar = () => {
             </div>
           </div>
         </section>
-        <div className="col-md-5 msb-searchbar">
-          <SearchBar />
+        <div className="col-md-5">
+          <div className="msb-searchbar pb-1">
+            <SearchBar />
+          </div>
+          <div
+            className="text-center"
+            style={{ width: '200px', marginTop: '-5px' }}
+          >
+            <Link to="/" className="campus-home-link">
+              <span className="second-campus text-white h4">
+                campus cantina
+              </span>
+            </Link>
+          </div>
         </div>
         <div className="col-md-3">
           <Link to="#" className="float-right cart-icon-container">
@@ -83,12 +95,19 @@ const MenuSideBar = () => {
                 <div style={{ marginTop: '-1px' }}>
                   <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
                 </div>
-                <div style={{ marginTop: '-6px'}}>
-                  <span class="lblCartCount">0</span>
+                <div style={{ marginTop: '-6px' }}>
+                  <span class="lblCartCount">9</span>
                 </div>
               </div>
             </button>
           </Link>
+        </div>
+      </div>
+      <div className="navbar second-nav">
+        <div className="row mx-auto">
+          <div className="col mx-auto">
+            <SearchBar />
+          </div>
         </div>
       </div>
 
@@ -107,7 +126,7 @@ const MenuSideBar = () => {
             return (
               <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
                 <Link to={item.path}>
-                  <i className={item.cName} style={{width: '10px'}}/>
+                  <i className={item.cName} style={{ width: '10px' }} />
                   <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
                     {item.title}
                   </span>
@@ -115,10 +134,14 @@ const MenuSideBar = () => {
               </li>
             );
           })}
-          <li className="small mr-1 text-center copytext" style={{fontSize: '10px'}}>
+          <li
+            className="small mr-1 text-center copytext"
+            style={{ fontSize: '10px' }}
+          >
             <i className="fas fa-copyright text-muted pr-1 "></i>
-            <span className="text-muted" >
-              Campus Cantina | CSC648/848 Team 04 | Spring 2021 <br/>All images free-use
+            <span className="text-muted">
+              Campus Cantina | CSC648/848 Team 04 | Spring 2021 <br />
+              All images free-use
             </span>
           </li>
         </ul>
@@ -132,7 +155,7 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-left h4 my-3"></i>
             </Link>
           </li>
-          <li style={{marginTop: '10px'}}>
+          <li style={{ marginTop: '10px' }}>
             <span className=" p-2 m-1 h5">Your Cart is empty</span>
             <p className="primary-color p-2 m-1">Add items to get started</p>
           </li>

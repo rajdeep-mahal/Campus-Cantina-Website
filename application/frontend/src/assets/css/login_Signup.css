@@ -1,23 +1,20 @@
 @import '../css/index.css';
 
+.primary-color {
+  color: var(--primary-color);
+}
+
 .login-container {
   margin-top: 20px;
   height: 100%;
   width: 100%;
 }
 
-.login-form {
-  max-width: 100%;
-  width: 370px;
+.signup-signin-form {
+  width: 380px;
   padding: 15px;
-  margin: auto;
-}
-
-.registration-form {
-  max-width: 100%;
-  width: 370px;
-  padding: 15px;
-  margin: auto;
+  margin-top: 2rem;
+  border: 2px solid var(--secondary-color);
 }
 
 .login-label {
@@ -30,11 +27,11 @@
   width: 100%;
   border: 2px solid var(--primary-color);
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 12px;
   box-sizing: border-box;
   padding: 6px;
   resize: vertical;
-  font-size: 100%;
+  font-size: 90%;
 }
 
 .login_button:hover {
@@ -60,6 +57,9 @@
 }
 
 .driver-restaurant-list {
-  font-size: medium;
+  font-size: 90%;
   border: 2px solid var(--primary-color);
+  background-color: white;
+  border-radius: 12px;
+  padding: 5px;
 }

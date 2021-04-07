@@ -23,7 +23,10 @@ const DriverSignup = () => {
           <login_label htmlFor="chooseRestaurant" id="chooseRestaurant">Choose a Restaurant </login_label>
             <select className="m-2 text-muted driver-restaurant-list rounded">
               <option value="" selected> Select Restaurant...</option>
+              <option value="Burgers">Burgers</option>
+              <option value="Chinese">Chinese</option>
               <option value="Indian">Indian</option>
+              <option value="Italian">Italian</option>
               <option value="Mexican">Mexican</option>
               <option value="Pizza">Pizza</option>
               <option value="Vietnamese">Vietnamese</option>

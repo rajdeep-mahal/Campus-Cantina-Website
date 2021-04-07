@@ -9,7 +9,7 @@ const SFSULogin = () => {
         <input id="redirect-input" type="hidden" name="redirect" />
         <h1 className="mb-3 font-weight-light text-center">Login</h1>
 
-        <login_label>Email "@mail.sfsu.edu"</login_label>
+        <login_label>Email</login_label>
         <input
             className="login_input-field"
             type="text"

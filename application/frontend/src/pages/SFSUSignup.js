@@ -19,7 +19,7 @@ const SFSUSignup = () => {
               name="Name"
             />
 
-          <login_label htmlFor="email"> Email <span>"@mail.sfsu.edu" </span> </login_label>
+          <login_label htmlFor="email">Email</login_label>
           <input
             className="login_input-field"
             id="email"

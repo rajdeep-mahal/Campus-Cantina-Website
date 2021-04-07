@@ -4,26 +4,13 @@ import { Link } from 'react-router-dom';
 
 const DriverSignup = () => {
   return (
-    <div>
-      <form
-        id="registration"
-        className="registration"
-        method="POST"
-        action="/users/register"
-      >
-        <input
-          className="login_input-field"
-          id="redirect-input"
-          type="hidden"
-          name="redirect"
-        />
-        <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title text-center">
-            Register Driver account
-          </legend>
-          <login_label htmlFor="Drivername">
-            Driver Name
-            <input
+    <div className="login-container d-flex align-items-center justify-content-center">
+      <form id="registration" className="registration-form" method="POST" action="/users/register">
+        <input id="redirect-input" type="hidden" name="redirect"/>
+        <h1  className="mb-3 font-weight-light text-center">Register Driver Account</h1>
+
+        <login_label htmlFor="Drivername"> Driver Name </login_label>
+          <input
               id="Drivername"
               className="login_input-field"
               type="text"
@@ -31,23 +18,19 @@ const DriverSignup = () => {
               required
               name="Driver Name"
             />
-          </login_label>
+            <br/>
 
-          <login_label htmlFor="chooseRestaurant" id="chooseRestaurant">
-            Choose a Restaurant
+          <login_label htmlFor="chooseRestaurant" id="chooseRestaurant">Choose a Restaurant </login_label>
             <select className="m-2 text-muted driver-restaurant-list rounded">
-              <option value="" selected>
-                Select Restaurant...
-              </option>
+              <option value="" selected> Select Restaurant...</option>
               <option value="Indian">Indian</option>
               <option value="Mexican">Mexican</option>
               <option value="Pizza">Pizza</option>
               <option value="Vietnamese">Vietnamese</option>
             </select>
-          </login_label>
+        <br/>
 
-          <login_label htmlFor="DriverContactNumber">
-            Driver Contact Number
+          <login_label htmlFor="DriverContactNumber">Driver Contact Number </login_label>
             <input
               id="DriverContactNumber"
               className="login_input-field"
@@ -56,7 +39,7 @@ const DriverSignup = () => {
               required
               name="Driver Contact Number"
             />
-          </login_label>
+          <br/>
 
           <login_label htmlFor="DriverEmail"> Driver Email </login_label>
           <input
@@ -66,10 +49,9 @@ const DriverSignup = () => {
             placeholder="e.g. jane.doe@gmail.com"
             required
             name="email"
-          />
+          />  <br/>
 
-          <login_label htmlFor="password">
-            Password
+          <login_label htmlFor="password">Password </login_label>
             <input
               className="login_input-field"
               id="password"
@@ -78,9 +60,9 @@ const DriverSignup = () => {
               required
               name="Password"
             />
-          </login_label>
-          <login_label htmlFor="PassConfirmation">
-            Confirm Password
+          <br/>
+
+          <login_label htmlFor="PassConfirmation">Confirm Password </login_label>
             <input
               className="login_input-field"
               id="PassConfirmation"
@@ -89,14 +71,11 @@ const DriverSignup = () => {
               required
               name="cpassword"
             />
-          </login_label>
-          <br />
-          <Link to="/DriverLogin">Have an account?</Link>
-          <br />
-          <button type="submit" className="login_button" value="Register">
-            Sign up
-          </button>
-        </fieldset>
+
+        <br/><br/>
+        <a href="/">Forgot Password?</a> <br/>
+        <Link to="/DriverLogin">Have an account?</Link> <br/><br/>
+        <button type="submit" className="login_button d-flex align-items-center justify-content-center" value="Register">Sign up</button>
       </form>
     </div>
   );

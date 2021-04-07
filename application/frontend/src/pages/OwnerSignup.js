@@ -4,20 +4,12 @@ import { Link } from 'react-router-dom';
 
 const OwnerSignup = () => {
   return (
-    <div>
-      <form id="registration" className="registration" method="POST">
-        <input
-          className="login_input-field"
-          id="redirect-input"
-          type="hidden"
-          name="redirect"
-        />
-        <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title  text-center">
-            Register Restaurant account
-          </legend>
-          <login_label htmlFor="name">
-            Restaurant Name
+    <div className="login-container d-flex align-items-center justify-content-center">
+      <form id="registration" className="registration-form" method="POST" action="/users/register">
+        <input id="redirect-input" type="hidden" name="redirect"/>
+        <h1 className="mb-3 font-weight-light text-center">Register Restaurant Account</h1>
+
+          <login_label htmlFor="name"> Restaurant Name </login_label>
             <input
               id="name"
               className="login_input-field"
@@ -26,10 +18,8 @@ const OwnerSignup = () => {
               required
               name="Restaurant Name"
             />
-          </login_label>
 
-          <login_label htmlFor="address">
-            Restaurant Address
+          <login_label htmlFor="address">Restaurant Address </login_label>
             <input
               id="address"
               className="login_input-field"
@@ -38,10 +28,8 @@ const OwnerSignup = () => {
               required
               name="Restaurant Address"
             />
-          </login_label>
 
-          <login_label htmlFor="contactNumber">
-            Restaurant Contact Number
+          <login_label htmlFor="contactNumber">Restaurant Contact Number </login_label>
             <input
               id="contactNumber"
               className="login_input-field"
@@ -50,7 +38,6 @@ const OwnerSignup = () => {
               required
               name="Restaurant Contact Number"
             />
-          </login_label>
 
           <login_label htmlFor="email"> Email </login_label>
           <input
@@ -62,8 +49,7 @@ const OwnerSignup = () => {
             name="email"
           />
 
-          <login_label htmlFor="password">
-            Password
+          <login_label htmlFor="password">Password </login_label>
             <input
               className="login_input-field"
               id="password"
@@ -72,10 +58,8 @@ const OwnerSignup = () => {
               required
               name="Password"
             />
-          </login_label>
 
-          <login_label htmlFor="PassConfirmation">
-            Confirm Password
+          <login_label htmlFor="PassConfirmation">Confirm Password </login_label>
             <input
               className="login_input-field"
               id="PassConfirmation"
@@ -84,16 +68,11 @@ const OwnerSignup = () => {
               required
               name="cpassword"
             />
-          </login_label>
-          <br />
 
-          <Link to="/OwnerLogin">Have an account?</Link>
-          <br />
-
-          <button type="submit" className="login_button" value="Register">
-            Sign up
-          </button>
-        </fieldset>
+        <br/><br/>
+        <a href="/">Forgot Password?</a> <br/>
+        <Link to="/OwnerLogin">Have an account?</Link> <br/><br/>
+        <button type="submit" className="login_button d-flex align-items-center justify-content-center" value="Register">Sign up</button>
       </form>
     </div>
   );

@@ -4,20 +4,12 @@ import { Link } from 'react-router-dom';
 
 const SFSUSignup = () => {
   return (
-    <div>
-      <form id="registration" className="registration" method="POST">
-        <input
-          className="login_input-field"
-          id="redirect-input"
-          type="hidden"
-          name="redirect"
-        />
-        <fieldset className="login_fieldset-form2">
-          <legend className="login_page-title text-center">
-            Register Account
-          </legend>
-          <login_label htmlFor="username">
-            Name
+    <div className="login-container d-flex align-items-center justify-content-center">
+      <form id="registration" className="registration-form" method="POST">
+        <input id="redirect-input" type="hidden" name="redirect"/>
+        <h1 className="mb-3 font-weight-light text-center">Register Account</h1>
+
+          <login_label htmlFor="username">Name </login_label>
             <input
               id="username"
               className="login_input-field"
@@ -26,11 +18,8 @@ const SFSUSignup = () => {
               required
               name="Name"
             />
-          </login_label>
 
-          <login_label htmlFor="email">
-            Email <span>"@mail.sfsu.edu" </span>
-          </login_label>
+          <login_label htmlFor="email"> Email <span>"@mail.sfsu.edu" </span> </login_label>
           <input
             className="login_input-field"
             id="email"
@@ -40,8 +29,7 @@ const SFSUSignup = () => {
             name="email"
           />
 
-          <login_label htmlFor="password">
-            Password
+          <login_label htmlFor="password">Password </login_label>
             <input
               className="login_input-field"
               id="password"
@@ -50,10 +38,8 @@ const SFSUSignup = () => {
               required
               name="Password"
             />
-          </login_label>
 
-          <login_label htmlFor="PassConfirmation">
-            Confirm Password
+          <login_label htmlFor="PassConfirmation">Confirm Password </login_label>
             <input
               className="login_input-field"
               id="PassConfirmation"
@@ -62,14 +48,11 @@ const SFSUSignup = () => {
               required
               name="cpassword"
             />
-          </login_label>
-          <br />
-          <Link to="/SFSULogin">Have an account?</Link>
-          <br />
-          <button type="submit" className="login_button" value="Register">
-            Sign up
-          </button>
-        </fieldset>
+
+          <br/><br/>
+          <a href="/">Forgot Password?</a> <br/>
+          <Link to="/SFSULogin">Have an account?</Link> <br/><br/>
+          <button type="submit" className="login_button d-flex align-items-center justify-content-center" value="Register">Sign up</button>
       </form>
     </div>
   );

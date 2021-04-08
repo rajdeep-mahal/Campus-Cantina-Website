@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
+import DisplayCart from '../pages/CustomerCart'
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
@@ -112,7 +113,12 @@ const MenuSideBar = () => {
             <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
             <p className="cart-text p-2 m-1">Add items to get started</p>
           </li>
+          
         </ul>
+        <div>
+          <DisplayCart/>
+        </div>
+
       </nav>
     </>
   );

@@ -157,6 +157,18 @@
   color: var(--primary-color);
 }
 
+.cart-page{
+  text-align: center;
+}
+
+/* removes arrows from quantity input box */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 .hamburger {
   padding-bottom: 7px;
 }

@@ -14,7 +14,9 @@
   width: 380px;
   padding: 15px;
   margin-top: 2rem;
-  border: 2px solid var(--secondary-color);
+  margin-bottom: 3rem;
+  border: 3.5px solid var(--secondary-color);
+  border-radius: 14px;
 }
 
 .login-label {

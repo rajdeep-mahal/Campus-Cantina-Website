@@ -6,7 +6,7 @@ const DriverLogin = () => {
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form
-        className="signup-signin-form rounded"
+        className="signup-signin-form"
         method="post"
         encType="application/x-www-form-urlencoded"
       >

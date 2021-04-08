@@ -5,15 +5,11 @@ import { Link } from 'react-router-dom';
 const SFSUSignup = () => {
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
-      <form
-        id="registration"
-        className="signup-signin-form rounded"
-        method="POST"
-      >
+      <form id="registration" className="signup-signin-form" method="POST">
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
           <h2 className="mb-3 font-weight-bold primary-color text-center">
-            Register Account
+            Sign Up
           </h2>
           <label htmlFor="username" className="login-label">
             Name

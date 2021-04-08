@@ -19,14 +19,14 @@ const DriverSignup = () => {
     <div className="login-container d-flex align-items-center justify-content-center">
       <form
         id="registration"
-        className="signup-signin-form rounded"
+        className="signup-signin-form"
         method="POST"
         action="/users/register"
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
           <h2 className="mb-3 font-weight-bold primary-color text-center">
-            Register Driver Account
+            Driver Sign Up
           </h2>
           <label htmlFor="Drivername" className="login-label">
             Driver Name

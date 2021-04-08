@@ -2,7 +2,12 @@ import React from 'react';
 import '../assets/css/searchbar.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setSearchResults, setNoResult, setSearchedTerm, setSearchedCuisine } from '../redux/actions/searchActions';
+import {
+  setSearchResults,
+  setNoResult,
+  setSearchedTerm,
+  setSearchedCuisine,
+} from '../redux/actions/searchActions';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -54,7 +59,7 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="d-flex container justify-content-center align-items-center py-1">
+    <div className="d-flex container justify-content-center align-items-center py-1 search-container">
       {/* Cuisine Dropdown List */}
       <select
         id="cuisineDropDown"

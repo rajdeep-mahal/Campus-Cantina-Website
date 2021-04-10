@@ -3,6 +3,7 @@ const initState = () => ({
   noResult: '',
   searchedTerm: '',
   searchedCuisine: 'All Cuisines',
+  allRestaurants: [],
 });
 
 const searchReducer = (state = initState(), action) => {
@@ -27,6 +28,11 @@ const searchReducer = (state = initState(), action) => {
       return {
         ...state,
         searchedCuisine: action.searchedCuisine,
+      };
+    case 'ALL_RESTAURANTS_SET':
+      return {
+        ...state,
+        allRestaurants: action.allRestaurants,
       };
     default:
       // Don't modify state, ignore action

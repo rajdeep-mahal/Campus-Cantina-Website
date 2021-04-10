@@ -76,7 +76,6 @@ const SearchBar = () => {
       </select>
       {/* Search Bar */}
       <input
-        id="searchInput"
         type="text"
         className="form-control search-bar"
         onChange={(e) => setSearchTerm(e.target.value)}

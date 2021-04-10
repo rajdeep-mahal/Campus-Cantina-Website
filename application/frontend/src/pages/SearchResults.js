@@ -116,11 +116,13 @@ const SearchResults = () => {
                 <strong>{item.Name}</strong>
                 <br />
               </h5>
-              <div style={{marginBottom: '-5px'}}>
-                <p className="text-muted p-0 pl-1 ">
+              <div style={{ marginBottom: '-5px' }}>
+                <span className="text-muted p-0 pl-1 ">
                   {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                  <p className="float-right pr-1 rest-desc-text">Free Delivery</p>
-                </p>
+                  <p className="float-right pr-1 rest-desc-text">
+                    Free Delivery
+                  </p>
+                </span>
               </div>
             </div>
           </div>

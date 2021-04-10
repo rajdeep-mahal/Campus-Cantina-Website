@@ -60,7 +60,6 @@ const MenuSideBar = () => {
                 height="40"
                 className="logo-pic"
                 style={{ marginLeft: '0px' }}
-                onClick
               />
             </Link>
             <div style={{ marginTop: '-6px' }}>
@@ -96,7 +95,7 @@ const MenuSideBar = () => {
                   <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
                 </div>
                 <div style={{ marginTop: '-6px' }}>
-                  <span class="lblCartCount">9</span>
+                  <span className="lblCartCount">9</span>
                 </div>
               </div>
             </button>

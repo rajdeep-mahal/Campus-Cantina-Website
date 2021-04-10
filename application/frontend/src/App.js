@@ -6,7 +6,7 @@ import Bhavani from './pages/About/Bhavani';
 import Frederick from './pages/About/Frederick';
 import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
-import VPHome from "./pages/VPHome";
+import VPHome from './pages/VPHome';
 import Home from './pages/Home';
 import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
@@ -17,8 +17,25 @@ import OwnerSignup from './pages/OwnerSignup';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
+import CuisineResults from './pages/CuisineResults';
+import React from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAllRestaurants } from './redux/actions/searchActions';
 
 function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    axios
+      .get('http://localhost:3001/api/searchbar/search', {
+        params: { searchTerm: '', cuisine: '' },
+      })
+      .then((res) => {
+        dispatch(setAllRestaurants(res.data));
+      });
+  }, []);
+
   return (
     <>
       <BrowserRouter>
@@ -27,6 +44,9 @@ function App() {
         <Switch>
           <Route path="/searchresults">
             <SearchResults />
+          </Route>
+          <Route path="/cuisineresults">
+            <CuisineResults />
           </Route>
           <Route path="/about/rajdeep">
             <Rajdeep />

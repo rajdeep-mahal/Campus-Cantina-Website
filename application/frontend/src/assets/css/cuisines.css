@@ -1,0 +1,35 @@
+@import '../css/index.css';
+
+.cuisine-section {
+  justify-content: space-evenly;
+  margin: auto;
+}
+.cuisine-section-heading {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.cuisine-link {
+  transition: transform 0.2s ease-in;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.cuisine-link:hover {
+  transform: translateY(-15px);
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.chinese-cuisine {
+  margin-top: -10px;
+  width: 50px;
+}
+
+/* for tablets and mobile widths*/
+@media (max-width: 768px) {
+  .cuisine-section {
+    justify-content: center;
+  }
+  .cuisine-link {
+    padding-left: 30px;
+  }
+}

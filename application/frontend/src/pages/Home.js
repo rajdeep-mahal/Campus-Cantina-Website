@@ -20,14 +20,14 @@ const Home = () => {
   // });
 
   return (
-    <div className="">
+    <div>
       {/* Marketing Banner */}
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
         data-ride="carousel"
         data-pause="hover"
-        data-interval="false"
+        // data-interval="false"
       >
         <ol className="carousel-indicators">
           <li
@@ -154,26 +154,26 @@ const Home = () => {
       </div>
       <br />
       {/* Cuisines Row */}
-      <div className="mx-auto" style={{ width: '98vw' }}>
+      <div className="">
         <CuisineRow />
       </div>
       <br />
       {/* Buttons Row - Optional */}
-      <div className="mx-auto" style={{ width: '98vw' }}>
+      {/* <div className="mx-auto" style={{ width: '98vw' }}>
         <ButtonsRow />
       </div>
-      <br />
+      <br /> */}
       {/* Local Favorites */}
-      <div
+      {/* <div
         className="mx-auto"
         style={{ width: '98vw', height: '320px', border: 'solid 1px grey' }}
       >
         <h3>Local Favorites</h3>
         <div style={{ display: 'flex' }}>
           {restaurantsList.map((item, i) => (
-            <div key={i}>
-              {/* Only display restaurants with 'Local' attribute set to 1/true */}
-              {item.Local === 1 && (
+            <div key={i}> */}
+      {/* Only display restaurants with 'Local' attribute set to 1/true */}
+      {/* {item.Local === 1 && (
                 <div className="card vp-card vp-shadow p-1 mb-4">
                   <div className="d-flex">
                     <img
@@ -202,9 +202,9 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <br />
+      <br /> */}
       {/* Featured Restuarant */}
-      <div
+      {/* <div
         className="mx-auto"
         style={{ width: '98vw', height: '400px', border: 'solid 1px grey' }}
       >
@@ -219,9 +219,9 @@ const Home = () => {
           </div>
           <div className="d-flex justify-content-center">
             {restaurantsList.map((item, i) => (
-              <div key={i}>
-                {/* Only display featured restaurant */}
-                {i === 8 && (
+              <div key={i}> */}
+      {/* Only display featured restaurant */}
+      {/* {i === 8 && (
                   <div className="card vp-card vp-shadow p-1 mb-4">
                     <div className="d-flex">
                       <img
@@ -263,20 +263,20 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </div>{' '}
+      </div> */}
       {/* <br />
 
       {/* Black-Owned Businesses */}
-      <div
+      {/* <div
         className="mx-auto"
         style={{ width: '98vw', height: '320px', border: 'solid 1px grey' }}
       >
         <h3>Black-Owned Businesses</h3>
         <div style={{ display: 'flex' }}>
           {restaurantsList.map((item, i) => (
-            <div key={i}>
-              {/* Only display restaurants with 'Black_Owned' attribute set to 1/true */}
-              {item.Black_Owned === 1 && (
+            <div key={i}> */}
+      {/* Only display restaurants with 'Black_Owned' attribute set to 1/true */}
+      {/* {item.Black_Owned === 1 && (
                 <div className="card vp-card vp-shadow p-1 mb-4">
                   <div className="d-flex">
                     <img
@@ -303,9 +303,9 @@ const Home = () => {
               )}
             </div>
           ))}
-        </div>
-      </div>
-      <br />
+        </div> */}
+      {/* </div> */}
+      {/* <br /> */}
       {/* All Restaurants */}
       <h3 className="pl-2">All Restaurants</h3>
       <div className="d-flex justify-content-center">

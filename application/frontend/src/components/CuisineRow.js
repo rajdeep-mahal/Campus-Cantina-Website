@@ -6,6 +6,14 @@ import {
   setSearchedCuisine,
 } from '../redux/actions/searchActions';
 import { useHistory } from 'react-router-dom';
+import '../assets/css/cuisines.css';
+import Burger from '../assets/img/cuisines/Burger.png';
+import Chinese from '../assets/img/cuisines/Chinese.png';
+import Indian from '../assets/img/cuisines/Indian.png';
+import Italian from '../assets/img/cuisines/Italian.png';
+import Mexican from '../assets/img/cuisines/Mexican.png';
+import Pizza from '../assets/img/cuisines/Pizza.png';
+import Vietnamese from '../assets/img/cuisines/Vietnamese.png';
 
 const CuisineRow = () => {
   const dispatch = useDispatch();
@@ -27,29 +35,69 @@ const CuisineRow = () => {
       });
   };
   return (
-    <div style={{ border: 'solid 1px grey' }}>
-      <h4 className="text-center">Cusines Row</h4>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Burgers')}>Burgers</p>
+    <div className="container mt-4">
+      <h2 className="cuisine-section-heading">Cuisines</h2>
+      <div className=" d-flex flex-wrap cuisine-section mt-2">
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Burgers')}
+          className="shadow cuisine-link"
+        >
+          <img src={Burger} alt="logo" height="55" className="" />
+          <p>Burgers</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Chinese')}>Chinese</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Chinese')}
+          className="cuisine-link"
+        >
+          <img
+            src={Chinese}
+            alt="logo"
+            height="65"
+            className="chinese-cuisine"
+          />
+          <p>Chinese</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Indian')}>Indian</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Indian')}
+          className="cuisine-link"
+        >
+          <img src={Indian} alt="logo" height="55" className="" />
+          <p>Indian</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Italian')}>Italian</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Italian')}
+          className="cuisine-link"
+        >
+          <img src={Italian} alt="logo" height="55" className="" />
+          <p>Italian</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Mexican')}>Mexican</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Mexican')}
+          className="cuisine-link"
+        >
+          <img src={Mexican} alt="logo" height="55" className="" />
+          <p>Mexican</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Pizza')}>Pizza</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Pizza')}
+          className="cuisine-link"
+        >
+          <img src={Pizza} alt="logo" height="55" className="" />
+          <p>Pizza</p>
         </a>
-        <a href="#">
-          <p onClick={() => handleCuisineSearch('Vietnamese')}>Vietnamese</p>
+        <a
+          href="#"
+          onClick={() => handleCuisineSearch('Vietnamese')}
+          className="cuisine-link"
+        >
+          <img src={Vietnamese} alt="logo" height="55" className="" />
+          <p>Vietnamese</p>
         </a>
       </div>
     </div>

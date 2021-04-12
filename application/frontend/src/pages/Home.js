@@ -46,10 +46,10 @@ const Home = () => {
               <div className="container">
                 <div className="row justify-content-start text-center">
                   <div className="col-lg-9">
-                    <a href="/" role="button">
+                    <a href="/SFSULogin" role="button">
                       <button className="btn carousel-btn ml-5">Log In</button>
                     </a>
-                    <a href="/">
+                    <a href="/SFSUSignup">
                       <button className="btn carousel-btn ml-3">Sign Up</button>
                     </a>
                   </div>
@@ -98,10 +98,10 @@ const Home = () => {
               <div className="container">
                 <div className="row justify-content-start text-center">
                   <div className="col-lg-9">
-                    <a href="/" role="button">
+                    <a href="/ownerlogin" role="button">
                       <button className="btn carousel-btn ml-5">Log In</button>
                     </a>
-                    <a href="/">
+                    <a href="/ownersignup">
                       <button className="btn carousel-btn ml-3">Sign Up</button>
                     </a>
                   </div>
@@ -115,10 +115,10 @@ const Home = () => {
               <div className="container">
                 <div className="row justify-content-start text-center">
                   <div className="col-lg-9">
-                    <a href="/" role="button">
+                    <a href="/driverlogin" role="button">
                       <button className="btn carousel-btn ml-5">Log In</button>
                     </a>
-                    <a href="/">
+                    <a href="/driversignup">
                       <button className="btn carousel-btn ml-3">Sign Up</button>
                     </a>
                   </div>

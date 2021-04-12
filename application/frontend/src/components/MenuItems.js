@@ -5,7 +5,7 @@ export const MenuItems = [
     cName: 'primary-color fas fa-home',
   },
   {
-    title: 'Sign Up or Sign In',
+    title: 'Sign Up or Log In',
     path: '/sfsulogin',
     cName: 'primary-color fas fa-sign-in-alt',
   },

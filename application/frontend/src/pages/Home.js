@@ -37,6 +37,7 @@ const Home = () => {
           ></li>
           <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
           <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -109,7 +110,7 @@ const Home = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src={Banner4} alt="Third slide" />
+            <img className="d-block w-100" src={Banner4} alt="Fourth slide" />
             <div className="carousel-caption banner4-caption d-none d-md-block">
               <div className="container">
                 <div className="row justify-content-start text-center">

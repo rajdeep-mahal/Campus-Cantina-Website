@@ -117,12 +117,12 @@ const SearchResults = () => {
                 <br />
               </h5>
               <div style={{ marginBottom: '-5px' }}>
-                <span className="text-muted p-0 pl-1 ">
+                <p className="text-muted p-0 pl-1 ">
                   {item.Price_Level} • {item.Cuisine}, {item.Tags}
                   <p className="float-right pr-1 rest-desc-text">
                     Free Delivery
                   </p>
-                </span>
+                </p>
               </div>
             </div>
           </div>

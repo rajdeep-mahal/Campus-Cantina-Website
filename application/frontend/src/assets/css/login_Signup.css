@@ -1,0 +1,67 @@
+@import '../css/index.css';
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.login-container {
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.signup-signin-form {
+  width: 380px;
+  padding: 15px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  border: 3.5px solid var(--secondary-color);
+  border-radius: 14px;
+}
+
+.login-label {
+  display: inline-block;
+  padding: 5px 5px 0px 0px;
+  font-size: 100%;
+}
+
+.login_input-field {
+  width: 100%;
+  border: 2px solid var(--primary-color);
+  height: fit-content;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 6px;
+  resize: vertical;
+  font-size: 90%;
+}
+
+.login_button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.login_button {
+  border-radius: 40px;
+  background-color: var(--secondary-color);
+  padding: 10px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  width: 30%;
+  margin: auto;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 100%;
+}
+
+.driver-restaurant-list {
+  font-size: 90%;
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  border-radius: 12px;
+  padding: 5px;
+}

@@ -35,7 +35,7 @@ const CuisineRow = () => {
       });
   };
   return (
-    <div className="container mt-4">
+    <div className="container">
       <h2 className="cuisine-section-heading">Cuisines</h2>
       <div className=" d-flex flex-wrap cuisine-section mt-2">
         <a

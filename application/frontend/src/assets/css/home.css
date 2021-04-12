@@ -1,13 +1,14 @@
 @import '../css/index.css';
 
-.primary-color {
-  color: var(--primary-color);
-}
-
 /* Carousel & banner img height*/
 @media (max-width: 1000px) {
   .carousel {
     margin-top: -2rem;
+  }
+}
+@media (max-width: 890px) {
+  .carousel {
+    margin-top: -1rem;
   }
 }
 /* for desktops */

@@ -7,11 +7,23 @@ import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
 import Pizza2 from '../assets/img/restaurant/pizza2.jpg';
 import Wings from '../assets/img/restaurant/wings.jpg';
 import Bread from '../assets/img/restaurant/bread.jpg';
+import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
 
 const RestaurantPage = () => {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
   const { loadError } = useLoadScript({
     googleMapsApiKey: config.googleAPI,
   });
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
 
   return (
     <div>
@@ -28,7 +40,7 @@ const RestaurantPage = () => {
           }}
         >
           {/* Google Maps */}
-          <GoogleMap
+          {/* <GoogleMap
             mapContainerStyle={{ height: '200px', width: '300px' }}
             zoom={17}
             center={{ lat: 37.7234, lng: -122.481 }}
@@ -38,7 +50,7 @@ const RestaurantPage = () => {
             }}
           >
             <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-          </GoogleMap>
+          </GoogleMap> */}
           {loadError && <p>Map cannot be displayed at this time.</p>}
         </div>
         <div className="pl-1">
@@ -72,7 +84,9 @@ const RestaurantPage = () => {
         <h4 className="ml-4 pb-3 pt-3">Most Popular</h4>
         <div className="row m-2">
           <div className="col-6" style={{ border: '', height: '200px' }}>
-            <div className="card rp-item" style={{ height: '170px' }}>
+          <Link to='#' style={{ textDecoration: 'none' }}>
+            <div className="card rp-item" style={{ height: '170px' }} onClick={openModal}>
+            
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -91,7 +105,9 @@ const RestaurantPage = () => {
                   </tr>
                 </tbody>
               </table>
+              
             </div>
+            </Link>
           </div>
           <div className="col-6" style={{ border: '', height: '200px' }}>
           <div className="card rp-item" style={{ height: '170px' }}>
@@ -163,6 +179,15 @@ const RestaurantPage = () => {
           </div>
         </div>
       </div>
+      <Modal
+          isOpen={modalIsOpen}
+          //onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          //style={customStyles}
+          //contentLabel="Example Modal"
+        >
+          <h1>test</h1>
+      </Modal>
     </div>
   );
 };

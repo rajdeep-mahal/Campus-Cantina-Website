@@ -3,35 +3,165 @@ import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
 import CuisineRow from '../components/CuisineRow';
 import ButtonsRow from '../components/ButtonsRow';
+import Banner1 from '../assets/img/Home_Banner1.jpg';
+import Banner2 from '../assets/img/Home_Banner2.jpg';
+import Banner3 from '../assets/img/Home_Banner3.jpg';
+import Banner4 from '../assets/img/Home_Banner4.jpg';
+
+// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+// import config from '../config.js';
 
 const Home = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
+  // const { loadError } = useLoadScript({
+  //   googleMapsApiKey: config.googleAPI,
+  // });
 
   return (
-    <div className="home mt-3">
+    <div className="">
       {/* Marketing Banner */}
       <div
-        className="mx-auto"
-        style={{ width: '98vw', height: '150px', border: 'solid 1px grey' }}
+        id="carouselExampleCaptions"
+        className="carousel slide"
+        data-ride="carousel"
+        data-pause="hover"
+        data-interval="false"
       >
-        <h3 className="text-center">Marketing Banner</h3>
+        <ol className="carousel-indicators">
+          <li
+            data-target="#carouselExampleCaptions"
+            data-slide-to="0"
+            className="active"
+          ></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img className="d-block w-100" src={Banner1} alt="First slide" />
+            <div className="carousel-caption banner1-caption d-none d-lg-block">
+              <div className="container">
+                <div className="row justify-content-start text-center">
+                  <div className="col-lg-9">
+                    <a href="/" role="button">
+                      <button className="btn carousel-btn ml-5">Log In</button>
+                    </a>
+                    <a href="/">
+                      <button className="btn carousel-btn ml-3">Sign Up</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img className="d-block w-100" src={Banner2} alt="Second slide" />
+            <div className="carousel-caption d-none d-md-block">
+              <div className="container">
+                <div className="row justify-content-start text-center">
+                  <div className="col-lg-9">
+                    {/* Google Maps
+                    {loadError ? (
+                      <p>Map cannot be displayed at this time.</p>
+                    ) : (
+                      <GoogleMap
+                        mapContainerStyle={{ height: '250px', width: '400px' }}
+                        zoom={15}
+                        center={{
+                          lat: 37.72445470045727,
+                          lng: -122.47972592328226,
+                        }}
+                        options={{
+                          streetViewControl: false,
+                          mapTypeControl: false,
+                        }}
+                      >
+                        <Marker
+                          position={{
+                            lat: 37.72445470045727,
+                            lng: -122.47972592328226,
+                          }}
+                        />
+                      </GoogleMap>
+                    )} */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img className="d-block w-100" src={Banner3} alt="Third slide" />
+            <div className="carousel-caption banner3-caption d-none d-lg-block">
+              <div className="container">
+                <div className="row justify-content-start text-center">
+                  <div className="col-lg-9">
+                    <a href="/" role="button">
+                      <button className="btn carousel-btn ml-5">Log In</button>
+                    </a>
+                    <a href="/">
+                      <button className="btn carousel-btn ml-3">Sign Up</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img className="d-block w-100" src={Banner4} alt="Third slide" />
+            <div className="carousel-caption banner4-caption d-none d-md-block">
+              <div className="container">
+                <div className="row justify-content-start text-center">
+                  <div className="col-lg-9">
+                    <a href="/" role="button">
+                      <button className="btn carousel-btn ml-5">Log In</button>
+                    </a>
+                    <a href="/">
+                      <button className="btn carousel-btn ml-3">Sign Up</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          className="carousel-control-prev"
+          href="#carouselExampleCaptions"
+          role="button"
+          data-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a
+          className="carousel-control-next"
+          href="#carouselExampleCaptions"
+          role="button"
+          data-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="sr-only">Next</span>
+        </a>
       </div>
       <br />
-
       {/* Cuisines Row */}
       <div className="mx-auto" style={{ width: '98vw' }}>
         <CuisineRow />
       </div>
       <br />
-
       {/* Buttons Row - Optional */}
       <div className="mx-auto" style={{ width: '98vw' }}>
         <ButtonsRow />
       </div>
       <br />
-
       {/* Local Favorites */}
       <div
         className="mx-auto"
@@ -72,7 +202,6 @@ const Home = () => {
         </div>
       </div>
       <br />
-
       {/* Featured Restuarant */}
       <div
         className="mx-auto"
@@ -133,8 +262,8 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </div>
-      <br />
+      </div>{' '}
+      {/* <br />
 
       {/* Black-Owned Businesses */}
       <div
@@ -176,7 +305,6 @@ const Home = () => {
         </div>
       </div>
       <br />
-
       {/* All Restaurants */}
       <h3 className="pl-2">All Restaurants</h3>
       <div className="d-flex justify-content-center">

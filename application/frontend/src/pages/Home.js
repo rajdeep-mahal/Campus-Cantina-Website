@@ -6,7 +6,7 @@ import DriverCustomerOrders from '../pages/DriverCustomerOrders'
 const Home = () => {
   return (
     <div className="home mt-4">
-     <DriverCustomerOrders/>
+     
     </div>
   );
 };

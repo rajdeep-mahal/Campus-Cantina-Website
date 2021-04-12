@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
 import CuisineRow from '../components/CuisineRow';
-import ButtonsRow from '../components/ButtonsRow';
+// import ButtonsRow from '../components/ButtonsRow';
 import Banner1 from '../assets/img/Home_Banner1.jpg';
 import Banner2 from '../assets/img/Home_Banner2.jpg';
 import Banner3 from '../assets/img/Home_Banner3.jpg';

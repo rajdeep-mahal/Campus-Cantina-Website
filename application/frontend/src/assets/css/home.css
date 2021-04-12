@@ -1,14 +1,5 @@
 @import '../css/index.css';
 
-.dom {
-  font-size: xx-large;
-  font-weight: 600;
-}
-.dom1 {
-  font-size: xx-large;
-  font-weight: 500;
-}
-
 .primary-color {
   color: var(--primary-color);
 }
@@ -32,10 +23,10 @@
 /* for tablets and mobile widths*/
 @media (max-width: 890px) {
   .carousel .carousel-item {
-    height: 40vh;
+    height: auto;
   }
   .carousel-item img {
-    height: 40vh;
+    height: auto;
   }
 }
 

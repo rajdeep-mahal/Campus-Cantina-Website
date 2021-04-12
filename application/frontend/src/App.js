@@ -22,6 +22,7 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
+import RestaurantPage from './pages/RestaurantPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route path="/cuisineresults">
             <CuisineResults />
+          </Route>
+          <Route path="/restaurantpage">
+            <RestaurantPage />
           </Route>
           <Route path="/about/rajdeep">
             <Rajdeep />

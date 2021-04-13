@@ -7,8 +7,8 @@ import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
 import Pizza2 from '../assets/img/restaurant/pizza2.jpg';
 import Wings from '../assets/img/restaurant/wings.jpg';
 import Bread from '../assets/img/restaurant/bread.jpg';
-import Modal from 'react-modal';
-import {Link} from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const RestaurantPage = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -19,11 +19,16 @@ const RestaurantPage = () => {
 
   const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
   const closeModal = () => {
     setIsOpen(false);
-  }
+  };
+
+  React.useEffect(() => {
+
+    
+  }, []);
 
   return (
     <div>
@@ -40,7 +45,7 @@ const RestaurantPage = () => {
           }}
         >
           {/* Google Maps */}
-          {/* <GoogleMap
+          <GoogleMap
             mapContainerStyle={{ height: '200px', width: '300px' }}
             zoom={17}
             center={{ lat: 37.7234, lng: -122.481 }}
@@ -50,7 +55,7 @@ const RestaurantPage = () => {
             }}
           >
             <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-          </GoogleMap> */}
+          </GoogleMap>
           {loadError && <p>Map cannot be displayed at this time.</p>}
         </div>
         <div className="pl-1">
@@ -84,9 +89,12 @@ const RestaurantPage = () => {
         <h4 className="ml-4 pb-3 pt-3">Most Popular</h4>
         <div className="row m-2">
           <div className="col-6" style={{ border: '', height: '200px' }}>
-          <Link to='#' style={{ textDecoration: 'none' }}>
-            <div className="card rp-item" style={{ height: '170px' }} onClick={openModal}>
-            
+            {/* <Link to='#' style={{ textDecoration: 'none' }}> */}
+            <div
+              className="card rp-item"
+              style={{ height: '170px' }}
+              onClick={openModal}
+            >
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -105,12 +113,11 @@ const RestaurantPage = () => {
                   </tr>
                 </tbody>
               </table>
-              
             </div>
-            </Link>
+            {/* </Link> */}
           </div>
           <div className="col-6" style={{ border: '', height: '200px' }}>
-          <div className="card rp-item" style={{ height: '170px' }}>
+            <div className="card rp-item" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -156,7 +163,7 @@ const RestaurantPage = () => {
             </div>
           </div>
           <div className="col-6" style={{ border: '', height: '200px' }}>
-          <div className="card rp-item" style={{ height: '170px' }}>
+            <div className="card rp-item" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -179,14 +186,38 @@ const RestaurantPage = () => {
           </div>
         </div>
       </div>
-      <Modal
-          isOpen={modalIsOpen}
-          //onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          //style={customStyles}
-          //contentLabel="Example Modal"
-        >
-          <h1>test</h1>
+      <Modal show={modalIsOpen} onHide={closeModal} centered>
+        <div className="m-3">
+          <h2>Cheese Pizza</h2>
+          <span className="text-muted">(700-1180 Cal.)</span>
+        </div>
+        <div className="text-center">
+          <img src={Pizza1} width="350px" />
+        </div>
+        <p className="m-3">Comments</p>
+        <div className="text-center">
+          <textarea cols="47" rows="3"></textarea>
+          <br />
+          <br />
+        </div>
+        <Modal.Footer>
+          <div className="mr-auto">
+            <i
+              class="fa fa-plus mr-2"
+              style={{ color: 'gray' }}
+              aria-hidden="true"
+            ></i>
+            <input className="text-center" size="2" placeholder="1"></input>
+            <i
+              class="fa fa-minus ml-2"
+              style={{ color: 'gray' }}
+              aria-hidden="true"
+            ></i>
+          </div>
+          <button className="btn primary-color-bg text-white">
+            Add to cart
+          </button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

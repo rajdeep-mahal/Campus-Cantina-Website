@@ -17,7 +17,7 @@
 .cuisine-link:hover {
   transform: translateY(-15px);
   text-decoration: none;
-  color: var(--secondary-color);
+  color: var(--secondary-color2);
 }
 .chinese-cuisine {
   margin-top: -10px;

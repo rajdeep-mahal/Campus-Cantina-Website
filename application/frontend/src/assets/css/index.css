@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   line-height: 1.6;
 }
 
 :root {
   --primary-color: #552583;
   --secondary-color: #fdb927;
+  --secondary-color2: #004f71;
   --inactive-color: #cdcdcd;
 }

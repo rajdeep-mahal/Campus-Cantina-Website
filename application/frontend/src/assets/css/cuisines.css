@@ -11,11 +11,21 @@
 .cuisine-link {
   transition: transform 0.2s ease-in;
   text-align: center;
-  font-weight: 600;
+}
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
   color: var(--primary-color);
+  font-weight: 600;
 }
 .cuisine-link:hover {
   transform: translateY(-15px);
+}
+.link-button:hover {
   text-decoration: none;
   color: var(--secondary-color2);
 }

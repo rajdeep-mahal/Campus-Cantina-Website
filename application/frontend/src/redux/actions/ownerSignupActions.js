@@ -1,24 +1,24 @@
-export const setDescription = (description) => ({
-  type: 'DESCRIPTION_SET',
-  description,
+export const setOwnerName = (ownerName) => ({
+  type: 'OWNER_NAME_SET',
+  ownerName,
 });
 
-export const setType = (ListingType) => ({
-  type: 'TYPE_SET',
-  ListingType,
+export const setOwnerContactNumber = (ownerContactNumber) => ({
+  type: 'OWNER_CONTACT_NUMBER_SET',
+  ownerContactNumber,
 });
 
-export const setPrice = (price) => ({
-  type: 'PRICE_SET',
-  price,
+export const setOwnerEmail = (ownerEmail) => ({
+  type: 'OWNER_EMAIL_SET',
+  ownerEmail,
 });
 
-export const setTitle = (title) => ({
-  type: 'TITLE_SET',
-  title,
+export const setOwnerPassword = (ownerPassword) => ({
+  type: 'OWNER_PASSWORD_SET',
+  ownerPassword,
 });
 
-export const setImage = (image) => ({
-  type: 'IMAGE_SET',
-  image,
+export const setOwnerConfirmPassword = (ownerConfirmPassword) => ({
+  type: 'OWNER_CONFIRM_PASSWORD_SET',
+  ownerConfirmPassword,
 });

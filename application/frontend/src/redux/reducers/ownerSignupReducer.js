@@ -1,41 +1,36 @@
 const initState = {
-  description: '',
-  type: '',
-  price: '',
-  title: '',
-  image: '',
-  loading: false,
-  listings: [],
-  error: '',
-  showListing: false,
-  singleListing: [],
+  ownerName: '',
+  ownerContactNumber: '',
+  ownerEmail: '',
+  ownerPassword: '',
+  ownerConfirmPassword: '',
 };
 const ownerSignupReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'DESCRIPTION_SET':
+    case 'OWNER_NAME_SET':
       return {
         ...state,
-        description: action.description,
+        ownerName: action.ownerName,
       };
-    case 'TYPE_SET':
+    case 'OWNER_CONTACT_NUMBER_SET':
       return {
         ...state,
-        type: action.ListingType,
+        ownerContactNumber: action.ownerContactNumber,
       };
-    case 'PRICE_SET':
+    case 'OWNER_EMAIL_SET':
       return {
         ...state,
-        price: action.price,
+        ownerEmail: action.ownerEmail,
       };
-    case 'TITLE_SET':
+    case 'OWNER_PASSWORD_SET':
       return {
         ...state,
-        title: action.title,
+        ownerPassword: action.ownerPassword,
       };
-    case 'IMAGE_SET':
+    case 'OWNER_CONFIRM_PASSWORD_SET':
       return {
         ...state,
-        image: action.image,
+        ownerConfirmPassword: action.ownerConfirmPassword,
       };
     default:
       return state;

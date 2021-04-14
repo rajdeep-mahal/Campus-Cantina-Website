@@ -1,47 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import '../assets/css/login_Signup.css';
-import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
+import {
+  setOwnerName,
+  setOwnerContactNumber,
+  setOwnerEmail,
+  setOwnerPassword,
+  setOwnerConfirmPassword,
+} from '../redux/actions/ownerSignupActions';
 
 const OwnerSignup = () => {
-  const [ownerName, setOwnerName] = useState('');
-  const [ownerContactNumber, setOwnerContactNumber] = useState('');
-  const [ownerEmail, setOwnerEmail] = useState('');
-  const [ownerPassword, setOwnerPassword] = useState('');
-  const [ownerConfirmPassword, setOwnerConfirmPassword] = useState('');
-  // const history = useHistory();
-
-  const handleSubmitOwnerSignup1 = (event) => {
-    // event.preventDefault();
-    let form_data = new FormData();
-    form_data.append('ownerName', ownerName);
-    form_data.append('ownerContactNumber', ownerContactNumber);
-    form_data.append('ownerEmail', ownerEmail);
-    form_data.append('ownerPassword', ownerPassword);
-    form_data.append('ownerConfirmPassword', ownerConfirmPassword);
-    console.log(form_data);
-    // setOwnerName('');
-    // setOwnerContactNumber('');
-    // setOwnerEmail('');
-    // setOwnerPassword('');
-    // setOwnerConfirmPassword('');
-    // history.push('/OwnerSignup2');
-    // axios
-    //   .post('https://localhost:3001/api/restaurant/', form_data, {
-    //     headers: { 'Content-Type': 'multipart/form-data' },
-    //   })
-    //   .then((res) => {
-    //     if (res.data.response.length > 0) {
-    //       setOwnerName('');
-    //       setOwnerContactNumber('');
-    //       setOwnerEmail('');
-    //       setOwnerPassword('');
-    //       setOwnerConfirmPassword('');
-    //     }
-    //   })
-    //   .then(() => {
-    //     history.push('/OwnerSignup2');
-    //   });
+  const dispatch = useDispatch();
+  const ownerName = useSelector((state) => state.ownerSignupReducer.ownerName);
+  const ownerContactNumber = useSelector(
+    (state) => state.ownerSignupReducer.ownerContactNumber
+  );
+  const ownerEmail = useSelector(
+    (state) => state.ownerSignupReducer.ownerEmail
+  );
+  const ownerPassword = useSelector(
+    (state) => state.ownerSignupReducer.ownerPassword
+  );
+  const ownerConfirmPassword = useSelector(
+    (state) => state.ownerSignupReducer.ownerConfirmPassword
+  );
+  const history = useHistory();
+  const onSubmitOwnerSignup1 = async (event) => {
+    event.preventDefault();
+    if (ownerPassword != ownerConfirmPassword) alert('Passwords do not match');
+    else history.push('/ownersignup2');
   };
 
   return (
@@ -51,6 +39,7 @@ const OwnerSignup = () => {
         className="signup-signin-form"
         method="POST"
         action="/users/register"
+        onSubmit={onSubmitOwnerSignup1}
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
@@ -69,7 +58,7 @@ const OwnerSignup = () => {
             required
             name="Restaurant Owner Name"
             value={ownerName}
-            onChange={(e) => setOwnerName(e.target.value)}
+            onChange={(e) => dispatch(setOwnerName(e.target.value))}
           />
           <label htmlFor="ownerContactNumber" className="login-label">
             Owner Contact Number
@@ -82,7 +71,7 @@ const OwnerSignup = () => {
             required
             name="Restaurant Owner Contact Number"
             value={ownerContactNumber}
-            onChange={(e) => setOwnerContactNumber(e.target.value)}
+            onChange={(e) => dispatch(setOwnerContactNumber(e.target.value))}
           />
           <label htmlFor="ownerEmail" className="login-label">
             Owner Email
@@ -95,7 +84,7 @@ const OwnerSignup = () => {
             required
             name="ownerEmail"
             value={ownerEmail}
-            onChange={(e) => setOwnerEmail(e.target.value)}
+            onChange={(e) => dispatch(setOwnerEmail(e.target.value))}
           />
           <label htmlFor="ownerPassword" className="login-label">
             Password
@@ -108,7 +97,7 @@ const OwnerSignup = () => {
             required
             name="Password"
             value={ownerPassword}
-            onChange={(e) => setOwnerPassword(e.target.value)}
+            onChange={(e) => dispatch(setOwnerPassword(e.target.value))}
           />
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password
@@ -121,23 +110,20 @@ const OwnerSignup = () => {
             required
             name="cpassword"
             value={ownerConfirmPassword}
-            onChange={(e) => setOwnerConfirmPassword(e.target.value)}
+            onChange={(e) => dispatch(setOwnerConfirmPassword(e.target.value))}
           />
           <br />
           <br />
           <a href="/">Forgot Password?</a> <br />
           <Link to="/OwnerLogin">Already Registered?</Link> <br />
           <br />
-          {/* <Link to="/OwnerSignup2" className="btn-owner-signup"> */}
           <button
             type="submit"
             className="login_button w-75 d-flex  justify-content-center"
             value="Register"
-            onClick={handleSubmitOwnerSignup1}
           >
             Proceed to Sign Up
           </button>
-          {/* </Link> */}
         </div>
       </form>
     </div>

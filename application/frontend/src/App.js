@@ -14,6 +14,7 @@ import SFSULogin from './pages/SFSULogin';
 import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
+import OwnerSignupExtended from './pages/OwnerSignupExtended';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
@@ -34,7 +35,7 @@ function App() {
       .then((res) => {
         dispatch(setAllRestaurants(res.data));
       });
-  }, []);
+  });
 
   return (
     <>
@@ -83,6 +84,9 @@ function App() {
           </Route>
           <Route path="/ownersignup">
             <OwnerSignup />
+          </Route>
+          <Route path="/ownersignup2">
+            <OwnerSignupExtended />
           </Route>
           <Route path="/driverlogin">
             <DriverLogin />

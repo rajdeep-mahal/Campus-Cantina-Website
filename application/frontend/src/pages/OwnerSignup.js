@@ -1,8 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
 import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 const OwnerSignup = () => {
+  const [ownerName, setOwnerName] = useState('');
+  const [ownerContactNumber, setOwnerContactNumber] = useState('');
+  const [ownerEmail, setOwnerEmail] = useState('');
+  const [ownerPassword, setOwnerPassword] = useState('');
+  const [ownerConfirmPassword, setOwnerConfirmPassword] = useState('');
+  // const history = useHistory();
+
+  const handleSubmitOwnerSignup1 = (event) => {
+    // event.preventDefault();
+    let form_data = new FormData();
+    form_data.append('ownerName', ownerName);
+    form_data.append('ownerContactNumber', ownerContactNumber);
+    form_data.append('ownerEmail', ownerEmail);
+    form_data.append('ownerPassword', ownerPassword);
+    form_data.append('ownerConfirmPassword', ownerConfirmPassword);
+    console.log(form_data);
+    // setOwnerName('');
+    // setOwnerContactNumber('');
+    // setOwnerEmail('');
+    // setOwnerPassword('');
+    // setOwnerConfirmPassword('');
+    // history.push('/OwnerSignup2');
+    // axios
+    //   .post('https://localhost:3001/api/restaurant/', form_data, {
+    //     headers: { 'Content-Type': 'multipart/form-data' },
+    //   })
+    //   .then((res) => {
+    //     if (res.data.response.length > 0) {
+    //       setOwnerName('');
+    //       setOwnerContactNumber('');
+    //       setOwnerEmail('');
+    //       setOwnerPassword('');
+    //       setOwnerConfirmPassword('');
+    //     }
+    //   })
+    //   .then(() => {
+    //     history.push('/OwnerSignup2');
+    //   });
+  };
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form
@@ -17,53 +58,47 @@ const OwnerSignup = () => {
             Restaurant Owner <br />
             Sign Up
           </h2>
-          <label htmlFor="name" className="login-label">
-            Restaurant Name
+          <label htmlFor="ownerName" className="login-label">
+            Owner Name
           </label>
           <input
             id="name"
             className="login_input-field"
             type="text"
-            placeholder="e.g. Chipotoplay"
+            placeholder="e.g. John Doe"
             required
-            name="Restaurant Name"
+            name="Restaurant Owner Name"
+            value={ownerName}
+            onChange={(e) => setOwnerName(e.target.value)}
           />
-          <label htmlFor="address" className="login-label">
-            Restaurant Address{' '}
+          <label htmlFor="ownerContactNumber" className="login-label">
+            Owner Contact Number
           </label>
           <input
-            id="address"
-            className="login_input-field"
-            type="text"
-            placeholder="e.g. 2090 Chestnut St, San Francisco, CA"
-            required
-            name="Restaurant Address"
-          />
-          <label htmlFor="contactNumber" className="login-label">
-            Restaurant Contact Number{' '}
-          </label>
-          <input
-            id="contactNumber"
+            id="ownerContactNumber"
             className="login_input-field"
             type="text"
             placeholder="e.g. 415-999-9999"
             required
-            name="Restaurant Contact Number"
+            name="Restaurant Owner Contact Number"
+            value={ownerContactNumber}
+            onChange={(e) => setOwnerContactNumber(e.target.value)}
           />
-          <label htmlFor="email" className="login-label">
-            {' '}
-            Email{' '}
+          <label htmlFor="ownerEmail" className="login-label">
+            Owner Email
           </label>
           <input
             className="login_input-field"
-            id="email"
+            id="ownerEmail"
             type="email"
             placeholder="e.g. john.doe@gmail.com"
             required
-            name="email"
+            name="ownerEmail"
+            value={ownerEmail}
+            onChange={(e) => setOwnerEmail(e.target.value)}
           />
-          <label htmlFor="password" className="login-label">
-            Password{' '}
+          <label htmlFor="ownerPassword" className="login-label">
+            Password
           </label>
           <input
             className="login_input-field"
@@ -72,9 +107,11 @@ const OwnerSignup = () => {
             placeholder="must have atleast 6 characters"
             required
             name="Password"
+            value={ownerPassword}
+            onChange={(e) => setOwnerPassword(e.target.value)}
           />
           <label htmlFor="PassConfirmation" className="login-label">
-            Confirm Password{' '}
+            Confirm Password
           </label>
           <input
             className="login_input-field"
@@ -83,19 +120,24 @@ const OwnerSignup = () => {
             placeholder="must have atleast 6 characters"
             required
             name="cpassword"
+            value={ownerConfirmPassword}
+            onChange={(e) => setOwnerConfirmPassword(e.target.value)}
           />
           <br />
           <br />
           <a href="/">Forgot Password?</a> <br />
           <Link to="/OwnerLogin">Already Registered?</Link> <br />
           <br />
+          {/* <Link to="/OwnerSignup2" className="btn-owner-signup"> */}
           <button
             type="submit"
-            className="login_button d-flex align-items-center justify-content-center"
+            className="login_button w-75 d-flex  justify-content-center"
             value="Register"
+            onClick={handleSubmitOwnerSignup1}
           >
-            Sign up
+            Proceed to Sign Up
           </button>
+          {/* </Link> */}
         </div>
       </form>
     </div>

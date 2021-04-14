@@ -65,3 +65,7 @@
   border-radius: 12px;
   padding: 5px;
 }
+
+.btn-owner-signup:hover {
+  text-decoration: none;
+}

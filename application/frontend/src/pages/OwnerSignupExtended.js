@@ -75,46 +75,46 @@ const OwnerSignupExtended = () => {
             Price Level
           </label>
           <br />
-          <div class="form-check form-check-inline ml-1">
+          <div className="form-check form-check-inline ml-1">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
               value="option1"
             />
-            <label class="form-check-label" for="inlineRadio1">
+            <label className="form-check-label" htmlFor="inlineRadio1">
               $
             </label>
           </div>
-          <div class="form-check form-check-inline">
+          <div className="form-check form-check-inline">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
               value="option2"
             />
-            <label class="form-check-label" for="inlineRadio2">
+            <label className="form-check-label" htmlFor="inlineRadio2">
               $$
             </label>
           </div>
-          <div class="form-check form-check-inline">
+          <div className="form-check form-check-inline">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio3"
               value="option3"
             />
-            <label class="form-check-label" for="inlineRadio3">
+            <label className="form-check-label" htmlFor="inlineRadio3">
               $$$
             </label>
           </div>
           <div className="form-group mt-1">
             <label htmlFor="BannerImage">Upload a Banner Image: </label>
             <input
-              id="input-image"
+              id="input-image1"
               type="file"
               name="bannerImageUpload"
               accept=".jpg, .png, .jpeg"
@@ -128,7 +128,7 @@ const OwnerSignupExtended = () => {
           <div className="form-group">
             <label htmlFor="BannerImage">Upload Two Menu Item Images </label>
             <input
-              id="input-image"
+              id="input-image2"
               type="file"
               name="menuImageUpload1"
               accept=".jpg, .png, .jpeg"
@@ -139,7 +139,7 @@ const OwnerSignupExtended = () => {
               single="true"
             />
             <input
-              id="input-image"
+              id="input-image3"
               type="file"
               name="bmenuImageUpload2"
               accept=".jpg, .png, .jpeg"
@@ -152,9 +152,9 @@ const OwnerSignupExtended = () => {
           </div>
           <br />
           <br />
-          <a href="/">
-            <i class="fas fa-chevron-left small"></i> Back
-          </a>
+          <Link to="/OwnerSignup">
+            <i className="fas fa-chevron-left small"></i> Back
+          </Link>
           <br />
           <Link to="/OwnerLogin">Already Registered?</Link> <br />
           <br />

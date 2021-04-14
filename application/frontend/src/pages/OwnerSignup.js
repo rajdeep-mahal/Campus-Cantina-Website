@@ -28,7 +28,7 @@ const OwnerSignup = () => {
   const history = useHistory();
   const onSubmitOwnerSignup1 = async (event) => {
     event.preventDefault();
-    if (ownerPassword != ownerConfirmPassword) alert('Passwords do not match');
+    if (ownerPassword !== ownerConfirmPassword) alert('Passwords do not match');
     else history.push('/ownersignup2');
   };
 

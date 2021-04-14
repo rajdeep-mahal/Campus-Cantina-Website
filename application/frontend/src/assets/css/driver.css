@@ -1,0 +1,10 @@
+
+.order_header{
+    background-color:var(--primary-color);
+}
+
+.delivered_text{
+    margin-right:auto;
+    margin-left:auto;
+    background-color:var(--primary-color)
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import '../assets/css/home.css';
+import '../assets/css/driver.css';
 import map_sample from '../assets/img/map_customerorder.png';
 
 
@@ -13,7 +13,7 @@ const DriverCustomerOrders = () =>{
                 <div className = "card-body">
                     <div className = "py-2 px-5">
                     <div className = "h4 text-center font-weight-bold">Head to Customer</div>
-                    <img src = {map_sample} alt = "map_sample" className = "d-block img-fluid customer_order_map pb-4 ml-auto mr-auto" />
+                    <img src = {map_sample} alt = "map_sample" className = "border border-warning d-block img-fluid customer_order_map pb-4 ml-auto mr-auto mb-4" />
                     <div className = "row justify-content-around">
                         <div className = "col-4">
                         <h5>Order Details</h5>

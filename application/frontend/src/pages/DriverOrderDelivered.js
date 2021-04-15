@@ -4,7 +4,7 @@ import map_sample from '../assets/img/map_customerorder.png';
 
 
 
-const DriverCustomerOrders = () =>{
+const DriverOrderDelivered = () =>{
     return(
         <div className = "container-fluid">
             <div className = "order_header h3 text-white text-center py-3">Order Details</div>
@@ -44,4 +44,4 @@ const DriverCustomerOrders = () =>{
         </div>
     );
 };
-export default DriverCustomerOrders;
+export default DriverOrderDelivered;

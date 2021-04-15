@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DriverAllOrders = () => {
+const DriverAvailableOrders = () => {
 
   return (
     <div className="text-center">
@@ -9,4 +9,4 @@ const DriverAllOrders = () => {
   );
 };
 
-export default DriverAllOrders
+export default DriverAvailableOrders

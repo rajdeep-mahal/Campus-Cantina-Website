@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const OwnerSignupExtended = () => {
   const history = useHistory();
@@ -28,14 +31,18 @@ const OwnerSignupExtended = () => {
   const [restaurantMenuItem1, setRestaurantMenuItem1] = useState('');
   const [restaurantMenuItem2, setRestaurantMenuItem2] = useState('');
 
-  const onSubmitOwnerSignup2 = (event) => {
-    event.preventDefault();
+  const onSubmitOwnerSignup2 = () => {
+    //event.preventDefault();
     const form_data = new FormData();
-    form_data.append('ownerName', ownerName);
-    form_data.append('ownerContactNumber', ownerContactNumber);
-    form_data.append('ownerEmail', ownerEmail);
-    form_data.append('ownerPassword', ownerPassword);
-    form_data.append('ownerConfirmPassword', ownerConfirmPassword);
+    const form_data2 = new FormData();
+
+    form_data2.append('ownerName', ownerName);
+    form_data2.append('ownerContactNumber', ownerContactNumber);
+    form_data2.append('ownerEmail', ownerEmail);
+    form_data2.append('ownerPassword', ownerPassword);
+    form_data2.append('ownerConfirmPassword', ownerConfirmPassword);
+    form_data2.append('ownerRestaurant', restaurantName);
+
     form_data.append('restaurantName', restaurantName);
     form_data.append('restaurantAddress', restaurantAddress);
     form_data.append('restaurantContactNumber', restaurantContactNumber);
@@ -46,17 +53,38 @@ const OwnerSignupExtended = () => {
     form_data.append('restaurantMenuItem1', restaurantMenuItem1);
     form_data.append('restaurantMenuItem2', restaurantMenuItem2);
 
+    let ID = nanoid();
+    form_data.append('restaurantID', ID);
+
+    let ID2 = nanoid();
+    form_data2.append('ownerID', ID2);
+
+    let dataObject = {};
+    form_data.forEach((value, key) => (dataObject[key] = value));
+    let dataJson = JSON.stringify(dataObject);
+
+    let dataObject2 = {};
+    form_data2.forEach((value, key) => (dataObject2[key] = value));
+    let dataJson2 = JSON.stringify(dataObject2);
+
+    axios
+      .post('http://localhost:3001/api/restaurant/register-owner', {
+        params: { formdata: dataJson2 },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
+    axios
+      .post('http://localhost:3001/api/restaurant/register-restaurant', {
+        params: { formdata: dataJson },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
     alert('Thank you for Registering');
     history.push('/');
-    // axios
-    //   .post('http://localhost:3001/api/owner/register', form_data, {
-    //     headers: { 'Content-Type': 'multipart/form-data' },
-    //   })
-    //   .then((res) => {
-    //     if (res.data.response.length > 0) {
-    // history.push('/');
-    //     }
-    //   });
   };
 
   return (
@@ -68,7 +96,7 @@ const OwnerSignupExtended = () => {
         id="registration"
         className="signup-signin-form"
         method="POST"
-        action="/users/register"
+        //action="/users/register"
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />

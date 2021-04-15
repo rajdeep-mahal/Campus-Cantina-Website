@@ -1,0 +1,24 @@
+
+.order_header{
+    background-color:var(--primary-color);
+}
+
+.delivered_text{
+    margin-right:auto;
+    margin-left:auto;
+    background-color:var(--primary-color)
+}
+.table_order{
+    border:var(--primary-color);
+}
+.border_header{
+   border-color: var(--primary-color) !important;
+   background-color: var()
+}
+.border_body{
+    border-color: var(--primary-color) !important;
+}
+.assigned_orders{
+    height: 40px;
+    border-color: var(--primary-color) !important;
+}

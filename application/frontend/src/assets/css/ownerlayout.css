@@ -5,12 +5,22 @@
   background-color: var(--primary-color-opac-2);
   border-radius: 15px;
   padding: 3%;
-  width: 80%;
   height: auto;
   margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
   font-size: 110%;
+}
+/* Ownerprofile/editprofile Responsiveness */ 
+@media (max-width: 500px) {
+  .editprofile {
+    width: 100%; 
+  }
+}
+@media (min-width: 750px) {
+  .editprofile {
+    width: 700px;
+  }
 }
 
 /* save button */
@@ -24,7 +34,7 @@
   color: white;
 }
 
-/* OwnerProfile styling */
+/* OwnerProfile */
 
 /* content border */
 .profile-content {
@@ -40,7 +50,14 @@
   }
 }
 
-/* OwnerOrderHistory styling */
+/* modal width */
+@media (max-width: 500px) {
+  .modal {
+    width: 53%;
+  }
+}
+
+/* OwnerOrderHistory */
 
 /* table head */
 .order-list-title {
@@ -86,3 +103,4 @@
   background-color: var(--primary-color-opac);
   color: white;
 }
+

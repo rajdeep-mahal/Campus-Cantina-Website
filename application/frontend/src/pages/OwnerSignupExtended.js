@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -21,9 +21,10 @@ const OwnerSignupExtended = () => {
   const ownerConfirmPassword = useSelector(
     (state) => state.ownerSignupReducer.ownerConfirmPassword
   );
+
   const [restaurantName, setRestaurantName] = useState('');
   const [restaurantAddress, setRestaurantAddress] = useState('');
-  const [restaurantContactNumber, setRestaurantContactNumber] = useState('');
+  const [cuisines, setCuisines] = useState([]);
   const [restaurantCuisine, setRestaurantCuisine] = useState('');
   const [restaurantTags, setRestaurantTags] = useState('');
   const [restaurantPriceLevel, setRestaurantPriceLevel] = useState('');
@@ -45,7 +46,6 @@ const OwnerSignupExtended = () => {
 
     form_data.append('restaurantName', restaurantName);
     form_data.append('restaurantAddress', restaurantAddress);
-    form_data.append('restaurantContactNumber', restaurantContactNumber);
     form_data.append('restaurantCuisine', restaurantCuisine);
     form_data.append('restaurantTags', restaurantTags);
     form_data.append('restaurantPriceLevel', restaurantPriceLevel);
@@ -87,6 +87,12 @@ const OwnerSignupExtended = () => {
     history.push('/');
   };
 
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/api/searchbar/cuisines')
+      .then((res) => setCuisines(res.data));
+  }, []);
+
   return (
     <div
       className="login-container d-flex align-items-center justify-content-center"
@@ -123,38 +129,30 @@ const OwnerSignupExtended = () => {
             id="address"
             className="login_input-field"
             type="text"
-            placeholder="e.g. 2090 Chestnut St, San Francisco, CA"
+            placeholder="e.g. 2090 Chestnut St"
             required
             name="Restaurant Address"
             value={restaurantAddress}
             onChange={(e) => setRestaurantAddress(e.target.value)}
           />
-          <label htmlFor="contactNumber" className="login-label">
-            Restaurant Contact Number
-          </label>
-          <input
-            id="contactNumber"
-            className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
-            required
-            name="Restaurant Contact Number"
-            value={restaurantContactNumber}
-            onChange={(e) => setRestaurantContactNumber(e.target.value)}
-          />
           <label htmlFor="Cuisine" className="login-label">
             Restaurant Cuisine
           </label>
-          <input
-            id="cuisine"
-            className="login_input-field"
-            type="text"
-            placeholder="e.g. Mexican"
-            required
-            name="Restaurant Cuisine"
-            value={restaurantCuisine}
+          <select
+            className="custom-select login_input-field"
+            id="inlineFormCustomSelect"
+            defaultValue={'Choose  a Cuisine...'}
             onChange={(e) => setRestaurantCuisine(e.target.value)}
-          />
+          >
+            <option value="Choose  a Cuisine..." disabled>
+              Choose a Cuisine...
+            </option>
+            {cuisines.map((cuisine, i) => (
+              <option value={cuisine.Cuisine} key={i}>
+                {cuisine.Cuisine}
+              </option>
+            ))}
+          </select>
           <label htmlFor="Search Tags" className="login-label">
             Search Tags
           </label>
@@ -212,6 +210,20 @@ const OwnerSignupExtended = () => {
             />
             <label className="form-check-label" htmlFor="inlineRadio3">
               $$$
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio4"
+              value="$$$$"
+              // checked={setRestaurantPriceLevel('$$$$')}
+              onChange={(e) => setRestaurantPriceLevel(e.target.value)}
+            />
+            <label className="form-check-label" htmlFor="inlineRadio4">
+              $$$$
             </label>
           </div>
           <div className="form-group mt-1">

@@ -7,11 +7,11 @@ const OwnerEditProfile = () => {
     <div class="container-fluid">
       <br />
       <br />
-       {/* Header */}
+      {/* Header */}
       <div className="text-center">
         <h3> Edit Profile </h3>
       </div>
-       {/* form body */}
+      {/* form body */}
       <form className="editprofile form-control">
         <input
           className="owner_edit"
@@ -19,7 +19,7 @@ const OwnerEditProfile = () => {
           type="hidden"
           name="redirect"
         />
-         {/* restaurant name field           need owner-form class???*/}
+        {/* restaurant name field           need owner-form class???*/}
         <div className="row">
           <div class="col-8 owner-form">
             <label for="restaurant-name"> Restaurant Name</label>
@@ -33,7 +33,7 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-         {/* name field */}
+        {/* name field */}
         <div class="row">
           <div class="col-8">
             <label for="name"> Name </label>
@@ -50,9 +50,9 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-         {/* contact field */}
+        {/* contact field */}
         <div class="row">
-        <div class="col-5">
+          <div class="col-5">
             <label for="phone">Contact Info</label>
             <div class="w-100" />
             <input
@@ -66,7 +66,7 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-         {/* address field */}
+        {/* address field */}
         <label for="address">Restaurant Address</label>
         <input
           type="text"
@@ -76,11 +76,11 @@ const OwnerEditProfile = () => {
           placeholder="123 Street Name"
         />
         <br />
-         {/* img field */}
+        {/* img field */}
         <label for="img">Restaurant Image</label>
         <input type="file" id="img" class="form-control" />
         <br />
-         {/* cuisine field */}
+        {/* cuisine field */}
         <label for="food">Cuisine</label>
         <input
           class="form-control"
@@ -90,7 +90,7 @@ const OwnerEditProfile = () => {
           placeholder="Ex: American, burgers, etc "
         />
         <br />
-         {/* pricing field */}
+        {/* pricing field */}
         <div class="row">
           <div class="col-4">
             <label for="price">Restaurant Pricing</label>
@@ -101,16 +101,16 @@ const OwnerEditProfile = () => {
               data-toggle="buttons"
             >
               <label class="btn btn-secondary active">
-                <input type="radio" name="price" autoComplete="off" checked/> $
+                <input type="radio" name="price" autoComplete="off" checked /> $
               </label>
               <label class="btn btn-secondary">
-              <input type="radio" name="price" autoComplete="off"/> $$
+                <input type="radio" name="price" autoComplete="off" /> $$
               </label>
               <label class="btn btn-secondary">
-              <input type="radio" name="price" autoComplete="off"/> $$$
+                <input type="radio" name="price" autoComplete="off" /> $$$
               </label>
               <label class="btn btn-secondary">
-              <input type="radio" name="price" autoComplete="off"/> $$$$
+                <input type="radio" name="price" autoComplete="off" /> $$$$
               </label>
             </div>
           </div>

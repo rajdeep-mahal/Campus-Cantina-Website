@@ -10,7 +10,7 @@ const OwnerOrderHistory = () => {
       <div className="text-center">
         <h3> Orders</h3>
       </div>
-      <div class="table-responsive-sm">
+      <div className="table-responsive-sm order-table">
         <table class="table table-striped ">
           <thead>
             <tr class="table-secondary" className="order-list-title">
@@ -98,7 +98,7 @@ const OwnerOrderHistory = () => {
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog " role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">
@@ -115,7 +115,7 @@ const OwnerOrderHistory = () => {
             </div>
             <div class="modal-body">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"> 1 x Cheeseburger </li>
+                <li class="list-group-item">1 x Cheeseburger </li>
                 <li class="list-group-item">1 x Large Diet Coke </li>
                 <li class="list-group-item">Special Instructions: No Onions</li>
               </ul>

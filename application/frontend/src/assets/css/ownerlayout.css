@@ -39,14 +39,15 @@
 /* content border */
 .profile-content {
   margin-left: auto;
-  padding: 1%;
-  border-radius: 15px;
+  /* padding: 1%;
+  border-radius: 15px; */
 }
 
 /* content position breakpoint */
 @media (min-width: 1000px) {
   .profile-content {
-    text-align: center;
+    /* text-align: center; */
+    
   }
 }
 

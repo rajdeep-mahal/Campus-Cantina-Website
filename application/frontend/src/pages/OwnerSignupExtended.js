@@ -91,9 +91,16 @@ const OwnerSignupExtended = () => {
   };
 
   useEffect(() => {
+    let source = axios.CancelToken.source();
     axios
-      .get('http://localhost:3001/api/searchbar/cuisines')
-      .then((res) => setCuisines(res.data));
+      .get('http://localhost:3001/api/searchbar/cuisines', {
+        cancelToken: source.token,
+      })
+      .then((res) => setCuisines(res.data))
+      .catch((err) => err);
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   return (

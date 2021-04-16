@@ -22,3 +22,8 @@ export const setOwnerConfirmPassword = (ownerConfirmPassword) => ({
   type: 'OWNER_CONFIRM_PASSWORD_SET',
   ownerConfirmPassword,
 });
+
+export const setOwnerFormSubmitted = (ownerFormSubmitted) => ({
+  type: 'OWNER_FORM_SUBMITTED_SET',
+  ownerFormSubmitted,
+});

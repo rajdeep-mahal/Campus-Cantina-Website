@@ -4,6 +4,7 @@ const initState = {
   ownerEmail: '',
   ownerPassword: '',
   ownerConfirmPassword: '',
+  ownerFormSubmitted: false,
 };
 const ownerSignupReducer = (state = initState, action) => {
   switch (action.type) {
@@ -31,6 +32,11 @@ const ownerSignupReducer = (state = initState, action) => {
       return {
         ...state,
         ownerConfirmPassword: action.ownerConfirmPassword,
+      };
+    case 'OWNER_FORM_SUBMITTED_SET':
+      return {
+        ...state,
+        ownerFormSubmitted: action.ownerFormSubmitted,
       };
     default:
       return state;

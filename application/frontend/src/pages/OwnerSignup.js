@@ -8,6 +8,7 @@ import {
   setOwnerEmail,
   setOwnerPassword,
   setOwnerConfirmPassword,
+  setOwnerFormSubmitted,
 } from '../redux/actions/ownerSignupActions';
 
 const OwnerSignup = () => {
@@ -26,10 +27,14 @@ const OwnerSignup = () => {
     (state) => state.ownerSignupReducer.ownerConfirmPassword
   );
   const history = useHistory();
-  const onSubmitOwnerSignup1 = async (event) => {
+  const onSubmitOwnerSignup1 = (event) => {
     event.preventDefault();
-    if (ownerPassword !== ownerConfirmPassword) alert('Passwords do not match');
-    else history.push('/ownersignup2');
+    if (ownerPassword !== ownerConfirmPassword) {
+      alert('Passwords do not match');
+    } else {
+      dispatch(setOwnerFormSubmitted(true));
+      history.push('/ownersignup2');
+    }
   };
 
   return (

@@ -1,20 +1,12 @@
 import React from 'react';
 import '../assets/css/login_Signup.css';
-import axios from 'axios';
-// import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const DriverSignup = () => {
-  const [restaurants, setRestaurants] = React.useState([]);
-
-  React.useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/restaurant/all-restaurants')
-      .then((res) => {
-        setRestaurants(res.data);
-      });
-  }, []);
-
+  const restaurantsList = useSelector(
+    (state) => state.searchReducer.allRestaurants
+  );
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form
@@ -48,13 +40,13 @@ const DriverSignup = () => {
             Choose a Restaurant to work for
           </label>
           <select
-            className="text-muted driver-restaurant-list"
+            className="text-muted login_input-field"
             defaultValue={'Select Restaurant...'}
           >
             <option value="Select Restaurant..." disabled>
               Select a Restaurant...
             </option>
-            {restaurants.map((restaurant, i) => (
+            {restaurantsList.map((restaurant, i) => (
               <option value={restaurant.Name} key={i}>
                 {restaurant.Name}
               </option>

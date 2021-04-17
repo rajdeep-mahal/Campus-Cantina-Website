@@ -1,6 +1,17 @@
 
 .order_header{
     background-color:var(--primary-color);
+    opacity: 0.9;
+}
+.card_customerorder_body{
+    border-color:var(--primary-color) !important;
+}
+.card_customerorder{
+    background-color: var(--primary-color);
+}
+
+.customer_order_map{
+    border-color:var(--primary-color) !important;
 }
 
 .delivered_text{
@@ -8,3 +19,16 @@
     margin-left:auto;
     background-color:var(--primary-color)
 }
+
+.items{
+    padding-right: 100px;
+}
+.customer_info{
+    list-style: none;
+}
+
+/* @media only screen and (max-width: 900px) {
+    .delivery_instructions{
+        font-size: 75%;
+    }
+  } */

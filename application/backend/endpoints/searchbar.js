@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../db');
-const validator = require('validator');   // Used for input validation
+const validator = require('validator'); // Used for input validation
 
 // API call to populate cuisine drop-down list
 router.get('/cuisines', (req, res) => {
@@ -55,9 +55,19 @@ router.get('/search', (req, res) => {
       query = `SELECT * FROM Restaurants WHERE Cuisine = '` + cuisine + `'`;
     }
 
+    let resultArray = [];
+
     database.query(query, (err, result) => {
       console.log('Called search endpoint');
-      res.send(result);
+
+      // Loop through query results and add only approved restaurants to resultArray
+      result.forEach((restaurant) => {
+        if (restaurant.Approved === 1) {
+          resultArray.push(restaurant);
+        }
+      });
+
+      res.send(resultArray);
     });
   } else {
     // Send invalid as response when search term vaidation fails

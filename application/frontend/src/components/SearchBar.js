@@ -2,7 +2,12 @@ import React from 'react';
 import '../assets/css/searchbar.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setSearchResults, setNoResult } from '../redux/actions/searchActions';
+import {
+  setSearchResults,
+  setNoResult,
+  setSearchedTerm,
+  setSearchedCuisine,
+} from '../redux/actions/searchActions';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
@@ -23,6 +28,10 @@ const SearchBar = () => {
         params: { searchTerm: searchTerm, cuisine: selectedCuisine },
       })
       .then((res) => {
+        let element = document.getElementById('root');
+        element.scrollIntoView(true);
+        dispatch(setSearchedTerm(searchTerm));
+        dispatch(setSearchedCuisine(selectedCuisine));
         if (res.data.length === 0) {
           dispatch(setSearchResults([]));
           dispatch(setNoResult('No results found.'));
@@ -50,42 +59,34 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="container" style={{paddingBottom: '10px'}}>
-      <div className="row">
-        <div className="mx-auto">
-          <div style={{ display: 'flex' }} className="text-center container">
-            {/* Cuisine Dropdown List */}
-            <select
-              id="cuisineDropDown"
-              onChange={handleCuisine}
-              className="custom-select"
-              style={{ width: '125px', height: '35px', fontSize: '15px' }}
-            >
-              <option value="">All Cuisines</option>
-              {cuisines.map((cuisine, i) => (
-                <option value={cuisine.Cuisine} key={i}>
-                  {cuisine.Cuisine}
-                </option>
-              ))}
-            </select>
-            {/* Search Bar */}
-            <input
-              id="searchInput"
-              type="text"
-              className="form-control"
-              style={{ width: '250px', height: '35px' }}
-              size="30"
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            {/* Search Button */}
-            <div className="input-group-append" style={{display: 'flex', height: '35px'}}>
-              <button className="btn nav-search-btn" onClick={handleSearch}>
-                <i className="fa fa-search h5 text-dark" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="d-flex container justify-content-center align-items-center py-1 search-container">
+      {/* Cuisine Dropdown List */}
+      <select
+        id="cuisineDropDown"
+        onChange={handleCuisine}
+        className="custom-select form-control"
+        style={{ width: '115px', height: '35px', fontSize: '15px' }}
+      >
+        <option value="">All Cuisines</option>
+        {cuisines.map((cuisine, i) => (
+          <option value={cuisine.Cuisine} key={i}>
+            {cuisine.Cuisine}
+          </option>
+        ))}
+      </select>
+      {/* Search Bar */}
+      <input
+        type="text"
+        className="form-control search-bar"
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
+        // placeholder='Search'
+      />
+      {/* Search Button */}
+      <div className="d-flex input-group-append" style={{ height: '35px' }}>
+        <button className="btn nav-search-btn" onClick={handleSearch}>
+          <i className="fa fa-search h5 sb-icon-color" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   );

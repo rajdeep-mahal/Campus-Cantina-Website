@@ -6,7 +6,7 @@ import Bhavani from './pages/About/Bhavani';
 import Frederick from './pages/About/Frederick';
 import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
-//import VPHome from "./pages/VPHome";
+import VPHome from './pages/VPHome';
 import Home from './pages/Home';
 import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
@@ -14,18 +14,40 @@ import SFSULogin from './pages/SFSULogin';
 import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
+import OwnerSignupExtended from './pages/OwnerSignupExtended';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
-import Splash from './pages/Splash';
+import ScrollToTop from './components/ScrollToTop';
+import CuisineResults from './pages/CuisineResults';
+import React from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAllRestaurants } from './redux/actions/searchActions';
 
 function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    axios
+      .get('http://localhost:3001/api/searchbar/search', {
+        params: { searchTerm: '', cuisine: '' },
+      })
+      .then((res) => {
+        dispatch(setAllRestaurants(res.data));
+      });
+  });
+
   return (
     <>
       <BrowserRouter>
         <MenuSideBar />
+        <ScrollToTop />
         <Switch>
           <Route path="/searchresults">
             <SearchResults />
+          </Route>
+          <Route path="/cuisineresults">
+            <CuisineResults />
           </Route>
           <Route path="/about/rajdeep">
             <Rajdeep />
@@ -48,6 +70,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/vphome">
+            <VPHome />
+          </Route>
           <Route path="/sfsulogin">
             <SFSULogin />
           </Route>
@@ -60,14 +85,14 @@ function App() {
           <Route path="/ownersignup">
             <OwnerSignup />
           </Route>
+          <Route path="/ownersignup2">
+            <OwnerSignupExtended />
+          </Route>
           <Route path="/driverlogin">
             <DriverLogin />
           </Route>
           <Route path="/driversignup">
             <DriverSignup />
-          </Route>
-          <Route path="/splash">
-            <Splash />
           </Route>
           <Route path="/">
             <Home />

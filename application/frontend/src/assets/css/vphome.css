@@ -1,4 +1,4 @@
-@import '../../index.css';
+@import '../css/index.css';
 
 .vp-search-btn {
   background-color: var(--primary-color);
@@ -44,4 +44,10 @@
 
 .searchresults {
   z-index: -1;
+}
+
+@media (max-width: 767px) {
+  .rest-desc-text {
+    display: none;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
@@ -10,107 +10,153 @@ const MenuSideBar = () => {
   const [cart, setCart] = useState(false);
   const showMenu = () => setMenu(!menu);
   const showCart = () => setCart(!cart);
+  const ref = useRef(null);
+  const handleClickOutsideMenu = (event) => {
+    if (!ref.current.contains(event.target)) {
+      showMenu();
+    }
+  };
+  const handleClickOutsideCart = (event) => {
+    if (!ref.current.contains(event.target)) {
+      showCart();
+    }
+  };
+  useEffect(() => {
+    if (menu) {
+      document.addEventListener('click', handleClickOutsideMenu);
+      return () => {
+        document.removeEventListener('click', handleClickOutsideMenu);
+      };
+    }
+    if (cart) {
+      document.addEventListener('click', handleClickOutsideCart);
+      return () => {
+        document.removeEventListener('click', handleClickOutsideCart);
+      };
+    }
+  });
 
   return (
     <>
-      <div
-        className="navbar-header text-center"
-        style={{ fontSize: '11px', color: 'white' }}
-      >
+      <div className="primary-color secondary-color-bg text-center disclaimer">
         <span>
           SFSU Software Engineering Project CSC 648/848 | Spring 2021 | For
           Demonstration Only
         </span>
       </div>
-      <div className="navbar sticky-top navbar-expand-lg">
-        <div className="nav-left">
-          <Link to="#">
-            <i
-              className="fas fa-bars text-white hamburger h4"
-              onClick={showMenu}
-            ></i>
-          </Link>
-        </div>
-        <div>
-          <div className="mx-auto text-center" style={{ display: 'flex' }}>
-            <img src={CCLogo} alt="logo" height="50" className="logopic" />
+      <div className="navbar sticky-top flex-nowrap">
+        <section className="pt-2 col-md-3">
+          <div className="row">
+            <Link to="#" className="">
+              <i
+                className="fas fa-bars text-white h4 hamburger"
+                onClick={showMenu}
+              ></i>
+            </Link>
+            <Link to="/" className="" style={{ marginLeft: '10px' }}>
+              <img
+                src={CCLogo}
+                alt="logo"
+                height="40"
+                className="logo-pic"
+                style={{ marginLeft: '0px' }}
+              />
+            </Link>
+            <div style={{ marginTop: '-6px' }}>
+              <Link to="/" className="campus-home-link">
+                <span className="campus text-white h4">campus cantina</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+        <div className="col-md-5">
+          <div className="msb-searchbar pb-1">
+            <SearchBar />
+          </div>
+          <div
+            className="text-center"
+            style={{ width: '200px', marginTop: '-5px' }}
+          >
             <Link to="/" className="campus-home-link">
-              <h4 className="campus">campus cantina</h4>
+              <span className="second-campus text-white h4">
+                campus cantina
+              </span>
             </Link>
           </div>
         </div>
-        <div className="nav-center">
-          <SearchBar />
-        </div>
-        <div className="nav-right">
-          <Link to="#">
-            <i
-              className="fas fa-shopping-cart text-white h4"
+        <div className="col-md-3">
+          <Link to="#" className="float-right cart-icon-container">
+            <button
+              className="btn secondary-color-bg primary-color cart-btn-container"
               onClick={showCart}
-            ></i>
+            >
+              <div style={{ display: 'flex' }}>
+                <div style={{ marginTop: '-1px' }}>
+                  <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
+                </div>
+                <div style={{ marginTop: '-6px' }}>
+                  <span className="lblCartCount">9</span>
+                </div>
+              </div>
+            </button>
           </Link>
         </div>
       </div>
+      <div className="navbar second-nav">
+        <div className="row mx-auto">
+          <div className="col mx-auto">
+            <SearchBar />
+          </div>
+        </div>
+      </div>
+
       {/* Side Menu */}
       <nav
         className={menu ? 'side-menu open text-white' : 'side-menu text-white'}
+        ref={ref}
       >
         <ul className="navbar-nav">
-          <li className="px-3 pt-1" onClick={showMenu}>
+          <li className="nav-item" onClick={showMenu}>
             <Link to="#">
-              <i className=" fas fa-times close float-right h4"></i>
+              <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
           {MenuItems.map((item, index) => {
             return (
-              <li key={index} className="menu-item p-2 m-2 " onClick={showMenu}>
+              <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
                 <Link to={item.path}>
-                  <i className={item.cName} />
-                  {index === 4 ? (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                      <br />
-                    </>
-                  ) : index === 5 ? (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                      <br />
-                    </>
-                  ) : (
-                    <>
-                      <span className="side-menu-text p-2 m-1 h5">
-                        {item.title}
-                      </span>
-                    </>
-                  )}
+                  <i className={item.cName} style={{ width: '10px' }} />
+                  <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
+                    {item.title}
+                  </span>
                 </Link>
               </li>
             );
           })}
-          <li className="small pt-5 m-4 text-center copytext">
-            <i className="fas fa-copyright"></i>
-            <span style={{ color: 'gray' }}>
-              Campus Cantina CSC648/848 Team 04 Spring 2021
+          <li
+            className="small mr-1 text-center copytext"
+            style={{ fontSize: '10px' }}
+          >
+            <i className="fas fa-copyright text-muted pr-1 "></i>
+            <span className="text-muted">
+              Campus Cantina | CSC648/848 Team 04 | Spring 2021 <br />
+              All images free-use
             </span>
           </li>
         </ul>
       </nav>
+
       {/* Cart */}
-      <nav className={cart ? 'cart open' : 'cart'}>
+      <nav className={cart ? 'cart open' : 'cart'} ref={ref}>
         <ul className="navbar-nav">
           <li className="px-3 pt-1" onClick={showCart}>
             <Link to="#">
-              <i className=" fas fa-times close float-left h4"></i>
+              <i className="nav-link fas fa-times primary-color float-left h4 my-3"></i>
             </Link>
           </li>
-          <li>
-            <br/>
-            <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
-            <p className="cart-text p-2 m-1">Add items to get started</p>
+          <li style={{ marginTop: '10px' }}>
+            <span className=" p-2 m-1 h5">Your Cart is empty</span>
+            <p className="primary-color p-2 m-1">Add items to get started</p>
           </li>
         </ul>
       </nav>

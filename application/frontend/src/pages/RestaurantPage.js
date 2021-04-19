@@ -3,6 +3,7 @@ import '../assets/css/restaurant_page.css';
 import Banner from '../assets/img/restaurant/banner.jpg';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import config from '../config.js';
+import Pizza from '../assets/img/cuisines/Pizza.png';
 import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
 import Pizza2 from '../assets/img/restaurant/pizza2.jpg';
 import Wings from '../assets/img/restaurant/wings.jpg';
@@ -33,13 +34,11 @@ const RestaurantPage = () => {
   return (
     <div>
       <div className="rp-banner">
-        <img className="d-block w-100" src={Banner} style={{
-          height: '140px'
-        }} />
+        <img className="img-fluid d-block" src={Banner} />
       </div>
 
 
-      <div className="ml-5 mr-5 mt-4 mb-4">
+      <div className="ml-5 mr-4 mt-4 mb-4">
         <div
             className="float-right"
             style={{
@@ -78,6 +77,7 @@ const RestaurantPage = () => {
         </div>
         <div className="rp-info">
           <table height="90px" className="mx-auto">
+            <div className="">
             <tbody>
               <tr>
                 <td className="align-middle">
@@ -92,6 +92,7 @@ const RestaurantPage = () => {
                 </td>
               </tr>
             </tbody>
+            </div>
           </table>
         </div>
       </div>
@@ -102,7 +103,10 @@ const RestaurantPage = () => {
 
       <div className="container">
       <div className="rp-menu-items m-4">
+        <p>
+          <img src={Pizza} alt="logo" height="55" className="rounded mx-auto d-block" />
         <h4 className="text-center pb-3 pt-3">Most Popular</h4>
+        </p>
         <div className="row m-2">
           <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
             {/* <Link to='#' style={{ textDecoration: 'none' }}> */}
@@ -116,6 +120,7 @@ const RestaurantPage = () => {
                   <tr>
                     <td className="pl-4 pt-4">
                       <p>
+                      <br/>
                         <strong>Cheese Pizza </strong>
                         <br />{' '}
                         <span className="text-muted">(700-1180 Cal.)</span>
@@ -193,7 +198,11 @@ const RestaurantPage = () => {
       </div>
 
 
-      <div className="container mr-auto">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
       <Modal show={modalIsOpen} onHide={closeModal} centered>
         <div className="m-3">
           <h2>Cheese Pizza</h2>
@@ -224,6 +233,9 @@ const RestaurantPage = () => {
           <button className="btn primary-color-bg text-white">Add to cart</button>
         </Modal.Footer>
       </Modal>
+      </div>
+          </div>
+        </div>
       </div>
     </div>
   );

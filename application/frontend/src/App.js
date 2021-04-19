@@ -17,6 +17,7 @@ import OwnerSignup from './pages/OwnerSignup';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import Splash from './pages/Splash';
+import DriverAvailableOrders from './pages/DriverAvailableOrders'
 
 function App() {
   return (
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route path="/driversignup">
             <DriverSignup />
+          </Route>
+          <Route path="/driveravailableorders">
+            <DriverAvailableOrders/>
           </Route>
           <Route path="/splash">
             <Splash />

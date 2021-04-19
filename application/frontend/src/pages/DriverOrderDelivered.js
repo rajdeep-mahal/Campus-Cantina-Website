@@ -36,7 +36,7 @@ const DriverOrderDelivered = () =>{
                                 </ul>
                             </div>
                             <button type = "button" className = "row btn btn-warning mb-2 ml-2 text-white mt-4">Directions</button>
-                            <div className = "delivery_instructions h5 pt-4 row">Delivery Instructions: <br/> *<span className = "font-italic">Our apartment is located at the back of the building</span>*</div>
+                            <div className = "delivery_instructions h6 pt-4 row">Delivery Instructions: <br/><span className = "font-italic">Our apartment is located at the back of the building</span></div>
                         </div>
                     </div>
                     <div className = "delivered_text text-white text-center w-25 h4">Delivered!</div>

@@ -33,18 +33,24 @@ const RestaurantPage = () => {
   return (
     <div>
       <div className="rp-banner">
-        <img className="img-fluid" src={Banner} height="200px" />
+        <img className="d-block w-100" src={Banner} style={{
+          height: '140px'
+        }} />
       </div>
+
+
       <div className="ml-5 mr-5 mt-4 mb-4">
         <div
-          className="float-right"
-          style={{
-            border: 'solid 1px lightgrey',
-            width: '300px',
-            height: '200px',
-          }}
+            className="float-right"
+            style={{
+              border: 'solid 1px lightgrey',
+              width: '300px',
+              height: '200px',
+            }}
         >
-          {/* Google Maps */}
+          {/*
+
+           Google Maps
           <GoogleMap
             mapContainerStyle={{ height: '200px', width: '300px' }}
             zoom={17}
@@ -57,7 +63,12 @@ const RestaurantPage = () => {
             <Marker position={{ lat: 37.7234, lng: -122.481 }} />
           </GoogleMap>
           {loadError && <p>Map cannot be displayed at this time.</p>}
+
+        */}
         </div>
+
+
+<div className="container">
         <div className="pl-1">
           <h1>Sliceline</h1>
           <p className="text-muted ">
@@ -84,11 +95,16 @@ const RestaurantPage = () => {
           </table>
         </div>
       </div>
+      </div>
       <hr />
+
+
+
+      <div className="container">
       <div className="rp-menu-items m-4">
-        <h4 className="ml-4 pb-3 pt-3">Most Popular</h4>
+        <h4 className="text-center pb-3 pt-3">Most Popular</h4>
         <div className="row m-2">
-          <div className="col-6" style={{ border: '', height: '200px' }}>
+          <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
             {/* <Link to='#' style={{ textDecoration: 'none' }}> */}
             <div
               className="card rp-item"
@@ -107,16 +123,14 @@ const RestaurantPage = () => {
                         <span>$11.99</span>
                       </p>
                     </td>
-                    <td className="align-middle float-right">
-                      <img src={Pizza1} height="165px" />
-                    </td>
+
                   </tr>
                 </tbody>
               </table>
             </div>
             {/* </Link> */}
           </div>
-          <div className="col-6" style={{ border: '', height: '200px' }}>
+          <div className="col-sm-3" style={{ border: '', height: '200px' }}>
             <div className="card rp-item" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
@@ -130,17 +144,13 @@ const RestaurantPage = () => {
                         <span>$12.99</span>
                       </p>
                     </td>
-                    <td className="align-middle float-right">
-                      <img src={Pizza2} height="165px" />
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
-        <div className="row m-2">
-          <div className="col-6" style={{ border: '', height: '200px' }}>
+
+          <div className="col-sm-3" style={{ border: '', height: '200px' }}>
             <div className="card rp-item" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
@@ -154,15 +164,12 @@ const RestaurantPage = () => {
                         <span>$8.99</span>
                       </p>
                     </td>
-                    <td className="align-middle float-right">
-                      <img src={Wings} height="165px" />
-                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div className="col-6" style={{ border: '', height: '200px' }}>
+          <div className="col-sm-3" style={{ border: '', height: '200px' }}>
             <div className="card rp-item" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
@@ -176,9 +183,6 @@ const RestaurantPage = () => {
                         <span>$6.99</span>
                       </p>
                     </td>
-                    <td className="align-middle float-right">
-                      <img src={Bread} height="165px" />
-                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -186,13 +190,14 @@ const RestaurantPage = () => {
           </div>
         </div>
       </div>
+      </div>
+
+
+      <div className="container mr-auto">
       <Modal show={modalIsOpen} onHide={closeModal} centered>
         <div className="m-3">
           <h2>Cheese Pizza</h2>
           <span className="text-muted">(700-1180 Cal.)</span>
-        </div>
-        <div className="text-center">
-          <img src={Pizza1} width="350px" />
         </div>
         <p className="m-3">Comments</p>
         <div className="text-center">
@@ -200,6 +205,7 @@ const RestaurantPage = () => {
           <br />
           <br />
         </div>
+
         <Modal.Footer>
           <div className="mr-auto">
             <i
@@ -207,6 +213,7 @@ const RestaurantPage = () => {
               style={{ color: 'gray' }}
               aria-hidden="true"
             ></i>
+
             <input className="text-center" size="2" placeholder="1"></input>
             <i
               class="fa fa-minus ml-2"
@@ -214,11 +221,10 @@ const RestaurantPage = () => {
               aria-hidden="true"
             ></i>
           </div>
-          <button className="btn primary-color-bg text-white">
-            Add to cart
-          </button>
+          <button className="btn primary-color-bg text-white">Add to cart</button>
         </Modal.Footer>
       </Modal>
+      </div>
     </div>
   );
 };

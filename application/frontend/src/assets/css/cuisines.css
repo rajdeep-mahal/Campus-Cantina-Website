@@ -2,7 +2,7 @@
 
 .cuisine-section {
   justify-content: space-evenly;
-  margin: auto;
+  margin-top: 20px;
 }
 .cuisine-section-heading {
   font-weight: 700;

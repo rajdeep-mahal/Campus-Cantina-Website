@@ -147,3 +147,7 @@
   border: 3.5px solid var(--secondary-color);
   margin-bottom: 1.5rem;
 }
+
+.restaurants-price-tags {
+  margin-top: -10px;
+}

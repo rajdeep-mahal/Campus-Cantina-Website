@@ -316,7 +316,7 @@ const Home = () => {
                 <img
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Small_Pic).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
                   }
                   alt=""
                   width="350px"
@@ -324,18 +324,18 @@ const Home = () => {
                 />
                 <div className="row">
                   <div className="col">
-                    <h5 className="text-align-left ml-1">
+                    <h5 className="text-align-left ml-2">
                       <strong>{item.Name}</strong>
                     </h5>
                   </div>
                   <div className="col">
-                    <p className="float-right mr-1">Free Delivery</p>
+                    <p className="float-right mr-2">Free Delivery</p>
                   </div>
                 </div>
-
-                <div>
-                  <span className="text-muted ml-1">
-                    {item.Price_Level} • {item.Cuisine}, {item.Tags}
+                <div className="restaurants-price-tags">
+                  <span className="text-muted ml-2">
+                    {item.Price_Level} • {item.Cuisine}, <br />
+                    <span className="text-muted ml-2">{item.Tags}</span>
                   </span>
                 </div>
               </div>

@@ -32,6 +32,10 @@
 }
 
 /* Carousel Indicators - bottom */
+.carousel-indicators {
+  z-index: 0 !important;
+}
+
 .carousel .carousel-indicators li {
   background-color: rgba(70, 70, 70, 0.25);
 }

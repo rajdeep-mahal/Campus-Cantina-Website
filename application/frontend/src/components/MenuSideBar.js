@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
-import DisplayCart from '../pages/CustomerCart'
 
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
@@ -115,9 +114,6 @@ const MenuSideBar = () => {
           </li>
           
         </ul>
-        <div>
-          <DisplayCart/>
-        </div>
 
       </nav>
     </>

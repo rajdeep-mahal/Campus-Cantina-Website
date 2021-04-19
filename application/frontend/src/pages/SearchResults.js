@@ -71,62 +71,54 @@ const SearchResults = () => {
             )}
           </div>
         )}
-        {searchResults.map((item, i) => (
-          <div key={i}>
-            <div className="card vp-card vp-shadow p-1 mb-4">
-              <div className="d-flex">
+        <div className=" container d-flex justify-content-around flex-wrap mt-4">
+          {searchResults.map((item, i) => (
+            // Google Maps removed for now
+            // <GoogleMap
+            //       mapContainerStyle={{ height: '250px', width: '400px' }}
+            //       zoom={17}
+            //       center={{ lat: item.Lat, lng: item.Lng }}
+            //       options={{
+            //         streetViewControl: false,
+            //         mapTypeControl: false,
+            //       }}
+            //     >
+            //       <Marker position={{ lat: item.Lat, lng: item.Lng }} />
+            // </GoogleMap>
+            //     {loadError && (
+            //       <p>Map cannot be displayed at this time.</p>
+            //     )}
+            <div key={i}>
+              <div className="card home-restaurant-card ml-2">
                 <img
-                  className=""
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Small_Pic).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
                   }
                   alt=""
                   width="350px"
                   height="250px"
                 />
-                <img
-                  className="d-none d-sm-none d-md-block"
-                  src={
-                    'data:image/jpeg;base64,' +
-                    new Buffer(item.Large_Pic).toString('base64')
-                  }
-                  alt=""
-                  width="350px"
-                  height="250px"
-                />
-                {/* Google Maps removed for now */}
-                {/* <GoogleMap
-                        mapContainerStyle={{ height: '250px', width: '400px' }}
-                        zoom={17}
-                        center={{ lat: item.Lat, lng: item.Lng }}
-                        options={{
-                          streetViewControl: false,
-                          mapTypeControl: false,
-                        }}
-                      >
-                        <Marker position={{ lat: item.Lat, lng: item.Lng }} />
-                      </GoogleMap> 
-                      {loadError && (
-                        <p>Map cannot be displayed at this time.</p>
-                      )}
-                      */}
-              </div>
-              <h5 className="text-align-left pt-2 pl-1">
-                <strong>{item.Name}</strong>
-                <br />
-              </h5>
-              <div style={{ marginBottom: '-5px' }}>
-                <p className="text-muted p-0 pl-1 ">
-                  {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                  <p className="float-right pr-1 rest-desc-text">
-                    Free Delivery
-                  </p>
-                </p>
+                <div className="row">
+                  <div className="col">
+                    <h5 className="text-align-left ml-2">
+                      <strong>{item.Name}</strong>
+                    </h5>
+                  </div>
+                  <div className="col">
+                    <p className="float-right mr-2">Free Delivery</p>
+                  </div>
+                </div>
+                <div className="restaurants-price-tags">
+                  <span className="text-muted ml-2">
+                    {item.Price_Level} • {item.Cuisine}, <br />
+                    <span className="text-muted ml-2">{item.Tags}</span>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <h6 className="text-center">
           <br />
           {noResult}

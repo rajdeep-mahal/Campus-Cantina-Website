@@ -154,7 +154,7 @@ const Home = () => {
       </div>
       <br />
       {/* Cuisines Row */}
-      <div className="">
+      <div>
         <CuisineRow />
       </div>
       <br />
@@ -307,44 +307,35 @@ const Home = () => {
       {/* </div> */}
       {/* <br /> */}
       {/* All Restaurants */}
-      <h3 className="pl-2">All Restaurants</h3>
-      <div className="d-flex justify-content-center">
-        <div>
+      <div className="container">
+        <h2 className="home-restaurants-heading mt-3">Restaurants</h2>
+        <div className="d-flex justify-content-around flex-wrap mt-4">
           {restaurantsList.map((item, i) => (
             <div key={i}>
-              <div className="card vp-card vp-shadow p-1 mb-4">
-                <div className="d-flex">
-                  <img
-                    className=""
-                    src={
-                      'data:image/jpeg;base64,' +
-                      new Buffer(item.Small_Pic).toString('base64')
-                    }
-                    alt=""
-                    width="350px"
-                    height="250px"
-                  />
-                  <img
-                    className="d-none d-sm-none d-md-block"
-                    src={
-                      'data:image/jpeg;base64,' +
-                      new Buffer(item.Large_Pic).toString('base64')
-                    }
-                    alt=""
-                    width="350px"
-                    height="250px"
-                  />
+              <div className="card home-restaurant-card">
+                <img
+                  src={
+                    'data:image/jpeg;base64,' +
+                    new Buffer(item.Small_Pic).toString('base64')
+                  }
+                  alt=""
+                  width="350px"
+                  height="250px"
+                />
+                <div className="row">
+                  <div className="col">
+                    <h5 className="text-align-left ml-1">
+                      <strong>{item.Name}</strong>
+                    </h5>
+                  </div>
+                  <div className="col">
+                    <p className="float-right mr-1">Free Delivery</p>
+                  </div>
                 </div>
-                <h5 className="text-align-left pt-2 pl-1">
-                  <strong>{item.Name}</strong>
-                  <br />
-                </h5>
-                <div style={{ marginBottom: '-5px' }}>
-                  <span className="text-muted p-0 pl-1 ">
+
+                <div>
+                  <span className="text-muted ml-1">
                     {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                    <p className="float-right pr-1 rest-desc-text">
-                      Free Delivery
-                    </p>
                   </span>
                 </div>
               </div>

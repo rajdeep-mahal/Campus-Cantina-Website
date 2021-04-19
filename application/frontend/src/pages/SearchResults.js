@@ -79,7 +79,7 @@ const SearchResults = () => {
                   className=""
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Small_Pic).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
                   }
                   alt=""
                   width="350px"
@@ -89,7 +89,7 @@ const SearchResults = () => {
                   className="d-none d-sm-none d-md-block"
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Large_Pic).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
                   }
                   alt=""
                   width="350px"

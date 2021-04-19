@@ -167,6 +167,20 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+/*Checkout background color*/
+.checkout_btn{
+  background-color: var(--primary-color) !important;
+}
+/*quantity button icon color, background color*/
+.quantity_button{
+  color:white;
+  background-color: var(--primary-color);
+}
+/*delivery instructions box height, font size*/
+.delivery_instruction{
+  height:70px;
+  font-size: 12px;
+}
 
 
 .hamburger {

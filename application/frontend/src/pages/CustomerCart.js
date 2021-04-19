@@ -20,17 +20,17 @@ const CustomerCart = () =>{
           <tbody>
           <tr>
             <th scope="row">Burrito</th>
-            <td><button className="remove-button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input col-sm-5 text-center" type="number"></input><button className="remove-button btn fa fa-minus-circle fa-xs"></button></td>
+            <td><button className="quantity_button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input w-25 mx-1 text-center" type="number"></input><button className="quantity_button btn fa fa-minus-circle fa-xs"></button></td>
             <td>&#36;12</td>
           </tr>
           <tr>
             <th scope="row">Tacos</th>
-            <td><button className="remove-button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input col-sm-5 text-center input-group-lg" type="number"></input><button className="remove-button btn fa fa-minus-circle fa-xs"></button></td>
+            <td><button className="quantity_button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input w-25 mx-1 text-center" type="number"></input><button className="quantity_button btn fa fa-minus-circle fa-xs"></button></td>
             <td>&#36;9.50</td>
           </tr>
           <tr>
             <th scope="row">Coca-cola</th>
-            <td><button className="remove-button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input col-sm-5 text-center input-lg" type="number"></input><button className="remove-button btn fa fa-minus-circle fa-xs"></button></td>
+            <td><button className="quantity_button btn fa fa-plus-circle fa-xs"></button><input className = "quantity-input w-25 mx-1 text-center" type="number"></input><button className="quantity_button btn fa fa-minus-circle fa-xs"></button></td>
             <td>&#36;2.50</td>
           </tr>
           </tbody>
@@ -38,7 +38,8 @@ const CustomerCart = () =>{
         <div class="card">
           <div class="card-body">
             Delivery Instructions: <br/>
-            <input className = "form-control form-control-lg mb-2" type="text"></input> 
+            {/* <input className = "delivery_instruction form-control form-control-md mb-2" type="text"></input>  */}
+            <textarea className="delivery_instruction w-100"></textarea>
           </div>
         </div>
         <div class = "px-4">
@@ -51,7 +52,7 @@ const CustomerCart = () =>{
         </div>
 
         <div class = "col text-center py-3">
-          <button type="checkout" class="btn btn-primary btn-lg btn-block">Checkout</button>
+          <button type="checkout" class="checkout_btn btn btn-lg btn-block text-white">Checkout</button>
           </div>
           </div>
 

@@ -7,7 +7,7 @@ import map_sample from '../assets/img/map_customerorder.png';
 const DriverOrderDelivered = () =>{
     return(
         <div className = "container-fluid">
-            <div className = "order_header h3 text-white text-center mx-auto py-2 w-50 mb-5">Order Details</div>
+            <div className = "order_header h3 text-white text-center mx-auto py-2 w-50">Order Details</div>
             <div className = "card border card_customerorder_body w-75 d-flex mx-auto mb-5">
             <div className = "card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">Customer Order:<span className = "h4">#112233</span></div>
                 <div className = "card-body">
@@ -24,7 +24,7 @@ const DriverOrderDelivered = () =>{
                     </ul>
                         </div>
                         <div className = "row h5 font-weight-bold pt-4">Total: <span> &#36;24</span></div>
-                        <div className = "row h5 pt-3 pt-4">Order Status: <span className = "font-italic text-info font-weight-bold">Pending</span></div>
+                        <div className = "row h5 pt-3 pt-4">Order Status: <span className = "font-italic text-info font-weight-bold pl-1">Pending</span></div>
                         </div>
 
                         <div className = "col-3">
@@ -35,16 +35,16 @@ const DriverOrderDelivered = () =>{
                                     <li className = "items px-2">(415) 123-4567</li>
                                 </ul>
                             </div>
-                            <button type = "button" className = "row btn btn-warning mb-2 ml-2 text-white mt-4">Directions</button>
+                            <button type = "myDirections" className = "row btn btn-warning mb-2 ml-2 text-white mt-4" onclick = "myDirections()">Directions</button>
                             <div className = "delivery_instructions h6 pt-4 row">Delivery Instructions: <br/><span className = "font-italic">Our apartment is located at the back of the building</span></div>
                         </div>
                     </div>
-                    <div className = "delivered_text text-white text-center w-25 h4">Delivered!</div>
+                    <div className = "click_delivered text-center mt-5 mb-2 text-muted">*Click delivered once food is handed to customer*</div>
+                    <button type = "button" className = "mx-auto delivered_button btn btn-block w-25 text-white" onclick = "myDirections()"><span className = "delivered_text">Delivered!</span></button>
                     </div>
 
                 </div>
             </div>
-
         </div>
     );
 };

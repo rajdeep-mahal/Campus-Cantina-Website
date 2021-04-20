@@ -313,10 +313,8 @@ const Home = () => {
         <div className="d-flex justify-content-around flex-wrap mt-4">
           {restaurantsList.map((item, i) => (
             <div key={i}>
-              {/**Merged from pw-encrypt
-               * Had changes to photo unsure which is correct.
-               */}
-              {/* <div className="card home-restaurant-card">
+              
+              <div className="card home-restaurant-card">
                 <img
                   src={
                     'data:image/jpeg;base64,' +
@@ -334,8 +332,13 @@ const Home = () => {
                   </div>
                   <div className="col">
                     <p className="float-right mr-2">Free Delivery</p>
-                  </div> */}
-              <div className="card vp-card vp-shadow p-1 mb-4">
+                  </div>
+
+                  {/**Merged from pw-encrypt
+               * Had changes to photo unsure which is
+               * To be deleted?
+               */}
+              {/* <div className="card vp-card vp-shadow p-1 mb-4">
                 <div className="d-flex">
                   <img
                     className=""
@@ -357,6 +360,7 @@ const Home = () => {
                     width="350px"
                     height="250px"
                   />
+                </div> */}
                 </div>
                 <div className="restaurants-price-tags">
                   <span className="text-muted ml-2">

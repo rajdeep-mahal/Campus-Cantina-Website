@@ -32,9 +32,11 @@ const RestaurantPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <div className="rp-banner">
-        <img className="img-fluid d-block" src={Banner} />
+        <img className="d-block w-100" src={Banner} style={{
+          height: '350px',
+        }}/>
       </div>
 
 
@@ -69,23 +71,26 @@ const RestaurantPage = () => {
 
 <div className="container">
         <div className="pl-1">
-          <h1>Sliceline</h1>
+          <h1 className="primaryTextPage">Sliceline</h1>
           <p className="text-muted ">
             $$ • Pizza, Wings, Pepporoni <br />
             0.3 mi
           </p>
+          <p className="text-muted openTag">
+            OPEN
+          </p>
         </div>
-        <div className="rp-info">
+        <div className="rp-info secondaryTextPage">
           <table height="90px" className="mx-auto">
             <div className="">
             <tbody>
               <tr>
-                <td className="align-middle">
+                <td className="align-middle primaryTextPage">
                   <p>
                     $1.99 <br /> delivery fee
                   </p>
                 </td>
-                <td className="align-middle p-3">
+                <td className="align-middle p-3 primaryTextPage">
                   <p>
                     18-24 <br /> minutes
                   </p>
@@ -101,17 +106,17 @@ const RestaurantPage = () => {
 
 
 
-      <div className="container">
-      <div className="rp-menu-items m-4">
+      <div className="container ">
+      <div className="rp-menu-items m-4 ">
         <p>
           <img src={Pizza} alt="logo" height="55" className="rounded mx-auto d-block" />
-        <h4 className="text-center pb-3 pt-3">Most Popular</h4>
+        <h4 className="text-center pb-3 pt-3">Menu</h4>
         </p>
-        <div className="row m-2">
+        <div className="row m-2 ">
           <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
             {/* <Link to='#' style={{ textDecoration: 'none' }}> */}
             <div
-              className="card rp-item"
+              className="secondaryTextPage card rp-item"
               style={{ height: '170px' }}
               onClick={openModal}
             >
@@ -136,7 +141,7 @@ const RestaurantPage = () => {
             {/* </Link> */}
           </div>
           <div className="col-sm-3" style={{ border: '', height: '200px' }}>
-            <div className="card rp-item" style={{ height: '170px' }}>
+            <div className="card rp-item secondaryTextPage" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -156,7 +161,7 @@ const RestaurantPage = () => {
           </div>
 
           <div className="col-sm-3" style={{ border: '', height: '200px' }}>
-            <div className="card rp-item" style={{ height: '170px' }}>
+            <div className="card rp-item secondaryTextPage" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -174,8 +179,8 @@ const RestaurantPage = () => {
               </table>
             </div>
           </div>
-          <div className="col-sm-3" style={{ border: '', height: '200px' }}>
-            <div className="card rp-item" style={{ height: '170px' }}>
+          <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
+            <div className="card rp-item secondaryTextPage" style={{ height: '170px' }}>
               <table height="90px" className="">
                 <tbody>
                   <tr>
@@ -198,11 +203,7 @@ const RestaurantPage = () => {
       </div>
 
 
-      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
+
       <Modal show={modalIsOpen} onHide={closeModal} centered>
         <div className="m-3">
           <h2>Cheese Pizza</h2>
@@ -210,7 +211,7 @@ const RestaurantPage = () => {
         </div>
         <p className="m-3">Comments</p>
         <div className="text-center">
-          <textarea cols="47" rows="3"></textarea>
+          <textarea cols="45" rows="3"></textarea>
           <br />
           <br />
         </div>
@@ -234,10 +235,6 @@ const RestaurantPage = () => {
         </Modal.Footer>
       </Modal>
       </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

@@ -118,10 +118,10 @@ function App() {
           <Route path="/customerdisplaycart">
             <DisplayCart />
             </Route>
-          <Route path="/driveravailableorders">
+          <Route path="/driver/orderhistory">
             <DriverAvailableOrders/>
             </Route>
-          <Route path="/driverorderdelivered">
+          <Route path="/driver/currentorder">
             <DriverOrderDelivered />
           </Route>
           <Route path="/">

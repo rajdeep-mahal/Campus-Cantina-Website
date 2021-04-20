@@ -113,11 +113,7 @@ const MenuSideBar = () => {
             <span className="cart-text p-2 m-1 h5">Your Cart is empty</span>
             <p className="cart-text p-2 m-1">Add items to get started</p>
           </li>
-          
         </ul>
-        <div>
-          <DisplayCart/>
-        </div>
 
       </nav>
     </>

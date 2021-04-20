@@ -1,24 +1,21 @@
-
+/*Assigned orders header background color*/
 .order_header{
     background-color:var(--primary-color);
 }
-
 .delivered_text{
     margin-right:auto;
     margin-left:auto;
     background-color:var(--primary-color)
 }
+/*border of table*/
 .table_order{
     border:var(--primary-color);
 }
+/*header of table border color*/
 .border_header{
    border-color: var(--primary-color) !important;
-   background-color: var()
 }
+/*border of body table*/
 .border_body{
-    border-color: var(--primary-color) !important;
-}
-.assigned_orders{
-    height: 40px;
     border-color: var(--primary-color) !important;
 }

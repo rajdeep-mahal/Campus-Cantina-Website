@@ -19,4 +19,23 @@
 }
 .rp-card-link:hover {
   text-decoration: none;
- } 
+ }
+
+
+@media only screen and (max-width: 500px) {
+  .modal-content {
+    margin-right: 80px;
+  }
+}
+
+.primaryTextPage{
+  color: var(--primary-color);
+}
+
+.secondaryTextPage{
+  box-shadow: 3px 3px var(--secondary-color);
+}
+
+.openTag{
+  font-color: green;
+}

@@ -23,7 +23,7 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
-import Splash from './pages/Splash';
+//import Splash from './pages/Splash';
 import DisplayCart from './pages/CustomerCart'
 
 function App() {
@@ -99,9 +99,9 @@ function App() {
           <Route path="/customerdisplaycart">
             <DisplayCart />
           </Route>
-          <Route path="/splash">
+          {/* <Route path="/splash">
             <Splash />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>

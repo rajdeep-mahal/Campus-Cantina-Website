@@ -32,6 +32,10 @@
 }
 
 /* Carousel Indicators - bottom */
+.carousel-indicators {
+  z-index: 0 !important;
+}
+
 .carousel .carousel-indicators li {
   background-color: rgba(70, 70, 70, 0.25);
 }
@@ -130,4 +134,20 @@
   box-shadow: 0 8px 16px 0 rgba(172, 172, 172, 0.2),
     0 6px 20px 0 var(--secondary-color);
   cursor: pointer;
+}
+
+/* All Restaurants */
+.home-restaurants-heading {
+  font-size: 195%;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.home-restaurant-card {
+  border: 3.5px solid var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.restaurants-price-tags {
+  margin-top: -10px;
 }

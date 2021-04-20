@@ -28,7 +28,7 @@
 .login_input-field {
   width: 100%;
   border: 2px solid var(--primary-color);
-  height: fit-content;
+  height: auto;
   border-radius: 12px;
   box-sizing: border-box;
   padding: 6px;

@@ -35,10 +35,10 @@ const CuisineRow = () => {
       });
   };
   return (
-    <div className="container">
+    <div className="container mt-1">
       <h2 className="cuisine-section-heading">Cuisines</h2>
-      <div className=" d-flex flex-wrap cuisine-section mt-2">
-        <div className="cuisine-link">
+      <div className=" d-flex flex-wrap cuisine-section">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -49,7 +49,7 @@ const CuisineRow = () => {
             Burgers
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -65,7 +65,7 @@ const CuisineRow = () => {
             Chinese
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -76,7 +76,7 @@ const CuisineRow = () => {
             Indian
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -87,7 +87,7 @@ const CuisineRow = () => {
             Italian
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -98,7 +98,7 @@ const CuisineRow = () => {
             Mexican
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"
@@ -109,7 +109,7 @@ const CuisineRow = () => {
             Pizza
           </button>
         </div>
-        <div className="cuisine-link">
+        <div className="cuisine-link m-1">
           <button
             type="button"
             className="link-button"

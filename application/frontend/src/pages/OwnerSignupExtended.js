@@ -32,8 +32,8 @@ const OwnerSignupExtended = () => {
   const [restaurantTags, setRestaurantTags] = useState('');
   const [restaurantPriceLevel, setRestaurantPriceLevel] = useState('');
   const [restaurantBanner, setRestaurantBanner] = useState('');
-  const [restaurantMenuItem1, setRestaurantMenuItem1] = useState('');
-  const [restaurantMenuItem2, setRestaurantMenuItem2] = useState('');
+  // const [restaurantMenuItem1, setRestaurantMenuItem1] = useState('');
+  // const [restaurantMenuItem2, setRestaurantMenuItem2] = useState('');
 
   const onSubmitOwnerSignup2 = () => {
     //event.preventDefault();
@@ -53,8 +53,8 @@ const OwnerSignupExtended = () => {
     form_data.append('restaurantTags', restaurantTags);
     form_data.append('restaurantPriceLevel', restaurantPriceLevel);
     form_data.append('restaurantBanner', restaurantBanner);
-    form_data.append('restaurantMenuItem1', restaurantMenuItem1);
-    form_data.append('restaurantMenuItem2', restaurantMenuItem2);
+    // form_data.append('restaurantMenuItem1', restaurantMenuItem1);
+    // form_data.append('restaurantMenuItem2', restaurantMenuItem2);
 
     let ID = nanoid();
     form_data.append('restaurantID', ID);
@@ -241,18 +241,18 @@ const OwnerSignupExtended = () => {
               <div className="form-group mt-1">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
-                  id="input-image1"
+                  id="banner_img"
                   type="file"
                   name="bannerImageUpload"
                   accept=".jpg, .png, .jpeg"
                   // value={restaurantBanner}
-                  className="form-control"
+                  className="form-control login_input-field"
                   //   ref={ref}
                   onChange={(e) => setRestaurantBanner(e.target.files[0])}
                   single="true"
                 />
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="MenuItemImages">Upload Menu Item Images:</label>
                 <input
                   id="input-image2"
@@ -276,7 +276,7 @@ const OwnerSignupExtended = () => {
                   onChange={(e) => setRestaurantMenuItem2(e.target.files[0])}
                   single="true"
                 />
-              </div>
+              </div> */}
               <div className="form-check">
                 <input
                   className="form-check-input"

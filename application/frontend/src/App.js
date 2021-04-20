@@ -30,6 +30,7 @@ import { setAllRestaurants } from './redux/actions/searchActions';
 import DisplayCart from './pages/CustomerCart'
 import DriverAvailableOrders from './pages/DriverAvailableOrders'
 import DriverOrderDelivered from './pages/DriverOrderDelivered'
+import SwitchedMenuSideBar from './components/SwitchedMenuSideBar';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <MenuSideBar />
+        {/* <MenuSideBar /> */}
+        <SwitchedMenuSideBar />
         <ScrollToTop />
         <Switch>
           <Route path="/searchresults">

@@ -1,7 +1,9 @@
 
 .rp-info {
-  border: solid 1px lightgrey;
+  border: solid 1px;
+  color: var(--secondary-color);
   height: 80px;
+  max-width: 200px;
   width: 200px;
   border-radius: 10px;
   box-shadow: 0 2px 2px rgba(154, 160, 185, 0.05),
@@ -10,6 +12,7 @@
 
 .rp-item {
   border-radius: 5px;
+  border-color: var(--secondary-color);
   box-shadow: 0 2px 2px rgba(154, 160, 185, 0.05),
   0 2px 2px rgba(166, 173, 201, 0.2);
 }
@@ -34,8 +37,4 @@
 
 .secondaryTextPage{
   box-shadow: 3px 3px var(--secondary-color);
-}
-
-.openTag{
-  font-color: green;
 }

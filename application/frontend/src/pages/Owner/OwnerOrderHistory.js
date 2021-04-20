@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../assets/css/ownerlayout.css";
-import "../../index.css";
+//import "../../index.css";
+import "../../assets/css/index.css";
 
 const items = [
   { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },

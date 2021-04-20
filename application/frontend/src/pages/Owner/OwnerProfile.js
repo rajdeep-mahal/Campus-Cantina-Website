@@ -1,6 +1,7 @@
 import React from "react";
 import restaurantcartoon from "../../assets/img/restaurant_ex.jpeg";
-import "../../index.css";
+//import "../../index.css";
+import "../../assets/css/index.css";
 
 const OwnerProfile = () => {
   return (

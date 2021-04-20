@@ -1,6 +1,6 @@
-/* OwnerEditProfile styling */
+/* OwnerEditProfile */
 
-.editprofile {
+.editprofile{
   color: white;
   background-color: var(--primary-color-opac-2);
   border-radius: 15px;
@@ -9,18 +9,22 @@
   margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 110%;
+  font-size: 100%;
 }
-/* Ownerprofile/editprofile Responsiveness */ 
+/* Ownerprofile/editprofile responsive */
 @media (max-width: 500px) {
   .editprofile {
-    width: 100%; 
+    width: 100%;
   }
 }
 @media (min-width: 750px) {
   .editprofile {
     width: 700px;
   }
+}
+
+.cancel-btn:hover, .edit-btn:hover {
+  text-decoration: none;
 }
 
 /* save button */
@@ -39,35 +43,29 @@
 /* content border */
 .profile-content {
   margin-left: auto;
-  /* padding: 1%;
-  border-radius: 15px; */
 }
-
-/* content position breakpoint */
-@media (min-width: 1000px) {
-  .profile-content {
-    /* text-align: center; */
-    
-  }
+.edit-link {
+  text-decoration:none;
 }
 
 /* modal width */
 @media (max-width: 500px) {
   .modal {
-    width: 53%;
+    width: 100%;
+    
   }
-}
+} 
 
 /* OwnerOrderHistory */
 
-/* table head */
+/* table header */
 .order-list-title {
   background-color: var(--primary-color);
   opacity: 0.9;
   color: white;
 }
 
-/* table body */
+/* order's table body  */
 .table-striped > tbody > tr:nth-child(odd) {
   background-color: white;
 }
@@ -88,7 +86,7 @@
 }
 
 /* pending button */
-.pending-btn {
+.dropdownStatus {
   background-color: var(--secondary-color);
   color: white;
 }
@@ -105,3 +103,42 @@
   color: white;
 }
 
+
+/* OwnerMenu */
+
+/* table header */
+.table-header-menu {
+  background-color: var(--primary-color);
+  color: white;
+}
+/* table border */
+.panel-default {
+  border:7px solid var(--primary-color);
+  border-radius: 15px;
+  border-top: 0;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 750px) {
+  .panel-default {
+    width: 100%;
+  }
+}
+.menu-icon {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.menu-icon-plus {
+  cursor: pointer;
+}
+.menu-icon:hover, .menu-icon-plus:hover{
+  color: var(--secondary-color);
+  transition: all 0.5s ease;
+}
+
+.modal-edit {
+  margin-left:auto;
+  margin-right: auto;
+}

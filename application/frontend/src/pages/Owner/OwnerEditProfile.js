@@ -1,27 +1,25 @@
 import React from "react";
-import "../assets/css/ownerlayout.css";
-import "../index.css";
+import "../../assets/css/ownerlayout.css";
+import "../../index.css";
 
 const OwnerEditProfile = () => {
   return (
     <div class="container-fluid">
       <br />
-      <br />
       {/* Header */}
       <div className="text-center">
         <h3> Edit Profile </h3>
       </div>
-      {/* form body */}
+      {/* form content*/}
       <form className="editprofile form-control">
         <input
-          className="owner_edit"
-          id="redirect_input"
+          className="profile-input"
+          id="redirect-input"
           type="hidden"
           name="redirect"
         />
-        {/* restaurant name field           need owner-form class???*/}
         <div className="row">
-          <div class="col-8 owner-form">
+          <div class="col-8">
             <label for="restaurant-name"> Restaurant Name</label>
             <input
               type="text"
@@ -33,7 +31,6 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-        {/* name field */}
         <div class="row">
           <div class="col-8">
             <label for="name"> Name </label>
@@ -50,7 +47,6 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-        {/* contact field */}
         <div class="row">
           <div class="col-5">
             <label for="phone">Contact Info</label>
@@ -66,7 +62,6 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-        {/* address field */}
         <label for="address">Restaurant Address</label>
         <input
           type="text"
@@ -76,11 +71,9 @@ const OwnerEditProfile = () => {
           placeholder="123 Street Name"
         />
         <br />
-        {/* img field */}
         <label for="img">Restaurant Image</label>
         <input type="file" id="img" class="form-control" />
         <br />
-        {/* cuisine field */}
         <label for="food">Cuisine</label>
         <input
           class="form-control"
@@ -90,7 +83,6 @@ const OwnerEditProfile = () => {
           placeholder="Ex: American, burgers, etc "
         />
         <br />
-        {/* pricing field */}
         <div class="row">
           <div class="col-4">
             <label for="price">Restaurant Pricing</label>
@@ -119,6 +111,7 @@ const OwnerEditProfile = () => {
         <label for="post">Marketing Post</label>
         <textarea class="form-control" rows="3" placeholder="Announcements" />
         <br />
+        {/* footer buttons */}
         <div class="row">
           <div class="col">
             <button
@@ -131,7 +124,7 @@ const OwnerEditProfile = () => {
             </button>
           </div>
           <div class="col">
-            <a href="/ownerprofile">
+            <a class="text-white cancel-btn" href="/owner/profile">
               <button
                 type="button"
                 class="btn btn-secondary btn-lg btn-block"

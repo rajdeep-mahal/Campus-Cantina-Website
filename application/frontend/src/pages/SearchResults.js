@@ -1,6 +1,6 @@
 import React from 'react';
-// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';     // For Google Maps
-// import config from '../config';                                                // For Google Maps
+import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';     // For Google Maps
+import config from '../config';                                                // For Google Maps
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -24,6 +24,46 @@ const SearchResults = () => {
   // const { loadError } = useLoadScript({
   //   googleMapsApiKey: config.googleAPI,
   // });
+
+  //Google Map
+  const center = {
+    lat: 37.7234,
+    lng: -122.481
+  };
+
+  function MyMap() {
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: config.googleAPI,
+    });
+
+    const [map, setMap] = React.useState(null);
+
+    const onLoad = React.useCallback(function callback(map) {
+      setMap(map);
+    }, []);
+
+    const onUnmount = React.useCallback(function callback(map) {
+      setMap(null);
+    }, []);
+
+    return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={{ height: '200px', width: '300px' }}
+        zoom={17}
+        center={center}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        options={{
+          streetViewControl: false,
+          mapTypeControl: false,
+        }}
+      >
+        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+      </GoogleMap>
+    ) : <></>
+
+  }//end of MyMap function 
 
   return (
     <div className="d-flex justify-content-center">
@@ -72,7 +112,9 @@ const SearchResults = () => {
           </div>
         )}
         <div className=" container d-flex justify-content-around flex-wrap mt-4">
+        
           {searchResults.map((item, i) => (
+            
             // Google Maps removed for now
             // <GoogleMap
             //       mapContainerStyle={{ height: '250px', width: '400px' }}
@@ -99,8 +141,6 @@ const SearchResults = () => {
                   width="350px"
                   height="250px"
                 />
-                {/**  Original change from Bhavani
-                *Merged a change from pw-encrypt unsure which to keep */}
                  <div className="row">
                    <div className="col">
                      <h5 className="text-align-left ml-2">

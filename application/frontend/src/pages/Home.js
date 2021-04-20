@@ -8,17 +8,55 @@ import Banner2 from '../assets/img/Home_Banner2.jpg';
 import Banner3 from '../assets/img/Home_Banner3.jpg';
 import Banner4 from '../assets/img/Home_Banner4.jpg';
 
-// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-// import config from '../config.js';
+import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';     // For Google Maps
+import config from '../config';                                                // For Google Maps
 
 
 const Home = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
-  // const { loadError } = useLoadScript({
-  //   googleMapsApiKey: config.googleAPI,
-  // });
+ 
+
+  //Google Map
+  const center = {
+    lat: 37.7234,
+    lng: -122.481
+  };
+
+  function MyMap() {
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: config.googleAPI,
+    });
+
+    const [map, setMap] = React.useState(null);
+
+    const onLoad = React.useCallback(function callback(map) {
+      setMap(map);
+    }, []);
+
+    const onUnmount = React.useCallback(function callback(map) {
+      setMap(null);
+    }, []);
+
+    return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={{ height: '200px', width: '300px' }}
+        zoom={17}
+        center={center}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        options={{
+          streetViewControl: false,
+          mapTypeControl: false,
+        }}
+      >
+        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+      </GoogleMap>
+    ) : <></>
+
+  }//end of MyMap function 
 
   return (
     <div>
@@ -64,30 +102,8 @@ const Home = () => {
               <div className="container">
                 <div className="row justify-content-start text-center">
                   <div className="col-lg-9">
-                    {/* Google Maps
-                    {loadError ? (
-                      <p>Map cannot be displayed at this time.</p>
-                    ) : (
-                      <GoogleMap
-                        mapContainerStyle={{ height: '250px', width: '400px' }}
-                        zoom={15}
-                        center={{
-                          lat: 37.72445470045727,
-                          lng: -122.47972592328226,
-                        }}
-                        options={{
-                          streetViewControl: false,
-                          mapTypeControl: false,
-                        }}
-                      >
-                        <Marker
-                          position={{
-                            lat: 37.72445470045727,
-                            lng: -122.47972592328226,
-                          }}
-                        />
-                      </GoogleMap>
-                    )} */}
+                    {/* Google map here */}
+                    {/* <MyMap></MyMap> */}
                   </div>
                 </div>
               </div>

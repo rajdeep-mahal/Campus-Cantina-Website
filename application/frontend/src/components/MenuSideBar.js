@@ -159,6 +159,7 @@ const MenuSideBar = () => {
             <p className="primary-color p-2 m-1">Add items to get started</p>
           </li>
         </ul>
+
       </nav>
     </>
   );

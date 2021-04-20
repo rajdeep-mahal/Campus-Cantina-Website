@@ -11,6 +11,7 @@ import Banner4 from '../assets/img/Home_Banner4.jpg';
 // import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 // import config from '../config.js';
 
+
 const Home = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants

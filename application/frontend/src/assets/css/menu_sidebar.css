@@ -137,6 +137,36 @@
   margin-right: -20px;
   text-align: center;
 }
+
+.cart-page {
+  text-align: center;
+}
+
+/* removes arrows from quantity input box */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*Checkout background color*/
+.checkout_btn{
+  background-color: var(--primary-color) !important;
+}
+/*quantity button icon color, background color*/
+.quantity_button{
+  color:white;
+  background-color: var(--primary-color);
+}
+/*delivery instructions box height, font size*/
+.delivery_instruction{
+  height:70px;
+  font-size: 12px;
+}
+
+
+.hamburger {
+  padding-bottom: 7px;
+}
 .cart-btn-container:hover {
   background-color: rgb(255, 198, 55);
 }

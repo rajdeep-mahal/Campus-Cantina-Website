@@ -241,12 +241,12 @@ const OwnerSignupExtended = () => {
               <div className="form-group mt-1">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
-                  id="input-image1"
+                  id="banner_img"
                   type="file"
                   name="bannerImageUpload"
                   accept=".jpg, .png, .jpeg"
                   // value={restaurantBanner}
-                  className="form-control"
+                  className="form-control login_input-field"
                   //   ref={ref}
                   onChange={(e) => setRestaurantBanner(e.target.files[0])}
                   single="true"

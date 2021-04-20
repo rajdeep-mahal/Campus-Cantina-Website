@@ -313,7 +313,10 @@ const Home = () => {
         <div className="d-flex justify-content-around flex-wrap mt-4">
           {restaurantsList.map((item, i) => (
             <div key={i}>
-              <div className="card home-restaurant-card">
+              {/**Merged from pw-encrypt
+               * Had changes to photo unsure which is correct.
+               */}
+              {/* <div className="card home-restaurant-card">
                 <img
                   src={
                     'data:image/jpeg;base64,' +
@@ -331,7 +334,29 @@ const Home = () => {
                   </div>
                   <div className="col">
                     <p className="float-right mr-2">Free Delivery</p>
-                  </div>
+                  </div> */}
+              <div className="card vp-card vp-shadow p-1 mb-4">
+                <div className="d-flex">
+                  <img
+                    className=""
+                    src={
+                      'data:image/jpeg;base64,' +
+                      new Buffer(item.Display_Pic_Thumbnail).toString('base64')
+                    }
+                    alt=""
+                    width="350px"
+                    height="250px"
+                  />
+                  <img
+                    className="d-none d-sm-none d-md-block"
+                    src={
+                      'data:image/jpeg;base64,' +
+                      new Buffer(item.Display_Pic_Thumbnail).toString('base64')
+                    } 
+                    alt=""
+                    width="350px"
+                    height="250px"
+                  />
                 </div>
                 <div className="restaurants-price-tags">
                   <span className="text-muted ml-2">

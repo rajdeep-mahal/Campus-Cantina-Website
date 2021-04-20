@@ -15,6 +15,10 @@ import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
 import OwnerSignupExtended from './pages/OwnerSignupExtended';
+import OwnerEditProfile from './pages/Owner/OwnerEditProfile';
+import OwnerProfile from './pages/Owner/OwnerProfile';
+import OwnerOrderHistory from './pages/Owner/OwnerOrderHistory';
+import OwnerMenu from './pages/Owner/OwnerMenu';
 import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
@@ -90,6 +94,18 @@ function App() {
           </Route>
           <Route path="/ownersignup2">
             <OwnerSignupExtended />
+            </Route>
+          <Route path="/owner/editprofile">
+            <OwnerEditProfile />
+          </Route>
+          <Route path="/owner/profile">
+            <OwnerProfile />
+          </Route>
+          <Route path="/owner/orders">
+            <OwnerOrderHistory />
+          </Route>
+          <Route path="/owner/menu">
+            <OwnerMenu />
           </Route>
           <Route path="/driverlogin">
             <DriverLogin />

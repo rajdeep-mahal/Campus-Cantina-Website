@@ -25,6 +25,7 @@ import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
 import DisplayCart from './pages/CustomerCart'
 import DriverAvailableOrders from './pages/DriverAvailableOrders'
+import DriverOrderDelivered from './pages/DriverOrderDelivered'
 
 function App() {
   const dispatch = useDispatch();
@@ -101,6 +102,9 @@ function App() {
             </Route>
           <Route path="/driveravailableorders">
             <DriverAvailableOrders/>
+            </Route>
+          <Route path="/driverorderdelivered">
+            <DriverOrderDelivered />
           </Route>
           <Route path="/">
             <Home />

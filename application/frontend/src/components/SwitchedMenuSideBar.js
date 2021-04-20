@@ -5,7 +5,7 @@ import OwnerMenuSideBar from './OwnerMenuSideBar'
 
 
 const SwitchedMenuSideBar = () => {
-    const user = "Owner";
+    const user = "Guest";
     
     function isLoggedIn(user) {
         if(user === "Guest"){

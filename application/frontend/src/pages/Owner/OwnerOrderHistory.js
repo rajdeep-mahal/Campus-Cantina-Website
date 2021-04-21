@@ -10,7 +10,9 @@ const items = [
   { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
 ];
 
-{/* Renders each row for Orders Table */}
+{
+  /* Renders each row for Orders Table */
+}
 const renderOrderItem = (item, index) => {
   return (
     <tr key={index}>
@@ -29,23 +31,11 @@ const renderOrderItem = (item, index) => {
       <td>{item.customer}</td>
       <td>{item.price}</td>
       <td>
-        <div class="dropdown">
-          <button
-            type="button"
-            class="btn dropdown-toggle dropdownStatus"
-            data-toggle="dropdown"
-            rid="dropdownStatus"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Status
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownStatus">
-            <a class="dropdown-item" href="#"> Pending </a>
-            <a class="dropdown-item" href="#"> In Progress </a>
-            <a class="dropdown-item" href="#"> Completed </a>
-          </div>
-        </div>
+        <select class="form-select order-status">
+          <option selected>Pending</option>
+          <option value="progress">In Progress</option>
+          <option value="complete">Completed</option>
+        </select>
       </td>
     </tr>
   );

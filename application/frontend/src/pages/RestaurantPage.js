@@ -67,7 +67,7 @@ const RestaurantPage = () => {
         <div className="pl-1">
           <h1 className="primaryTextPage">Sliceline</h1>
           <p className="text-muted ">
-            $$ • Pizza, Wings, Pepporoni <br />
+            $$ • Pizza, Wings, Pepperoni <br />
             0.3 mi
           </p>
           <p className="text-muted">

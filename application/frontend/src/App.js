@@ -32,6 +32,7 @@ import DriverAvailableOrders from './pages/DriverAvailableOrders'
 import DriverOrderDelivered from './pages/DriverOrderDelivered'
 import SwitchedMenuSideBar from './components/SwitchedMenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
+import Checkout from './pages/Checkout'
 
 function App() {
   const dispatch = useDispatch();
@@ -121,6 +122,9 @@ function App() {
           </Route>
           <Route path="/customerdisplaycart">
             <DisplayCart />
+            </Route>
+            <Route path="/checkout">
+            <Checkout />
             </Route>
           <Route path="/driver/orderhistory">
             <DriverAvailableOrders/>

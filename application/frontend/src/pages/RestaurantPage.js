@@ -4,7 +4,6 @@ import Banner from '../assets/img/restaurant/banner.jpg';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
-import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
 import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 

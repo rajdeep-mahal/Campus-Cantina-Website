@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/css/restaurant_page.css';
 import Banner from '../assets/img/restaurant/banner.jpg';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
@@ -31,6 +31,46 @@ const RestaurantPage = () => {
     
   }, []);
 
+  //Google Map
+  const center = {
+    lat: 37.7234,
+    lng: -122.481
+  };
+
+  function MyMap() {
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: config.googleAPI,
+    });
+
+    const [map, setMap] = React.useState(null);
+
+    const onLoad = React.useCallback(function callback(map) {
+      setMap(map);
+    }, []);
+
+    const onUnmount = React.useCallback(function callback(map) {
+      setMap(null);
+    }, []);
+
+    return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={{ height: '200px', width: '300px' }}
+        zoom={17}
+        center={center}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        options={{
+          streetViewControl: false,
+          mapTypeControl: false,
+        }}
+      >
+        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+      </GoogleMap>
+    ) : <></>
+
+  }//end of MyMap function 
+
   return (
     <div className="container">
       <div className="rp-banner">
@@ -42,28 +82,12 @@ const RestaurantPage = () => {
         <div
             className="float-right "
             style={{
-              border: 'solid 1px',
+              // border: 'solid 1px',
               width: '300px',
               height: '200px',
             }}
-        >
-          {/*
-
-           Google Maps
-          <GoogleMap
-            mapContainerStyle={{ height: '200px', width: '300px' }}
-            zoom={17}
-            center={{ lat: 37.7234, lng: -122.481 }}
-            options={{
-              streetViewControl: false,
-              mapTypeControl: false,
-            }}
-          >
-            <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-          </GoogleMap>
-          {loadError && <p>Map cannot be displayed at this time.</p>}
-
-        */}
+        >          
+        <MyMap></MyMap>
         </div>
 
 

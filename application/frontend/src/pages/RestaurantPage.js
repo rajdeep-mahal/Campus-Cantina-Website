@@ -34,17 +34,15 @@ const RestaurantPage = () => {
   return (
     <div className="container">
       <div className="rp-banner">
-        <img className="d-block w-100" src={Banner} style={{
-          height: '350px',
-        }}/>
+        <img className="d-block w-100 img-fluid restaurantBanner" src={Banner} />
       </div>
 
 
       <div className="ml-5 mr-4 mt-4 mb-4">
         <div
-            className="float-right"
+            className="float-right "
             style={{
-              border: 'solid 1px lightgrey',
+              border: 'solid 1px',
               width: '300px',
               height: '200px',
             }}
@@ -76,8 +74,8 @@ const RestaurantPage = () => {
             $$ • Pizza, Wings, Pepporoni <br />
             0.3 mi
           </p>
-          <p className="text-muted openTag">
-            OPEN
+          <p className="text-muted">
+            <p className="openTag"> OPEN </p>
           </p>
         </div>
         <div className="rp-info secondaryTextPage">
@@ -123,9 +121,8 @@ const RestaurantPage = () => {
               <table height="90px" className="">
                 <tbody>
                   <tr>
-                    <td className="pl-4 pt-4">
+                    <td className="text-center pt-5">
                       <p>
-                      <br/>
                         <strong>Cheese Pizza </strong>
                         <br />{' '}
                         <span className="text-muted">(700-1180 Cal.)</span>
@@ -145,7 +142,7 @@ const RestaurantPage = () => {
               <table height="90px" className="">
                 <tbody>
                   <tr>
-                    <td className="pl-4 pt-4">
+                    <td className="text-center pt-5">
                       <p>
                         <strong>Pepporoni Pizza </strong>
                         <br />{' '}
@@ -165,7 +162,7 @@ const RestaurantPage = () => {
               <table height="90px" className="">
                 <tbody>
                   <tr>
-                    <td className="pl-4 pt-4">
+                    <td className="text-center pt-5">
                       <p>
                         <strong>Wings</strong>
                         <br />{' '}
@@ -184,7 +181,7 @@ const RestaurantPage = () => {
               <table height="90px" className="">
                 <tbody>
                   <tr>
-                    <td className="pl-4 pt-4">
+                    <td className="text-center pt-5">
                       <p>
                         <strong>Breadsticks </strong>
                         <br />{' '}

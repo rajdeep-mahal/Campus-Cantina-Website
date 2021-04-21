@@ -31,6 +31,7 @@ import DisplayCart from './pages/CustomerCart'
 import DriverAvailableOrders from './pages/DriverAvailableOrders'
 import DriverOrderDelivered from './pages/DriverOrderDelivered'
 import SwitchedMenuSideBar from './components/SwitchedMenuSideBar';
+import RestaurantPage from './pages/RestaurantPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path="/cuisineresults">
             <CuisineResults />
+          </Route>
+          <Route path="/restaurantpage">
+            <RestaurantPage />
           </Route>
           <Route path="/about/rajdeep">
             <Rajdeep />

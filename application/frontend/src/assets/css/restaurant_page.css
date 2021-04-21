@@ -29,6 +29,15 @@
   .modal-content {
     margin-right: 80px;
   }
+  .restaurantBanner{
+    height: 150px;
+  }
+}
+
+@media only screen and (min-width: 501px) {
+  .restaurantBanner{
+    height: 300px;
+  }
 }
 
 .primaryTextPage{
@@ -37,4 +46,9 @@
 
 .secondaryTextPage{
   box-shadow: 3px 3px var(--secondary-color);
+}
+
+.openTag{
+  font-weight: bold;
+  color: green;
 }

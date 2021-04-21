@@ -6,7 +6,7 @@ import '../assets/css/menu_sidebar.css';
 
 const CustomerCart = () =>{
     return(
-<div className = "small-container cart-page">
+<div className = "small-container cart-page mt-5">
         <table className = "table table-light border">
           <thead>
           <tr>

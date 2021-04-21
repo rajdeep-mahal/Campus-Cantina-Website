@@ -1,0 +1,28 @@
+.total_box{
+    border-color: var(--primary-color) !important;
+    width: 20%;
+    margin-left: 20px;
+    border-width: medium;
+}
+/* order table's width */
+.table_details{
+    width: 75%;
+}
+/* height of text field for delivery instructions and special instructions to chef*/
+.text_field {
+    height: 100px;
+}
+/* confirm order button background color */
+.confirm_order{
+    background-color: var(--primary-color) !important;
+}
+/* total box opac background */
+.total_bg{
+    background-color: var(--primary-color-opac) !important;
+}
+
+.checkout_borders{
+    border-color: var(--primary-color) !important;
+}
+
+

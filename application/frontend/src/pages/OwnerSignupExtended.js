@@ -38,11 +38,9 @@ const OwnerSignupExtended = () => {
   const [restaurantTags, setRestaurantTags] = useState('');
   const [restaurantPriceLevel, setRestaurantPriceLevel] = useState('');
   const [restaurantBanner, setRestaurantBanner] = useState('');
-  // const [restaurantMenuItem1, setRestaurantMenuItem1] = useState('');
-  // const [restaurantMenuItem2, setRestaurantMenuItem2] = useState('');
 
-  const onSubmitOwnerSignup2 = () => {
-    //event.preventDefault();
+  const onSubmitOwnerSignup2 = (event) => {
+    event.preventDefault();
     const form_data = new FormData();
     const form_data2 = new FormData();
 
@@ -58,9 +56,7 @@ const OwnerSignupExtended = () => {
     form_data.append('restaurantCuisine', restaurantCuisine);
     form_data.append('restaurantTags', restaurantTags);
     form_data.append('restaurantPriceLevel', restaurantPriceLevel);
-    form_data.append('restaurantBanner', restaurantBanner);
-    // form_data.append('restaurantMenuItem1', restaurantMenuItem1);
-    // form_data.append('restaurantMenuItem2', restaurantMenuItem2);
+    form_data.append('file', restaurantBanner);
 
     let ID = nanoid();
     form_data.append('restaurantID', ID);
@@ -112,15 +108,12 @@ const OwnerSignupExtended = () => {
   return (
     <>
       {ownerFormSubmitted ? (
-        <div
-          className="login-container d-flex align-items-center justify-content-center"
-          onSubmit={onSubmitOwnerSignup2}
-        >
+        <div className="login-container d-flex align-items-center justify-content-center">
           <form
             id="registration"
             className="signup-signin-form"
             method="POST"
-            //action="/users/register"
+            onSubmit={onSubmitOwnerSignup2}
           >
             <div className="m-3">
               <input id="redirect-input" type="hidden" name="redirect" />
@@ -159,10 +152,11 @@ const OwnerSignupExtended = () => {
               <select
                 className="custom-select login_input-field"
                 id="inlineFormCustomSelect"
-                defaultValue={'Choose  a Cuisine...'}
+                defaultValue={''}
                 onChange={(e) => setRestaurantCuisine(e.target.value)}
+                required
               >
-                <option value="Choose  a Cuisine..." disabled>
+                <option value="" disabled>
                   Choose a Cuisine...
                 </option>
                 {cuisines.map((cuisine, i) => (
@@ -195,8 +189,8 @@ const OwnerSignupExtended = () => {
                   name="inlineRadioOptions"
                   id="inlineRadio1"
                   value="$"
-                  // checked={setRestaurantPriceLevel('$')}
                   onChange={(e) => setRestaurantPriceLevel(e.target.value)}
+                  required
                 />
                 <label className="form-check-label" htmlFor="inlineRadio1">
                   $
@@ -209,7 +203,6 @@ const OwnerSignupExtended = () => {
                   name="inlineRadioOptions"
                   id="inlineRadio2"
                   value="$$"
-                  // checked={setRestaurantPriceLevel('$$')}
                   onChange={(e) => setRestaurantPriceLevel(e.target.value)}
                 />
                 <label className="form-check-label" htmlFor="inlineRadio2">
@@ -223,7 +216,6 @@ const OwnerSignupExtended = () => {
                   name="inlineRadioOptions"
                   id="inlineRadio3"
                   value="$$$"
-                  // checked={setRestaurantPriceLevel('$$$')}
                   onChange={(e) => setRestaurantPriceLevel(e.target.value)}
                 />
                 <label className="form-check-label" htmlFor="inlineRadio3">
@@ -237,7 +229,6 @@ const OwnerSignupExtended = () => {
                   name="inlineRadioOptions"
                   id="inlineRadio4"
                   value="$$$$"
-                  // checked={setRestaurantPriceLevel('$$$$')}
                   onChange={(e) => setRestaurantPriceLevel(e.target.value)}
                 />
                 <label className="form-check-label" htmlFor="inlineRadio4">
@@ -247,42 +238,16 @@ const OwnerSignupExtended = () => {
               <div className="form-group mt-1">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
+                  required
                   id="banner_img"
                   type="file"
                   name="bannerImageUpload"
                   accept=".jpg, .png, .jpeg"
-                  // value={restaurantBanner}
                   className="form-control login_input-field"
-                  //   ref={ref}
                   onChange={(e) => setRestaurantBanner(e.target.files[0])}
                   single="true"
                 />
               </div>
-              {/* <div className="form-group">
-                <label htmlFor="MenuItemImages">Upload Menu Item Images:</label>
-                <input
-                  id="input-image2"
-                  type="file"
-                  name="menuImageUpload1"
-                  accept=".jpg, .png, .jpeg"
-                  // value={restaurantMenuItem1}
-                  className="form-control"
-                  //   ref={ref}
-                  onChange={(e) => setRestaurantMenuItem1(e.target.files[0])}
-                  single="true"
-                />
-                <input
-                  id="input-image3"
-                  type="file"
-                  name="menuImageUpload2"
-                  accept=".jpg, .png, .jpeg"
-                  // value={restaurantMenuItem2}
-                  className="form-control mt-2"
-                  //   ref={ref}
-                  onChange={(e) => setRestaurantMenuItem2(e.target.files[0])}
-                  single="true"
-                />
-              </div> */}
               <div className="form-check">
                 <input
                   className="form-check-input"

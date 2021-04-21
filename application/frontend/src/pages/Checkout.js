@@ -1,5 +1,7 @@
 import React from 'react';
 import '../assets/css/customer_checkout.css';
+import Home from  './Home'
+import { Link } from 'react-router-dom';
 
 
 const Checkout = () => {
@@ -56,7 +58,7 @@ const Checkout = () => {
               <li className = "list-group-item"><span className = "float-left">Discount</span> <span className = "float-right">&#36;0.00</span> </li>
               <li className = "list-group-item"><span className = "float-left">Taxes</span> <span className = "float-right">&#36;8.00</span>  </li>
               <li className = "list-group-item pt-4 total_bg font-weight-bold h5"><span className = "float-left">Total</span> <span className = "float-right">&#36;40.00</span>  </li>
-              <button type = "button" className = "btn confirm_order m-3 btn-block w-75 mx-auto text-white">Confirm Order</button>
+              <button type = "button" className = "btn confirm_order m-3 btn-block w-75 mx-auto text-white" data-toggle = "modal" data-target = "#confirmorder">Confirm Order</button>
             </ul>
           </div>
           <div className = "col border-top checkout_borders">
@@ -67,6 +69,26 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+
+      {/* Confirm Order modal */}
+      <div class="modal fade" id="confirmorder" tabindex="-1" role="dialog" aria-labelledby="confirmorderTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmorderTitle">On the way!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className = "h5 font-weight-bold">Your order has been sent to the Restaurant!</div>
+                <div className = "h5 font-weight-bold">Please handover the payment to the driver after receiving your order.</div>
+                <div className = "h5 mt-4">Thank you!</div>
+                <button type = "button" className = "btn confirm_order mt-4" data-dismiss = "modal"><span className = "h5 text-white">GOT IT!</span><Link to = "/"></Link></button>
+              </div>
+            </div>
+          </div>
+        </div>
 
     </div>
   );

@@ -4,10 +4,6 @@ import Banner from '../assets/img/restaurant/banner.jpg';
 import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
-import Pizza1 from '../assets/img/restaurant/pizza1.jpg';
-import Pizza2 from '../assets/img/restaurant/pizza2.jpg';
-import Wings from '../assets/img/restaurant/wings.jpg';
-import Bread from '../assets/img/restaurant/bread.jpg';
 import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -95,7 +91,7 @@ const RestaurantPage = () => {
         <div className="pl-1">
           <h1 className="primaryTextPage">Sliceline</h1>
           <p className="text-muted ">
-            $$ • Pizza, Wings, Pepporoni <br />
+            $$ • Pizza, Wings, Pepperoni <br />
             0.3 mi
           </p>
           <p className="text-muted">

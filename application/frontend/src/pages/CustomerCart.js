@@ -3,7 +3,7 @@ import '../assets/css/menu_sidebar.css';
 
 const CustomerCart = () => {
   return (
-    <div className="small-container cart-page mt-5">
+    <div className="small-container cart-page mt-2">
       <table className="table table-light border">
         <thead>
           <tr>

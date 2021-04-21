@@ -13,7 +13,7 @@ const OwnerProfile = () => {
       <div className="editprofile">
         {/* pending approval alert*/}
         <div
-          class="alert alert-warning alert-dismissible fade show text-center "
+          class="alert alert-warning alert-dismissible fade show text-center pending-alert"
           role="alert"
         >
           <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
@@ -22,25 +22,32 @@ const OwnerProfile = () => {
             class="close"
             data-dismiss="alert"
             aria-label="Close"
-            data-toggle="modal"
           >
             <span aria-hidden="true">&times;</span>
           </button>
-          
+        </div>
+        <div
+          class="alert alert-warning alert-dismissible fade show text-center live-alert"
+          role="alert"
+        >
+          <strong> Your restaurant is now live! </strong>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         {/* content header */}
         <div className="border-bottom my-3 text-center">
-        <button
-          type="button"
-          class="btn text-center"
-          data-toggle="modal"
-          data-target="#staticBackdrop"
-        >
-          Live!
-        </button>
           <div className="row text-left">
             <div class="col-7">
-              <label for="name"> Bob's Burgers </label>
+              <label for="name">
+                {" "}
+                <strong>Bob's Burgers </strong>
+              </label>
             </div>
             <div class="col text-right">
               <label for="name"> American, Burger, $</label>
@@ -71,7 +78,16 @@ const OwnerProfile = () => {
                 <div class="col">
                   <label for="phone">(415)555-5555</label>
                 </div>
-                
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label className="form-descrip">
+                    <strong>Email</strong>
+                  </label>
+                </div>
+                <div class="col">
+                  <label for="email">owner1@gmail.com</label>
+                </div>
               </div>
               <div class="row">
                 <div class="col">
@@ -80,7 +96,7 @@ const OwnerProfile = () => {
                   </label>
                 </div>
                 <div class="col">
-                  <label for="phone">
+                  <label for="address">
                     562 Random St, San Francisco, CA 94123
                   </label>
                 </div>
@@ -92,7 +108,7 @@ const OwnerProfile = () => {
                   </label>
                 </div>
                 <div class="col">
-                  <label>Save $5 on first 5 orders! </label>
+                  <label for="marketing">Save $5 on first 5 orders! </label>
                 </div>
               </div>
             </div>
@@ -101,45 +117,16 @@ const OwnerProfile = () => {
                 src={restaurantcartoon}
                 class="rounded img-thumbnail restImage"
                 alt="Restaurant Img"
-                width="300"  
+                width="300"
               />
             </div>
           </div>
           {/* edit icon */}
-          <br/>
+          <br />
           <div class="text-center">
-            <a className="text-white edit-btn" href="/owner/editprofile">
+            <a className="edit-btn" href="/owner/editprofile">
               <i className="far fa-edit " aria-hidden="true"></i> Edit{" "}
             </a>
-          </div>
-        </div>
-      </div>
-      {/* approval modal */}
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-backdrop="static"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <strong>Welcome aboard</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <strong> Your restaurant is now live! </strong>
-            </div>
           </div>
         </div>
       </div>

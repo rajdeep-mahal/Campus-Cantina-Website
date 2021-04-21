@@ -21,7 +21,10 @@ const OwnerEditProfile = () => {
         />
         <div className="row">
           <div class="col-8">
-            <label for="restaurant-name"> Restaurant Name</label>
+            <label for="restaurant-name">
+              {" "}
+              <strong>Restaurant Name</strong>
+            </label>
             <input
               type="text"
               id="restaurant-name"
@@ -34,7 +37,10 @@ const OwnerEditProfile = () => {
         <br />
         <div class="row">
           <div class="col-8">
-            <label for="name"> Name </label>
+            <label for="name">
+              {" "}
+              <strong>Name</strong>
+            </label>
             <div class="w-100" />
             <input
               type="text"
@@ -43,14 +49,15 @@ const OwnerEditProfile = () => {
               required
               class="form-control"
               placeholder="John Doe"
-              maxLength="50"
             />
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-5">
-            <label for="phone">Contact Info</label>
+            <label for="phone">
+              <strong>Contact Info</strong>
+            </label>
             <div class="w-100" />
             <input
               type="tel"
@@ -63,7 +70,26 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-        <label for="address">Restaurant Address</label>
+        <div class="row">
+          <div class="col-8">
+            <label for="name">
+              {" "}
+              <strong>Email</strong>
+            </label>
+            <div class="w-100" />
+            <input
+              type="email"
+              maxlength="30"
+              required
+              class="form-control"
+              placeholder="email@address.com"
+            />
+          </div>
+        </div>
+        <br />
+        <label for="address">
+          <strong>Restaurant Address</strong>
+        </label>
         <input
           type="text"
           id="address"
@@ -72,21 +98,37 @@ const OwnerEditProfile = () => {
           placeholder="123 Street Name"
         />
         <br />
-        <label for="img">Restaurant Image</label>
+        <label for="img">
+          <strong>Restaurant Image</strong>
+        </label>
         <input type="file" id="img" class="form-control" />
         <br />
-        <label for="food">Cuisine</label>
+        <label for="food">
+          <strong>Cuisine</strong>
+        </label>
         <input
           class="form-control"
           type="text"
           id="food"
           required
-          placeholder="Ex: American, burgers, etc "
+          placeholder="Ex: American"
+        />
+        <br />
+        <label for="tags">
+          <strong>Food tags</strong>
+        </label>
+        <input
+          class="form-control"
+          type="text"
+          id="tags"
+          placeholder="Burgers, fries, wings"
         />
         <br />
         <div class="row">
           <div class="col-4">
-            <label for="price">Restaurant Pricing</label>
+            <label for="price">
+              <strong>Restaurant Pricing</strong>
+            </label>
           </div>
           <div class="col">
             <div
@@ -109,7 +151,9 @@ const OwnerEditProfile = () => {
           </div>
         </div>
         <br />
-        <label for="post">Marketing Post</label>
+        <label for="post">
+          <strong>Marketing Post</strong>
+        </label>
         <textarea class="form-control" rows="3" placeholder="Announcements" />
         <br />
         {/* footer buttons */}

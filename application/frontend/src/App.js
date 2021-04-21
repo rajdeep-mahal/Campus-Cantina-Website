@@ -1,3 +1,18 @@
+/* 
+Organization: SFSU 
+Course: CSC 648-848 Software Engineering Spring 2021
+Project: Campus Cantina
+Team 04
+Description: Online Food Ordering Application exclusively for SFSU Students, Faculty & Staff
+*/
+/*
+Summary of App.js: 
+ - Default Rendered page in React Application
+ - All routes of the project are defined in this file
+ - The website just one page based on the route selected
+ - Network calls - for getting Restaurants on page load
+ - used Redux dispatch
+*/
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import About from './pages/About/About';
 import Rajdeep from './pages/About/Rajdeep';
@@ -8,7 +23,7 @@ import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
 import VPHome from './pages/VPHome';
 import Home from './pages/Home';
-import MenuSideBar from './components/MenuSideBar';
+// import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
 import SFSULogin from './pages/SFSULogin';
 import SFSUSignup from './pages/SFSUSignup';
@@ -27,12 +42,12 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
-import DisplayCart from './pages/CustomerCart'
-import DriverAvailableOrders from './pages/DriverAvailableOrders'
-import DriverOrderDelivered from './pages/DriverOrderDelivered'
+import DisplayCart from './pages/CustomerCart';
+import DriverAvailableOrders from './pages/DriverAvailableOrders';
+import DriverOrderDelivered from './pages/DriverOrderDelivered';
 import SwitchedMenuSideBar from './components/SwitchedMenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
-import Checkout from './pages/Checkout'
+import Checkout from './pages/Checkout';
 
 function App() {
   const dispatch = useDispatch();
@@ -101,7 +116,7 @@ function App() {
           </Route>
           <Route path="/ownersignup2">
             <OwnerSignupExtended />
-            </Route>
+          </Route>
           <Route path="/owner/editprofile">
             <OwnerEditProfile />
           </Route>
@@ -122,13 +137,13 @@ function App() {
           </Route>
           <Route path="/customerdisplaycart">
             <DisplayCart />
-            </Route>
-            <Route path="/checkout">
+          </Route>
+          <Route path="/checkout">
             <Checkout />
-            </Route>
+          </Route>
           <Route path="/driver/orderhistory">
-            <DriverAvailableOrders/>
-            </Route>
+            <DriverAvailableOrders />
+          </Route>
           <Route path="/driver/currentorder">
             <DriverOrderDelivered />
           </Route>

@@ -1,3 +1,9 @@
+/*
+Summary of MenuSideBar.js: 
+ - renders with '/' in React Application
+ - On top of all routes and hence displays on all pages of the application
+ - Components: Logo, Search Bar, Cart, Side bar menu (based on logged in user)
+*/
 import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
@@ -149,19 +155,19 @@ const MenuSideBar = () => {
 
       {/* Cart */}
       <nav className={cart ? 'cart open' : 'cart'} ref={ref}>
-        <CustomerCart />
-        {/* <ul className="navbar-nav">
-          <li className="px-3 pt-1" onClick={showCart}>
+        <div className="navbar-nav">
+          <li className="pt-1 pl-2" onClick={showCart}>
             <Link to="#">
-              <i className="nav-link fas fa-times primary-color float-left h4 my-3"></i>
+              <i className="nav-link fas fa-times primary-color float-left h4"></i>
             </Link>
           </li>
-          <li style={{ marginTop: '10px' }}>
+          {/* <li style={{ marginTop: '10px' }}>
             <span className=" p-2 m-1 h5">Your Cart is empty</span>
             <p className="primary-color p-2 m-1">Add items to get started</p>
-          </li>
-        </ul> */}
-
+          </li> */}
+          <CustomerCart />
+        </div>
+        <br />
       </nav>
     </>
   );

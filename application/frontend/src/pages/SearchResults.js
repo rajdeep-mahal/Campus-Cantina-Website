@@ -1,6 +1,18 @@
+/*
+Summary of SearchResults.js: 
+ - Renders on '/searchresults'
+ - to load when clicked on search on the top nav searchbar (with or without search parameter)
+ - Components: dynamic search with Redux Search Reducer
+ - Restaurant results displayed on the page
+*/
 import React from 'react';
-import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';     // For Google Maps
-import config from '../config';                                                // For Google Maps
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  useJsApiLoader,
+} from '@react-google-maps/api'; // For Google Maps
+import config from '../config'; // For Google Maps
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -28,7 +40,7 @@ const SearchResults = () => {
   //Google Map
   const center = {
     lat: 37.7234,
-    lng: -122.481
+    lng: -122.481,
   };
 
   function MyMap() {
@@ -61,9 +73,10 @@ const SearchResults = () => {
       >
         <Marker position={{ lat: 37.7234, lng: -122.481 }} />
       </GoogleMap>
-    ) : <></>
-
-  }//end of MyMap function 
+    ) : (
+      <></>
+    );
+  } //end of MyMap function
 
   return (
     <div className="d-flex justify-content-center">
@@ -112,9 +125,7 @@ const SearchResults = () => {
           </div>
         )}
         <div className=" container d-flex justify-content-around flex-wrap mt-4">
-        
           {searchResults.map((item, i) => (
-            
             // Google Maps removed for now
             // <GoogleMap
             //       mapContainerStyle={{ height: '250px', width: '400px' }}
@@ -141,22 +152,22 @@ const SearchResults = () => {
                   width="350px"
                   height="250px"
                 />
-                 <div className="row">
-                   <div className="col">
-                     <h5 className="text-align-left ml-2">
-                       <strong>{item.Name}</strong>
-                     </h5>
-                   </div>
-                   <div className="col">
-                     <p className="float-right mr-2">Free Delivery</p>
-                   </div>
-                 </div>
-                 <div className="restaurants-price-tags">
-                   <span className="text-muted ml-2">
-                     {item.Price_Level} • {item.Cuisine}, <br />
-                     <span className="text-muted ml-2">{item.Tags}</span>
-                   </span>
-                 </div> 
+                <div className="row">
+                  <div className="col">
+                    <h5 className="text-align-left ml-2">
+                      <strong>{item.Name}</strong>
+                    </h5>
+                  </div>
+                  <div className="col">
+                    <p className="float-right mr-2">Free Delivery</p>
+                  </div>
+                </div>
+                <div className="restaurants-price-tags">
+                  <span className="text-muted ml-2">
+                    {item.Price_Level} • {item.Cuisine}, <br />
+                    <span className="text-muted ml-2">{item.Tags}</span>
+                  </span>
+                </div>
               </div>
             </div>
           ))}

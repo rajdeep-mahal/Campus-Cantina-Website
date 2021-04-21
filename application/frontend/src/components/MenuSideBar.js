@@ -1,3 +1,9 @@
+/*
+Summary of MenuSideBar.js: 
+ - renders with '/' in React Application
+ - On top of all routes and hence displays on all pages of the application
+ - Components: Logo, Search Bar, Cart, Side bar menu (based on logged in user)
+*/
 import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';

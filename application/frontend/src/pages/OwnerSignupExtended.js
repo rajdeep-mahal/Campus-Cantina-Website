@@ -1,3 +1,9 @@
+/*
+Summary of OwnerSignupExtended.js: 
+ - Renders on '/ownersignup2' (conditional rendering => only after submitting form on /ownersignup)
+ - to load when submitting owner signup form 1
+ - Components: Form with Image Upload option
+*/
 import React, { useState, useEffect } from 'react';
 import '../assets/css/login_Signup.css';
 import { Link, useHistory, Redirect } from 'react-router-dom';

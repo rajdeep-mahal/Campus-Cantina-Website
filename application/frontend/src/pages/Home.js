@@ -1,3 +1,8 @@
+/*
+Summary of Home.js: 
+ - renders with '/' in React Application
+ - Components: Banner Carousel, Cuisine Row, All Restaurants
+*/
 import React from 'react';
 import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
@@ -8,20 +13,23 @@ import Banner2 from '../assets/img/Home_Banner2.jpg';
 import Banner3 from '../assets/img/Home_Banner3.jpg';
 import Banner4 from '../assets/img/Home_Banner4.jpg';
 
-import { GoogleMap, useLoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';     // For Google Maps
-import config from '../config';                                                // For Google Maps
-
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  useJsApiLoader,
+} from '@react-google-maps/api'; // For Google Maps
+import config from '../config'; // For Google Maps
 
 const Home = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
- 
 
   //Google Map
   const center = {
     lat: 37.7234,
-    lng: -122.481
+    lng: -122.481,
   };
 
   function MyMap() {
@@ -54,9 +62,10 @@ const Home = () => {
       >
         <Marker position={{ lat: 37.7234, lng: -122.481 }} />
       </GoogleMap>
-    ) : <></>
-
-  }//end of MyMap function 
+    ) : (
+      <></>
+    );
+  } //end of MyMap function
 
   return (
     <div>
@@ -329,7 +338,6 @@ const Home = () => {
         <div className="d-flex justify-content-around flex-wrap mt-4">
           {restaurantsList.map((item, i) => (
             <div key={i}>
-              
               <div className="card home-restaurant-card">
                 <img
                   src={
@@ -351,10 +359,10 @@ const Home = () => {
                   </div>
 
                   {/**Merged from pw-encrypt
-               * Had changes to photo unsure which is
-               * To be deleted?
-               */}
-              {/* <div className="card vp-card vp-shadow p-1 mb-4">
+                   * Had changes to photo unsure which is
+                   * To be deleted?
+                   */}
+                  {/* <div className="card vp-card vp-shadow p-1 mb-4">
                 <div className="d-flex">
                   <img
                     className=""

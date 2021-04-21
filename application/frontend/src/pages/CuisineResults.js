@@ -1,3 +1,10 @@
+/*
+Summary of CuisineResults.js: 
+ - Renders on '/cuisineresults'
+ - to load when clicked on cuisine icons on the home page
+ - Components: dynamic search with Redux Search Reducer
+ - Restaurant results displayed on the page based on Cuisine
+*/
 import React from 'react';
 //  import '../assets/css/vphome.css';
 import '../assets/css/home.css';

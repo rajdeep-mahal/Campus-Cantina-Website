@@ -6,7 +6,9 @@ const router = express.Router();
 const database = require('../db');
 const validator = require('validator'); // Used for input validation
 const e = require('express');
+const bcrypt = require('bcryptjs');
 router.use(express.json());
+
 
 // Testing
 router.get('/', (req, res) => {
@@ -74,6 +76,7 @@ router.post('/register-owner', (req, res) => {
   // TODO: Perform validation on data
 
   // Encyprt password
+  let hash = bcrypt.hashSync(data.ownerPassword, 10);
 
   // Generate SQL query with owner info
   let query =
@@ -86,7 +89,7 @@ router.post('/register-owner', (req, res) => {
     `','` +
     data.ownerEmail +
     `','` +
-    data.ownerPassword +
+    hash +
     `','` +
     data.ownerRestaurant +
     `')`;

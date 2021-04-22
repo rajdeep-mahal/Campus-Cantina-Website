@@ -26,6 +26,10 @@
   font-size: 100%;
 }
 
+.first-label {
+  margin-top: 0px !important;
+}
+
 .login_input-field {
   width: 100%;
   border: 2px solid var(--primary-color);

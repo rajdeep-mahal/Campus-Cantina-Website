@@ -118,7 +118,7 @@ const OwnerSignupExtended = () => {
             <div className="m-3">
               <input id="redirect-input" type="hidden" name="redirect" />
               <h2 className="mb-3 font-weight-bold primary-color text-center">
-                Restaurant Sign Up
+                Restaurant Registration
               </h2>
               <label htmlFor="name" className="login-label">
                 Restaurant Name
@@ -235,7 +235,7 @@ const OwnerSignupExtended = () => {
                   $$$$
                 </label>
               </div>
-              <div className="form-group mt-1">
+              <div className="form-group mt-3">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
                   //required
@@ -248,18 +248,8 @@ const OwnerSignupExtended = () => {
                   single="true"
                 />
               </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                  required
-                />
-                <label
-                  htmlFor="defaultCheck1 Warning"
-                  className="small form-check-label"
-                >
+              <div>
+                <label className="small mt-2">
                   On Signing up, your restaurant will be sent for approval to
                   the admin. It shall be live only after approval.
                 </label>
@@ -272,10 +262,10 @@ const OwnerSignupExtended = () => {
               <br />
               <button
                 type="submit"
-                className="login_button d-flex align-items-center justify-content-center"
+                className="login_button w-50 d-flex justify-content-center"
                 value="Register"
               >
-                Sign up
+                Register Restaurant
               </button>
             </div>
           </form>

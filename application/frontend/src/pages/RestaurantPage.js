@@ -59,7 +59,7 @@ const RestaurantPage = () => {
 
     return isLoaded ? (
       <GoogleMap
-        mapContainerStyle={{ height: '200px', width: '300px' }}
+        mapContainerStyle={{ height: '270px', width: '350px' }}
         zoom={17}
         center={center}
         onLoad={onLoad}
@@ -86,14 +86,7 @@ const RestaurantPage = () => {
       </div>
 
       <div className="ml-5 mr-4 mt-4 mb-4">
-        <div
-          className="float-right "
-          style={{
-            // border: 'solid 1px',
-            width: '300px',
-            height: '200px',
-          }}
-        >
+        <div className="float-right restaurant-home-map">
           <MyMap></MyMap>
         </div>
 
@@ -102,7 +95,8 @@ const RestaurantPage = () => {
             <h1 className="primaryTextPage">Sliceline</h1>
             <p className="text-muted ">
               $$ • Pizza, Wings, Pepperoni <br />
-              0.3 mi
+              0.3 mi <br />
+              <span className="text-muted">145 Second Street</span>
             </p>
             <p className="text-muted">
               <p className="openTag"> OPEN </p>

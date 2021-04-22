@@ -73,7 +73,7 @@ const OwnerSignupExtended = () => {
     let dataJson2 = JSON.stringify(dataObject2);
 
     axios
-      .post('/api/restaurant/register-owner', {
+      .post('http://localhost:3001/api/restaurant/register-owner', {
         params: { formdata: dataJson2 },
       })
       .then((res) => {

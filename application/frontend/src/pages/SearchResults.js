@@ -154,7 +154,7 @@ const SearchResults = () => {
                 />
                 <div className="row">
                   <div className="col">
-                    <h5 className="text-align-left ml-2">
+                    <h5 className="text-align-left ml-2 mt-1">
                       <strong>{item.Name}</strong>
                     </h5>
                   </div>
@@ -166,6 +166,8 @@ const SearchResults = () => {
                   <span className="text-muted ml-2">
                     {item.Price_Level} • {item.Cuisine}, <br />
                     <span className="text-muted ml-2">{item.Tags}</span>
+                    <br />
+                    <span className="text-muted ml-2">{item.Address}</span>
                   </span>
                 </div>
               </div>

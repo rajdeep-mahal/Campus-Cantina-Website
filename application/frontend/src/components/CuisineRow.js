@@ -21,7 +21,7 @@ const CuisineRow = () => {
 
   const handleCuisineSearch = (cuisine) => {
     axios
-      .get('http://localhost:3001/api/searchbar/search', {
+      .get('/api/searchbar/search', {
         params: { searchTerm: '', cuisine: cuisine },
       })
       .then((res) => {

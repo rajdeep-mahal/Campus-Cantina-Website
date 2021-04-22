@@ -5,9 +5,7 @@ const express = require('express');
 const router = express.Router();
 const database = require('../db');
 const validator = require('validator'); // Used for input validation
-const bcrypt = require('bcrypt');
 const e = require('express');
-const saltRounds = 10;
 router.use(express.json());
 
 // Testing
@@ -59,7 +57,7 @@ router.post('/register-restaurant', (req, res) => {
     `','` +
     data.restaurantAddress +
     `', NULL, 37.7301, 
-                -122.477, NULL, 0, NULL)`;  // Images set to NULL for now
+                -122.477, NULL, 0, NULL)`; // Images set to NULL for now
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
@@ -76,29 +74,27 @@ router.post('/register-owner', (req, res) => {
   // TODO: Perform validation on data
 
   // Encyprt password
-  bcrypt.hash(data.ownerPassword, saltRounds, function (err, hash) {
-    
-    // Generate SQL query with owner info
-    let query =
-      `INSERT INTO Restaurant_Owners VALUES (` +
-      data.ownerID +
-      `,'` +
-      data.ownerName +
-      `','` +
-      data.ownerContactNumber +
-      `','` +
-      data.ownerEmail +
-      `','` +
-      hash +
-      `','` +
-      data.ownerRestaurant +
-      `')`;
 
-    // Send owner query to db
-    database.query(query, (err, result) => {
-      console.log('Uploaded owner info to db');
-      res.send(result);
-    });
+  // Generate SQL query with owner info
+  let query =
+    `INSERT INTO Restaurant_Owners VALUES (` +
+    data.ownerID +
+    `,'` +
+    data.ownerName +
+    `','` +
+    data.ownerContactNumber +
+    `','` +
+    data.ownerEmail +
+    `','` +
+    data.ownerPassword +
+    `','` +
+    data.ownerRestaurant +
+    `')`;
+
+  // Send owner query to db
+  database.query(query, (err, result) => {
+    console.log('Uploaded owner info to db');
+    res.send(result);
   });
 });
 

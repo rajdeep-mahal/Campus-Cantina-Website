@@ -6,7 +6,8 @@ Summary of RestaurantPage.js:
 */
 import React from 'react';
 import '../assets/css/restaurant_page.css';
-import Banner from '../assets/img/restaurant/banner.jpg';
+// import Banner from '../assets/img/restaurant/banner.jpg';
+import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
 import {
   GoogleMap,
   useLoadScript,
@@ -77,17 +78,14 @@ const RestaurantPage = () => {
   } //end of MyMap function
 
   return (
-    <div className="container">
-      <div className="rp-banner">
-        <img
-          className="d-block w-100 img-fluid restaurantBanner"
-          src={Banner}
-        />
-      </div>
+    <div className="container-fluid">
+      <div className="mx-5">
+        <img className="w-100 restaurantBanner" src={Banner} />
 
-      <div className="ml-5 mr-4 mt-4 mb-4">
-        <div className="float-right restaurant-home-map">
-          <MyMap></MyMap>
+        <div className="m-4">
+          <div className="float-right restaurant-home-map">
+            <MyMap></MyMap>
+          </div>
         </div>
 
         <div className="container">

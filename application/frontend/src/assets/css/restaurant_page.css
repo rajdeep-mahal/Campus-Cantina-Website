@@ -23,20 +23,25 @@
   text-decoration: none;
 }
 
+.restaurantBanner {
+  object-fit: cover;
+  height: 350px;
+}
+
 @media only screen and (max-width: 500px) {
   .modal-content {
     margin-right: 80px;
   }
-  .restaurantBanner {
+  /* .restaurantBanner {
     height: 150px;
-  }
+  } */
 }
 
-@media only screen and (min-width: 501px) {
+/* @media only screen and (min-width: 501px) {
   .restaurantBanner {
     height: 300px;
   }
-}
+} */
 
 .primaryTextPage {
   color: var(--primary-color);

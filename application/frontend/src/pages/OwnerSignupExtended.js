@@ -120,7 +120,10 @@ const OwnerSignupExtended = () => {
               <h2 className="mb-3 font-weight-bold primary-color text-center">
                 Restaurant Registration
               </h2>
-              <label htmlFor="name" className="login-label">
+              <p className="mt-3 text-info text-center">
+                All fields are Mandatory
+              </p>
+              <label htmlFor="name" className="login-label first-label">
                 Restaurant Name
               </label>
               <input

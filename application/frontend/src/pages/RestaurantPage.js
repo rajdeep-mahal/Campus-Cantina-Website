@@ -134,7 +134,9 @@ const RestaurantPage = () => {
               height="55"
               className="rounded mx-auto d-block"
             />
-            <h4 className="text-center pb-3 pt-3">Menu</h4>
+            <h4 className="text-center pb-3 pt-3">
+              Choose from the Menu below
+            </h4>
           </p>
           <div className="row m-2 ">
             <div className="col-sm-3 " style={{ border: '', height: '200px' }}>

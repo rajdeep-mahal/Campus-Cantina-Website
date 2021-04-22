@@ -92,14 +92,13 @@ const RestaurantPage = () => {
 
         <div className="container">
           <div className="pl-1">
-            <h1 className="primaryTextPage">Sliceline</h1>
-            <p className="text-muted ">
+            <p className="primaryTextPage h1">Sliceline</p>
+            <mark className="font-weight-bold"> COVID-19 Safe </mark>
+            <span className="openTag">OPEN </span>
+            <p className="text-muted mt-2">
               $$ • Pizza, Wings, Pepperoni <br />
               0.3 mi <br />
               <span className="text-muted">145 Second Street</span>
-            </p>
-            <p className="text-muted">
-              <p className="openTag"> OPEN </p>
             </p>
           </div>
           <div className="rp-info secondaryTextPage">

@@ -48,9 +48,13 @@
 
 .openTag {
   font-weight: bold;
-  color: green;
+  background-color: green;
+  color: white;
+  margin-left: 20px;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 .restaurant-home-map {
-  border: solid 4px var(--primary-color);
+  border: solid 3px var(--primary-color);
 }

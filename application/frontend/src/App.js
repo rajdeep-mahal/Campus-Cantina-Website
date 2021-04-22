@@ -54,7 +54,7 @@ function App() {
 
   React.useEffect(() => {
     axios
-      .get('/api/searchbar/search', {
+      .get('http://localhost:3001/api/searchbar/search', {
         params: { searchTerm: '', cuisine: '' },
       })
       .then((res) => {

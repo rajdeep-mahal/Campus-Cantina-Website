@@ -81,7 +81,7 @@ const OwnerSignupExtended = () => {
       });
 
     axios
-      .post('/api/restaurant/register-restaurant', {
+      .post('http://localhost:3001/api/restaurant/register-restaurant', {
         params: { formdata: dataJson },
       })
       .then((res) => {
@@ -95,7 +95,7 @@ const OwnerSignupExtended = () => {
   useEffect(() => {
     let source = axios.CancelToken.source();
     axios
-      .get('/api/searchbar/cuisines', {
+      .get('http://localhost:3001/api/searchbar/cuisines', {
         cancelToken: source.token,
       })
       .then((res) => setCuisines(res.data))

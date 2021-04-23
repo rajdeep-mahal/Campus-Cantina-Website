@@ -63,3 +63,14 @@
 .restaurant-home-map {
   border: solid 3px var(--primary-color);
 }
+
+.add-cart-icon {
+  color: var(--primary-color);
+  transition: transform 0.2s ease-in;
+}
+
+.add-cart-icon:hover {
+  color: var(--secondary-color);
+  transform: translateY(-8px);
+  cursor: pointer;
+}

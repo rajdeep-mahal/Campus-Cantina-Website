@@ -16,24 +16,8 @@ import {
 } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
-import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const RestaurantPage = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  const { loadError } = useLoadScript({
-    googleMapsApiKey: config.googleAPI,
-  });
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   React.useEffect(() => {}, []);
 
   //Google Map
@@ -142,12 +126,11 @@ const RestaurantPage = () => {
               <div
                 className="secondaryTextPage card rp-item"
                 style={{ height: '170px' }}
-                onClick={openModal}
               >
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Cheese Pizza </strong>
                           <br />{' '}
@@ -158,6 +141,13 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot
+                    className="text-center"
+                    data-toggle="modal"
+                    data-target="#modalCenter"
+                  >
+                    <i className="fas fa-cart-plus h4 mt-2 add-cart-icon" />
+                  </tfoot>
                 </table>
               </div>
               {/* </Link> */}
@@ -170,7 +160,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Pepporoni Pizza </strong>
                           <br />{' '}
@@ -181,6 +171,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -193,7 +186,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Wings</strong>
                           <br />{' '}
@@ -204,6 +197,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -215,7 +211,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Breadsticks </strong>
                           <br />{' '}
@@ -226,6 +222,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -233,38 +232,66 @@ const RestaurantPage = () => {
         </div>
       </div>
 
-      <Modal show={modalIsOpen} onHide={closeModal} centered>
-        <div className="m-3">
-          <h2>Cheese Pizza</h2>
-          <span className="text-muted">(700-1180 Cal.)</span>
-        </div>
-        <p className="m-3">Comments</p>
-        <div className="text-center">
-          <textarea cols="45" rows="3"></textarea>
-          <br />
-          <br />
-        </div>
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="modalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalCenterTitle"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="modalLongTitle">
+                Cheese Pizza
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <span className="text-muted">(700-1180 Cal.)</span>
+              <p className="m-3">Comments</p>
+              <div className="text-center">
+                <textarea cols="45" rows="3"></textarea>
+              </div>
+            </div>
+            <div className="modal-footer">
+              {/* <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button> */}
+              <div className="mr-auto">
+                <i
+                  className="fa fa-plus mr-2"
+                  style={{ color: 'gray' }}
+                  aria-hidden="true"
+                ></i>
 
-        <Modal.Footer>
-          <div className="mr-auto">
-            <i
-              class="fa fa-plus mr-2"
-              style={{ color: 'gray' }}
-              aria-hidden="true"
-            ></i>
-
-            <input className="text-center" size="2" placeholder="1"></input>
-            <i
-              class="fa fa-minus ml-2"
-              style={{ color: 'gray' }}
-              aria-hidden="true"
-            ></i>
+                <input className="text-center" size="2" placeholder="1"></input>
+                <i
+                  className="fa fa-minus ml-2"
+                  style={{ color: 'gray' }}
+                  aria-hidden="true"
+                ></i>
+              </div>
+              <button type="button" className="btn primary-color-bg text-white">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <button className="btn primary-color-bg text-white">
-            Add to cart
-          </button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+      </div>
     </div>
   );
 };

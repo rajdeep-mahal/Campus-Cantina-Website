@@ -80,7 +80,7 @@ const SearchBar = () => {
         className="form-control search-bar"
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyPress={handleKeyPress}
-        // placeholder='Search'
+        placeholder="Search..."
       />
       {/* Search Button */}
       <div className="d-flex input-group-append" style={{ height: '35px' }}>

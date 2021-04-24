@@ -6,7 +6,8 @@ Summary of RestaurantPage.js:
 */
 import React from 'react';
 import '../assets/css/restaurant_page.css';
-import Banner from '../assets/img/restaurant/banner.jpg';
+// import Banner from '../assets/img/restaurant/banner.jpg';
+import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
 import {
   GoogleMap,
   useLoadScript,
@@ -15,24 +16,8 @@ import {
 } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
-import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const RestaurantPage = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  const { loadError } = useLoadScript({
-    googleMapsApiKey: config.googleAPI,
-  });
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   React.useEffect(() => {}, []);
 
   //Google Map
@@ -59,7 +44,7 @@ const RestaurantPage = () => {
 
     return isLoaded ? (
       <GoogleMap
-        mapContainerStyle={{ height: '200px', width: '300px' }}
+        mapContainerStyle={{ height: '270px', width: '350px' }}
         zoom={17}
         center={center}
         onLoad={onLoad}
@@ -77,35 +62,25 @@ const RestaurantPage = () => {
   } //end of MyMap function
 
   return (
-    <div className="container">
-      <div className="rp-banner">
-        <img
-          className="d-block w-100 img-fluid restaurantBanner"
-          src={Banner}
-        />
-      </div>
+    <div className="container-fluid">
+      <div className="mx-5">
+        <img className="w-100 restaurantBanner" src={Banner} />
 
-      <div className="ml-5 mr-4 mt-4 mb-4">
-        <div
-          className="float-right "
-          style={{
-            // border: 'solid 1px',
-            width: '300px',
-            height: '200px',
-          }}
-        >
-          <MyMap></MyMap>
+        <div className="m-4">
+          <div className="float-right restaurant-home-map">
+            <MyMap></MyMap>
+          </div>
         </div>
 
         <div className="container">
           <div className="pl-1">
-            <h1 className="primaryTextPage">Sliceline</h1>
-            <p className="text-muted ">
+            <p className="primaryTextPage h1">Sliceline</p>
+            <mark className="font-weight-bold"> COVID-19 Safe </mark>
+            <span className="openTag">OPEN </span>
+            <p className="text-muted mt-2">
               $$ • Pizza, Wings, Pepperoni <br />
-              0.3 mi
-            </p>
-            <p className="text-muted">
-              <p className="openTag"> OPEN </p>
+              0.3 mi <br />
+              <span className="text-muted">145 Second Street</span>
             </p>
           </div>
           <div className="rp-info secondaryTextPage">
@@ -141,7 +116,9 @@ const RestaurantPage = () => {
               height="55"
               className="rounded mx-auto d-block"
             />
-            <h4 className="text-center pb-3 pt-3">Menu</h4>
+            <h4 className="text-center pb-3 pt-3">
+              Choose from the Menu below
+            </h4>
           </p>
           <div className="row m-2 ">
             <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
@@ -149,12 +126,11 @@ const RestaurantPage = () => {
               <div
                 className="secondaryTextPage card rp-item"
                 style={{ height: '170px' }}
-                onClick={openModal}
               >
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Cheese Pizza </strong>
                           <br />{' '}
@@ -165,6 +141,13 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot
+                    className="text-center"
+                    data-toggle="modal"
+                    data-target="#modalCenter"
+                  >
+                    <i className="fas fa-cart-plus h4 mt-2 add-cart-icon" />
+                  </tfoot>
                 </table>
               </div>
               {/* </Link> */}
@@ -177,7 +160,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Pepporoni Pizza </strong>
                           <br />{' '}
@@ -188,6 +171,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -200,7 +186,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Wings</strong>
                           <br />{' '}
@@ -211,6 +197,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -222,7 +211,7 @@ const RestaurantPage = () => {
                 <table height="90px" className="">
                   <tbody>
                     <tr>
-                      <td className="text-center pt-5">
+                      <td className="text-center pt-3">
                         <p>
                           <strong>Breadsticks </strong>
                           <br />{' '}
@@ -233,6 +222,9 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot className="text-center">
+                    <i className="fas fa-cart-plus h4 mt-2" />
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -240,38 +232,66 @@ const RestaurantPage = () => {
         </div>
       </div>
 
-      <Modal show={modalIsOpen} onHide={closeModal} centered>
-        <div className="m-3">
-          <h2>Cheese Pizza</h2>
-          <span className="text-muted">(700-1180 Cal.)</span>
-        </div>
-        <p className="m-3">Comments</p>
-        <div className="text-center">
-          <textarea cols="45" rows="3"></textarea>
-          <br />
-          <br />
-        </div>
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="modalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalCenterTitle"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="modalLongTitle">
+                Cheese Pizza
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <span className="text-muted">(700-1180 Cal.)</span>
+              <p className="m-3">Comments</p>
+              <div className="text-center">
+                <textarea cols="45" rows="3"></textarea>
+              </div>
+            </div>
+            <div className="modal-footer">
+              {/* <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button> */}
+              <div className="mr-auto">
+                <i
+                  className="fa fa-plus mr-2"
+                  style={{ color: 'gray' }}
+                  aria-hidden="true"
+                ></i>
 
-        <Modal.Footer>
-          <div className="mr-auto">
-            <i
-              class="fa fa-plus mr-2"
-              style={{ color: 'gray' }}
-              aria-hidden="true"
-            ></i>
-
-            <input className="text-center" size="2" placeholder="1"></input>
-            <i
-              class="fa fa-minus ml-2"
-              style={{ color: 'gray' }}
-              aria-hidden="true"
-            ></i>
+                <input className="text-center" size="2" placeholder="1"></input>
+                <i
+                  className="fa fa-minus ml-2"
+                  style={{ color: 'gray' }}
+                  aria-hidden="true"
+                ></i>
+              </div>
+              <button type="button" className="btn primary-color-bg text-white">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <button className="btn primary-color-bg text-white">
-            Add to cart
-          </button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+      </div>
     </div>
   );
 };

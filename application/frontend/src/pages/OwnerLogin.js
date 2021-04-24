@@ -12,7 +12,7 @@ const OwnerLogin = () => {
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
-          <h2 className="mb-3 font-weight-bold primary-color text-center">
+          <h2 className="font-weight-bold primary-color text-center">
             Restaurant Owner Login
           </h2>
           <label htmlFor="Email" className="login-label">

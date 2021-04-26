@@ -247,7 +247,7 @@ const OwnerSignupExtended = () => {
               <div className="form-group mt-3">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
-                  //required
+                  required
                   id="banner_img"
                   type="file"
                   name="bannerImageUpload"

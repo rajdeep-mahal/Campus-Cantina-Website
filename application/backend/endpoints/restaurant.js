@@ -5,10 +5,15 @@ const express = require('express');
 const router = express.Router();
 const database = require('../db');
 const validator = require('validator'); // Used for input validation
-const e = require('express');
 const bcrypt = require('bcryptjs');
-router.use(express.json());
+const multer = require('multer'); // to process form-data
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+const imageProcessor = require('./imageProcessor');
+const fs = require('fs');
 
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
 
 // Testing
 router.get('/', (req, res) => {
@@ -38,31 +43,50 @@ router.get('/all-owners', (req, res) => {
 });
 
 // Restaurant signup
-router.post('/register-restaurant', (req, res) => {
+router.post('/register-restaurant', upload.single('file'), async (req, res) => {
   console.log('Called register-restaurant endpoint');
-  let data = JSON.parse(req.body.params.formdata);
+
+  let destFilePath = __dirname + '/uploads';
+  await imageProcessor(req, destFilePath); // uses sharp to resize
+
+  let Display_Pic_Banner = fs.readFileSync(
+    destFilePath + '/Display_Pic_Banner.jpeg'
+  );
+
+  let Display_Pic_Thumbnail = fs.readFileSync(
+    destFilePath + '/Display_Pic_Thumbnail.jpeg'
+  );
+
+  let thumbnail = Display_Pic_Thumbnail.toString('base64');
+  let banner = Display_Pic_Banner.toString('base64');
 
   // TODO: Perform validation on data
 
   // Generate SQL query with restaurant info
   let query =
     `INSERT INTO Restaurants VALUES (` +
-    data.restaurantID +
+    req.body.restaurantID +
     `,'` +
-    data.restaurantName +
+    req.body.restaurantName +
     `','` +
-    data.restaurantCuisine +
+    req.body.restaurantCuisine +
     `','` +
-    data.restaurantTags +
+    req.body.restaurantTags +
     `','` +
-    data.restaurantPriceLevel +
+    req.body.restaurantPriceLevel +
     `','` +
-    data.restaurantAddress +
-    `', NULL, 37.7301, 
-                -122.477, NULL, 0, NULL)`; // Images set to NULL for now
+    req.body.restaurantAddress +
+    `','` +
+    thumbnail +
+    `',37.7301,-122.477,'` +
+    banner +
+    `', 0)`; // approved status is defaulted to 0 for initial upload of the restaurant.
+
+  // for the restaurant to be searchable, the value should be changed to 1 in db (signifying admin's approval)
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
+    if (err) throw err;
     console.log('Uploaded restaurant info to db');
     res.send(result);
   });
@@ -102,8 +126,6 @@ router.post('/register-owner', (req, res) => {
 });
 
 // Restaurant owner login
-
-// Get all restaurant owners
 
 // Get restaurant menu items
 

@@ -4,6 +4,9 @@
 /.pnp
 .pnp.js
 
+# upload folder
+/backend/endpoints/uploads
+
 # config file api key
 /frontend/src/config.js
 

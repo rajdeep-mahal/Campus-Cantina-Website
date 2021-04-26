@@ -64,9 +64,9 @@ const OwnerSignupExtended = () => {
     let ID2 = nanoid();
     form_data2.append('ownerID', ID2);
 
-    let dataObject = {};
-    form_data.forEach((value, key) => (dataObject[key] = value));
-    let dataJson = JSON.stringify(dataObject);
+    // let dataObject = {};
+    // form_data.forEach((value, key) => (dataObject[key] = value));
+    // let dataJson = JSON.stringify(dataObject);
 
     let dataObject2 = {};
     form_data2.forEach((value, key) => (dataObject2[key] = value));
@@ -81,9 +81,15 @@ const OwnerSignupExtended = () => {
       });
 
     axios
-      .post('http://localhost:3001/api/restaurant/register-restaurant', {
-        params: { formdata: dataJson },
-      })
+      .post(
+        'http://localhost:3001/api/restaurant/register-restaurant',
+        form_data,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          reportProgress: true,
+          observe: 'events',
+        }
+      )
       .then((res) => {
         console.log(res);
       });
@@ -241,7 +247,7 @@ const OwnerSignupExtended = () => {
               <div className="form-group mt-3">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input
-                  //required
+                  required
                   id="banner_img"
                   type="file"
                   name="bannerImageUpload"

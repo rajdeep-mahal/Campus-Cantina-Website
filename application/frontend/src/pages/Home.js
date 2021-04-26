@@ -72,18 +72,14 @@ const Home = () => {
       <div className="carousel">
         <div className="carousel-item active">
           <img className="d-block w-100" src={Banner1} alt="First slide" />
-          <div className="carousel-caption banner1-caption d-none d-lg-block">
-            <div className="container">
-              <div className="row justify-content-start text-center">
-                <div className="col-lg-9">
-                  <a href="/SFSULogin" role="button">
-                    <button className="btn carousel-btn ml-5">Log In</button>
-                  </a>
-                  <a href="/SFSUSignup">
-                    <button className="btn carousel-btn ml-3">Sign Up</button>
-                  </a>
-                </div>
-              </div>
+          <div className="carousel-caption banner1-caption d-none d-lg-block w-25">
+            <div className="d-flex flex-wrap justify-content-center mb-2">
+              <a href="/SFSULogin" role="button">
+                <button className="btn carousel-btn ml-5">Log In</button>
+              </a>
+              <a href="/SFSUSignup">
+                <button className="btn carousel-btn ml-3">Sign Up</button>
+              </a>
             </div>
           </div>
         </div>
@@ -112,7 +108,7 @@ const Home = () => {
               </a>
             </div>
           </div>
-          <div className="marketing-owner-driver">
+          <div className="marketing-owner-driver driver-card">
             <img
               height="350"
               width="380"
@@ -143,7 +139,7 @@ const Home = () => {
                 <img
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail)
                   }
                   alt=""
                   width="350px"

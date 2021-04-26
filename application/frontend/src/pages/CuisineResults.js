@@ -55,7 +55,7 @@ const CuisineResults = () => {
                 <img
                   src={
                     'data:image/jpeg;base64,' +
-                    new Buffer(item.Display_Pic_Thumbnail).toString('base64')
+                    new Buffer(item.Display_Pic_Thumbnail)
                   }
                   alt=""
                   width="350px"

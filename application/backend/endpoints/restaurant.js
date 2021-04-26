@@ -80,7 +80,9 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
     thumbnail +
     `',37.7301,-122.477,'` +
     banner +
-    `', 1)`;
+    `', 0)`; // approved status is defaulted to 0 for initial upload of the restaurant.
+
+  // for the restaurant to be searchable, the value should be changed to 1 in db (signifying admin's approval)
 
   // Send restaurant query to db
   database.query(query, (err, result) => {

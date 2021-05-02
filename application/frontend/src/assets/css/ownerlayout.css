@@ -75,6 +75,15 @@
 
 /* OwnerOrderHistory */
 
+.order-table {
+  border: 5px solid var(--primary-color);
+  border-radius: 10px;
+  border-top: 0;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* table header */
 .order-list-title {
   background-color: var(--primary-color);
@@ -146,7 +155,8 @@
 }
 
 @media (max-width: 750px) {
-  .panel-default {
+  .panel-default,
+  .order-table {
     width: 100%;
   }
 }

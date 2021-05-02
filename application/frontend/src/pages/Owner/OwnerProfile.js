@@ -8,45 +8,18 @@ const OwnerProfile = () => {
     <div className="container-fluid">
       <br />
       <div className="text-center">
-        <h3> Profile </h3>
+        <h3 className="owner-heading"> Profile </h3>
       </div>
       <div className="editprofile">
-        {/* pending approval alert*/}
-        <div
-          class="alert alert-warning alert-dismissible fade show text-center pending-alert"
-          role="alert"
-        >
-          <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="alert"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div
-          class="alert alert-warning alert-dismissible fade show text-center live-alert"
-          role="alert"
-        >
-          <strong> Your restaurant is now live! </strong>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="alert"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         {/* content header */}
         <div className="border-bottom my-3 text-center">
           <div className="row text-left">
             <div class="col-7">
               <label for="name">
                 {" "}
-                <strong>Bob's Burgers </strong>
+                <h5>
+                  <strong>Bob's Burgers </strong>
+                </h5>
               </label>
             </div>
             <div class="col text-right">

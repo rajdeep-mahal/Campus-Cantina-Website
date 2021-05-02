@@ -1,12 +1,11 @@
 /* OwnerEditProfile */
 
-.editprofile{
+.editprofile {
   color: white;
   background-color: var(--primary-color-opac);
   border-radius: 15px;
   padding: 3%;
   height: auto;
-  margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
   font-size: 100%;
@@ -25,7 +24,8 @@
   }
 }
 
-.cancel-btn:hover, .edit-btn:hover {
+.cancel-btn:hover,
+.edit-btn:hover {
   text-decoration: none;
 }
 
@@ -51,7 +51,7 @@
   margin-left: auto;
 }
 .edit-link {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 /* modal width */
@@ -59,7 +59,7 @@
   .modal {
     width: 100%;
   }
-} 
+}
 
 .pending-alert {
   background-color: var(--secondary-color);
@@ -128,7 +128,6 @@
   color: white;
 }
 
-
 /* OwnerMenu */
 
 /* table header */
@@ -138,7 +137,7 @@
 }
 /* table border */
 .panel-default {
-  border:7px solid var(--primary-color);
+  border: 7px solid var(--primary-color);
   border-radius: 15px;
   border-top: 0;
   width: 700px;
@@ -158,12 +157,19 @@
 .menu-icon-plus {
   cursor: pointer;
 }
-.menu-icon:hover, .menu-icon-plus:hover{
+.menu-icon:hover,
+.menu-icon-plus:hover {
   color: var(--secondary-color);
   transition: all 0.5s ease;
 }
 
 .modal-edit {
-  margin-left:auto;
+  margin-left: auto;
   margin-right: auto;
+}
+
+.owner-heading {
+  font-size: 195%;
+  font-weight: bold;
+  color: var(--primary-color);
 }

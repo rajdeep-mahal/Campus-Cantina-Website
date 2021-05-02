@@ -9,7 +9,7 @@ const OwnerEditProfile = () => {
       <br />
       {/* Header */}
       <div className="text-center">
-        <h3> Edit Profile </h3>
+        <h3 className="owner-heading"> Edit Profile </h3>
       </div>
       {/* form content*/}
       <form className="editprofile form-control">

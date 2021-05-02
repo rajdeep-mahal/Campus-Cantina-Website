@@ -1,5 +1,7 @@
 import React from "react";
 import "../../assets/css/about_individual.css";
+import Banner from "../../assets/img/restaurant/Restaurant_Banner.jpg";
+import Pizza from "../../assets/img/cuisines/Pizza.png";
 
 const OwnerMenu = () => {
   const items = [
@@ -8,7 +10,9 @@ const OwnerMenu = () => {
     { id: "3", name: "Milkshake", price: "$7" },
     { id: "4", name: "Chicken Tenders", price: "$8" },
   ];
-{/* Renders each row for Menu Table */}
+  {
+    /* Renders each row for Menu Table */
+  }
   const renderMenuItem = (item, index) => {
     return (
       <tr key={index}>
@@ -31,32 +35,80 @@ const OwnerMenu = () => {
   };
 
   return (
-    <div className="container-fluid text-center">
-      <br />
-      <h3> Menu </h3>
-      <div class="panel-default">
-        <table class="table">
-          {/* Table Header */}
-          <thead class="table-header-menu">
-            <tr>
-              <th scope="col"> Item # </th>
-              <th scope="col"> Item Name </th>
-              <th scope="col"> Price </th>
-              <th scope="col" />
-              <th scope="col" class="text-right">
-                <i
-                  className="fas fa-plus menu-icon-plus"
-                  data-toggle="modal"
-                  aria-hidden="true"
-                  data-target="#addItem"
-                ></i>
-              </th>
-            </tr>
-          </thead>
-          {/* Table Body */}
-          <tbody>{items.map(renderMenuItem)}</tbody>
-        </table>
+    <div className="container-fluid ">
+      <div className="mx-5">
+        <img className="w-100 restaurantBanner" src={Banner} />
+        <div className="container">
+          <div className="pl-1">
+            <br />
+            {/* alert banners */}
+            <div
+              class="alert alert-warning alert-dismissible fade show text-center pending-alert"
+              role="alert"
+            >
+              <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div
+              class="alert alert-warning alert-dismissible fade show text-center live-alert"
+              role="alert"
+            >
+              <strong> Your restaurant is now live! </strong>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <p className="primaryTextPage h1">Pizza Zone </p>
+            <p className="text-muted mt-2">
+              $$ • Pizza, Wings, Pepperoni <br />
+              <span className="text-muted">145 Second Street</span> <br />
+            </p>
+          </div>
+        </div>
       </div>
+      <hr />
+
+      <div className="container ">
+        <div className="rp-menu-items m-4 ">
+          <h4 className="text-center pb-3 pt-3"> Menu </h4>
+          <div class="panel-default">
+            <table class="table text-center">
+              {/* Table Header */}
+              <thead class="table-header-menu">
+                <tr>
+                  <th scope="col"> Item # </th>
+                  <th scope="col"> Item Name </th>
+                  <th scope="col"> Price </th>
+                  <th scope="col" />
+                  <th scope="col" class="text-right">
+                    <i
+                      className="fas fa-plus menu-icon-plus"
+                      data-toggle="modal"
+                      aria-hidden="true"
+                      data-target="#addItem"
+                    ></i>
+                  </th>
+                </tr>
+              </thead>
+              {/* Table Body */}
+              <tbody>{items.map(renderMenuItem)}</tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       {/* Add Item Modal */}
       <div
         class="modal fade"
@@ -217,4 +269,3 @@ const OwnerMenu = () => {
 };
 
 export default OwnerMenu;
-

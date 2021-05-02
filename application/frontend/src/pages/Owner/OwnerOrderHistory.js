@@ -3,16 +3,16 @@ Summary of OwnerOrderHistory.js:
  - Renders on '/owner/orders'
  - to load when clicked on Orders on the Sidebar for Owner's login
 */
-import React, { useState } from 'react';
-import '../../assets/css/ownerlayout.css';
+import React, { useState } from "react";
+import "../../assets/css/ownerlayout.css";
 //import "../../index.css";
-import '../../assets/css/index.css';
+import "../../assets/css/index.css";
 
 const items = [
-  { id: '111232', driver: 'John C.', customer: 'Mark S.', price: '$15' },
-  { id: '100331', driver: 'Jen O.', customer: 'Tom S.', price: '$22' },
-  { id: '556772', driver: 'Steven Y.', customer: 'Susan B.', price: '$20' },
-  { id: '900344', driver: 'John. L', customer: 'Maria M.', price: '$25' },
+  { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },
+  { id: "100331", driver: "Jen O.", customer: "Tom S.", price: "$22" },
+  { id: "556772", driver: "Steven Y.", customer: "Susan B.", price: "$20" },
+  { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
 ];
 
 {
@@ -51,7 +51,7 @@ const OwnerOrderHistory = () => {
     <div className="container-fluid">
       <br />
       <div className="text-center">
-        <h3> Orders</h3>
+        <h3 className="owner-heading"> Orders</h3>
       </div>
       {/* Orders Table */}
       <div className="table-responsive-sm order-table">

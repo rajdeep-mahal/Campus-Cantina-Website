@@ -131,10 +131,15 @@
   color: var(--primary-color);
   padding-left: 5px;
 }
+.lblIconText {
+  font-size: 15px;
+  color: var(--primary-color);
+  padding-left: 5px;
+  margin-top: -3px;
+}
 .cart-btn-container {
   border-radius: 30px;
   height: 30px;
-  margin-right: -20px;
   text-align: center;
 }
 
@@ -149,20 +154,19 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /*Checkout background color*/
-.checkout_btn{
+.checkout_btn {
   background-color: var(--primary-color) !important;
 }
 /*quantity button icon color, background color*/
-.quantity_button{
-  color:white;
+.quantity_button {
+  color: white;
   background-color: var(--primary-color);
 }
 /*delivery instructions box height, font size*/
-.delivery_instruction{
-  height:70px;
+.delivery_instruction {
+  height: 70px;
   font-size: 12px;
 }
-
 
 .hamburger {
   padding-bottom: 7px;

@@ -92,21 +92,46 @@ const MenuSideBar = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <Link to="#" className="float-right cart-icon-container">
-            <button
-              className="btn secondary-color-bg primary-color cart-btn-container"
-              onClick={showCart}
+          <div className=" d-flex justify-content-around">
+            <Link
+              to="/SFSULogin"
+              className="cart-icon-container d-none d-xl-block"
             >
-              <div style={{ display: 'flex' }}>
-                <div style={{ marginTop: '-1px' }}>
-                  <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
+              <button className="btn secondary-color-bg primary-color cart-btn-container ">
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginTop: '-1px' }}>
+                    <i className="fas fa-sign-in-alt h5 primary-color msb-cart-icon" />
+                  </div>
+                  <span className="lblIconText">Login</span>
                 </div>
-                <div style={{ marginTop: '-6px' }}>
-                  <span className="lblCartCount">9</span>
+              </button>
+            </Link>
+            <Link to="/about" className="cart-icon-container d-none d-xl-block">
+              <button className="btn secondary-color-bg primary-color cart-btn-container ">
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginTop: '-1px' }}>
+                    <i className="fas fa-users h5 primary-color msb-cart-icon" />
+                  </div>
+                  <span className="lblIconText">About</span>
                 </div>
-              </div>
-            </button>
-          </Link>
+              </button>
+            </Link>
+            <Link to="#" className="cart-icon-container">
+              <button
+                className="btn secondary-color-bg primary-color cart-btn-container"
+                onClick={showCart}
+              >
+                <div style={{ display: 'flex' }}>
+                  <div style={{ marginTop: '-1px' }}>
+                    <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
+                  </div>
+                  <div style={{ marginTop: '-6px' }}>
+                    <span className="lblCartCount">9</span>
+                  </div>
+                </div>
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="navbar second-nav">

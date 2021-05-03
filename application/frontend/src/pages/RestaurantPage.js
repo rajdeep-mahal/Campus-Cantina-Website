@@ -234,7 +234,7 @@ const RestaurantPage = () => {
 
       {/* Modal */}
       <div
-        className="modal fade"
+        className="modal fade modal-div"
         id="modalCenter"
         tabindex="-1"
         role="dialog"

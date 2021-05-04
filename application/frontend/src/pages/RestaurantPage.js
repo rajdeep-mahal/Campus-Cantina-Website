@@ -4,7 +4,7 @@ Summary of RestaurantPage.js:
  - to load when the restaurant item is clicked
  - Components: Google Map, Add Menu items Modal, Banner Image, Menu Items
 */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/restaurant_page.css';
 // import Banner from '../assets/img/restaurant/banner.jpg';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
@@ -18,9 +18,45 @@ import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 
 const RestaurantPage = () => {
-  const [count, setCount] = useState(1);
+  const [menuItems, setMenuItems] = useState([]);
+  const [addIdClicked, setAddIdClicked] = useState(1);
 
-  React.useEffect(() => {}, []);
+  useEffect(() => {
+    setMenuItems([
+      {
+        itemID: 1,
+        itemName: 'Cheese Pizza',
+        itemCalories: '(700-1180 Cal.)',
+        itemPrice: '$11.99',
+        itemCount: 1,
+        itemComments: '',
+      },
+      {
+        itemID: 2,
+        itemName: 'Pepporoni Pizza',
+        itemCalories: '(900-1210 Cal.)',
+        itemPrice: '$12.99',
+        itemCount: 1,
+        itemComments: '',
+      },
+      {
+        itemID: 3,
+        itemName: 'Wings',
+        itemCalories: '(500-950 Cal.)',
+        itemPrice: '$8.99',
+        itemCount: 1,
+        itemComments: '',
+      },
+      {
+        itemID: 4,
+        itemName: 'Breadsticks',
+        itemCalories: '(200-420 Cal.)',
+        itemPrice: '$6.99',
+        itemCount: 1,
+        itemComments: '',
+      },
+    ]);
+  }, []);
 
   //Google Map
   const center = {
@@ -123,113 +159,44 @@ const RestaurantPage = () => {
             </h4>
           </p>
           <div className="row m-2 ">
-            <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
-              {/* <Link to='#' style={{ textDecoration: 'none' }}> */}
+            {menuItems.map((item, i) => (
               <div
-                className="secondaryTextPage card rp-item"
-                style={{ height: '170px' }}
+                key={i}
+                className="col-sm-3 "
+                style={{ border: '', height: '200px' }}
               >
-                <table height="90px" className="">
-                  <tbody>
-                    <tr>
-                      <td className="text-center pt-3">
-                        <p>
-                          <strong>Cheese Pizza </strong>
-                          <br />{' '}
-                          <span className="text-muted">(700-1180 Cal.)</span>
-                          <br />
-                          <span>$11.99</span>
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot
-                    className="text-center"
-                    data-toggle="modal"
-                    data-target="#modalCenter"
-                  >
-                    <i className="fas fa-cart-plus h4 mt-2 add-cart-icon" />
-                  </tfoot>
-                </table>
+                <div
+                  className="secondaryTextPage card rp-item"
+                  style={{ height: '170px' }}
+                >
+                  <table height="90px" className="">
+                    <tbody>
+                      <tr>
+                        <td className="text-center pt-3">
+                          <p>
+                            <strong>{item.itemName}</strong>
+                            <br />
+                            <span className="text-muted">
+                              {item.itemCalories}
+                            </span>
+                            <br />
+                            <span>{item.itemPrice}</span>
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot className="text-center">
+                      <i
+                        className="fas fa-cart-plus h4 mt-2 add-cart-icon"
+                        data-toggle="modal"
+                        data-target="#modalCenter"
+                        onClick={() => setAddIdClicked(item.itemID)}
+                      />
+                    </tfoot>
+                  </table>
+                </div>
               </div>
-              {/* </Link> */}
-            </div>
-            <div className="col-sm-3" style={{ border: '', height: '200px' }}>
-              <div
-                className="card rp-item secondaryTextPage"
-                style={{ height: '170px' }}
-              >
-                <table height="90px" className="">
-                  <tbody>
-                    <tr>
-                      <td className="text-center pt-3">
-                        <p>
-                          <strong>Pepporoni Pizza </strong>
-                          <br />{' '}
-                          <span className="text-muted">(900-1210 Cal.)</span>
-                          <br />
-                          <span>$12.99</span>
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot className="text-center">
-                    <i className="fas fa-cart-plus h4 mt-2" />
-                  </tfoot>
-                </table>
-              </div>
-            </div>
-
-            <div className="col-sm-3" style={{ border: '', height: '200px' }}>
-              <div
-                className="card rp-item secondaryTextPage"
-                style={{ height: '170px' }}
-              >
-                <table height="90px" className="">
-                  <tbody>
-                    <tr>
-                      <td className="text-center pt-3">
-                        <p>
-                          <strong>Wings</strong>
-                          <br />{' '}
-                          <span className="text-muted">(500-950 Cal.)</span>
-                          <br />
-                          <span>$8.99</span>
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot className="text-center">
-                    <i className="fas fa-cart-plus h4 mt-2" />
-                  </tfoot>
-                </table>
-              </div>
-            </div>
-            <div className="col-sm-3 " style={{ border: '', height: '200px' }}>
-              <div
-                className="card rp-item secondaryTextPage"
-                style={{ height: '170px' }}
-              >
-                <table height="90px" className="">
-                  <tbody>
-                    <tr>
-                      <td className="text-center pt-3">
-                        <p>
-                          <strong>Breadsticks </strong>
-                          <br />{' '}
-                          <span className="text-muted">(200-420 Cal.)</span>
-                          <br />
-                          <span>$6.99</span>
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <tfoot className="text-center">
-                    <i className="fas fa-cart-plus h4 mt-2" />
-                  </tfoot>
-                </table>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -243,55 +210,73 @@ const RestaurantPage = () => {
         aria-labelledby="modalCenterTitle"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="modalLongTitle">
-                Cheese Pizza
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <span className="text-muted">(700-1180 Cal.)</span>
-              <p className="m-3">Comments</p>
-              <div className="text-center">
-                <textarea cols="45" rows="3"></textarea>
+        {menuItems
+          .filter((item1) => item1.itemID == addIdClicked)
+          .map((item, i) => (
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="modalLongTitle">
+                    {item.itemName}
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <span className="text-muted">{item.itemCalories}</span>
+                  <p className="m-3">Comments</p>
+                  <div className="text-center">
+                    <textarea cols="45" rows="3"></textarea>
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <div className="mr-auto">
+                    <i
+                      className="fa fa-minus mr-2 add-remove-icons"
+                      aria-hidden="true"
+                      onClick={(e) => {
+                        let temp = [...menuItems];
+                        let temp_element = { ...temp[item.itemID - 1] };
+                        if (item.itemCount >= 2) {
+                          temp_element.itemCount = item.itemCount - 1;
+                        }
+                        temp[item.itemID - 1] = temp_element;
+                        setMenuItems(temp);
+                      }}
+                    />
+                    <span className="m-1 px-2 h5 rounded bg-warning">
+                      {item.itemCount}
+                    </span>
+                    <i
+                      className="fa fa-plus ml-2  add-remove-icons"
+                      aria-hidden="true"
+                      onClick={(e) => {
+                        let temp = [...menuItems];
+                        let temp_element = { ...temp[item.itemID - 1] };
+                        if (item.itemCount < 9) {
+                          temp_element.itemCount = item.itemCount + 1;
+                        }
+                        temp[item.itemID - 1] = temp_element;
+                        setMenuItems(temp);
+                      }}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="btn primary-color-bg text-white"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="modal-footer">
-              {/* <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button> */}
-              <div className="mr-auto">
-                <i
-                  className="fa fa-minus mr-2 text-muted"
-                  aria-hidden="true"
-                  onClick={(e) => setCount(count - 1)}
-                />
-                <span className="m-1 h5">{count}</span>
-                <i
-                  className="fa fa-plus ml-2 text-muted"
-                  aria-hidden="true"
-                  onClick={(e) => setCount(count + 1)}
-                />
-              </div>
-              <button type="button" className="btn primary-color-bg text-white">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
+          ))}
       </div>
     </div>
   );

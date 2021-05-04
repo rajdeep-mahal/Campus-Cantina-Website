@@ -36,25 +36,7 @@
   .modal-content {
     margin-right: 42px;
   }
-  /* .restaurantBanner {
-    height: 150px;
-  } */
 }
-
-/* @media only screen and (max-width: 550px) {
-  .modal-content {
-    margin-left: 10px;
-  }
-  /* .restaurantBanner {
-    height: 150px;
-  } */
-/* } */
-
-/* @media only screen and (min-width: 501px) {
-  .restaurantBanner {
-    height: 300px;
-  }
-} */
 
 .primaryTextPage {
   color: var(--primary-color);
@@ -85,5 +67,16 @@
 .add-cart-icon:hover {
   color: var(--secondary-color);
   transform: translateY(-8px);
+  cursor: pointer;
+}
+
+.add-remove-icons {
+  cursor: pointer;
+  transition: transform 0.2s ease-in;
+}
+
+.add-remove-icons:hover {
+  color: var(--primary-color-opac-2);
+  transform: translateY(-3px);
   cursor: pointer;
 }

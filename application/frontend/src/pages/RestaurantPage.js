@@ -4,7 +4,7 @@ Summary of RestaurantPage.js:
  - to load when the restaurant item is clicked
  - Components: Google Map, Add Menu items Modal, Banner Image, Menu Items
 */
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/css/restaurant_page.css';
 // import Banner from '../assets/img/restaurant/banner.jpg';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
@@ -18,6 +18,8 @@ import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 
 const RestaurantPage = () => {
+  const [count, setCount] = useState(1);
+
   React.useEffect(() => {}, []);
 
   //Google Map
@@ -273,17 +275,16 @@ const RestaurantPage = () => {
               </button> */}
               <div className="mr-auto">
                 <i
-                  className="fa fa-plus mr-2"
-                  style={{ color: 'gray' }}
+                  className="fa fa-minus mr-2 text-muted"
                   aria-hidden="true"
-                ></i>
-
-                <input className="text-center" size="2" placeholder="1"></input>
+                  onClick={(e) => setCount(count - 1)}
+                />
+                <span className="m-1 h5">{count}</span>
                 <i
-                  className="fa fa-minus ml-2"
-                  style={{ color: 'gray' }}
+                  className="fa fa-plus ml-2 text-muted"
                   aria-hidden="true"
-                ></i>
+                  onClick={(e) => setCount(count + 1)}
+                />
               </div>
               <button type="button" className="btn primary-color-bg text-white">
                 Add to Cart

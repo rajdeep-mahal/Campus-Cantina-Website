@@ -92,44 +92,43 @@ const MenuSideBar = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <div className=" d-flex justify-content-around">
-            <Link
-              to="/SFSULogin"
-              className="cart-icon-container d-none d-xl-block"
-            >
-              <button className="btn secondary-color-bg primary-color cart-btn-container ">
-                <div style={{ display: 'flex' }}>
-                  <div style={{ marginTop: '-1px' }}>
-                    <i className="fas fa-sign-in-alt h5 primary-color msb-cart-icon" />
-                  </div>
-                  <span className="lblIconText">Login</span>
-                </div>
+          <div className="d-flex justify-content-around">
+            <Link to="/sfsulogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-sign-in-alt h5 primary-color" />
               </button>
+              {/* <div className="d-none d-xl-block"> */}
+              <p className="lblIconText">SFSU Login</p>
+              <p className="lblIconText1">Login</p>
+              {/* </div> */}
             </Link>
-            <Link to="/about" className="cart-icon-container d-none d-xl-block">
-              <button className="btn secondary-color-bg primary-color cart-btn-container ">
-                <div style={{ display: 'flex' }}>
-                  <div style={{ marginTop: '-1px' }}>
-                    <i className="fas fa-users h5 primary-color msb-cart-icon" />
-                  </div>
-                  <span className="lblIconText">About</span>
-                </div>
+            <Link to="/ownerlogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-utensils h5 primary-color" />
               </button>
+              <p className="lblIconText">Owner Login</p>
+              <p className="lblIconText1">Owner</p>
             </Link>
-            <Link to="#" className="cart-icon-container">
+            <Link to="/driverlogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-biking h5 primary-color" />
+              </button>
+              <p className="lblIconText">Driver Login</p>
+              <p className="lblIconText1">Driver</p>
+            </Link>
+            <Link to="#" className="text-center">
               <button
-                className="btn secondary-color-bg primary-color cart-btn-container"
+                className="btn secondary-color-bg primary-color nav-btn-container "
                 onClick={showCart}
               >
                 <div style={{ display: 'flex' }}>
-                  <div style={{ marginTop: '-1px' }}>
-                    <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
-                  </div>
-                  <div style={{ marginTop: '-6px' }}>
-                    <span className="lblCartCount">9</span>
+                  <i className="fas fa-shopping-cart h5 primary-color" />
+                  <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
+                    <span className="badge badge-light">33</span>
                   </div>
                 </div>
               </button>
+              <p className="lblCartText">Cart</p>
             </Link>
           </div>
         </div>

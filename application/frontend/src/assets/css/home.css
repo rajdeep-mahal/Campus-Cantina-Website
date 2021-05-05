@@ -1,5 +1,9 @@
 @import '../css/index.css';
 
+.primary-color {
+  color: var(--primary-color);
+}
+
 /* Carousel & banner img height*/
 @media (max-width: 1000px) {
   .carousel {
@@ -83,4 +87,8 @@
 
 .restaurants-price-tags {
   margin-top: -10px;
+}
+
+.dom-deem a:hover {
+  text-decoration: none;
 }

@@ -123,6 +123,82 @@ router.post('/register-owner', (req, res) => {
   });
 });
 
+// Edit restaurant owner info
+router.post('/edit-owner', (req, res) => {
+  console.log('Called edit-owner endpoint');
+
+  // TODO: Perform validation on data
+
+  // Generate SQL query with owner info
+  let query =
+    `UPDATE Restaurant_Owners SET Name = '` +
+    req.query.ownerName +
+    `', Phone = '` +
+    req.query.ownerPhone +
+    `', Email = '` +
+    req.query.ownerEmail +
+    `', Restaurant_Name = '` +
+    req.query.restaurantName +
+    `' WHERE ID = ` +
+    req.query.ownerID;
+
+  // Send edit owner query to db
+  database.query(query, (err, result) => {
+    console.log('Edited owner info to db');
+    res.send(result);
+  });
+});
+
+// Edit restaurant info 
+// **RECOMMEND NOT USING*** owner should contact admin to change restaurant info
+router.post('/edit-restaurant', upload.single('file'), async (req, res) => {
+  console.log('Called edit-restaurant endpoint');
+
+  let destFilePath = __dirname + '/uploads';
+  await imageProcessor(req, destFilePath); // uses sharp to resize
+
+  let Display_Pic_Banner = fs.readFileSync(
+    destFilePath + '/Display_Pic_Banner.jpeg'
+  );
+
+  let Display_Pic_Thumbnail = fs.readFileSync(
+    destFilePath + '/Display_Pic_Thumbnail.jpeg'
+  );
+
+  let thumbnail = Display_Pic_Thumbnail.toString('base64');
+  let banner = Display_Pic_Banner.toString('base64');
+
+  // TODO: Perform validation on data
+
+  // Generate SQL query with restaurant info
+  let query =
+  `UPDATE Restaurant SET Name = '` +
+  req.body.restaurantName +
+  `', Cuisine = '` +
+  req.body.restaurantCuisine +
+  `', Tags = '` +
+  req.body.restaurantTags +
+  `', Price_Level = '` +
+  req.body.restaurantPriceLevel +
+  `', Address = '` +
+  req.body.restaurantAddress +
+  `', Tags = '` +
+  req.body.restaurantTags +
+  `', Price_Level = '` +
+  req.body.restaurantPriceLevel +
+  `',` + thumbnail +
+  `', Lat = 37.7301, Lng = -122.477,`
+  + banner + `0 WHERE ID = ` +
+  req.body.restaurantID;
+
+  // Send restaurant query to db
+  database.query(query, (err, result) => {
+    if (err) throw err;
+    console.log('Edited restaurant info on db');
+    res.send(result);
+  });
+});
+
 // Restaurant owner login
 
 module.exports = router;

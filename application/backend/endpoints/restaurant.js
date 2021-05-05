@@ -129,9 +129,10 @@ router.get('/restaurant-menu-items', (req, res) => {
   let restaurantName = req.query.restaurantName;
 
   // Generate SQL query
-  let query = `SELECT * FROM Menu_Items WHERE Restaurant_Name = '` + restaurantName + `'`
+  let query =
+    `SELECT * FROM Menu_Items WHERE Restaurant_Name = '` + restaurantName + `'`;
 
-  // Send query to db
+  // Send menu items query to db
   database.query(query, (err, result) => {
     console.log('Got resturant menu items from db');
     res.send(result);

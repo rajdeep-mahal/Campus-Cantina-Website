@@ -7,8 +7,7 @@ Summary of RestaurantPage.js:
 import React, { useState, useEffect } from 'react';
 import '../assets/css/restaurant_page.css';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import Banner from '../assets/img/restaurant/banner.jpg';
+import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
 import {
   GoogleMap,
@@ -18,12 +17,20 @@ import {
 } from '@react-google-maps/api';
 import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
+import {
+  setCartItems,
+  setCartItemsTotalCount,
+  setCartTotal,
+  setCartDeliveryInstructions,
+} from '../redux/actions/cartItemsActions';
 
 const RestaurantPage = () => {
+  const dispatch = useDispatch();
+  const { clickedRestaurantName } = useParams();
+  const [showModal, setShowModal] = useState(false);
+
   const [menuItems, setMenuItems] = useState([]);
   const [addIdClicked, setAddIdClicked] = useState(1);
-
-  const { clickedRestaurantName } = useParams();
 
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
@@ -31,6 +38,10 @@ const RestaurantPage = () => {
   const currentRestaurant = restaurantsList.filter(
     (restaurant) => restaurant.Name.trim() === clickedRestaurantName.trim()
   );
+
+  const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
+  console.log(cartItems);
+
   useEffect(() => {
     setMenuItems([
       {
@@ -74,46 +85,46 @@ const RestaurantPage = () => {
     lng: -122.481,
   };
 
-  function MyMap() {
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: config.googleAPI,
-    });
+  // function MyMap() {
+  //   const { isLoaded } = useJsApiLoader({
+  //     id: 'google-map-script',
+  //     googleMapsApiKey: config.googleAPI,
+  //   });
 
-    const [map, setMap] = React.useState(null);
+  //   const [map, setMap] = React.useState(null);
 
-    const onLoad = React.useCallback(function callback(map) {
-      setMap(map);
-    }, []);
+  //   const onLoad = React.useCallback(function callback(map) {
+  //     setMap(map);
+  //   }, []);
 
-    const onUnmount = React.useCallback(function callback(map) {
-      setMap(null);
-    }, []);
+  //   const onUnmount = React.useCallback(function callback(map) {
+  //     setMap(null);
+  //   }, []);
 
-    return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={{ height: '270px', width: '350px' }}
-        zoom={17}
-        center={center}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-        options={{
-          streetViewControl: false,
-          mapTypeControl: false,
-        }}
-      >
-        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-      </GoogleMap>
-    ) : (
-      <></>
-    );
-  } //end of MyMap function
+  //   return isLoaded ? (
+  //     <GoogleMap
+  //       mapContainerStyle={{ height: '270px', width: '350px' }}
+  //       zoom={17}
+  //       center={center}
+  //       onLoad={onLoad}
+  //       onUnmount={onUnmount}
+  //       options={{
+  //         streetViewControl: false,
+  //         mapTypeControl: false,
+  //       }}
+  //     >
+  //       <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+  //     </GoogleMap>
+  //   ) : (
+  //     <></>
+  //   );
+  // } //end of MyMap function
 
   return (
     <div className="container-fluid">
       <div className="container">
         <img className="w-100 restaurantBanner" src={Banner} alt="Banner" />
-        <div className="m-4 d-flex justify-content-around flex-wrap">
+        <div className="m-2 d-flex justify-content-around flex-wrap">
           {currentRestaurant.map((item, i) => (
             <div className="m-2" key={i}>
               <div className="pl-1">
@@ -146,18 +157,18 @@ const RestaurantPage = () => {
               </div>
             </div>
           ))}
-          <div className="m-2 restaurant-home-map">
-            <MyMap></MyMap>
-          </div>
+          <div className="m-2 restaurant-home-map">{/* <MyMap></MyMap> */}</div>
         </div>
       </div>
 
       <hr />
-
       <div className="container text-center">
         <div className="m-4 ">
           <img src={Pizza} alt="logo" height="55" className="rounded" />
-          <h4 className="text-center pb-3 pt-3">Choose from the Menu below</h4>
+          <h4 className="text-center pb-3 pt-3">
+            Choose from the Menu below {cartItems}
+          </h4>
+
           <div className="d-flex justify-content-around flex-wrap">
             {menuItems.map((item, i) => (
               <div key={i} className="card rp-item p-3 m-2">
@@ -172,95 +183,118 @@ const RestaurantPage = () => {
                   className="fas fa-cart-plus h4 mt-2 add-cart-icon"
                   data-toggle="modal"
                   data-target="#modalCenter"
-                  onClick={() => setAddIdClicked(item.itemID)}
+                  onClick={() => {
+                    setShowModal(true);
+                    setAddIdClicked(item.itemID);
+                  }}
                 />
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {/* Modal */}
-      <div
-        className="modal fade modal-div"
-        id="modalCenter"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="modalCenterTitle"
-        aria-hidden="true"
-      >
-        {menuItems
-          .filter((item1) => item1.itemID === addIdClicked)
-          .map((item, i) => (
-            <div
-              className="modal-dialog modal-dialog-centered"
-              role="document"
-              key={i}
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="modalLongTitle">
-                    {item.itemName}
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <span className="text-muted">{item.itemCalories}</span>
-                  <p className="m-3">Comments</p>
-                  <div className="text-center">
-                    <textarea cols="45" rows="3"></textarea>
+      {showModal ? (
+        <div
+          className="modal fade modal-div"
+          id="modalCenter"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="modalCenterTitle"
+          aria-hidden="true"
+        >
+          {menuItems
+            .filter((item1) => item1.itemID === addIdClicked)
+            .map((item, i) => (
+              <div
+                className="modal-dialog modal-dialog-centered"
+                role="document"
+                key={i}
+              >
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="modalLongTitle">
+                      {item.itemName}
+                    </h5>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                </div>
-                <div className="modal-footer">
-                  <div className="mr-auto">
-                    <i
-                      className="fa fa-minus mr-2 add-remove-icons"
-                      aria-hidden="true"
-                      onClick={(e) => {
-                        let temp = [...menuItems];
-                        let temp_element = { ...temp[item.itemID - 1] };
-                        if (item.itemCount >= 2) {
-                          temp_element.itemCount = item.itemCount - 1;
-                        }
-                        temp[item.itemID - 1] = temp_element;
-                        setMenuItems(temp);
-                      }}
-                    />
-                    <span className="m-1 px-2 h5 rounded bg-warning">
-                      {item.itemCount}
-                    </span>
-                    <i
-                      className="fa fa-plus ml-2  add-remove-icons"
-                      aria-hidden="true"
-                      onClick={(e) => {
-                        let temp = [...menuItems];
-                        let temp_element = { ...temp[item.itemID - 1] };
-                        if (item.itemCount < 9) {
-                          temp_element.itemCount = item.itemCount + 1;
-                        }
-                        temp[item.itemID - 1] = temp_element;
-                        setMenuItems(temp);
-                      }}
-                    />
+                  <div className="modal-body">
+                    <span className="text-muted">{item.itemCalories}</span>
+                    <p className="m-3">Comments</p>
+                    <div className="text-center">
+                      <textarea
+                        cols="45"
+                        rows="3"
+                        value={item.itemComments}
+                        onChange={(e) => {
+                          let temp = [...menuItems];
+                          let temp_element = { ...temp[item.itemID - 1] };
+                          temp_element.itemComments = e.target.value;
+                          temp[item.itemID - 1] = temp_element;
+                          setMenuItems(temp);
+                        }}
+                      />
+                    </div>
                   </div>
-                  <button
-                    type="button"
-                    className="btn primary-color-bg text-white"
-                  >
-                    Add to Cart
-                  </button>
+                  <div className="modal-footer">
+                    <div className="mr-auto">
+                      <i
+                        className="fa fa-minus mr-2 add-remove-icons"
+                        aria-hidden="true"
+                        onClick={(e) => {
+                          let temp = [...menuItems];
+                          let temp_element = { ...temp[item.itemID - 1] };
+                          if (item.itemCount >= 2) {
+                            temp_element.itemCount = item.itemCount - 1;
+                          }
+                          temp[item.itemID - 1] = temp_element;
+                          setMenuItems(temp);
+                        }}
+                      />
+                      <span className="m-1 px-2 h5 rounded bg-warning">
+                        {item.itemCount}
+                      </span>
+                      <i
+                        className="fa fa-plus ml-2  add-remove-icons"
+                        aria-hidden="true"
+                        onClick={(e) => {
+                          let temp = [...menuItems];
+                          let temp_element = { ...temp[item.itemID - 1] };
+                          if (item.itemCount < 9) {
+                            temp_element.itemCount = item.itemCount + 1;
+                          }
+                          temp[item.itemID - 1] = temp_element;
+                          setMenuItems(temp);
+                        }}
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      className="btn primary-color-bg text-white"
+                      data-dismiss="modal"
+                      onClick={(e) => {
+                        cartItems.push(menuItems[item.itemID - 1]);
+                        dispatch(setCartItems(cartItems));
+                        // setShowModal(false);
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      ) : (
+        <> </>
+      )}
     </div>
   );
 };

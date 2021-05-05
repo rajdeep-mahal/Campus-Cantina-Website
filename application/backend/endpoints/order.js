@@ -62,7 +62,7 @@ router.post('/order-completed', (req, res) => {
   let orderID = req.query.orderID;
 
   // Generate SQL query
-  let query = `UPDATE Orders SET Pending = 1 WHERE ID = ` + orderID;
+  let query = `UPDATE Orders SET Completed = 1 WHERE ID = ` + orderID;
 
   // Send order completed query to db
   database.query(query, (err, result) => {
@@ -111,8 +111,6 @@ router.post('/place-order', (req, res) => {
     req.body.driverID +
     `',` +
     `1)`; // Pending set to 1, change to 0 when order complete
-
-  console.log(query);
 
   // Send order query to db
   database.query(query, (err, result) => {

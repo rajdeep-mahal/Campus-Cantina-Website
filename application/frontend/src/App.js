@@ -75,7 +75,7 @@ function App() {
           <Route path="/cuisineresults">
             <CuisineResults />
           </Route>
-          <Route path="/restaurantpage">
+          <Route path="/restaurant/:id">
             <RestaurantPage />
           </Route>
           <Route path="/about/rajdeep">

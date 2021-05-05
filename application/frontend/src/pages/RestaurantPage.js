@@ -113,29 +113,23 @@ const RestaurantPage = () => {
 
   return (
     <div className="container-fluid">
-      <div className="mx-5">
-        <img className="w-100 restaurantBanner" src={Banner} />
-
-        <div className="m-4">
-          <div className="float-right restaurant-home-map">
-            <MyMap></MyMap>
-          </div>
-        </div>
-        {currentRestaurant.map((item, i) => (
-          <div className="container">
-            <div className="pl-1">
-              <p className="primaryTextPage h1">{item.Name}</p>
-              <mark className="font-weight-bold"> COVID-19 Safe </mark>
-              <span className="openTag">OPEN </span>
-              <p className="text-muted mt-2">
-                {item.Price_Level} • {item.Cuisine} <br />
-                {item.Tags} <br />
-                {item.Address} <br />
-              </p>
-            </div>
-            <div className="rp-info secondaryTextPage">
-              <table height="90px" className="mx-auto">
-                <div className="">
+      <div className="container">
+        <img className="w-100 restaurantBanner" src={Banner} alt="Banner" />
+        <div className="m-4 d-flex justify-content-around flex-wrap">
+          {currentRestaurant.map((item, i) => (
+            <div className="m-2" key={i}>
+              <div className="pl-1">
+                <p className="primaryTextPage h1">{item.Name}</p>
+                <mark className="font-weight-bold"> COVID-19 Safe </mark>
+                <span className="openTag">OPEN </span>
+                <p className="text-muted mt-2">
+                  {item.Price_Level} • {item.Cuisine} <br />
+                  {item.Tags} <br />
+                  {item.Address} <br />
+                </p>
+              </div>
+              <div className="rp-info secondaryTextPage">
+                <table height="90px" className="mx-auto">
                   <tbody>
                     <tr>
                       <td className="align-middle primaryTextPage">
@@ -150,64 +144,38 @@ const RestaurantPage = () => {
                       </td>
                     </tr>
                   </tbody>
-                </div>
-              </table>
+                </table>
+              </div>
             </div>
+          ))}
+          <div className="m-2 restaurant-home-map">
+            <MyMap></MyMap>
           </div>
-        ))}
+        </div>
       </div>
+
       <hr />
 
-      <div className="container ">
-        <div className="rp-menu-items m-4 ">
-          <p>
-            <img
-              src={Pizza}
-              alt="logo"
-              height="55"
-              className="rounded mx-auto d-block"
-            />
-            <h4 className="text-center pb-3 pt-3">
-              Choose from the Menu below
-            </h4>
-          </p>
-          <div className="row m-2 ">
+      <div className="container text-center">
+        <div className="m-4 ">
+          <img src={Pizza} alt="logo" height="55" className="rounded" />
+          <h4 className="text-center pb-3 pt-3">Choose from the Menu below</h4>
+          <div className="d-flex justify-content-around flex-wrap">
             {menuItems.map((item, i) => (
-              <div
-                key={i}
-                className="col-sm-3 "
-                style={{ border: '', height: '200px' }}
-              >
-                <div
-                  className="secondaryTextPage card rp-item"
-                  style={{ height: '170px' }}
-                >
-                  <table height="90px" className="">
-                    <tbody>
-                      <tr>
-                        <td className="text-center pt-3">
-                          <p>
-                            <strong>{item.itemName}</strong>
-                            <br />
-                            <span className="text-muted">
-                              {item.itemCalories}
-                            </span>
-                            <br />
-                            <span>{item.itemPrice}</span>
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot className="text-center">
-                      <i
-                        className="fas fa-cart-plus h4 mt-2 add-cart-icon"
-                        data-toggle="modal"
-                        data-target="#modalCenter"
-                        onClick={() => setAddIdClicked(item.itemID)}
-                      />
-                    </tfoot>
-                  </table>
-                </div>
+              <div key={i} className="card rp-item p-3 m-2">
+                <p>
+                  <strong>{item.itemName}</strong>
+                  <br />
+                  <span className="text-muted">{item.itemCalories}</span>
+                  <br />
+                  <span>{item.itemPrice}</span>
+                </p>
+                <i
+                  className="fas fa-cart-plus h4 mt-2 add-cart-icon"
+                  data-toggle="modal"
+                  data-target="#modalCenter"
+                  onClick={() => setAddIdClicked(item.itemID)}
+                />
               </div>
             ))}
           </div>
@@ -218,7 +186,7 @@ const RestaurantPage = () => {
       <div
         className="modal fade modal-div"
         id="modalCenter"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="modalCenterTitle"
         aria-hidden="true"
@@ -226,7 +194,11 @@ const RestaurantPage = () => {
         {menuItems
           .filter((item1) => item1.itemID === addIdClicked)
           .map((item, i) => (
-            <div className="modal-dialog modal-dialog-centered" role="document">
+            <div
+              className="modal-dialog modal-dialog-centered"
+              role="document"
+              key={i}
+            >
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="modalLongTitle">

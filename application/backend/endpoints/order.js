@@ -5,6 +5,8 @@ const router = express.Router();
 const database = require('../db');
 const validator = require('validator'); // Used for input validation
 
+router.use(express.json());
+
 // Testing
 router.get('/', (req, res) => {
   res.send('Orders endponts');
@@ -65,6 +67,56 @@ router.post('/order-completed', (req, res) => {
   // Send order completed query to db
   database.query(query, (err, result) => {
     console.log('Updated order to complete in db');
+    res.send(result);
+  });
+});
+
+// Call to place an order
+router.post('/place-order', (req, res) => {
+  console.log('Called place-order endpoint');
+
+  // TODO: Validate order data
+
+  // Generate SQL query with order info
+  let query =
+    `INSERT INTO Orders VALUES (` +
+    req.body.orderID +
+    `,'` +
+    req.body.restaurantID +
+    `','` +
+    req.body.restaurantName +
+    `','` +
+    req.body.restaurantAddress +
+    `','` +
+    req.body.customerID +
+    `','` +
+    req.body.customerName +
+    `','` +
+    req.body.deliveryLocation +
+    `','` +
+    req.body.orderContents + // Order contents will be stored as stringified JSON
+    `','` +
+    req.body.tip +
+    `','` +
+    req.body.deliveryFee +
+    `','` +
+    req.body.serviceFee +
+    `','` +
+    req.body.total +
+    `','` +
+    req.body.deliveryETA +
+    `','` +
+    req.body.deliveryInstructions +
+    `','` +
+    req.body.driverID +
+    `',` +
+    `1)`; // Pending set to 1, change to 0 when order complete
+
+  console.log(query);
+
+  // Send order query to db
+  database.query(query, (err, result) => {
+    console.log('Added order to db');
     res.send(result);
   });
 });

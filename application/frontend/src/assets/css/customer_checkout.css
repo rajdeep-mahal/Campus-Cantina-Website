@@ -26,3 +26,21 @@
 }
 
 
+/*resizes checkout item table details and moves down TOTAL box down*/
+@media (max-width: 900px) {
+    .table_details{
+        width: 100%;
+    }
+    .total_box{
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+
+  /* @media (max-width: 450px) {
+    .address_txtbox{
+        width: 100%;
+    }
+  } */
+

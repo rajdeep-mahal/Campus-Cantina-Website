@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const Checkout = () => {
   return (
     <div className = "container-fluid text-center">
-      <div className = "h2 checkout_borders border-bottom pt-2 header_bg mb-4"> Checkout 
+      <div className = "h2 checkout_borders border-bottom p-2 header_bg m-4"> Checkout 
       </div>
       <form>
-          <div className = "form-group w-25 pb-2 mx-auto col-md-4 col-sm-4 mb-3">
+          <div className = "address_txtbox form-group w-25 pb-2 mx-auto col-md-4 col-sm-4 m-5">
             <label for = "inputAddress" className = " font-weight-bold">Delivery Address:</label>
-            <input type = "address" className = "form-control border-war" id = "inputAddress" aria-describedby = "addressHelp" placeholder = "Dorm #323, SFSU, SF" ></input>
+            <input type = "address" className = "form-control border-warning" id = "inputAddress" aria-describedby = "addressHelp" placeholder = "Dorm #323, SFSU, SF" ></input>
           </div>
       </form>
       <div className = "col">
@@ -22,6 +22,7 @@ const Checkout = () => {
         <thead className = "bg-warning">
           <tr>
             <th className = "font-italic">Restaurant Name</th>
+            <th className = "font-italic">Comments</th>
             <th className = "font-italic">Item Name</th>
             <th className = "font-italic">Quantity</th>
             <th className = "font-italic">Price</th>
@@ -32,25 +33,28 @@ const Checkout = () => {
         <tbody>
           <tr>
             <th>Restaurant 1</th>
+            <td>extra meat, no cilantro</td>
             <td>Tacos</td>
             <td>2</td>
             <td>&#36;9.50</td>
           </tr>
           <tr>
             <th>Restaurant 2</th>
+            <td>extra meat, extra cheese</td>
             <td>Burrito</td>
             <td>1</td>
             <td>&#36;12.00</td>
           </tr>
           <tr>
             <th>Restaurant 2</th>
+            <td>none</td>
             <td>Coca Cola</td>
             <td>1</td>
             <td>&#36;2.50</td>
           </tr>
         </tbody>
       </table>
-          <div className = "card mb-3 total_box h6">
+          <div className = "card mb-3 total_box h6 mb-5">
             <ul className = "list-group list-group-flush">
               <li className = "list-group-item"><span className = "float-left">Subtotal</span> <span className = "float-right">&#36;24.00</span> </li>
               <li className = "list-group-item"><span className = "float-left">Tips</span> <span className = "float-right">&#36;5.00</span>  </li>
@@ -61,12 +65,10 @@ const Checkout = () => {
               <button type = "button" className = "btn confirm_order m-3 btn-block w-75 mx-auto text-white" data-toggle = "modal" data-target = "#confirmorder">Confirm Order</button>
             </ul>
           </div>
-          <div className = "col border-top checkout_borders">
-          <div className = "text-muted">*Please pay total amount to delivery driver in cash*</div>
-          <div className = "row"> <span className = "col-1"> Delivery Notes:</span><textarea className="text_field m-4 w-50"></textarea> </div>
-          <div className = "row"> <span className = "col-1"> Special instructions to Chef:</span><textarea className="text_field m-4 w-50"></textarea> </div>
-          
+          <div className = "row border-top checkout_borders w-100">
+          <div className = "text-muted mb-5 mx-auto">*Please pay total amount to delivery driver in cash*</div>
           </div>
+          <div className = "row w-100"> <span className = "col-1"> Delivery Notes:</span><textarea className="text_field m-4 w-50"></textarea> </div>
         </div>
       </div>
 

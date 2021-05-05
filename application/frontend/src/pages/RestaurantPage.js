@@ -28,6 +28,7 @@ const RestaurantPage = () => {
   const dispatch = useDispatch();
   const { clickedRestaurantName } = useParams();
   const [showModal, setShowModal] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const [menuItems, setMenuItems] = useState([]);
   const [addIdClicked, setAddIdClicked] = useState(1);
@@ -38,6 +39,12 @@ const RestaurantPage = () => {
   const currentRestaurant = restaurantsList.filter(
     (restaurant) => restaurant.Name.trim() === clickedRestaurantName.trim()
   );
+
+  if (showAlert) {
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  }
 
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
   console.log(cartItems);
@@ -169,6 +176,25 @@ const RestaurantPage = () => {
             Choose from the Menu below {cartItems}
           </h4>
 
+          {showAlert ? (
+            <div
+              className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"
+              role="alert"
+            >
+              <strong>Success!</strong> Added Item to the Cart
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          ) : (
+            <> </>
+          )}
+
           <div className="d-flex justify-content-around flex-wrap">
             {menuItems.map((item, i) => (
               <div key={i} className="card rp-item p-3 m-2">
@@ -283,6 +309,7 @@ const RestaurantPage = () => {
                         cartItems.push(menuItems[item.itemID - 1]);
                         dispatch(setCartItems(cartItems));
                         // setShowModal(false);
+                        setShowAlert(true);
                       }}
                     >
                       Add to Cart

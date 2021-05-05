@@ -80,9 +80,7 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
     thumbnail +
     `',37.7301,-122.477,'` +
     banner +
-    `', 0)`; // approved status is defaulted to 0 for initial upload of the restaurant.
-
-  // for the restaurant to be searchable, the value should be changed to 1 in db (signifying admin's approval)
+    `', 0)`; // approved status is defaulted to 0, change to 1 when approved
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
@@ -125,16 +123,25 @@ router.post('/register-owner', (req, res) => {
   });
 });
 
-// Restaurant owner login
-
 // Get restaurant menu items
+router.get('/restaurant-menu-items', (req, res) => {
+  console.log('Called restaurant-menu-items endpoint');
+  let restaurantName = req.query.restaurantName;
+
+  // Generate SQL query
+  let query = `SELECT * FROM Menu_Items WHERE Restaurant_Name = '` + restaurantName + `'`
+
+  // Send query to db
+  database.query(query, (err, result) => {
+    console.log('Got resturant menu items from db');
+    res.send(result);
+  });
+});
+
+// Restaurant owner login
 
 // Add restaurant menu item
 
 // Edit menu item (may not be necessary)
-
-// Get restaurant menu
-
-// Get restaurant order history
 
 module.exports = router;

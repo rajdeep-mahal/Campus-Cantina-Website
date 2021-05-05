@@ -6,6 +6,8 @@ Summary of RestaurantPage.js:
 */
 import React, { useState, useEffect } from 'react';
 import '../assets/css/restaurant_page.css';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 // import Banner from '../assets/img/restaurant/banner.jpg';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
 import {
@@ -18,9 +20,19 @@ import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 
 const RestaurantPage = () => {
+  const location = useLocation();
   const [menuItems, setMenuItems] = useState([]);
   const [addIdClicked, setAddIdClicked] = useState(1);
-
+  const clickedRestaurantName = location.pathname.replace(
+    /^(\/restaurant\/)/,
+    ' '
+  );
+  const restaurantsList = useSelector(
+    (state) => state.searchReducer.allRestaurants
+  );
+  const currentRestaurant = restaurantsList.filter(
+    (restaurant) => restaurant.Name.trim() === clickedRestaurantName.trim()
+  );
   useEffect(() => {
     setMenuItems([
       {
@@ -109,39 +121,40 @@ const RestaurantPage = () => {
             <MyMap></MyMap>
           </div>
         </div>
-
-        <div className="container">
-          <div className="pl-1">
-            <p className="primaryTextPage h1">Sliceline</p>
-            <mark className="font-weight-bold"> COVID-19 Safe </mark>
-            <span className="openTag">OPEN </span>
-            <p className="text-muted mt-2">
-              $$ • Pizza, Wings, Pepperoni <br />
-              0.3 mi <br />
-              <span className="text-muted">145 Second Street</span>
-            </p>
+        {currentRestaurant.map((item, i) => (
+          <div className="container">
+            <div className="pl-1">
+              <p className="primaryTextPage h1">{item.Name}</p>
+              <mark className="font-weight-bold"> COVID-19 Safe </mark>
+              <span className="openTag">OPEN </span>
+              <p className="text-muted mt-2">
+                {item.Price_Level} • {item.Cuisine} <br />
+                {item.Tags} <br />
+                {item.Address} <br />
+              </p>
+            </div>
+            <div className="rp-info secondaryTextPage">
+              <table height="90px" className="mx-auto">
+                <div className="">
+                  <tbody>
+                    <tr>
+                      <td className="align-middle primaryTextPage">
+                        <p>
+                          $1.99 <br /> delivery fee
+                        </p>
+                      </td>
+                      <td className="align-middle p-3 primaryTextPage">
+                        <p>
+                          18-24 <br /> minutes
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </div>
+              </table>
+            </div>
           </div>
-          <div className="rp-info secondaryTextPage">
-            <table height="90px" className="mx-auto">
-              <div className="">
-                <tbody>
-                  <tr>
-                    <td className="align-middle primaryTextPage">
-                      <p>
-                        $1.99 <br /> delivery fee
-                      </p>
-                    </td>
-                    <td className="align-middle p-3 primaryTextPage">
-                      <p>
-                        18-24 <br /> minutes
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </div>
-            </table>
-          </div>
-        </div>
+        ))}
       </div>
       <hr />
 
@@ -211,7 +224,7 @@ const RestaurantPage = () => {
         aria-hidden="true"
       >
         {menuItems
-          .filter((item1) => item1.itemID == addIdClicked)
+          .filter((item1) => item1.itemID === addIdClicked)
           .map((item, i) => (
             <div className="modal-dialog modal-dialog-centered" role="document">
               <div className="modal-content">

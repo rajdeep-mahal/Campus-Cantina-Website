@@ -54,12 +54,10 @@ const MenuSideBar = () => {
       <div className="navbar sticky-top flex-nowrap">
         <section className="pt-2 col-md-3">
           <div className="row">
-            <Link to="#" className="">
-              <i
-                className="fas fa-bars text-white h4 hamburger"
-                onClick={showMenu}
-              ></i>
-            </Link>
+            <i
+              className="fas fa-bars text-white h4 hamburger"
+              onClick={showMenu}
+            ></i>
             <Link to="/" className="" style={{ marginLeft: '10px' }}>
               <img
                 src={CCLogo}
@@ -116,9 +114,9 @@ const MenuSideBar = () => {
               <p className="lblIconText">Driver Login</p>
               <p className="lblIconText1">Driver</p>
             </Link>
-            <Link to="#" className="text-center">
+            <div className="text-center">
               <button
-                className="btn secondary-color-bg primary-color nav-btn-container "
+                className="btn secondary-color-bg primary-color nav-btn-container"
                 onClick={showCart}
               >
                 <div style={{ display: 'flex' }}>
@@ -129,7 +127,7 @@ const MenuSideBar = () => {
                 </div>
               </button>
               <p className="lblCartText">Cart</p>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

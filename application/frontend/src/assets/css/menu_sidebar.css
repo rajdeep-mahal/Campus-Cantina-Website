@@ -98,6 +98,8 @@
 /* hamburger icon */
 .hamburger {
   margin-top: -2px;
+  padding-bottom: 7px;
+  cursor: pointer;
 }
 
 /* cart section */
@@ -204,10 +206,6 @@ input::-webkit-inner-spin-button {
 .delivery_instruction {
   height: 70px;
   font-size: 12px;
-}
-
-.hamburger {
-  padding-bottom: 7px;
 }
 
 /* for mobile widths */

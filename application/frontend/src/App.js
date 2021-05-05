@@ -38,6 +38,7 @@ import DriverLogin from './pages/DriverLogin';
 import DriverSignup from './pages/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
 import CuisineResults from './pages/CuisineResults';
+import CustomerOrder from './pages/CustomerOrders';
 import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -137,6 +138,9 @@ function App() {
           </Route>
           <Route path="/customerdisplaycart">
             <DisplayCart />
+          </Route>
+          <Route path="/customer/orders">
+            <CustomerOrder />
           </Route>
           <Route path="/checkout">
             <Checkout />

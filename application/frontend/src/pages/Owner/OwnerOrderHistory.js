@@ -50,9 +50,9 @@ const OwnerOrderHistory = () => {
   return (
     <div className="container-fluid">
       <br />
-      <div className="text-center">
-        <h3 className="owner-heading"> Orders</h3>
-      </div>
+      
+        <h3 className="owner-heading text-center"> Orders</h3>
+      
       {/* Orders Table */}
       <div className="table-responsive-sm order-table">
         <table class="table table-striped ">

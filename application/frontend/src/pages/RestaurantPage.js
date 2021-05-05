@@ -6,7 +6,7 @@ Summary of RestaurantPage.js:
 */
 import React, { useState, useEffect } from 'react';
 import '../assets/css/restaurant_page.css';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import Banner from '../assets/img/restaurant/banner.jpg';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
@@ -20,13 +20,11 @@ import config from '../config.js';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 
 const RestaurantPage = () => {
-  const location = useLocation();
   const [menuItems, setMenuItems] = useState([]);
   const [addIdClicked, setAddIdClicked] = useState(1);
-  const clickedRestaurantName = location.pathname.replace(
-    /^(\/restaurant\/)/,
-    ' '
-  );
+
+  const { clickedRestaurantName } = useParams();
+
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );

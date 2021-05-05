@@ -135,7 +135,12 @@ const Home = () => {
         <h2 className="home-restaurants-heading">Restaurants</h2>
         <div className="d-flex justify-content-around flex-wrap mt-4 dom-deem">
           {restaurantsList.map((item, i) => (
-            <Link to={{ pathname: `/restaurant/${item.Name}` }}>
+            <Link
+              // to={{
+              //   pathname: `/restaurant/${item.Name}`,
+              // }}
+              to={`/restaurant/${item.Name}`}
+            >
               <div key={i}>
                 <div className="card home-restaurant-card">
                   <img

@@ -1,3 +1,5 @@
+/* Image processing for image upload */
+
 const fs = require('fs');
 const sharp = require('sharp');
 

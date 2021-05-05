@@ -1,5 +1,4 @@
-/* Endpoints needed for Restaurant Owners, adding restuarunts,
- *  getting menu items, etc. */
+/* Endpoints needed for restaurant owners and restaurants */ 
 
 const express = require('express');
 const router = express.Router();
@@ -149,7 +148,7 @@ router.post('/edit-owner', (req, res) => {
   });
 });
 
-// Edit restaurant info 
+// Edit restaurant info
 // **RECOMMEND NOT USING*** owner should contact admin to change restaurant info
 router.post('/edit-restaurant', upload.single('file'), async (req, res) => {
   console.log('Called edit-restaurant endpoint');
@@ -172,29 +171,50 @@ router.post('/edit-restaurant', upload.single('file'), async (req, res) => {
 
   // Generate SQL query with restaurant info
   let query =
-  `UPDATE Restaurant SET Name = '` +
-  req.body.restaurantName +
-  `', Cuisine = '` +
-  req.body.restaurantCuisine +
-  `', Tags = '` +
-  req.body.restaurantTags +
-  `', Price_Level = '` +
-  req.body.restaurantPriceLevel +
-  `', Address = '` +
-  req.body.restaurantAddress +
-  `', Tags = '` +
-  req.body.restaurantTags +
-  `', Price_Level = '` +
-  req.body.restaurantPriceLevel +
-  `',` + thumbnail +
-  `', Lat = 37.7301, Lng = -122.477,`
-  + banner + `0 WHERE ID = ` +
-  req.body.restaurantID;
+    `UPDATE Restaurant SET Name = '` +
+    req.body.restaurantName +
+    `', Cuisine = '` +
+    req.body.restaurantCuisine +
+    `', Tags = '` +
+    req.body.restaurantTags +
+    `', Price_Level = '` +
+    req.body.restaurantPriceLevel +
+    `', Address = '` +
+    req.body.restaurantAddress +
+    `', Tags = '` +
+    req.body.restaurantTags +
+    `', Price_Level = '` +
+    req.body.restaurantPriceLevel +
+    `',` +
+    thumbnail +
+    `', Lat = 37.7301, Lng = -122.477,` +
+    banner +
+    `0 WHERE ID = ` +
+    req.body.restaurantID;
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
     if (err) throw err;
     console.log('Edited restaurant info on db');
+    res.send(result);
+  });
+});
+
+// Get individual restaurant owner info
+router.get('/owner-info', (req, res) => {
+  console.log('Called owner-info endpoint');
+
+  // TODO: Validate data
+
+  // Generate SQL query
+  let query =
+    `SELECT * FROM Restaurant_Owners WHERE Email = '` +
+    req.query.ownerEmail +
+    `'`;
+
+  // Send owner info query to db
+  database.query(query, (err, result) => {
+    console.log('Got individual owner info from db');
     res.send(result);
   });
 });

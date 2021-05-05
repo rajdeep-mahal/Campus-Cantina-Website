@@ -1,4 +1,4 @@
-/* Endpoints needed for SFSU Customers */
+/* Endpoints needed for sfsu customers */
 
 const express = require('express');
 const router = express.Router();
@@ -51,6 +51,25 @@ router.post('/customer-signup', (req, res) => {
   // Send driver query to db
   database.query(query, (err, result) => {
     console.log('Uploaded customer info to db');
+    res.send(result);
+  });
+});
+
+// Get individual sfsu customer info
+router.get('/customer-info', (req, res) => {
+  console.log('Called customer-info endpoint');
+
+  // TODO: Validate data
+
+  // Generate SQL query
+  let query =
+    `SELECT * FROM SFSU_Customers WHERE Email = '` +
+    req.query.customerEmail +
+    `'`;
+
+  // Send customer info query to db
+  database.query(query, (err, result) => {
+    console.log('Got individual customer info from db');
     res.send(result);
   });
 });

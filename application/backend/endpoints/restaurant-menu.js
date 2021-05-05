@@ -13,7 +13,7 @@ router.get('/restaurant-menu-items', (req, res) => {
   let restaurantName = req.query.restaurantName;
 
   // TODO: Validate data
-  
+
   // Generate SQL query
   let query =
     `SELECT * FROM Menu_Items WHERE Restaurant_Name = '` + restaurantName + `'`;

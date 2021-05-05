@@ -1,4 +1,4 @@
-/* Endpoints needed for Driver login and dashboard */
+/* Endpoints needed for driver login and dashboard */
 
 const express = require('express');
 const router = express.Router();
@@ -49,6 +49,23 @@ router.post('/driver-signup', (req, res) => {
   // Send driver query to db
   database.query(query, (err, result) => {
     console.log('Uploaded driver info to db');
+    res.send(result);
+  });
+});
+
+// Get individual driver info
+router.get('/driver-info', (req, res) => {
+  console.log('Called driver-info endpoint');
+
+  // TODO: Validate data
+
+  // Generate SQL query
+  let query =
+    `SELECT * FROM Drivers WHERE Email = '` + req.query.driverEmail + `'`;
+
+  // Send driver info query to db
+  database.query(query, (err, result) => {
+    console.log('Got individual driver info from db');
     res.send(result);
   });
 });

@@ -123,26 +123,6 @@ router.post('/register-owner', (req, res) => {
   });
 });
 
-// Get restaurant menu items
-router.get('/restaurant-menu-items', (req, res) => {
-  console.log('Called restaurant-menu-items endpoint');
-  let restaurantName = req.query.restaurantName;
-
-  // Generate SQL query
-  let query =
-    `SELECT * FROM Menu_Items WHERE Restaurant_Name = '` + restaurantName + `'`;
-
-  // Send menu items query to db
-  database.query(query, (err, result) => {
-    console.log('Got resturant menu items from db');
-    res.send(result);
-  });
-});
-
 // Restaurant owner login
-
-// Add restaurant menu item
-
-// Edit menu item (may not be necessary)
 
 module.exports = router;

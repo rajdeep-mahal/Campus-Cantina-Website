@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CuisineRow from '../components/CuisineRow';
 import ButtonsRow from '../components/ButtonsRow';
+import AllRestaurants from '../components/AllRestaurants';
 
 const CuisineResults = () => {
   const searchResults = useSelector(
@@ -48,38 +49,8 @@ const CuisineResults = () => {
         </div>
 
         <br />
-        <div className=" container d-flex justify-content-around flex-wrap mt-4">
-          {searchResults.map((item, i) => (
-            <div key={i}>
-              <div className="card home-restaurant-card ml-2">
-                <img
-                  src={
-                    'data:image/jpeg;base64,' +
-                    new Buffer(item.Display_Pic_Thumbnail)
-                  }
-                  alt=""
-                  width="350px"
-                  height="250px"
-                />
-                <div className="row">
-                  <div className="col">
-                    <h5 className="text-align-left ml-2">
-                      <strong>{item.Name}</strong>
-                    </h5>
-                  </div>
-                  <div className="col">
-                    <p className="float-right mr-2">Free Delivery</p>
-                  </div>
-                </div>
-                <div className="restaurants-price-tags">
-                  <span className="text-muted ml-2">
-                    {item.Price_Level} • {item.Cuisine}, <br />
-                    <span className="text-muted ml-2">{item.Tags}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="container">
+          <AllRestaurants results={searchResults} />
         </div>
       </div>
     </div>

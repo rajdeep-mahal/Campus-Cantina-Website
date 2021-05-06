@@ -46,60 +46,26 @@ const RestaurantPage = () => {
   const currentRestaurant = restaurantsList.filter(
     (restaurant) => restaurant.Name.trim() === clickedRestaurantName.trim()
   );
-
+  const currentRestaurantCuisine = currentRestaurant.map(
+    (item, i) => item.Cuisine
+  );
+  // const currentRestaurantName = currentRestaurant.map((item, i) => item.Name);
   if (showAlert) {
     setTimeout(() => {
       setShowAlert(false);
     }, 3000);
   }
-
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
 
   useEffect(() => {
     // get all restaurants from backend
-    const currentRestaurantName = currentRestaurant.map((item, i) => item.Name);
     axios
       .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
-        params: { restaurantName: currentRestaurantName },
+        params: { restaurantName: clickedRestaurantName },
       })
       .then((res) => {
         setMenuItems(res.data);
       });
-
-    // setMenuItems([
-    //   {
-    //     itemID: 1,
-    //     itemName: 'Cheese Pizza',
-    //     itemCalories: '(700-1180 Cal.)',
-    //     itemPrice: '$11.99',
-    //     itemCount: 1,
-    //     itemComments: '',
-    //   },
-    //   {
-    //     itemID: 2,
-    //     itemName: 'Pepporoni Pizza',
-    //     itemCalories: '(900-1210 Cal.)',
-    //     itemPrice: '$12.99',
-    //     itemCount: 1,
-    //     itemComments: '',
-    //   },
-    //   {
-    //     itemID: 3,
-    //     itemName: 'Wings',
-    //     itemCalories: '(500-950 Cal.)',
-    //     itemPrice: '$8.99',
-    //     itemCount: 1,
-    //     itemComments: '',
-    //   },
-    //   {
-    //     itemID: 4,
-    //     itemName: 'Breadsticks',
-    //     itemCalories: '(200-420 Cal.)',
-    //     itemPrice: '$6.99',
-    //     itemCount: 1,
-    //     itemComments: '',
-    //   },
-    // ]);
   }, []);
 
   // Google Map
@@ -188,73 +154,31 @@ const RestaurantPage = () => {
       <div className="container text-center">
         <div className="m-4 ">
           {/* to display cuisine images based on current restaurant's cuisine.. imported from CuisineRow */}
-          {currentRestaurant.map((item, i) => {
-            if (item.Cuisine === 'Burgers') {
-              return (
-                <img
-                  src={Burger}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            } else if (item.Cuisine === 'Chinese') {
-              return (
-                <img
-                  src={Chinese}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            } else if (item.Cuisine === 'Indian') {
-              return (
-                <img
-                  src={Indian}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            } else if (item.Cuisine === 'Italian') {
-              return (
-                <img
-                  src={Italian}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            } else if (item.Cuisine === 'Mexican') {
-              return (
-                <img
-                  src={Mexican}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            } else if (item.Cuisine === 'Pizza') {
-              return (
-                <img src={Pizza} alt="logo" height="55" className="rounded" />
-              );
-            } else if (item.Cuisine === 'Vietnamese') {
-              return (
-                <img
-                  src={Vietnamese}
-                  key={i}
-                  alt="logo"
-                  height="55"
-                  className="rounded"
-                />
-              );
-            }
-          })}
+          {new String(currentRestaurantCuisine).valueOf() ===
+          new String('Burgers').valueOf() ? (
+            <img src={Burger} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Chinese').valueOf() ? (
+            <img src={Chinese} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Indian').valueOf() ? (
+            <img src={Indian} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Italian').valueOf() ? (
+            <img src={Italian} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Mexican').valueOf() ? (
+            <img src={Mexican} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Pizza').valueOf() ? (
+            <img src={Pizza} alt="logo" height="55" className="rounded" />
+          ) : new String(currentRestaurantCuisine).valueOf() ===
+            new String('Vietnamese').valueOf() ? (
+            <img src={Vietnamese} alt="logo" height="55" className="rounded" />
+          ) : (
+            <> </>
+          )}
+
           {menuItems.length > 0 ? (
             <h4 className="text-center pb-3 pt-3">
               Choose from the Menu below

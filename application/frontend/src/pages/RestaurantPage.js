@@ -57,49 +57,49 @@ const RestaurantPage = () => {
 
   useEffect(() => {
     // get all restaurants from backend
-    // axios
-    //   .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
-    //     params: { restaurantName: currentRestaurant },
-    //   })
-    //   .then((res) => {
-    //     if (res.data.length === 0) {
-    //     }
-    //   });
+    const currentRestaurantName = currentRestaurant.map((item, i) => item.Name);
+    axios
+      .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
+        params: { restaurantName: currentRestaurantName },
+      })
+      .then((res) => {
+        setMenuItems(res.data);
+      });
 
-    setMenuItems([
-      {
-        itemID: 1,
-        itemName: 'Cheese Pizza',
-        itemCalories: '(700-1180 Cal.)',
-        itemPrice: '$11.99',
-        itemCount: 1,
-        itemComments: '',
-      },
-      {
-        itemID: 2,
-        itemName: 'Pepporoni Pizza',
-        itemCalories: '(900-1210 Cal.)',
-        itemPrice: '$12.99',
-        itemCount: 1,
-        itemComments: '',
-      },
-      {
-        itemID: 3,
-        itemName: 'Wings',
-        itemCalories: '(500-950 Cal.)',
-        itemPrice: '$8.99',
-        itemCount: 1,
-        itemComments: '',
-      },
-      {
-        itemID: 4,
-        itemName: 'Breadsticks',
-        itemCalories: '(200-420 Cal.)',
-        itemPrice: '$6.99',
-        itemCount: 1,
-        itemComments: '',
-      },
-    ]);
+    // setMenuItems([
+    //   {
+    //     itemID: 1,
+    //     itemName: 'Cheese Pizza',
+    //     itemCalories: '(700-1180 Cal.)',
+    //     itemPrice: '$11.99',
+    //     itemCount: 1,
+    //     itemComments: '',
+    //   },
+    //   {
+    //     itemID: 2,
+    //     itemName: 'Pepporoni Pizza',
+    //     itemCalories: '(900-1210 Cal.)',
+    //     itemPrice: '$12.99',
+    //     itemCount: 1,
+    //     itemComments: '',
+    //   },
+    //   {
+    //     itemID: 3,
+    //     itemName: 'Wings',
+    //     itemCalories: '(500-950 Cal.)',
+    //     itemPrice: '$8.99',
+    //     itemCount: 1,
+    //     itemComments: '',
+    //   },
+    //   {
+    //     itemID: 4,
+    //     itemName: 'Breadsticks',
+    //     itemCalories: '(200-420 Cal.)',
+    //     itemPrice: '$6.99',
+    //     itemCount: 1,
+    //     itemComments: '',
+    //   },
+    // ]);
   }, []);
 
   // Google Map
@@ -255,7 +255,7 @@ const RestaurantPage = () => {
               );
             }
           })}
-          {menuItems ? (
+          {menuItems.length > 0 ? (
             <h4 className="text-center pb-3 pt-3">
               Choose from the Menu below
             </h4>
@@ -282,16 +282,16 @@ const RestaurantPage = () => {
             <> </>
           )}
 
-          {menuItems ? (
+          {menuItems.length > 0 ? (
             <div className="d-flex justify-content-around flex-wrap">
               {menuItems.map((item, i) => (
                 <div key={i} className="card rp-item p-3 m-2">
                   <p>
-                    <strong>{item.itemName}</strong>
+                    <strong>{item.Name}</strong>
                     <br />
-                    <span className="text-muted">{item.itemCalories}</span>
+                    <span className="text-muted">{item.Description}</span>
                     <br />
-                    <span>{item.itemPrice}</span>
+                    <span>${item.Price}</span>
                   </p>
                   <i
                     className="fas fa-cart-plus h4 mt-2 add-cart-icon"
@@ -299,7 +299,7 @@ const RestaurantPage = () => {
                     data-target="#modalCenter"
                     onClick={() => {
                       setShowModal(true);
-                      setAddIdClicked(item.itemID);
+                      setAddIdClicked(item.ID);
                     }}
                   />
                 </div>
@@ -321,7 +321,7 @@ const RestaurantPage = () => {
           aria-hidden="true"
         >
           {menuItems
-            .filter((item1) => item1.itemID === addIdClicked)
+            .filter((item1) => item1.ID === addIdClicked)
             .map((item, i) => (
               <div
                 className="modal-dialog modal-dialog-centered"
@@ -331,7 +331,7 @@ const RestaurantPage = () => {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="modalLongTitle">
-                      {item.itemName}
+                      {item.Name}
                     </h5>
                     <button
                       type="button"
@@ -343,20 +343,20 @@ const RestaurantPage = () => {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <span className="text-muted">{item.itemCalories}</span>
+                    <span className="text-muted">{item.Description}</span>
                     <p className="m-3">Comments</p>
                     <div className="text-center">
                       <textarea
                         cols="45"
                         rows="3"
-                        value={item.itemComments}
-                        onChange={(e) => {
-                          let temp = [...menuItems];
-                          let temp_element = { ...temp[item.itemID - 1] };
-                          temp_element.itemComments = e.target.value;
-                          temp[item.itemID - 1] = temp_element;
-                          setMenuItems(temp);
-                        }}
+                        // value={item.itemComments}
+                        // onChange={(e) => {
+                        //   let temp = [...menuItems];
+                        //   let temp_element = { ...temp[item.itemID - 1] };
+                        //   temp_element.itemComments = e.target.value;
+                        //   temp[item.itemID - 1] = temp_element;
+                        //   setMenuItems(temp);
+                        // }}
                       />
                     </div>
                   </div>
@@ -365,43 +365,43 @@ const RestaurantPage = () => {
                       <i
                         className="fa fa-minus mr-2 add-remove-icons"
                         aria-hidden="true"
-                        onClick={(e) => {
-                          let temp = [...menuItems];
-                          let temp_element = { ...temp[item.itemID - 1] };
-                          if (item.itemCount >= 2) {
-                            temp_element.itemCount = item.itemCount - 1;
-                          }
-                          temp[item.itemID - 1] = temp_element;
-                          setMenuItems(temp);
-                        }}
+                        // onClick={(e) => {
+                        //   let temp = [...menuItems];
+                        //   let temp_element = { ...temp[item.itemID - 1] };
+                        //   if (item.itemCount >= 2) {
+                        //     temp_element.itemCount = item.itemCount - 1;
+                        //   }
+                        //   temp[item.itemID - 1] = temp_element;
+                        //   setMenuItems(temp);
+                        // }}
                       />
                       <span className="m-1 px-2 h5 rounded bg-warning">
-                        {item.itemCount}
+                        {/* {item.itemCount} */}
                       </span>
                       <i
                         className="fa fa-plus ml-2  add-remove-icons"
                         aria-hidden="true"
-                        onClick={(e) => {
-                          let temp = [...menuItems];
-                          let temp_element = { ...temp[item.itemID - 1] };
-                          if (item.itemCount < 9) {
-                            temp_element.itemCount = item.itemCount + 1;
-                          }
-                          temp[item.itemID - 1] = temp_element;
-                          setMenuItems(temp);
-                        }}
+                        // onClick={(e) => {
+                        //   let temp = [...menuItems];
+                        //   let temp_element = { ...temp[item.itemID - 1] };
+                        //   if (item.itemCount < 9) {
+                        //     temp_element.itemCount = item.itemCount + 1;
+                        //   }
+                        //   temp[item.itemID - 1] = temp_element;
+                        //   setMenuItems(temp);
+                        // }}
                       />
                     </div>
                     <button
                       type="button"
                       className="btn primary-color-bg text-white"
                       data-dismiss="modal"
-                      onClick={(e) => {
-                        cartItems.push(menuItems[item.itemID - 1]);
-                        dispatch(setCartItems(cartItems));
-                        // setShowModal(false);
-                        setShowAlert(true);
-                      }}
+                      // onClick={(e) => {
+                      //   cartItems.push(menuItems[item.itemID - 1]);
+                      //   dispatch(setCartItems(cartItems));
+                      //   // setShowModal(false);
+                      //   setShowAlert(true);
+                      // }}
                     >
                       Add to Cart
                     </button>

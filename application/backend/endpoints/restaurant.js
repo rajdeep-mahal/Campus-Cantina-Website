@@ -1,5 +1,4 @@
-/* Endpoints needed for Restaurant Owners, adding restuarunts,
- *  getting menu items, etc. */
+/* Endpoints needed for restaurant owners and restaurants */ 
 
 const express = require('express');
 const router = express.Router();
@@ -80,9 +79,7 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
     thumbnail +
     `',37.7301,-122.477,'` +
     banner +
-    `', 0)`; // approved status is defaulted to 0 for initial upload of the restaurant.
-
-  // for the restaurant to be searchable, the value should be changed to 1 in db (signifying admin's approval)
+    `', 0)`; // approved status is defaulted to 0, change to 1 when approved
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
@@ -125,16 +122,103 @@ router.post('/register-owner', (req, res) => {
   });
 });
 
+// Edit restaurant owner info
+router.post('/edit-owner', (req, res) => {
+  console.log('Called edit-owner endpoint');
+
+  // TODO: Perform validation on data
+
+  // Generate SQL query with owner info
+  let query =
+    `UPDATE Restaurant_Owners SET Name = '` +
+    req.query.ownerName +
+    `', Phone = '` +
+    req.query.ownerPhone +
+    `', Email = '` +
+    req.query.ownerEmail +
+    `', Restaurant_Name = '` +
+    req.query.restaurantName +
+    `' WHERE ID = ` +
+    req.query.ownerID;
+
+  // Send edit owner query to db
+  database.query(query, (err, result) => {
+    console.log('Edited owner info to db');
+    res.send(result);
+  });
+});
+
+// Edit restaurant info
+// **RECOMMEND NOT USING*** owner should contact admin to change restaurant info
+router.post('/edit-restaurant', upload.single('file'), async (req, res) => {
+  console.log('Called edit-restaurant endpoint');
+
+  let destFilePath = __dirname + '/uploads';
+  await imageProcessor(req, destFilePath); // uses sharp to resize
+
+  let Display_Pic_Banner = fs.readFileSync(
+    destFilePath + '/Display_Pic_Banner.jpeg'
+  );
+
+  let Display_Pic_Thumbnail = fs.readFileSync(
+    destFilePath + '/Display_Pic_Thumbnail.jpeg'
+  );
+
+  let thumbnail = Display_Pic_Thumbnail.toString('base64');
+  let banner = Display_Pic_Banner.toString('base64');
+
+  // TODO: Perform validation on data
+
+  // Generate SQL query with restaurant info
+  let query =
+    `UPDATE Restaurant SET Name = '` +
+    req.body.restaurantName +
+    `', Cuisine = '` +
+    req.body.restaurantCuisine +
+    `', Tags = '` +
+    req.body.restaurantTags +
+    `', Price_Level = '` +
+    req.body.restaurantPriceLevel +
+    `', Address = '` +
+    req.body.restaurantAddress +
+    `', Tags = '` +
+    req.body.restaurantTags +
+    `', Price_Level = '` +
+    req.body.restaurantPriceLevel +
+    `',` +
+    thumbnail +
+    `', Lat = 37.7301, Lng = -122.477,` +
+    banner +
+    `0 WHERE ID = ` +
+    req.body.restaurantID;
+
+  // Send restaurant query to db
+  database.query(query, (err, result) => {
+    if (err) throw err;
+    console.log('Edited restaurant info on db');
+    res.send(result);
+  });
+});
+
+// Get individual restaurant owner info
+router.get('/owner-info', (req, res) => {
+  console.log('Called owner-info endpoint');
+
+  // TODO: Validate data
+
+  // Generate SQL query
+  let query =
+    `SELECT * FROM Restaurant_Owners WHERE Email = '` +
+    req.query.ownerEmail +
+    `'`;
+
+  // Send owner info query to db
+  database.query(query, (err, result) => {
+    console.log('Got individual owner info from db');
+    res.send(result);
+  });
+});
+
 // Restaurant owner login
-
-// Get restaurant menu items
-
-// Add restaurant menu item
-
-// Edit menu item (may not be necessary)
-
-// Get restaurant menu
-
-// Get restaurant order history
 
 module.exports = router;

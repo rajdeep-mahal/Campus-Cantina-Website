@@ -72,23 +72,3 @@
     margin-top: 20px;
   }
 }
-
-/* All Restaurants */
-.home-restaurants-heading {
-  font-size: 195%;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.home-restaurant-card {
-  border: 3.5px solid var(--secondary-color);
-  margin-bottom: 1.5rem;
-}
-
-.restaurants-price-tags {
-  margin-top: -10px;
-}
-
-.dom-deem a:hover {
-  text-decoration: none;
-}

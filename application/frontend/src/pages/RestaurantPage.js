@@ -5,18 +5,25 @@ Summary of RestaurantPage.js:
  - Components: Google Map, Add Menu items Modal, Banner Image, Menu Items
 */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../assets/css/restaurant_page.css';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  useJsApiLoader,
-} from '@react-google-maps/api';
-import config from '../config.js';
+import Burger from '../assets/img/cuisines/Burger.png';
+import Chinese from '../assets/img/cuisines/Chinese.png';
+import Indian from '../assets/img/cuisines/Indian.png';
+import Italian from '../assets/img/cuisines/Italian.png';
+import Mexican from '../assets/img/cuisines/Mexican.png';
 import Pizza from '../assets/img/cuisines/Pizza.png';
+import Vietnamese from '../assets/img/cuisines/Vietnamese.png';
+// import {
+//   GoogleMap,
+//   useLoadScript,
+//   Marker,
+//   useJsApiLoader,
+// } from '@react-google-maps/api';
+// import config from '../config.js';
 import {
   setCartItems,
   setCartItemsTotalCount,
@@ -47,9 +54,18 @@ const RestaurantPage = () => {
   }
 
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
-  console.log(cartItems);
 
   useEffect(() => {
+    // get all restaurants from backend
+    // axios
+    //   .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
+    //     params: { restaurantName: currentRestaurant },
+    //   })
+    //   .then((res) => {
+    //     if (res.data.length === 0) {
+    //     }
+    //   });
+
     setMenuItems([
       {
         itemID: 1,
@@ -86,11 +102,11 @@ const RestaurantPage = () => {
     ]);
   }, []);
 
-  //Google Map
-  const center = {
-    lat: 37.7234,
-    lng: -122.481,
-  };
+  // Google Map
+  // const center = {
+  //   lat: 37.7234,
+  //   lng: -122.481,
+  // };
 
   // function MyMap() {
   //   const { isLoaded } = useJsApiLoader({
@@ -171,10 +187,81 @@ const RestaurantPage = () => {
       <hr />
       <div className="container text-center">
         <div className="m-4 ">
-          <img src={Pizza} alt="logo" height="55" className="rounded" />
-          <h4 className="text-center pb-3 pt-3">
-            Choose from the Menu below {cartItems}
-          </h4>
+          {/* to display cuisine images based on current restaurant's cuisine.. imported from CuisineRow */}
+          {currentRestaurant.map((item, i) => {
+            if (item.Cuisine === 'Burgers') {
+              return (
+                <img
+                  src={Burger}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            } else if (item.Cuisine === 'Chinese') {
+              return (
+                <img
+                  src={Chinese}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            } else if (item.Cuisine === 'Indian') {
+              return (
+                <img
+                  src={Indian}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            } else if (item.Cuisine === 'Italian') {
+              return (
+                <img
+                  src={Italian}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            } else if (item.Cuisine === 'Mexican') {
+              return (
+                <img
+                  src={Mexican}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            } else if (item.Cuisine === 'Pizza') {
+              return (
+                <img src={Pizza} alt="logo" height="55" className="rounded" />
+              );
+            } else if (item.Cuisine === 'Vietnamese') {
+              return (
+                <img
+                  src={Vietnamese}
+                  key={i}
+                  alt="logo"
+                  height="55"
+                  className="rounded"
+                />
+              );
+            }
+          })}
+          {menuItems ? (
+            <h4 className="text-center pb-3 pt-3">
+              Choose from the Menu below
+            </h4>
+          ) : (
+            <h4 className="text-center pb-3 pt-3">Menu Items not available</h4>
+          )}
 
           {showAlert ? (
             <div
@@ -195,28 +282,32 @@ const RestaurantPage = () => {
             <> </>
           )}
 
-          <div className="d-flex justify-content-around flex-wrap">
-            {menuItems.map((item, i) => (
-              <div key={i} className="card rp-item p-3 m-2">
-                <p>
-                  <strong>{item.itemName}</strong>
-                  <br />
-                  <span className="text-muted">{item.itemCalories}</span>
-                  <br />
-                  <span>{item.itemPrice}</span>
-                </p>
-                <i
-                  className="fas fa-cart-plus h4 mt-2 add-cart-icon"
-                  data-toggle="modal"
-                  data-target="#modalCenter"
-                  onClick={() => {
-                    setShowModal(true);
-                    setAddIdClicked(item.itemID);
-                  }}
-                />
-              </div>
-            ))}
-          </div>
+          {menuItems ? (
+            <div className="d-flex justify-content-around flex-wrap">
+              {menuItems.map((item, i) => (
+                <div key={i} className="card rp-item p-3 m-2">
+                  <p>
+                    <strong>{item.itemName}</strong>
+                    <br />
+                    <span className="text-muted">{item.itemCalories}</span>
+                    <br />
+                    <span>{item.itemPrice}</span>
+                  </p>
+                  <i
+                    className="fas fa-cart-plus h4 mt-2 add-cart-icon"
+                    data-toggle="modal"
+                    data-target="#modalCenter"
+                    onClick={() => {
+                      setShowModal(true);
+                      setAddIdClicked(item.itemID);
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <> </>
+          )}
         </div>
       </div>
       {/* Modal */}

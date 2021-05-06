@@ -6,8 +6,8 @@ const AllRestaurants = ({ results }) => {
   return (
     <div className="d-flex justify-content-around flex-wrap mt-4 restaurants-links">
       {results.map((item, i) => (
-        <Link to={`/restaurant/${item.Name}`}>
-          <div key={i}>
+        <Link to={`/restaurant/${item.Name}`} key={i}>
+          <div>
             <div className="card home-restaurant-card">
               <img
                 src={

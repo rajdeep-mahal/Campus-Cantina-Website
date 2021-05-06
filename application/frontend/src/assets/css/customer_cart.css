@@ -1,0 +1,10 @@
+/*Checkout background color*/
+.checkout_btn {
+  background-color: var(--primary-color) !important;
+}
+
+/*delivery instructions box height, font size*/
+/* .delivery_instruction {
+  height: 70px;
+  font-size: 12px;
+} */

@@ -183,31 +183,6 @@
   padding: 0.15rem 0.5rem 0.15rem 0.5rem;
 }
 
-.cart-page {
-  text-align: center;
-}
-
-/* removes arrows from quantity input box */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/*Checkout background color*/
-.checkout_btn {
-  background-color: var(--primary-color) !important;
-}
-/*quantity button icon color, background color*/
-.quantity_button {
-  color: white;
-  background-color: var(--primary-color);
-}
-/*delivery instructions box height, font size*/
-.delivery_instruction {
-  height: 70px;
-  font-size: 12px;
-}
-
 /* for mobile widths */
 @media (max-width: 499px) {
   .msb-searchbar {

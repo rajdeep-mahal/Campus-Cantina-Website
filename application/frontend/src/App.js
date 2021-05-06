@@ -21,7 +21,7 @@ import Bhavani from './pages/About/Bhavani';
 import Frederick from './pages/About/Frederick';
 import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
-import VPHome from './pages/VPHome';
+// import VPHome from './pages/VPHome';
 import Home from './pages/Home';
 // import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
@@ -99,9 +99,9 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/vphome">
+          {/* <Route path="/vphome">
             <VPHome />
-          </Route>
+          </Route> */}
           <Route path="/sfsulogin">
             <SFSULogin />
           </Route>

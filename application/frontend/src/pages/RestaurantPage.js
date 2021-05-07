@@ -17,28 +17,36 @@ import Italian from '../assets/img/cuisines/Italian.png';
 import Mexican from '../assets/img/cuisines/Mexican.png';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 import Vietnamese from '../assets/img/cuisines/Vietnamese.png';
-// import {
-//   GoogleMap,
-//   useLoadScript,
-//   Marker,
-//   useJsApiLoader,
-// } from '@react-google-maps/api';
-// import config from '../config.js';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  useJsApiLoader,
+} from '@react-google-maps/api';
+import config from '../config.js';
 import {
   setCartItems,
   setCartItemsTotalCount,
   setCartTotal,
   setCartDeliveryInstructions,
 } from '../redux/actions/cartItemsActions';
+// import ReactDOM from 'react-dom';
 
 const RestaurantPage = () => {
   const dispatch = useDispatch();
+  // click on a restaurant card leads to a page with a particular restaurant name
+  // passed as a parameter which is retrieved here
   const { clickedRestaurantName } = useParams();
+  // menu items from backend
+  const [menuItems, setMenuItems] = useState([]);
+  // for getting the id of the menu item of which the add to cart icon is clicked
+  const [addIdClicked, setAddIdClicked] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  const [menuItems, setMenuItems] = useState([]);
-  const [addIdClicked, setAddIdClicked] = useState(1);
+  // modal content - auto updating
+  const [itemComments, setItemComments] = useState('');
+  const [itemCount, setItemCount] = useState(1);
 
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
@@ -49,7 +57,7 @@ const RestaurantPage = () => {
   const currentRestaurantCuisine = currentRestaurant.map(
     (item, i) => item.Cuisine
   );
-  // const currentRestaurantName = currentRestaurant.map((item, i) => item.Name);
+
   if (showAlert) {
     setTimeout(() => {
       setShowAlert(false);
@@ -58,6 +66,7 @@ const RestaurantPage = () => {
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
 
   useEffect(() => {
+    // document.title = `CC - ${clickedRestaurantName}`;
     // get all restaurants from backend
     axios
       .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
@@ -69,45 +78,45 @@ const RestaurantPage = () => {
   }, []);
 
   // Google Map
-  // const center = {
-  //   lat: 37.7234,
-  //   lng: -122.481,
-  // };
+  const center = {
+    lat: 37.7234,
+    lng: -122.481,
+  };
 
-  // function MyMap() {
-  //   const { isLoaded } = useJsApiLoader({
-  //     id: 'google-map-script',
-  //     googleMapsApiKey: config.googleAPI,
-  //   });
+  function MyMap() {
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: config.googleAPI,
+    });
 
-  //   const [map, setMap] = React.useState(null);
+    const [map, setMap] = React.useState(null);
 
-  //   const onLoad = React.useCallback(function callback(map) {
-  //     setMap(map);
-  //   }, []);
+    const onLoad = React.useCallback(function callback(map) {
+      setMap(map);
+    }, []);
 
-  //   const onUnmount = React.useCallback(function callback(map) {
-  //     setMap(null);
-  //   }, []);
+    const onUnmount = React.useCallback(function callback(map) {
+      setMap(null);
+    }, []);
 
-  //   return isLoaded ? (
-  //     <GoogleMap
-  //       mapContainerStyle={{ height: '270px', width: '350px' }}
-  //       zoom={17}
-  //       center={center}
-  //       onLoad={onLoad}
-  //       onUnmount={onUnmount}
-  //       options={{
-  //         streetViewControl: false,
-  //         mapTypeControl: false,
-  //       }}
-  //     >
-  //       <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-  //     </GoogleMap>
-  //   ) : (
-  //     <></>
-  //   );
-  // } //end of MyMap function
+    return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={{ height: '270px', width: '350px' }}
+        zoom={17}
+        center={center}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        options={{
+          streetViewControl: false,
+          mapTypeControl: false,
+        }}
+      >
+        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+      </GoogleMap>
+    ) : (
+      <></>
+    );
+  } //end of MyMap function
 
   return (
     <div className="container-fluid">
@@ -152,40 +161,39 @@ const RestaurantPage = () => {
 
       <hr />
       <div className="container text-center">
+        {/* to display cuisine images based on current restaurant's cuisine.. imported from CuisineRow */}
         <div className="m-4 ">
-          {/* to display cuisine images based on current restaurant's cuisine.. imported from CuisineRow */}
-          {new String(currentRestaurantCuisine).valueOf() ===
-          new String('Burgers').valueOf() ? (
-            <img src={Burger} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Chinese').valueOf() ? (
-            <img src={Chinese} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Indian').valueOf() ? (
-            <img src={Indian} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Italian').valueOf() ? (
-            <img src={Italian} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Mexican').valueOf() ? (
-            <img src={Mexican} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Pizza').valueOf() ? (
-            <img src={Pizza} alt="logo" height="55" className="rounded" />
-          ) : new String(currentRestaurantCuisine).valueOf() ===
-            new String('Vietnamese').valueOf() ? (
-            <img src={Vietnamese} alt="logo" height="55" className="rounded" />
-          ) : (
-            <> </>
-          )}
-
-          {menuItems.length > 0 ? (
-            <h4 className="text-center pb-3 pt-3">
-              Choose from the Menu below
-            </h4>
-          ) : (
-            <h4 className="text-center pb-3 pt-3">Menu Items not available</h4>
-          )}
+          <>
+            {new String(currentRestaurantCuisine).valueOf() ===
+            new String('Burgers').valueOf() ? (
+              <img src={Burger} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Chinese').valueOf() ? (
+              <img src={Chinese} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Indian').valueOf() ? (
+              <img src={Indian} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Italian').valueOf() ? (
+              <img src={Italian} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Mexican').valueOf() ? (
+              <img src={Mexican} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Pizza').valueOf() ? (
+              <img src={Pizza} alt="logo" height="55" className="rounded" />
+            ) : new String(currentRestaurantCuisine).valueOf() ===
+              new String('Vietnamese').valueOf() ? (
+              <img
+                src={Vietnamese}
+                alt="logo"
+                height="55"
+                className="rounded"
+              />
+            ) : (
+              <> </>
+            )}
+          </>
 
           {showAlert ? (
             <div
@@ -273,59 +281,32 @@ const RestaurantPage = () => {
                       <textarea
                         cols="45"
                         rows="3"
-                        // value={item.itemComments}
-                        // onChange={(e) => {
-                        //   let temp = [...menuItems];
-                        //   let temp_element = { ...temp[item.itemID - 1] };
-                        //   temp_element.itemComments = e.target.value;
-                        //   temp[item.itemID - 1] = temp_element;
-                        //   setMenuItems(temp);
-                        // }}
+                        value={itemComments}
+                        onChange={(e) => {
+                          setItemComments(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
-                  <div className="modal-footer">
-                    <div className="mr-auto">
+                  <div className="modal-footer justify-content-around">
+                    <div>
                       <i
                         className="fa fa-minus mr-2 add-remove-icons"
                         aria-hidden="true"
-                        // onClick={(e) => {
-                        //   let temp = [...menuItems];
-                        //   let temp_element = { ...temp[item.itemID - 1] };
-                        //   if (item.itemCount >= 2) {
-                        //     temp_element.itemCount = item.itemCount - 1;
-                        //   }
-                        //   temp[item.itemID - 1] = temp_element;
-                        //   setMenuItems(temp);
-                        // }}
                       />
                       <span className="m-1 px-2 h5 rounded bg-warning">
-                        {/* {item.itemCount} */}
+                        {itemCount}
                       </span>
                       <i
                         className="fa fa-plus ml-2  add-remove-icons"
                         aria-hidden="true"
-                        // onClick={(e) => {
-                        //   let temp = [...menuItems];
-                        //   let temp_element = { ...temp[item.itemID - 1] };
-                        //   if (item.itemCount < 9) {
-                        //     temp_element.itemCount = item.itemCount + 1;
-                        //   }
-                        //   temp[item.itemID - 1] = temp_element;
-                        //   setMenuItems(temp);
-                        // }}
                       />
                     </div>
+
                     <button
                       type="button"
                       className="btn primary-color-bg text-white"
                       data-dismiss="modal"
-                      // onClick={(e) => {
-                      //   cartItems.push(menuItems[item.itemID - 1]);
-                      //   dispatch(setCartItems(cartItems));
-                      //   // setShowModal(false);
-                      //   setShowAlert(true);
-                      // }}
                     >
                       Add to Cart
                     </button>

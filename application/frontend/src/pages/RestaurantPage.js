@@ -368,6 +368,7 @@ const RestaurantPage = () => {
                         setItemComments('');
                         setItemCount(1);
                         setItemCalculatedPrice(0.0);
+                        // setting total items count in the cart
                         let tempCartItemsTotalCount = 0;
                         cartItems.forEach((element) => {
                           tempCartItemsTotalCount += element.itemCount;
@@ -375,6 +376,16 @@ const RestaurantPage = () => {
                         dispatch(
                           setCartItemsTotalCount(tempCartItemsTotalCount)
                         );
+                        // setting total cost in the cart
+                        let tempCartTotal = 0.0;
+                        cartItems.forEach((element) => {
+                          console.log(element.itemCalculatedPrice);
+                          tempCartTotal =
+                            parseFloat(tempCartTotal) +
+                            parseFloat(element.itemCalculatedPrice);
+                          console.log(tempCartTotal);
+                        });
+                        dispatch(setCartTotal(tempCartTotal));
                       }}
                     >
                       Add to Cart

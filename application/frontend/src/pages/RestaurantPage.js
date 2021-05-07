@@ -347,6 +347,23 @@ const RestaurantPage = () => {
                       type="button"
                       className="btn primary-color-bg text-white"
                       data-dismiss="modal"
+                      onClick={(e) => {
+                        let tempCartItems = cartItems;
+                        const cartItem = {
+                          itemName: item.Name,
+                          itemPrice: item.Price,
+                          itemCount: itemCount,
+                          itemComments: itemComments,
+                          itemCalculatedPrice: itemCalculatedPrice,
+                        };
+                        tempCartItems.push(cartItem);
+                        dispatch(setCartItems(tempCartItems));
+                        setShowModal(false);
+                        setShowAlert(true);
+                        setItemComments('');
+                        setItemCount(1);
+                        setItemCalculatedPrice(0.0);
+                      }}
                     >
                       Add to Cart
                     </button>

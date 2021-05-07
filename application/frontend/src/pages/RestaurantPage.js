@@ -290,11 +290,13 @@ const RestaurantPage = () => {
                   </div>
                   <div className="modal-body">
                     <span className="text-muted">{item.Description}</span>
-                    <p className="m-3">Comments</p>
+                    <p className="text-center mx-auto my-2">
+                      Instructions to the Chef
+                    </p>
                     <div className="text-center">
                       <textarea
-                        cols="45"
-                        rows="3"
+                        cols="30"
+                        rows="2"
                         value={itemComments}
                         onChange={(e) => {
                           setItemComments(e.target.value);

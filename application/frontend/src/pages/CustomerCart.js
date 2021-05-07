@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../assets/css/customer_cart.css';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  setCartItems,
+  setCartItemsTotalCount,
+} from '../redux/actions/cartItemsActions';
 
 const CustomerCart = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
+  const cartItemsTotalCount = useSelector(
+    (state) => state.cartItemsReducer.cartItemsTotalCount
+  );
 
   return (
     <>
@@ -14,6 +22,9 @@ const CustomerCart = () => {
         </li>
       ) : (
         <div className="small-container text-center mt-2">
+          <p className="h6 font-weight-bold">
+            Total Count: {cartItemsTotalCount}
+          </p>
           <table className="table table-light border">
             <thead>
               <tr>
@@ -27,23 +38,58 @@ const CustomerCart = () => {
               {cartItems.map((item, i) => (
                 <tr key={i}>
                   <th scope="row">
-                    {item.itemName}&#160;
+                    {item.itemName}&#160;&#160;
                     <i
-                      className="fas fa-comment-dots"
+                      className="fas fa-comment-dots secondary-color"
                       data-toggle="tooltip"
                       data-placement="top"
                       title={item.itemComments}
                     />
                   </th>
                   <td>
-                    <i className="mr-2 primary-color fa fa-minus-circle"></i>
+                    <i
+                      className="mr-2 primary-color fa fa-minus-circle"
+                      onClick={(e) => {
+                        let temp = [...cartItems];
+                        let temp_element = { ...temp[i] };
+                        if (item.itemCount >= 2) {
+                          temp_element.itemCount = item.itemCount - 1;
+                          dispatch(
+                            setCartItemsTotalCount(cartItemsTotalCount - 1)
+                          );
+                        }
+                        temp[i] = temp_element;
+                        dispatch(setCartItems(temp));
+                      }}
+                    />
                     <span className="text-center">{item.itemCount}</span>
-                    <i className="ml-2 primary-color fa fa-plus-circle"></i>
+                    <i
+                      className="ml-2 primary-color fa fa-plus-circle"
+                      onClick={(e) => {
+                        let temp = [...cartItems];
+                        let temp_element = { ...temp[i] };
+                        if (item.itemCount < 9) {
+                          temp_element.itemCount = item.itemCount + 1;
+                          dispatch(
+                            setCartItemsTotalCount(cartItemsTotalCount + 1)
+                          );
+                        }
+                        temp[i] = temp_element;
+                        dispatch(setCartItems(temp));
+                      }}
+                    />
                   </td>
                   <td>
                     <i className="text-danger fas fa-trash"></i>
                   </td>
-                  <td>{item.itemCalculatedPrice}</td>
+                  <td>
+                    &#36;
+                    {item.itemCalculatedPrice === 0.0 ? (
+                      <span>{item.itemPrice}</span>
+                    ) : (
+                      <span>{item.itemCalculatedPrice}</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

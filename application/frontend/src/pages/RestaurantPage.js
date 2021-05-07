@@ -336,7 +336,13 @@ const RestaurantPage = () => {
                         }}
                       />
                     </div>
-
+                    <div>
+                      {itemCalculatedPrice === 0.0 ? (
+                        <span>Price: ${item.Price}</span>
+                      ) : (
+                        <span>Price: ${itemCalculatedPrice}</span>
+                      )}
+                    </div>
                     <button
                       type="button"
                       className="btn primary-color-bg text-white"

@@ -1,7 +1,7 @@
 const initState = {
   cartItems: [],
   cartItemsTotalCount: 0,
-  cartTotal: '',
+  cartTotal: 0.0,
   cartDeliveryInstructions: '',
 };
 

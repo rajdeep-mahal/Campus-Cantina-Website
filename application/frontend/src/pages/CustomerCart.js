@@ -26,16 +26,24 @@ const CustomerCart = () => {
             <tbody>
               {cartItems.map((item, i) => (
                 <tr key={i}>
-                  <th scope="row">{item.itemName}</th>
+                  <th scope="row">
+                    {item.itemName}&#160;
+                    <i
+                      className="fas fa-comment-dots"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title={item.itemComments}
+                    />
+                  </th>
                   <td>
-                    <i className="m-2 primary-color fa fa-minus-circle"></i>
+                    <i className="mr-2 primary-color fa fa-minus-circle"></i>
                     <span className="text-center">{item.itemCount}</span>
-                    <i className="m-2 primary-color fa fa-plus-circle"></i>
+                    <i className="ml-2 primary-color fa fa-plus-circle"></i>
                   </td>
                   <td>
-                    <i className="m-2 text-danger fas fa-trash"></i>
+                    <i className="text-danger fas fa-trash"></i>
                   </td>
-                  <td>{item.itemPrice}</td>
+                  <td>{item.itemCalculatedPrice}</td>
                 </tr>
               ))}
             </tbody>

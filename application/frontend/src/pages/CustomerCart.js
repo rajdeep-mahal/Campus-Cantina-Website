@@ -103,13 +103,18 @@ const CustomerCart = () => {
                       onClick={(e) => {
                         let temp = [...cartItems];
                         let temp_element = { ...temp[i] };
-                        temp.splice(i, 1);
-                        dispatch(setCartItems(temp));
                         dispatch(
                           setCartItemsTotalCount(
                             cartItemsTotalCount - temp_element.itemCount
                           )
                         );
+                        const tempCartTotal = (
+                          parseFloat(cartTotal) -
+                          parseFloat(temp_element.itemCalculatedPrice)
+                        ).toFixed(2);
+                        dispatch(setCartTotal(tempCartTotal));
+                        temp.splice(i, 1);
+                        dispatch(setCartItems(temp));
                       }}
                     />
                   </td>

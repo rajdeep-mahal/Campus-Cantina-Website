@@ -19,6 +19,7 @@ const CustomerCart = () => {
               <tr>
                 <th className="font-italic">Product</th>
                 <th className="font-italic">Quantity</th>
+                <th className="font-italic"></th>
                 <th className="font-italic">Price</th>
               </tr>
             </thead>
@@ -27,38 +28,16 @@ const CustomerCart = () => {
                 <tr key={i}>
                   <th scope="row">{item.itemName}</th>
                   <td>
-                    <i className="btn primary-color fa fa-minus-circle"></i>
+                    <i className="m-2 primary-color fa fa-minus-circle"></i>
                     <span className="text-center">{item.itemCount}</span>
-                    <i className="btn primary-color fa fa-plus-circle"></i>
+                    <i className="m-2 primary-color fa fa-plus-circle"></i>
+                  </td>
+                  <td>
+                    <i className="m-2 text-danger fas fa-trash"></i>
                   </td>
                   <td>{item.itemPrice}</td>
                 </tr>
               ))}
-
-              {/* <tr>
-            <th scope="row">Tacos</th>
-            <td>
-              <button className="quantity_button btn fa fa-plus-circle fa-xs"></button>
-              <input
-                className="quantity-input w-25 mx-1 text-center"
-                type="number"
-              ></input>
-              <button className="quantity_button btn fa fa-minus-circle fa-xs"></button>
-            </td>
-            <td>&#36;9.50</td>
-          </tr>
-          <tr>
-            <th scope="row">Coca-cola</th>
-            <td>
-              <button className="quantity_button btn fa fa-plus-circle fa-xs"></button>
-              <input
-                className="quantity-input w-25 mx-1 text-center"
-                type="number"
-              ></input>
-              <button className="quantity_button btn fa fa-minus-circle fa-xs"></button>
-            </td>
-            <td>&#36;2.50</td> 
-          </tr>*/}
             </tbody>
           </table>
           <div className="card">

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setCartItems,
   setCartItemsTotalCount,
+  setCartTotal,
 } from '../redux/actions/cartItemsActions';
 
 const CustomerCart = () => {
@@ -12,6 +13,7 @@ const CustomerCart = () => {
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
   );
+  const cartTotal = useSelector((state) => state.cartItemsReducer.cartTotal);
 
   return (
     <>
@@ -40,7 +42,7 @@ const CustomerCart = () => {
                   <th scope="row">
                     {item.itemName}&#160;&#160;
                     <i
-                      className="fas fa-comment-dots secondary-color"
+                      className="fas fa-comment-dots secondary-color cart-icons"
                       data-toggle="tooltip"
                       data-placement="top"
                       title={item.itemComments}
@@ -48,15 +50,23 @@ const CustomerCart = () => {
                   </th>
                   <td>
                     <i
-                      className="mr-2 primary-color fa fa-minus-circle"
+                      className="mr-2 primary-color fa fa-minus-circle cart-icons"
                       onClick={(e) => {
                         let temp = [...cartItems];
                         let temp_element = { ...temp[i] };
                         if (item.itemCount >= 2) {
                           temp_element.itemCount = item.itemCount - 1;
+                          temp_element.itemCalculatedPrice = (
+                            temp_element.itemCount * temp_element.itemPrice
+                          ).toFixed(2);
                           dispatch(
                             setCartItemsTotalCount(cartItemsTotalCount - 1)
                           );
+                          const tempCartTotal = (
+                            parseFloat(cartTotal) -
+                            parseFloat(temp_element.itemPrice)
+                          ).toFixed(2);
+                          dispatch(setCartTotal(tempCartTotal));
                         }
                         temp[i] = temp_element;
                         dispatch(setCartItems(temp));
@@ -64,15 +74,23 @@ const CustomerCart = () => {
                     />
                     <span className="text-center">{item.itemCount}</span>
                     <i
-                      className="ml-2 primary-color fa fa-plus-circle"
+                      className="ml-2 primary-color fa fa-plus-circle cart-icons"
                       onClick={(e) => {
                         let temp = [...cartItems];
                         let temp_element = { ...temp[i] };
                         if (item.itemCount < 9) {
                           temp_element.itemCount = item.itemCount + 1;
+                          temp_element.itemCalculatedPrice = (
+                            temp_element.itemCount * temp_element.itemPrice
+                          ).toFixed(2);
                           dispatch(
                             setCartItemsTotalCount(cartItemsTotalCount + 1)
                           );
+                          const tempCartTotal = (
+                            parseFloat(cartTotal) +
+                            parseFloat(temp_element.itemPrice)
+                          ).toFixed(2);
+                          dispatch(setCartTotal(tempCartTotal));
                         }
                         temp[i] = temp_element;
                         dispatch(setCartItems(temp));
@@ -81,7 +99,7 @@ const CustomerCart = () => {
                   </td>
                   <td>
                     <i
-                      className="text-danger fas fa-trash"
+                      className="text-danger fas fa-trash cart-icons"
                       onClick={(e) => {
                         let temp = [...cartItems];
                         let temp_element = { ...temp[i] };
@@ -118,7 +136,7 @@ const CustomerCart = () => {
               <tbody>
                 <tr>
                   <td className="h5 text-left py-3">Subtotal:</td>
-                  <td className="h5 text-right">&#36; 24</td>
+                  <td className="h5 text-right">${cartTotal}</td>
                 </tr>
               </tbody>
             </table>

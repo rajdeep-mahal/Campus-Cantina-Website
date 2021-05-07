@@ -80,7 +80,20 @@ const CustomerCart = () => {
                     />
                   </td>
                   <td>
-                    <i className="text-danger fas fa-trash"></i>
+                    <i
+                      className="text-danger fas fa-trash"
+                      onClick={(e) => {
+                        let temp = [...cartItems];
+                        let temp_element = { ...temp[i] };
+                        temp.splice(i, 1);
+                        dispatch(setCartItems(temp));
+                        dispatch(
+                          setCartItemsTotalCount(
+                            cartItemsTotalCount - temp_element.itemCount
+                          )
+                        );
+                      }}
+                    />
                   </td>
                   <td>
                     &#36;

@@ -65,6 +65,9 @@ const RestaurantPage = () => {
     }, 3000);
   }
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
+  const cartItemsTotalCount = useSelector(
+    (state) => state.cartItemsReducer.cartItemsTotalCount
+  );
 
   useEffect(() => {
     // document.title = `CC - ${clickedRestaurantName}`;
@@ -365,6 +368,13 @@ const RestaurantPage = () => {
                         setItemComments('');
                         setItemCount(1);
                         setItemCalculatedPrice(0.0);
+                        let tempCartItemsTotalCount = 0;
+                        cartItems.forEach((element) => {
+                          tempCartItemsTotalCount += element.itemCount;
+                        });
+                        dispatch(
+                          setCartItemsTotalCount(tempCartItemsTotalCount)
+                        );
                       }}
                     >
                       Add to Cart

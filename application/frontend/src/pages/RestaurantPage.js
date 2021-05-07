@@ -258,6 +258,8 @@ const RestaurantPage = () => {
           role="dialog"
           aria-labelledby="modalCenterTitle"
           aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
         >
           {menuItems
             .filter((item1) => item1.ID === addIdClicked)

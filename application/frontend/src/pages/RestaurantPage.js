@@ -279,6 +279,11 @@ const RestaurantPage = () => {
                       className="close"
                       data-dismiss="modal"
                       aria-label="Close"
+                      onClick={(e) => {
+                        setShowModal(false);
+                        setItemCount(1);
+                        setItemCalculatedPrice(0.0);
+                      }}
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>

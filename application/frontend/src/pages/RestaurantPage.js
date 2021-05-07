@@ -47,6 +47,7 @@ const RestaurantPage = () => {
   // modal content - auto updating
   const [itemComments, setItemComments] = useState('');
   const [itemCount, setItemCount] = useState(1);
+  const [itemCalculatedPrice, setItemCalculatedPrice] = useState(0.0);
 
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
@@ -194,7 +195,13 @@ const RestaurantPage = () => {
               <> </>
             )}
           </>
-
+          {menuItems.length > 0 ? (
+            <h4 className="text-center pb-3 pt-3">
+              Choose from the Menu below
+            </h4>
+          ) : (
+            <h4 className="text-center pb-3 pt-3">Menu Items not available</h4>
+          )}
           {showAlert ? (
             <div
               className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"

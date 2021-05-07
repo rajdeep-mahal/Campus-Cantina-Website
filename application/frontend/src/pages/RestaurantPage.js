@@ -307,6 +307,16 @@ const RestaurantPage = () => {
                       <i
                         className="fa fa-minus mr-2 add-remove-icons"
                         aria-hidden="true"
+                        onClick={(e) => {
+                          let tempCount = itemCount;
+                          if (tempCount >= 2) {
+                            tempCount -= 1;
+                          }
+                          setItemCount(tempCount);
+                          setItemCalculatedPrice(
+                            (tempCount * item.Price).toFixed(2)
+                          );
+                        }}
                       />
                       <span className="m-1 px-2 h5 rounded bg-warning">
                         {itemCount}
@@ -314,6 +324,16 @@ const RestaurantPage = () => {
                       <i
                         className="fa fa-plus ml-2  add-remove-icons"
                         aria-hidden="true"
+                        onClick={(e) => {
+                          let tempCount = itemCount;
+                          if (tempCount < 9) {
+                            tempCount += 1;
+                          }
+                          setItemCount(tempCount);
+                          setItemCalculatedPrice(
+                            (tempCount * item.Price).toFixed(2)
+                          );
+                        }}
                       />
                     </div>
 

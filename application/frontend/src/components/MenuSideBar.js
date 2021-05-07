@@ -8,6 +8,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './MenuItems';
+import { useSelector } from 'react-redux';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
 import CustomerCart from '../pages/CustomerCart';
@@ -15,6 +16,9 @@ import CustomerCart from '../pages/CustomerCart';
 const MenuSideBar = () => {
   const [menu, setMenu] = useState(false);
   const [cart, setCart] = useState(false);
+  const cartItemsTotalCount = useSelector(
+    (state) => state.cartItemsReducer.cartItemsTotalCount
+  );
   const showMenu = () => setMenu(!menu);
   const showCart = () => setCart(!cart);
   const ref = useRef(null);
@@ -122,7 +126,9 @@ const MenuSideBar = () => {
                 <div style={{ display: 'flex' }}>
                   <i className="fas fa-shopping-cart h5 primary-color" />
                   <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
-                    <span className="badge badge-light">33</span>
+                    <span className="badge badge-light">
+                      {cartItemsTotalCount}
+                    </span>
                   </div>
                 </div>
               </button>

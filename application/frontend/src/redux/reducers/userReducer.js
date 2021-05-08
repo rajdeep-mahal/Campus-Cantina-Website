@@ -1,6 +1,6 @@
 const initState = {
   userLoggedIn: false,
-  loggedInUserRole: 'guest',
+  loggedInUserRole: '',
 };
 
 const userReducer = (state = initState, action) => {

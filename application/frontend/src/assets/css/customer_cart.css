@@ -2,12 +2,9 @@
 .checkout_btn {
   background-color: var(--primary-color) !important;
 }
-
-/*delivery instructions box height, font size*/
-/* .delivery_instruction {
-  height: 70px;
-  font-size: 12px;
-} */
+.checkout-link:hover {
+  text-decoration: none;
+}
 
 /* plus minus delete comments icons */
 .cart-icons {

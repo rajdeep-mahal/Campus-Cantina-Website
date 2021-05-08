@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../assets/css/customer_cart.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   setCartItems,
   setCartItemsTotalCount,
@@ -141,7 +142,7 @@ const CustomerCart = () => {
                 className="w-100"
                 value={cartDeliveryInstructions}
                 onChange={(e) => {
-                  setCartDeliveryInstructions(e.target.value);
+                  dispatch(setCartDeliveryInstructions(e.target.value));
                 }}
               />
             </div>
@@ -176,14 +177,15 @@ const CustomerCart = () => {
               </tbody>
             </table>
           </div>
-
           <div className="col text-center py-3">
-            <button
-              type="checkout"
-              className="checkout_btn btn btn-lg btn-block text-white"
-            >
-              Checkout
-            </button>
+            <Link to="/checkout" className="checkout-link">
+              <button
+                type="button"
+                className="checkout_btn btn btn-lg btn-block text-white"
+              >
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       )}

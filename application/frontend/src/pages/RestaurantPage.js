@@ -294,7 +294,7 @@ const RestaurantPage = () => {
                   <div className="modal-body">
                     <span className="text-muted">{item.Description}</span>
                     <p className="text-center mx-auto my-2">
-                      Instructions to the Chef
+                      Instructions to Chef
                     </p>
                     <div className="text-center">
                       <textarea
@@ -379,11 +379,15 @@ const RestaurantPage = () => {
                         // setting total cost in the cart
                         let tempCartTotal = 0.0;
                         cartItems.forEach((element) => {
-                          console.log(element.itemCalculatedPrice);
-                          tempCartTotal =
-                            parseFloat(tempCartTotal) +
-                            parseFloat(element.itemCalculatedPrice);
-                          console.log(tempCartTotal);
+                          // set the price to be calculated
+                          let tempPrice = 0.0;
+                          element.itemCalculatedPrice === 0.0
+                            ? (tempPrice = element.itemPrice)
+                            : (tempPrice = element.itemCalculatedPrice);
+                          console.log(tempPrice);
+                          tempCartTotal = (
+                            parseFloat(tempCartTotal) + parseFloat(tempPrice)
+                          ).toFixed(2);
                         });
                         dispatch(setCartTotal(tempCartTotal));
                       }}

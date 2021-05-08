@@ -5,6 +5,7 @@ import {
   setCartItems,
   setCartItemsTotalCount,
   setCartTotal,
+  setCartDeliveryInstructions,
 } from '../redux/actions/cartItemsActions';
 
 const CustomerCart = () => {
@@ -14,6 +15,9 @@ const CustomerCart = () => {
     (state) => state.cartItemsReducer.cartItemsTotalCount
   );
   const cartTotal = useSelector((state) => state.cartItemsReducer.cartTotal);
+  const cartDeliveryInstructions = useSelector(
+    (state) => state.cartItemsReducer.cartDeliveryInstructions
+  );
 
   return (
     <>
@@ -133,15 +137,41 @@ const CustomerCart = () => {
           <div className="card">
             <div className="card-body">
               <span>Delivery Instructions: </span>
-              <textarea className="w-100"></textarea>
+              <textarea
+                className="w-100"
+                value={cartDeliveryInstructions}
+                onChange={(e) => {
+                  setCartDeliveryInstructions(e.target.value);
+                }}
+              />
             </div>
           </div>
           <div className="px-4">
             <table className="col text-center">
               <tbody>
                 <tr>
-                  <td className="h5 text-left py-3">Subtotal:</td>
-                  <td className="h5 text-right">${cartTotal}</td>
+                  <td className="h6 text-left py-1">Cart Total: </td>
+                  <td className="h6 text-right">${cartTotal}</td>
+                </tr>
+                <tr>
+                  <td className="h6 text-left py-1">Tax Amount (10%): </td>
+                  <td className="h6 text-right">
+                    ${(0.1 * parseFloat(cartTotal)).toFixed(2)}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="h6 text-left py-1">Delivery Fee</td>
+                  <td className="h6 text-right">$0.00</td>
+                </tr>
+                <tr>
+                  <td className="h5 text-left py-1">Order Total:</td>
+                  <td className="h5 text-right">
+                    $
+                    {(
+                      parseFloat(cartTotal) +
+                      parseFloat(0.1 * parseFloat(cartTotal))
+                    ).toFixed(2)}
+                  </td>
                 </tr>
               </tbody>
             </table>

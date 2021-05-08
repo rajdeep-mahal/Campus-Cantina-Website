@@ -6,18 +6,18 @@ import { Link } from 'react-router-dom';
 
 const Checkout = () => {
   return (
-    <div className = "container-fluid text-center">
+    <div className = "container text-center page">
       <div className = "h2 checkout_borders border-bottom p-2 header_bg m-4"> Checkout 
       </div>
       <form>
-          <div className = "address_txtbox form-group w-25 pb-2 mx-auto col-md-4 col-sm-4 m-5">
-            <label for = "inputAddress" className = " font-weight-bold">Delivery Address:</label>
-            <input type = "address" className = "form-control border-warning" id = "inputAddress" aria-describedby = "addressHelp" placeholder = "Dorm #323, SFSU, SF" ></input>
+          <div className = "form-group mx-auto w-50 m-5">
+            <label for = "inputAddress" className = " font-weight-bold text">Delivery Address:</label>
+            <input type = "address" className = "form-control border-warning text" id = "inputAddress" aria-describedby = "addressHelp" placeholder = "Dorm #323, SFSU, SF" ></input>
           </div>
       </form>
-      <div className = "col">
-        <div className = "row">
-      <table className = "table table_details">
+      <div className = "row">
+        <div className = "col-9">
+      <table className = "table table_details text">
         
         <thead className = "bg-warning">
           <tr>
@@ -54,21 +54,22 @@ const Checkout = () => {
           </tr>
         </tbody>
       </table>
-          <div className = "card mb-3 total_box h6 mb-5">
-            <ul className = "list-group list-group-flush">
+          <div className = "card col-3 col-sm-3 border mb-3 total_box h6 mb-5 position-fixed">
+            <ul className = "list-group list-group-flush text">
               <li className = "list-group-item"><span className = "float-left">Subtotal</span> <span className = "float-right">&#36;24.00</span> </li>
               <li className = "list-group-item"><span className = "float-left">Tips</span> <span className = "float-right">&#36;5.00</span>  </li>
               <li className = "list-group-item"><span className = "float-left">Delivery Fee</span> <span className = "float-right">&#36;3.00</span>  </li>
               <li className = "list-group-item"><span className = "float-left">Discount</span> <span className = "float-right">&#36;0.00</span> </li>
               <li className = "list-group-item"><span className = "float-left">Taxes</span> <span className = "float-right">&#36;8.00</span>  </li>
-              <li className = "list-group-item pt-4 total_bg font-weight-bold h5"><span className = "float-left">Total</span> <span className = "float-right">&#36;40.00</span>  </li>
-              <button type = "button" className = "btn confirm_order m-3 btn-block w-75 mx-auto text-white" data-toggle = "modal" data-target = "#confirmorder">Confirm Order</button>
+              <li className = "list-group-item pt-4 total_bg font-weight-bold h5"><span className = "float-left text">Total</span> <span className = "text float-right">&#36;40.00</span>  </li>
+              <button type = "button" className = "btn confirm_order m-3 btn-block mx-auto text-white col-lg-8" data-toggle = "modal" data-target = "#confirmorder"><span className = "text">Confirm Order</span></button>
             </ul>
           </div>
-          <div className = "row border-top checkout_borders w-100">
-          <div className = "text-muted mb-5 mx-auto">*Please pay total amount to delivery driver in cash*</div>
+          <div className = "row border-top checkout_borders container-fluid">
+          <div className = "text-muted mb-5 mx-auto text">*Please pay total amount to delivery driver in cash*</div>
           </div>
-          <div className = "row w-100"> <span className = "col-1"> Delivery Notes:</span><textarea className="text_field m-4 w-50"></textarea> </div>
+          <div className = "row"> <span className = "col-3 text"> Delivery Notes:</span></div>
+          <div className = "row"><textarea className="text_field mx-4 mb-3 w-75"></textarea> </div>
         </div>
       </div>
 

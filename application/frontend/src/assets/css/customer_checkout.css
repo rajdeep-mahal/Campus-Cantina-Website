@@ -1,12 +1,11 @@
 .total_box{
     border-color: var(--primary-color) !important;
-    width: 20%;
     margin-left: 20px;
-    border-width: medium;
-}
-/* order table's width */
-.table_details{
-    width: 75%;
+    border-width: medium !important;
+    right: 15px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    
 }
 /* height of text field for delivery instructions and special instructions to chef*/
 .text_field {
@@ -16,31 +15,18 @@
 .confirm_order{
     background-color: var(--primary-color) !important;
 }
+
 /* total box opac background */
 .total_bg{
     background-color: var(--primary-color-opac) !important;
 }
-
+/* line divders turned to purple */
 .checkout_borders{
     border-color: var(--primary-color) !important;
 }
-
-
-/*resizes checkout item table details and moves down TOTAL box down*/
-@media (max-width: 900px) {
-    .table_details{
-        width: 100%;
+/*resizes texts of page except for 'Checkout' text*/
+@media (max-width: 650px){
+    .text{
+        font-size: 0.5rem;
     }
-    .total_box{
-        width: 40%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-  }
-
-  /* @media (max-width: 450px) {
-    .address_txtbox{
-        width: 100%;
-    }
-  } */
-
+}

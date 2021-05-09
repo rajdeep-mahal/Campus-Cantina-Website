@@ -7,18 +7,33 @@ Summary of MenuSideBar.js:
 import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
+import { GuestMenuItems } from './GuestMenuItems';
+import { OwnerMenuItems } from './OwnerMenuItems';
+import { DriverMenuItems } from './DriverMenuItems';
+import { SFSUMenuItems } from './SFSUMenuItems';
 import { useSelector } from 'react-redux';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
 import CustomerCart from '../pages/CustomerCart';
 
 const MenuSideBar = () => {
+  // state variables
   const [menu, setMenu] = useState(false);
   const [cart, setCart] = useState(false);
+  // redux state variables
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
   );
+  const loggedInUserRole = useSelector(
+    (state) => state.userReducer.loggedInUserRole
+  );
+  // deduce user role and the menu items based on the role
+  let MenuItems = [];
+  if (loggedInUserRole === 'sfsu') MenuItems = SFSUMenuItems;
+  else if (loggedInUserRole === 'owner') MenuItems = OwnerMenuItems;
+  else if (loggedInUserRole === 'driver') MenuItems = DriverMenuItems;
+  else MenuItems = GuestMenuItems;
+
   const showMenu = () => setMenu(!menu);
   const showCart = () => setCart(!cart);
   const ref = useRef(null);
@@ -156,6 +171,7 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
+
           {MenuItems.map((item, index) => {
             return (
               <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>

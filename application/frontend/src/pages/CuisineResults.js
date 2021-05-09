@@ -41,7 +41,7 @@ const CuisineResults = () => {
 
         <Link to="/" style={{ textDecoration: 'none' }}>
           <h5 className="text-center">
-            <i class="fas fa-chevron-left h6 "></i> Back
+            <i className="fas fa-chevron-left h6 "></i> Back
           </h5>
         </Link>
         <div style={{ width: '80vw' }}>

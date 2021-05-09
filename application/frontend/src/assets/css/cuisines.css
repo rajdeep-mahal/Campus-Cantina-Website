@@ -29,6 +29,9 @@
   text-decoration: none;
   color: var(--secondary-color2);
 }
+.link-button:focus {
+  outline: none !important;
+}
 .chinese-cuisine {
   margin-top: -10px;
   width: 50px;

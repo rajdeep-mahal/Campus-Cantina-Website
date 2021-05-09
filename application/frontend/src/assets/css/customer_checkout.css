@@ -1,32 +1,33 @@
-.total_box{
-    border-color: var(--primary-color) !important;
-    margin-left: 20px;
-    border-width: medium !important;
-    right: 15px;
-    top: 50%;
-    transform: translate(0%, -50%);
-    
+.primary-color {
+  color: var(--primary-color);
+}
+
+.total-box {
+  border: solid 3px var(--primary-color);
+  width: 300px;
+  margin: auto;
 }
 /* height of text field for delivery instructions and special instructions to chef*/
-.text_field {
-    height: 100px;
+.text-field {
+  height: 100px;
 }
 /* confirm order button background color */
-.confirm_order{
-    background-color: var(--primary-color) !important;
+.confirm-order {
+  background-color: var(--primary-color);
 }
 
 /* total box opac background */
-.total_bg{
-    background-color: var(--primary-color-opac) !important;
+.total-bg {
+  background-color: var(--primary-color-opac);
 }
-/* line divders turned to purple */
-.checkout_borders{
-    border-color: var(--primary-color) !important;
+/* line divider turned to purple */
+.checkout-border {
+  border-color: var(--primary-color) !important;
 }
-/*resizes texts of page except for 'Checkout' text*/
-@media (max-width: 650px){
-    .text{
-        font-size: 0.5rem;
-    }
+
+/* for specific widths */
+@media (max-width: 992px) {
+  .total-box {
+    min-width: 300px;
+  }
 }

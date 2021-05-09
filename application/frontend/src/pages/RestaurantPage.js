@@ -145,7 +145,7 @@ const RestaurantPage = () => {
                     <tr>
                       <td className="align-middle primaryTextPage">
                         <p>
-                          $1.99 <br /> delivery fee
+                          $0.00 <br /> delivery fee
                         </p>
                       </td>
                       <td className="align-middle p-3 primaryTextPage">
@@ -360,6 +360,7 @@ const RestaurantPage = () => {
                           itemCount: itemCount,
                           itemComments: itemComments,
                           itemCalculatedPrice: itemCalculatedPrice,
+                          itemRestaurantName: clickedRestaurantName,
                         };
                         tempCartItems.push(cartItem);
                         dispatch(setCartItems(tempCartItems));

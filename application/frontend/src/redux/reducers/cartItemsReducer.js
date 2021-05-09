@@ -3,6 +3,7 @@ const initState = {
   cartItemsTotalCount: 0,
   cartTotal: 0.0,
   cartDeliveryInstructions: '',
+  checkoutDeliveryAddress: '',
 };
 
 const cartItemsReducer = (state = initState, action) => {
@@ -26,6 +27,11 @@ const cartItemsReducer = (state = initState, action) => {
       return {
         ...state,
         cartDeliveryInstructions: action.cartDeliveryInstructions,
+      };
+    case 'CHECKOUT_DELIVERY_ADDRESS_SET':
+      return {
+        ...state,
+        checkoutDeliveryAddress: action.checkoutDeliveryAddress,
       };
     default:
       return state;

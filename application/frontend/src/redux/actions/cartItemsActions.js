@@ -17,3 +17,8 @@ export const setCartDeliveryInstructions = (cartDeliveryInstructions) => ({
   type: 'CART_DELIVERY_INSTRUCTIONS_SET',
   cartDeliveryInstructions,
 });
+
+export const setCheckoutDeliveryAddress = (checkoutDeliveryAddress) => ({
+  type: 'CART_DELIVERY_INSTRUCTIONS_SET',
+  checkoutDeliveryAddress,
+});

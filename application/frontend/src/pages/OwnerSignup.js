@@ -48,11 +48,12 @@ const OwnerSignup = () => {
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
-          <h2 className="mb-3 font-weight-bold primary-color text-center">
+          <h2 className="font-weight-bold primary-color text-center">
             Restaurant Owner <br />
             Sign Up
           </h2>
-          <label htmlFor="ownerName" className="login-label">
+          <p className="mt-3 text-info text-center">All fields are Mandatory</p>
+          <label htmlFor="ownerName" className="login-label  first-label">
             Owner Name
           </label>
           <input
@@ -117,7 +118,18 @@ const OwnerSignup = () => {
             value={ownerConfirmPassword}
             onChange={(e) => dispatch(setOwnerConfirmPassword(e.target.value))}
           />
-          <br />
+          <div className="form-check mt-4 ml-1">
+            <input
+              className="form-check-input mt-2"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+              required
+            />
+            <label htmlFor="defaultCheck1 Warning" className="form-check-label">
+              I Agree to the <u>Terms & Conditions</u>
+            </label>
+          </div>
           <br />
           <a href="/">Forgot Password?</a> <br />
           <Link to="/OwnerLogin">Already Registered?</Link> <br />
@@ -127,7 +139,7 @@ const OwnerSignup = () => {
             className="login_button w-75 d-flex  justify-content-center"
             value="Register"
           >
-            Proceed to Sign Up
+            Proceed to Restaurant Registration
           </button>
         </div>
       </form>

@@ -7,21 +7,21 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: <strong>54.219.159.229 or campuscantina.com</strong>
+1. Server URL or IP: <strong>18.144.169.222 or campuscantina.com</strong>
 2. SSH username: <strong>ubuntu</strong>
 3. SSH password or key: <strong>648team04.pem</strong>
-4. Database URL or IP and port used: <strong>54.219.159.229 port 3306</strong>
+4. Database URL or IP and port used: <strong>18.144.169.222 port 3306</strong>
 5. Database username: <strong>user</strong>
 6. Database password: <strong>CampusCantina2021$</strong>
 7. Database name: <strong>campuscantina_test</strong>
-8. Instructions on how to use the above information: <strong>instructions.pdf and mysql-workbench.png, or see below</strong>
+8. Instructions on how to use the above information: <strong>see mysql-workbench.png and instructions below</strong>
 
 ## Connecting to EC2
 
 ### Set permissions for pem file (if linux/mac)
 - `sudo chmod 400 648team04.pem`
 ### Connect to instance
-- `ssh -i 648team04.pem ubuntu@54.219.159.229`
+- `ssh -i 648team04.pem ubuntu@18.144.169.222`
 ### Application folder
 - `csc-648-03-sp21-team04`
 
@@ -42,7 +42,7 @@
 ### Connection Method
 - `Standard TCP/IP over SSH`
 ### SSH Hostname
-- `54.219.159.229`
+- `18.144.169.222`
 ### SSH Username
 - `ubuntu`
 ### No SSH Password

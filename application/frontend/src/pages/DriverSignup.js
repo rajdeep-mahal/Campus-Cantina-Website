@@ -17,10 +17,11 @@ const DriverSignup = () => {
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
-          <h2 className="mb-3 font-weight-bold primary-color text-center">
+          <h2 className="font-weight-bold primary-color text-center">
             Driver Sign Up
           </h2>
-          <label htmlFor="Drivername" className="login-label">
+          <p className="mt-3 text-info text-center">All fields are Mandatory</p>
+          <label htmlFor="Drivername" className="login-label  first-label">
             Driver Name
           </label>
           <input
@@ -101,7 +102,18 @@ const DriverSignup = () => {
             required
             name="cpassword"
           />
-          <br />
+          <div className="form-check mt-4 ml-1">
+            <input
+              className="form-check-input mt-2"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+              required
+            />
+            <label htmlFor="defaultCheck1 Warning" className="form-check-label">
+              I Agree to the <u>Terms & Conditions</u>
+            </label>
+          </div>
           <br />
           <a href="/">Forgot Password?</a> <br />
           <Link to="/DriverLogin">Already Registered?</Link> <br />

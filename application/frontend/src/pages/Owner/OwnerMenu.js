@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../assets/css/about_individual.css";
 import Banner from "../../assets/img/restaurant/Restaurant_Banner.jpg";
-import Pizza from "../../assets/img/cuisines/Pizza.png";
+import { useSelector, useDispatch } from 'react-redux';
+
+/*
+Put all owner menu items in a list (react useState -> List, no need of redux).. and map through the list to display in the table.  - German
+when adding an item, it is added to the list..
+It should be automatically displayed on the page after adding
+Same is the case with Update. Menu item to be updated automatically when clicked on update in the modal
+added menu item to be sent to the backend.
+*/
 
 const OwnerMenu = () => {
-  const items = [
-    { id: "1", name: "Burger", price: "$12" },
-    { id: "2", name: "Fries", price: "$5" },
-    { id: "3", name: "Milkshake", price: "$7" },
-    { id: "4", name: "Chicken Tenders", price: "$8" },
-  ];
+
+  const dispatch = useDispatch(); //necessary?
+
+  //function to add to an array
+    const [items, setItems] = useState([]);
+    const [menuName, setMenuName] = useState("");
+    const [menuPrice, setMenuPrice] = useState("");
+    const [menuDescrip, setMenuDescrip] = useState("");
+    //const [menuUpdate, setMenuUpdate] = useState('false');
+  
+    const addItem = event => {
+      event.preventDefault();
+      setItems([
+        ...items,
+        {
+          id: items.length,
+          name: menuName,
+          price: menuPrice,
+          descrip: menuDescrip
+        }
+      ]);
+      setMenuName("");
+      setMenuPrice("");
+      setMenuDescrip("");
+    };
+
   {
     /* Renders each row for Menu Table */
   }
@@ -19,6 +47,7 @@ const OwnerMenu = () => {
         <td>{item.id}</td>
         <td>{item.name}</td>
         <td>{item.price}</td>
+        <td>{item.descrip}</td>
         <td>
           <i
             className="fas fa-pen menu-icon "
@@ -91,6 +120,7 @@ const OwnerMenu = () => {
                   <th scope="col"> Item # </th>
                   <th scope="col"> Item Name </th>
                   <th scope="col"> Price </th>
+                  <th scope="col"> Description </th>
                   <th scope="col" />
                   <th scope="col" class="text-right">
                     <i
@@ -135,7 +165,7 @@ const OwnerMenu = () => {
             </div>
             {/* Modal Body*/}
             <div class="modal-body modal-edit">
-              <form className="editItem">
+              <form className="editItem" onSubmit={addItem}>
                 <input
                   className="edit-menu-input"
                   id="redirect-input"
@@ -154,6 +184,7 @@ const OwnerMenu = () => {
                       maxlength="20"
                       required
                       class="form-control"
+                      onChange={e => setMenuName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -169,6 +200,23 @@ const OwnerMenu = () => {
                       maxlength="3"
                       required
                       class="form-control"
+                      onChange={e => setMenuPrice(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-6">
+                    <label for="Item "> Description </label>
+                  </div>
+                  <div class="col-6">
+                    <input
+                      type="text"
+                      id="itemDescip"
+                      maxlength="40"
+                      required
+                      class="form-control"
+                      onChange={e => setMenuDescrip(e.target.value)}
                     />
                   </div>
                 </div>
@@ -177,6 +225,7 @@ const OwnerMenu = () => {
                   type="submit"
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
+                  //onClick={() => dispatchEvent(setMenuUpdate(true))}
                 >
                   {" "}
                   Update{" "}
@@ -247,6 +296,23 @@ const OwnerMenu = () => {
                       required
                       class="form-control"
                       value="$12"
+                      //onChange={e => dispatch(setMenuPrice(e.target.value))}
+                    />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-6">
+                    <label for="Item "> Description </label>
+                  </div>
+                  <div class="col-6">
+                    <input
+                      type="text"
+                      id="itemDescip"
+                      maxlength="40"
+                      required
+                      class="form-control"
+                      onChange={e => setMenuDescrip(e.target.value)}
                     />
                   </div>
                 </div>

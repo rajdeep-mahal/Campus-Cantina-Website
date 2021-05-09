@@ -2,13 +2,17 @@ import React from "react";
 import restaurantcartoon from "../../assets/img/restaurant_ex.jpeg";
 //import "../../index.css";
 import "../../assets/css/index.css";
+import {useSelector} from 'react-redux';
+
 
 const OwnerProfile = () => {
+
+  const ownerName =useSelector(state => state.ownerSignupReducer.ownerName);
   return (
     <div className="container-fluid">
       <br />
       <div className="text-center">
-        <h3 className="owner-heading"> Profile </h3>
+        <h3 className="owner-heading"> Profile  {ownerName}</h3>
       </div>
       <div className="editprofile">
         {/* content header */}

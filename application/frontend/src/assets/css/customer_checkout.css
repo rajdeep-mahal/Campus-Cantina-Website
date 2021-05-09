@@ -7,10 +7,7 @@
   width: 300px;
   margin: auto;
 }
-/* height of text field for delivery instructions and special instructions to chef*/
-.text-field {
-  height: 100px;
-}
+
 /* confirm order button background color */
 .confirm-order {
   background-color: var(--primary-color);

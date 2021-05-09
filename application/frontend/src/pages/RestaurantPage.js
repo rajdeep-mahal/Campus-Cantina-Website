@@ -70,15 +70,19 @@ const RestaurantPage = () => {
   );
 
   useEffect(() => {
+    let source = axios.CancelToken.source();
     // document.title = `CC - ${clickedRestaurantName}`;
     // get all restaurants from backend
     axios
       .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
         params: { restaurantName: clickedRestaurantName },
+        cancelToken: source.token,
       })
-      .then((res) => {
-        setMenuItems(res.data);
-      });
+      .then((res) => setMenuItems(res.data))
+      .catch((err) => err);
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   // Google Map

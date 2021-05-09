@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
@@ -7,11 +7,16 @@ import {
   setCartItemsTotalCount,
   setCartTotal,
   setCartDeliveryInstructions,
-  setCheckoutDeliveryAddress,
+  // setCheckoutDeliveryAddress,
 } from '../redux/actions/cartItemsActions';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 const Checkout = () => {
   const dispatch = useDispatch();
+
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
@@ -20,9 +25,32 @@ const Checkout = () => {
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
   );
-  const checkoutDeliveryAddress = useSelector(
-    (state) => state.cartItemsReducer.checkoutDeliveryAddress
-  );
+  // const checkoutDeliveryAddress = useSelector(
+  //   (state) => state.cartItemsReducer.checkoutDeliveryAddress
+  // );
+
+  const [deliveryAddress, setDeliveryAddress] = useState('');
+  // const [latLngtoSearch, setLatLngtoSearch] = useState({
+  //   lat: null,
+  //   lng: null,
+  // });
+  // const resultsSFSU = geocodeByAddress(
+  //   'San Francisco State University, 1600 Holloway Avenue, San Francisco, CA, USA'
+  // );
+  // setLatLngtoSearch(getLatLng(resultsSFSU[0]));
+  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+
+  // for selecting address
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    console.log(results);
+    const latlng = await getLatLng(results[0]);
+    console.log(latlng);
+    setDeliveryAddress(value);
+    setCoordinates(latlng);
+  };
+  const [value, setValue] = useState(null);
+
   return (
     <>
       {!cartItemsTotalCount > 0 ? (
@@ -38,13 +66,61 @@ const Checkout = () => {
                 <label htmlFor="inputAddress" className="font-weight-bold">
                   Delivery Address:
                 </label>
-                <input
+                <br />
+                {/* <input
                   type="address"
                   className="form-control border-warning "
                   id="inputAddress"
                   aria-describedby="addressHelp"
                   placeholder="Dorm #323, SFSU, SF"
-                />
+                /> */}
+
+                <PlacesAutocomplete
+                  value={deliveryAddress}
+                  onChange={setDeliveryAddress}
+                  searchOptions={{
+                    location: { lat: 37.7241492, lng: -122.4799405 },
+                    radius: 4000,
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' },
+                  }}
+                  onSelect={handleSelect}
+                >
+                  {({
+                    getInputProps,
+                    suggestions,
+                    getSuggestionItemProps,
+                    loading,
+                  }) => (
+                    <div>
+                      <p>Lat: {coordinates.lat}</p>
+                      <p>Lng: {coordinates.lng}</p>
+                      <input
+                        {...getInputProps({
+                          placeholder: 'Starting typing your address...',
+                          className: 'location-search-input',
+                        })}
+                      />
+                      <div className="autocomplete-dropdown-container">
+                        {loading ? <div>...loading</div> : null}
+                        {suggestions.map((suggestion, i) => {
+                          const style = {
+                            backgroundColor: suggestion.active
+                              ? '#41b6e6'
+                              : '#fff',
+                          };
+                          return (
+                            <div
+                              {...getSuggestionItemProps(suggestion, { style })}
+                            >
+                              {suggestion.description}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </PlacesAutocomplete>
               </div>
               <table className="table checkout-border border-bottom">
                 <thead className="bg-warning">

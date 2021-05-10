@@ -1,67 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+//import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import "../../assets/css/about_individual.css";
 import Banner from "../../assets/img/restaurant/Restaurant_Banner.jpg";
-import { useSelector, useDispatch } from 'react-redux';
-
-/*
-Put all owner menu items in a list (react useState -> List, no need of redux).. and map through the list to display in the table.  - German
-when adding an item, it is added to the list..
-It should be automatically displayed on the page after adding
-Same is the case with Update. Menu item to be updated automatically when clicked on update in the modal
-added menu item to be sent to the backend.
-*/
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890", 3);
 
 const OwnerMenu = () => {
+  const [menuItemName, setMenuItemName] = useState("");
+  const [menuItemDescription, setMenuItemDescription] = useState("");
+  const [menuItemPrice, setMenuItemPrice] = useState("");
+  const [menuItems, setMenuItems] = useState([]);
+  const [deleteMenuItemID, setDeleteMenuItemID] = useState("");
+  let ID = nanoid();
 
-  const dispatch = useDispatch(); //necessary?
+  //const [showAlert, setShowAlert] = useState(false);
 
-  //function to add to an array
-    const [items, setItems] = useState([]);
-    const [menuName, setMenuName] = useState("");
-    const [menuPrice, setMenuPrice] = useState("");
-    const [menuDescrip, setMenuDescrip] = useState("");
-    //const [menuUpdate, setMenuUpdate] = useState('false');
-  
-    const addItem = event => {
-      event.preventDefault();
-      setItems([
-        ...items,
-        {
-          id: items.length,
-          name: menuName,
-          price: menuPrice,
-          descrip: menuDescrip
-        }
-      ]);
-      setMenuName("");
-      setMenuPrice("");
-      setMenuDescrip("");
-    };
-
-  {
-    /* Renders each row for Menu Table */
-  }
-  const renderMenuItem = (item, index) => {
-    return (
-      <tr key={index}>
-        <td>{item.id}</td>
-        <td>{item.name}</td>
-        <td>{item.price}</td>
-        <td>{item.descrip}</td>
-        <td>
-          <i
-            className="fas fa-pen menu-icon "
-            aria-hidden="true"
-            data-toggle="modal"
-            data-target="#editItem"
-          />
-        </td>
-        <td>
-          <i className="fas fa-trash menu-icon" aria-hidden="true" />
-        </td>
-      </tr>
-    );
+  //Deletes items from DB
+  const handleDeleteMenuItem = (event) => {
+    event.preventDefault();
+    axios
+      .delete("http://localhost:3001/api/restaurant-menu/delete-menu-item", {
+        params: { itemID: deleteMenuItemID },
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
+
+  //Adds items to DB
+  const handleAddMenuItem = (event) => {
+    event.preventDefault();
+    if (
+      menuItemName != "" &&
+      menuItemDescription != "" &&
+      menuItemPrice != ""
+    ) {
+      axios
+        .post("http://localhost:3001/api/restaurant-menu/add-menu-item", {
+          itemID: ID,
+          restaurantID: 5,
+          itemName: menuItemName,
+          itemDescription: menuItemDescription,
+          itemPrice: menuItemPrice,
+          restaurantName: "Taco Shell",
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  };
+
+  //Renders items from DB
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/restaurant-menu/restaurant-menu-items", {
+        params: { restaurantName: "Taco Shell" },
+      })
+      .then((res) => {
+        setMenuItems(res.data);
+      });
+  }, []);
 
   return (
     <div className="container-fluid ">
@@ -117,13 +116,13 @@ const OwnerMenu = () => {
               {/* Table Header */}
               <thead class="table-header-menu">
                 <tr>
-                  <th scope="col"> Item # </th>
                   <th scope="col"> Item Name </th>
                   <th scope="col"> Price </th>
                   <th scope="col"> Description </th>
                   <th scope="col" />
                   <th scope="col" class="text-right">
                     <i
+                      // ADD ITEM ICON
                       className="fas fa-plus menu-icon-plus"
                       data-toggle="modal"
                       aria-hidden="true"
@@ -133,7 +132,40 @@ const OwnerMenu = () => {
                 </tr>
               </thead>
               {/* Table Body */}
-              <tbody>{items.map(renderMenuItem)}</tbody>
+              {menuItems.length > 0 ? (
+                <>
+                  {menuItems.map((items, index) => (
+                    <tr key={index}>
+                      <td>{items.Name}</td>
+                      <td>${items.Price}</td>
+                      <td>{items.Description}</td>
+                      <td>
+                        <i
+                          className="fas fa-pen menu-icon "
+                          aria-hidden="true"
+                          data-toggle="modal"
+                          data-target="#editItem"
+                        />
+                      </td>
+                      <td>
+                        <i
+                          //DELETE ITEM ICON
+                          className="fas fa-trash menu-icon"
+                          aria-hidden="true"
+                          data-toggle="modal"
+                          data-target="#deleteItem"
+                          onClick={(e) => {
+                            setDeleteMenuItemID(items.ID);
+                            handleDeleteMenuItem(e);
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                <></>
+              )}
             </table>
           </div>
         </div>
@@ -165,7 +197,7 @@ const OwnerMenu = () => {
             </div>
             {/* Modal Body*/}
             <div class="modal-body modal-edit">
-              <form className="editItem" onSubmit={addItem}>
+              <form className="editItem">
                 <input
                   className="edit-menu-input"
                   id="redirect-input"
@@ -184,7 +216,8 @@ const OwnerMenu = () => {
                       maxlength="20"
                       required
                       class="form-control"
-                      onChange={e => setMenuName(e.target.value)}
+                      value={menuItemName}
+                      onChange={(e) => setMenuItemName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -200,7 +233,8 @@ const OwnerMenu = () => {
                       maxlength="3"
                       required
                       class="form-control"
-                      onChange={e => setMenuPrice(e.target.value)}
+                      value={menuItemPrice}
+                      onChange={(e) => setMenuItemPrice(e.target.value)}
                     />
                   </div>
                 </div>
@@ -216,7 +250,8 @@ const OwnerMenu = () => {
                       maxlength="40"
                       required
                       class="form-control"
-                      onChange={e => setMenuDescrip(e.target.value)}
+                      value={menuItemDescription}
+                      onChange={(e) => setMenuItemDescription(e.target.value)}
                     />
                   </div>
                 </div>
@@ -225,7 +260,7 @@ const OwnerMenu = () => {
                   type="submit"
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
-                  //onClick={() => dispatchEvent(setMenuUpdate(true))}
+                  onClick={handleAddMenuItem}
                 >
                   {" "}
                   Update{" "}
@@ -296,7 +331,6 @@ const OwnerMenu = () => {
                       required
                       class="form-control"
                       value="$12"
-                      //onChange={e => dispatch(setMenuPrice(e.target.value))}
                     />
                   </div>
                 </div>
@@ -312,7 +346,6 @@ const OwnerMenu = () => {
                       maxlength="40"
                       required
                       class="form-control"
-                      onChange={e => setMenuDescrip(e.target.value)}
                     />
                   </div>
                 </div>
@@ -324,6 +357,46 @@ const OwnerMenu = () => {
                 >
                   {" "}
                   Update{" "}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Delete Item Modal */}
+      <div
+        class="modal fade"
+        id="deleteItem"
+        role="dialog"
+        aria-labelledby="deleteItemLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              {" "}
+              <strong> Delete Item </strong>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body modal-edit">
+              <form className="deleteItem">
+                <span> Are you sure? </span>
+                <br />
+                <button
+                  type="submit"
+                  class="btn save-btn btn-lg btn-block"
+                  value="Submit"
+                  onClick={handleDeleteMenuItem}
+                >
+                  {" "}
+                  Yes{" "}
                 </button>
               </form>
             </div>

@@ -198,7 +198,7 @@ const Checkout = () => {
                       <p>Lng: {coordinates.lng}</p> */}
                       <input
                         {...getInputProps({
-                          placeholder: 'Starting typing your address...',
+                          placeholder: 'Start typing your current address...',
                           className: 'location-search-input',
                         })}
                       />
@@ -224,6 +224,7 @@ const Checkout = () => {
                   )}
                 </PlacesAutocomplete>
               </div>
+
               <table className="table checkout-border border-bottom">
                 <thead className="bg-warning">
                   <tr>
@@ -255,17 +256,6 @@ const Checkout = () => {
                   ))}
                 </tbody>
               </table>
-              <p className="text-muted my-4 mx-auto">
-                *Please pay total amount to delivery driver in cash*
-              </p>
-              <p className="text-center"> Delivery Instructions:</p>
-              <textarea
-                className="mx-4 mb-3 w-50"
-                value={cartDeliveryInstructions}
-                onChange={(e) => {
-                  dispatch(setCartDeliveryInstructions(e.target.value));
-                }}
-              />
             </div>
             {/* total box */}
             <div className="card col-md-3 total-box">
@@ -284,7 +274,7 @@ const Checkout = () => {
                   <span className="float-left">Delivery Fee</span>
                   <span className="float-right">&#36;0.00</span>
                 </li>
-                <li className="list-group-item pt-4 total-bg font-weight-bold h5">
+                <li className="list-group-item py-2 total-bg font-weight-bold h5">
                   <span className="float-left ">Total</span>
                   <span className="float-right">
                     &#36;
@@ -294,9 +284,20 @@ const Checkout = () => {
                     ).toFixed(2)}
                   </span>
                 </li>
+                <p className="text-muted mt-2 text-center font-italic h6">
+                  **Please pay total amount to delivery driver in cash**
+                </p>
+                <p className="text-center"> Delivery Instructions:</p>
+                <textarea
+                  className="mb-3 w-100"
+                  value={cartDeliveryInstructions}
+                  onChange={(e) => {
+                    dispatch(setCartDeliveryInstructions(e.target.value));
+                  }}
+                />
                 <button
                   type="button"
-                  className="btn confirm-order m-3 btn-block mx-auto text-white col-lg-8"
+                  className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
                   data-toggle="modal"
                   data-target="#confirmorder"
                   onClick={(e) => {

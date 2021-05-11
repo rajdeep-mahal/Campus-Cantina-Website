@@ -5,7 +5,10 @@
 .total-box {
   border: solid 3px var(--primary-color);
   width: 300px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-top: 100px;
 }
 
 /* confirm order button background color */

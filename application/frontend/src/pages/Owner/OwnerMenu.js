@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 //import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import "../../assets/css/about_individual.css";
-import Banner from "../../assets/img/restaurant/Restaurant_Banner.jpg";
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890", 3);
+import axios from 'axios';
+import '../../assets/css/about_individual.css';
+import Banner from '../../assets/img/restaurant/Restaurant_Banner.jpg';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const OwnerMenu = () => {
-  const [menuItemName, setMenuItemName] = useState("");
-  const [menuItemDescription, setMenuItemDescription] = useState("");
-  const [menuItemPrice, setMenuItemPrice] = useState("");
+  const [menuItemName, setMenuItemName] = useState('');
+  const [menuItemDescription, setMenuItemDescription] = useState('');
+  const [menuItemPrice, setMenuItemPrice] = useState('');
   const [menuItems, setMenuItems] = useState([]);
-  const [deleteMenuItemID, setDeleteMenuItemID] = useState("");
+  const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
+  const [loadData, setLoadData] = useState(false);
   let ID = nanoid();
 
   //const [showAlert, setShowAlert] = useState(false);
@@ -20,11 +21,12 @@ const OwnerMenu = () => {
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
     axios
-      .delete("http://localhost:3001/api/restaurant-menu/delete-menu-item", {
+      .delete('http://localhost:3001/api/restaurant-menu/delete-menu-item', {
         params: { itemID: deleteMenuItemID },
       })
       .then((res) => {
         console.log(res);
+        setLoadData(true);
       });
   };
 
@@ -32,21 +34,25 @@ const OwnerMenu = () => {
   const handleAddMenuItem = (event) => {
     event.preventDefault();
     if (
-      menuItemName != "" &&
-      menuItemDescription != "" &&
-      menuItemPrice != ""
+      menuItemName != '' &&
+      menuItemDescription != '' &&
+      menuItemPrice != ''
     ) {
       axios
-        .post("http://localhost:3001/api/restaurant-menu/add-menu-item", {
+        .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
           itemID: ID,
           restaurantID: 5,
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
-          restaurantName: "Taco Shell",
+          restaurantName: 'Taco Shell',
         })
         .then((res) => {
           console.log(res);
+          setLoadData(true);
+          setMenuItemName('');
+          setMenuItemDescription('');
+          setMenuItemPrice('');
         });
     }
   };
@@ -54,13 +60,14 @@ const OwnerMenu = () => {
   //Renders items from DB
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/restaurant-menu/restaurant-menu-items", {
-        params: { restaurantName: "Taco Shell" },
+      .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
+        params: { restaurantName: 'Taco Shell' },
       })
       .then((res) => {
         setMenuItems(res.data);
+        setLoadData(false);
       });
-  }, []);
+  }, [loadData]);
 
   return (
     <div className="container-fluid ">
@@ -175,7 +182,6 @@ const OwnerMenu = () => {
       <div
         class="modal fade"
         id="addItem"
-        data-backdrop="static"
         role="dialog"
         aria-labelledby="addItemLabel"
         aria-hidden="true"
@@ -184,7 +190,7 @@ const OwnerMenu = () => {
           <div class="modal-content">
             {/* Modal Header */}
             <div class="modal-header">
-              {" "}
+              {' '}
               Add Menu Item
               <button
                 type="button"
@@ -260,10 +266,10 @@ const OwnerMenu = () => {
                   type="submit"
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
+                  data-dismiss="modal"
                   onClick={handleAddMenuItem}
                 >
-                  {" "}
-                  Update{" "}
+                  Add
                 </button>
               </form>
             </div>
@@ -282,7 +288,7 @@ const OwnerMenu = () => {
           <div class="modal-content">
             {/* Modal Header */}
             <div class="modal-header">
-              {" "}
+              {' '}
               <strong> Edit Item</strong>
               <button
                 type="button"
@@ -354,9 +360,10 @@ const OwnerMenu = () => {
                   type="submit"
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
+                  data-dismiss="modal"
                 >
-                  {" "}
-                  Update{" "}
+                  {' '}
+                  Update{' '}
                 </button>
               </form>
             </div>
@@ -374,7 +381,6 @@ const OwnerMenu = () => {
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              {" "}
               <strong> Delete Item </strong>
               <button
                 type="button"
@@ -393,10 +399,10 @@ const OwnerMenu = () => {
                   type="submit"
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
+                  data-dismiss="modal"
                   onClick={handleDeleteMenuItem}
                 >
-                  {" "}
-                  Yes{" "}
+                  Yes
                 </button>
               </form>
             </div>

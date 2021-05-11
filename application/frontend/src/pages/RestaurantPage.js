@@ -65,9 +65,6 @@ const RestaurantPage = () => {
     }, 3000);
   }
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
-  const cartItemsTotalCount = useSelector(
-    (state) => state.cartItemsReducer.cartItemsTotalCount
-  );
 
   useEffect(() => {
     let source = axios.CancelToken.source();
@@ -358,12 +355,16 @@ const RestaurantPage = () => {
                       data-dismiss="modal"
                       onClick={(e) => {
                         let tempCartItems = cartItems;
+                        let itemCalculatedPriceorPrice = 0.0;
+                        itemCalculatedPrice === 0.0
+                          ? (itemCalculatedPriceorPrice = item.Price)
+                          : (itemCalculatedPriceorPrice = itemCalculatedPrice);
                         const cartItem = {
                           itemName: item.Name,
                           itemPrice: item.Price,
                           itemCount: itemCount,
                           itemComments: itemComments,
-                          itemCalculatedPrice: itemCalculatedPrice,
+                          itemCalculatedPrice: itemCalculatedPriceorPrice,
                           itemRestaurantName: clickedRestaurantName,
                         };
                         tempCartItems.push(cartItem);
@@ -389,7 +390,7 @@ const RestaurantPage = () => {
                           element.itemCalculatedPrice === 0.0
                             ? (tempPrice = element.itemPrice)
                             : (tempPrice = element.itemCalculatedPrice);
-                          console.log(tempPrice);
+                          // console.log(tempPrice);
                           tempCartTotal = (
                             parseFloat(tempCartTotal) + parseFloat(tempPrice)
                           ).toFixed(2);

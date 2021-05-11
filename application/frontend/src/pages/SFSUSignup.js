@@ -6,7 +6,6 @@ import axios from 'axios';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
 
-
 const SFSUSignup = () => {
 
   const [customerName, setCustomerName] = useState('');
@@ -15,6 +14,26 @@ const SFSUSignup = () => {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
+
+  const onSubmitSFSUSignup = (event) => {
+    event.preventDefault();
+
+    let newcustomerID = nanoid();
+    axios
+        .post('http://localhost:3001/api/sfsucustomer/customer-signup', {
+          customerID: newcustomerID ,
+          customerName: customerName,
+          customerAddress: customerAddress,
+          customerType: customerType,
+          customerPhone: customerPhone,
+          customerEmail: customerEmail,
+          customerPassword: customerPassword
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    alert('Thank you for Registering');
+  };
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

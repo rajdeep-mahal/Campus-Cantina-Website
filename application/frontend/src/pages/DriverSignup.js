@@ -11,12 +11,32 @@ const DriverSignup = () => {
   const restaurantsList = useSelector(
       (state) => state.searchReducer.allRestaurants
   );
+
   const [driverName, setDriverName] = useState('');
   const [driverContactNumber, setDriverContactNumber] = useState('');
   const [driverEmail, setDriverEmail] = useState('');
   const [driverPassword, setDriverPassword] = useState('');
   const [driverRestaurant, setDriverRestaurant] = useState('');
-  
+
+  const onSubmitDriverSignup = (event) => {
+    event.preventDefault();
+
+    let newDriverID = nanoid();
+    axios
+        .post('http://localhost:3001/api/driver/driver-signup', {
+          driverID: newDriverID ,
+          driverName: driverName,
+          driverPhone: driverContactNumber,
+          driverEmail: driverEmail,
+          driverPassword: driverPassword,
+          driverRestaurant: driverRestaurant,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    alert('Thank you for Registering');
+  };
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form

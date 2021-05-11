@@ -20,6 +20,7 @@ const Checkout = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  // redux items
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
@@ -31,8 +32,11 @@ const Checkout = () => {
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
   );
+
+  // local state variables
   const [deliveryAddress, setDeliveryAddress] = useState('');
   // const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+
   // condition to show or hide the modal
   const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -42,7 +46,7 @@ const Checkout = () => {
     }, 3000);
   }
 
-  // for selecting address
+  // for selecting address from the list populated
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     // console.log(results);
@@ -57,37 +61,36 @@ const Checkout = () => {
     const cartRestaurantsList = [
       ...new Set(cartItems.map((item) => item.itemRestaurantName)),
     ];
-    // console.log(cartRestaurantsList.length);
-    console.log(cartRestaurantsList);
     const filteredCartItems = [];
+    // if ordering from multiple restaurants
     if (cartRestaurantsList.length > 1) {
       for (let i = 0; i < cartRestaurantsList.length; i++) {
         const list = cartItems.filter(
           (cartItem) => cartItem.itemRestaurantName === cartRestaurantsList[i]
         );
-        // console.log(list);
         filteredCartItems.push(list);
       }
-      console.log(filteredCartItems);
+      //  Common order id
+      let ID1 = nanoid();
       for (let i = 0; i < filteredCartItems.length; i++) {
+        // Unique order id for each restaurant ordered from
         let ID = nanoid();
-        // get restaurant Name, restaurant ID & restaurant Address
+        // get current restaurant for  restaurant Name, restaurant ID & restaurant Address
         const currentRestaurant = restaurantsList.filter(
           (restaurant) =>
             restaurant.Name == filteredCartItems[i][0].itemRestaurantName
         );
-        console.log(currentRestaurant[0]);
         axios
           .post('http://localhost:3001/api/order/place-order', {
             orderID: ID,
-            orderSubID: i,
+            orderSubID: ID1,
             restaurantID: currentRestaurant[0].ID,
             restaurantName: currentRestaurant[0].Name,
             restaurantAddress: currentRestaurant[0].Address,
             customerID: 4,
             customerName: 'test',
             deliveryLocation: deliveryAddress,
-            orderContents: filteredCartItems[i],
+            orderContents: JSON.stringify(filteredCartItems[i]),
             tip: 0.0,
             deliveryFee: 0.0,
             serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
@@ -103,36 +106,37 @@ const Checkout = () => {
           });
       }
     }
-
-    // let ID = nanoid();
-    // axios
-    //   .post('http://localhost:3001/api/order/place-order', {
-    //     orderID: ID,
-    //     restaurantID: 5,
-    //     restaurantName: 'ddd',
-    //     restaurantAddress: 'ddd',
-    //     customerID: 4,
-    //     customerName: 'ddd',
-    //     deliveryLocation: 'ddd',
-    //     orderContents: 'ddd',
-    //     tip: 2.77,
-    //     deliveryFee: 2.77,
-    //     serviceFee: 2.77,
-    //     total: 2.77,
-    //     deliveryETA: 'ddd',
-    //     deliveryInstructions: 'ddd',
-    //     driverID: 10,
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     // // set back to initial state
-    //     // dispatch(setCartItems([]));
-    //     // dispatch(setCartItemsTotalCount(0));
-    //     // dispatch(setCartTotal(0.0));
-    //     // dispatch(setCartDeliveryInstructions(''));
-    //     // setDeliveryAddress('');
-    //     history.push('/');
-    //   });
+    // if ordering from single restaurant
+    else {
+      let ID = nanoid();
+      const currentRestaurant = restaurantsList.filter(
+        (restaurant) => restaurant.Name == cartRestaurantsList[0]
+      );
+      axios
+        .post('http://localhost:3001/api/order/place-order', {
+          orderID: ID,
+          orderSubID: null,
+          restaurantID: currentRestaurant[0].ID,
+          restaurantName: currentRestaurant[0].Name,
+          restaurantAddress: currentRestaurant[0].Address,
+          customerID: 4,
+          customerName: 'test',
+          deliveryLocation: deliveryAddress,
+          orderContents: JSON.stringify(cartItems),
+          tip: 0.0,
+          deliveryFee: 0.0,
+          serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
+          total: (
+            parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+          ).toFixed(2),
+          deliveryETA: 'test',
+          deliveryInstructions: cartDeliveryInstructions,
+          driverID: 5,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
   };
 
   return (
@@ -237,7 +241,9 @@ const Checkout = () => {
                       <td>
                         {item.itemName}
                         <br />
-                        <small>(Cost per unit ${item.itemPrice})</small>
+                        <small>
+                          <i>(Cost per unit ${item.itemPrice})</i>
+                        </small>
                       </td>
                       <td>{item.itemComments}</td>
                       <td>{item.itemCount}</td>

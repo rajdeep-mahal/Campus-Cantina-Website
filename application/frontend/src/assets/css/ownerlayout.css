@@ -164,14 +164,20 @@
   color: var(--primary-color);
   cursor: pointer;
 }
-.menu-icon-plus {
+.trash-icon{
+  color: rgb(211, 8, 8);
+  cursor:pointer;
+}
+.menu-icon-plus, .trash-icon {
   cursor: pointer;
 }
 .menu-icon:hover,
-.menu-icon-plus:hover {
+.menu-icon-plus:hover,
+.trash-icon:hover {
   color: var(--secondary-color);
   transition: all 0.5s ease;
 }
+
 
 .modal-edit {
   margin-left: auto;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-//import { useSelector, useDispatch } from "react-redux";
+//import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import '../../assets/css/about_individual.css';
 import Banner from '../../assets/img/restaurant/Restaurant_Banner.jpg';
@@ -15,10 +15,6 @@ const OwnerMenu = () => {
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
   
-  //const [editMenuItemID, setEditMenuItemID] = useState("");
-  //const [editItemName, setEditItemName] = useState("");
-  //const [editItemDescription, setEditItemDescription] = useState("");
-  //const [editItemPrice, setEditItemPrice] = useState("");
   //const [showAlert, setShowAlert] = useState(false);
 
     //Edits items from DB
@@ -31,11 +27,11 @@ const OwnerMenu = () => {
       ) {
       axios
         .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', {
-          params: {
+          
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
-          itemID: editMenuItemID },
+          itemID: editMenuItemID,
         })
         .then((res) => {
           console.log(res);
@@ -195,7 +191,7 @@ const OwnerMenu = () => {
                       <td>
                         <i
                           //DELETE ITEM ICON
-                          className="fas fa-trash menu-icon"
+                          className="fas fa-trash trash-icon"
                           aria-hidden="true"
                           data-toggle="modal"
                           data-target="#deleteItem"

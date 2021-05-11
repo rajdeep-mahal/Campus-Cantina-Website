@@ -256,7 +256,8 @@ const OwnerSignupExtended = () => {
                 type="number"
                 placeholder="e.g. taco, burrito"
                 required
-                min="0"
+                min="0.00"
+                step="any"
                 name="Delivery Fee"
                 value={restaurantDeliveryFee}
                 onChange={(e) => setRestaurantDeliveryFee(e.target.value)}

@@ -28,7 +28,7 @@ import {
   setCartItems,
   setCartItemsTotalCount,
   setCartTotal,
-  setCartDeliveryInstructions,
+  setCartDeliveryFee,
 } from '../redux/actions/cartItemsActions';
 // import ReactDOM from 'react-dom';
 
@@ -396,6 +396,32 @@ const RestaurantPage = () => {
                           ).toFixed(2);
                         });
                         dispatch(setCartTotal(tempCartTotal));
+                        // set delivery fee in the cart
+                        const cartRestaurantsList = [
+                          ...new Set(
+                            cartItems.map((item) => item.itemRestaurantName)
+                          ),
+                        ];
+                        let tempDeliveryFee = 0.0;
+                        let filteredCartRestaurants = [];
+                        for (let i = 0; i < cartRestaurantsList.length; i++) {
+                          const tempCurrentRestaurant = restaurantsList.filter(
+                            (restaurant) =>
+                              restaurant.Name == cartRestaurantsList[i]
+                          );
+                          filteredCartRestaurants.push(tempCurrentRestaurant);
+                        }
+                        for (
+                          let i = 0;
+                          i < filteredCartRestaurants.length;
+                          i++
+                        ) {
+                          tempDeliveryFee +=
+                            filteredCartRestaurants[i][0].Delivery_Fee;
+                        }
+                        dispatch(
+                          setCartDeliveryFee(tempDeliveryFee.toFixed(2))
+                        );
                       }}
                     >
                       Add to Cart

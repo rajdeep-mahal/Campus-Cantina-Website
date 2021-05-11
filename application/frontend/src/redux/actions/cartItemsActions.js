@@ -17,3 +17,8 @@ export const setCartDeliveryInstructions = (cartDeliveryInstructions) => ({
   type: 'CART_DELIVERY_INSTRUCTIONS_SET',
   cartDeliveryInstructions,
 });
+
+export const setCartDeliveryFee = (cartDeliveryFee) => ({
+  type: 'CART_DELIVERY_FEE_SET',
+  cartDeliveryFee,
+});

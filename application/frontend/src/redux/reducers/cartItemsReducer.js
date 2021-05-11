@@ -3,6 +3,7 @@ const initState = {
   cartItemsTotalCount: 0,
   cartTotal: 0.0,
   cartDeliveryInstructions: '',
+  cartDeliveryFee: 0.0,
 };
 
 const cartItemsReducer = (state = initState, action) => {
@@ -26,6 +27,11 @@ const cartItemsReducer = (state = initState, action) => {
       return {
         ...state,
         cartDeliveryInstructions: action.cartDeliveryInstructions,
+      };
+    case 'CART_DELIVERY_FEE_SET':
+      return {
+        ...state,
+        cartDeliveryFee: action.cartDeliveryFee,
       };
     default:
       return state;

@@ -7,38 +7,39 @@ import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
 
 const OwnerMenu = () => {
+  const [menuItems, setMenuItems] = useState([]);
   const [menuItemName, setMenuItemName] = useState('');
   const [menuItemDescription, setMenuItemDescription] = useState('');
   const [menuItemPrice, setMenuItemPrice] = useState('');
-  const [menuItems, setMenuItems] = useState([]);
+  const [editItemName, setEditItemName] = useState('');
+  const [editItemDescription, setEditItemDescription] = useState('');
+  const [editItemPrice, setEditItemPrice] = useState('');
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
   
-  //const [showAlert, setShowAlert] = useState(false);
-
     //Edits items from DB
     const handleEditMenuItem = (event) => {
       event.preventDefault();
       if (
-        menuItemName != '' &&
-        menuItemDescription != '' &&
-        menuItemPrice != ''
+        editItemName != '' &&
+        editItemDescription != '' &&
+        editItemPrice != ''
       ) {
       axios
         .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', {
           
-          itemName: menuItemName,
-          itemDescription: menuItemDescription,
-          itemPrice: menuItemPrice,
+          itemName: editItemName,
+          itemDescription: editItemDescription,
+          itemPrice: editItemPrice,
           itemID: editMenuItemID,
         })
         .then((res) => {
           console.log(res);
           setLoadData(true);
-          setMenuItemName('');
-          setMenuItemPrice('');
-          setMenuItemDescription('');
+          setEditItemName('');
+          setEditItemPrice('');
+          setEditItemDescription('');
         });
       }
     };
@@ -146,7 +147,7 @@ const OwnerMenu = () => {
           <h4 className="text-center pb-3 pt-3"> Menu </h4>
           <div class="panel-default">
             <table class="table text-center">
-              {/* Table Header */}
+              {/* Menu Table */}
               <thead class="table-header-menu">
                 <tr>
                   <th scope="col"> Item Name </th>
@@ -160,11 +161,11 @@ const OwnerMenu = () => {
                       data-toggle="modal"
                       aria-hidden="true"
                       data-target="#addItem"
+                      //onClick={(e) => handleAddMenuItem(e)}
                     ></i>
                   </th>
                 </tr>
               </thead>
-              {/* Table Body */}
               {menuItems.length > 0 ? (
                 <>
                   {menuItems.map((items, index) => (
@@ -180,24 +181,22 @@ const OwnerMenu = () => {
                           data-toggle="modal"
                           data-target="#editItem"
                           onClick={(e) => {
-                            setMenuItemName(items.Name);
-                            setMenuItemPrice(items.Price);
-                            setMenuItemDescription(items.Description);
+                            setEditItemName(items.Name);
+                            setEditItemPrice(items.Price);
+                            setEditItemDescription(items.Description);
                             setEditMenuItemID(items.ID);
-                            handleEditMenuItem(e)
                           }}
                         />
                       </td>
                       <td>
                         <i
                           //DELETE ITEM ICON
-                          className="fas fa-trash trash-icon"
+                          className="fas fa-trash menu-icon text-danger"
                           aria-hidden="true"
                           data-toggle="modal"
                           data-target="#deleteItem"
                           onClick={(e) => {
                             setDeleteMenuItemID(items.ID);
-                            handleDeleteMenuItem(e);
                           }}
                         />
                       </td>
@@ -234,9 +233,8 @@ const OwnerMenu = () => {
               </button>
             </div>
             <div class="modal-body modal-edit">
-              <form className="editItem">
+              <form>
                 <input
-                  className="edit-menu-input"
                   id="redirect-input"
                   type="hidden"
                   name="redirect"
@@ -244,7 +242,7 @@ const OwnerMenu = () => {
                 <br />
                 <div class="row">
                   <div class="col-6">
-                    <label for="Item "> Item Name </label>
+                    <label> Item Name </label>
                   </div>
                   <div class="col-6">
                     <input
@@ -261,7 +259,7 @@ const OwnerMenu = () => {
                 <br />
                 <div class="row">
                   <div class="col-6">
-                    <label for="Item "> Price </label>
+                    <label> Price </label>
                   </div>
                   <div class="col-4">
                     <input
@@ -278,7 +276,7 @@ const OwnerMenu = () => {
                 <br />
                 <div class="row">
                   <div class="col-6">
-                    <label for="Item "> Description </label>
+                    <label> Description </label>
                   </div>
                   <div class="col-6">
                     <input
@@ -317,7 +315,6 @@ const OwnerMenu = () => {
       >
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            {/* Modal Header */}
             <div class="modal-header">
               {' '}
               <strong> Edit Item</strong>
@@ -330,11 +327,9 @@ const OwnerMenu = () => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            {/* Modal Body*/}
             <div class="modal-body modal-edit">
-              <form className="editItem">
+              <form>
                 <input
-                  className="edit-menu-input"
                   id="redirect-input"
                   type="hidden"
                   name="redirect"
@@ -351,8 +346,8 @@ const OwnerMenu = () => {
                       maxlength="20"
                       required
                       class="form-control"
-                      value={menuItemName}
-                      onChange={(e) => setMenuItemName(e.target.value)}
+                      value={editItemName}
+                      onChange={(e) => setEditItemName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -368,8 +363,8 @@ const OwnerMenu = () => {
                       maxlength="3"
                       required
                       class="form-control"
-                      value={menuItemPrice}
-                      onChange={(e) => setMenuItemPrice(e.target.value)}
+                      value={editItemPrice}
+                      onChange={(e) => setEditItemPrice(e.target.value)}
                     />
                   </div>
                 </div>
@@ -385,8 +380,8 @@ const OwnerMenu = () => {
                       maxlength="40"
                       required
                       class="form-control"
-                      value={menuItemDescription}
-                      onChange={(e) => setMenuItemDescription(e.target.value)}
+                      value={editItemDescription}
+                      onChange={(e) => setEditItemDescription(e.target.value)}
                     />
                   </div>
                 </div>
@@ -424,6 +419,7 @@ const OwnerMenu = () => {
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
+
               </button>
             </div>
             <div class="modal-body modal-edit">

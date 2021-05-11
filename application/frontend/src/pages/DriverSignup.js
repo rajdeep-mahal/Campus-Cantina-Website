@@ -11,7 +11,12 @@ const DriverSignup = () => {
   const restaurantsList = useSelector(
       (state) => state.searchReducer.allRestaurants
   );
-
+  const [driverName, setDriverName] = useState('');
+  const [driverContactNumber, setDriverContactNumber] = useState('');
+  const [driverEmail, setDriverEmail] = useState('');
+  const [driverPassword, setDriverPassword] = useState('');
+  const [driverRestaurant, setDriverRestaurant] = useState('');
+  
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form

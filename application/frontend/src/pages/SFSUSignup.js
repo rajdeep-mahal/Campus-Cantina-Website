@@ -8,6 +8,14 @@ const nanoid = customAlphabet('1234567890', 3);
 
 
 const SFSUSignup = () => {
+
+  const [customerName, setCustomerName] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [customerType, setCustomerType] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerEmail, setCustomerEmail] = useState('');
+  const [customerPassword, setCustomerPassword] = useState('');
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form id="registration" className="signup-signin-form" method="POST">

@@ -1,4 +1,4 @@
-/* Endpoints needed for restaurant owners and restaurants */ 
+/* Endpoints needed for restaurant owners and restaurants */
 
 const express = require('express');
 const router = express.Router();
@@ -79,11 +79,16 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
     thumbnail +
     `',37.7301,-122.477,'` +
     banner +
-    `', 0)`; // approved status is defaulted to 0, change to 1 when approved
+    `',` +
+    0 + // approved status is defaulted to 0, change to 1 when approved
+    `,` +
+    req.body.restaurantDeliveryFee +
+    `)`;
 
   // Send restaurant query to db
   database.query(query, (err, result) => {
     if (err) throw err;
+    console.log(query);
     console.log('Uploaded restaurant info to db');
     res.send(result);
   });

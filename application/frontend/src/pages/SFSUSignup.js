@@ -36,25 +36,38 @@ const SFSUSignup = () => {
   };
 
   return (
-    <div className="login-container d-flex align-items-center justify-content-center">
-      <form id="registration" className="signup-signin-form" method="POST">
-        <div className="m-3">
-          <input id="redirect-input" type="hidden" name="redirect" />
-          <h2 className="font-weight-bold primary-color text-center">
-            Sign Up
-          </h2>
-          <p className="mt-3 text-info text-center">All fields are Mandatory</p>
-          <label htmlFor="username" className="login-label first-label">
-            Name
-          </label>
-          <input
-            id="username"
-            className="login_input-field"
-            type="text"
-            placeholder="e.g. John Doe"
-            required
-            name="Name"
-          />
+      <div className="login-container d-flex align-items-center justify-content-center">
+        <form
+            id="registration"
+            className="signup-signin-form"
+            method="POST"
+            onSubmit={onSubmitSFSUSignup}
+        >
+          <div className="m-3">
+            <input id="redirect-input" type="hidden" name="redirect" />
+            <h2 className="font-weight-bold primary-color text-center">
+              Sign Up
+            </h2>
+            <p className="mt-3 text-info text-center">All fields are Mandatory</p>
+            <label htmlFor="username" className="login-label first-label">
+              Name
+            </label>
+            <input
+                id="username"
+                className="login_input-field"
+                type="text"
+                placeholder="e.g. John Doe"
+                required
+                name="Name"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
+            />
+
+            <br/>
+            <br/>
+
+
+
           <label htmlFor="email" className="login-label">
             Email
           </label>

@@ -38,30 +38,26 @@ const DriverSignup = () => {
   };
 
   return (
-    <div className="login-container d-flex align-items-center justify-content-center">
-      <form
-        id="registration"
-        className="signup-signin-form"
-        method="POST"
-        action="/users/register"
-      >
-        <div className="m-3">
-          <input id="redirect-input" type="hidden" name="redirect" />
-          <h2 className="font-weight-bold primary-color text-center">
-            Driver Sign Up
-          </h2>
-          <p className="mt-3 text-info text-center">All fields are Mandatory</p>
-          <label htmlFor="Drivername" className="login-label  first-label">
-            Driver Name
-          </label>
-          <input
-            id="Drivername"
-            className="login_input-field"
-            type="text"
-            placeholder="e.g. Jane Doe"
-            required
-            name="Driver Name"
-          />
+      <div className="login-container d-flex align-items-center justify-content-center">
+        <form
+            id="registration"
+            className="signup-signin-form"
+            method="POST"
+            onSubmit={onSubmitDriverSignup}
+        >
+          <div className="m-3">
+            <input id="redirect-input" type="hidden" name="redirect" />
+            <h2 className="font-weight-bold primary-color text-center">
+              Driver Sign Up
+            </h2>
+            <p className="mt-3 text-info text-center">All fields are Mandatory</p>
+            <label htmlFor="Drivername" className="login-label  first-label">
+              Driver Name
+            </label>
+
+
+            
+
           <br />
           <label
             htmlFor="chooseRestaurant"

@@ -32,6 +32,9 @@ const Checkout = () => {
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
   );
+  const cartDeliveryFee = useSelector(
+    (state) => state.cartItemsReducer.cartDeliveryFee
+  );
 
   // local state variables
   const [deliveryAddress, setDeliveryAddress] = useState('');
@@ -238,7 +241,22 @@ const Checkout = () => {
                 <tbody>
                   {cartItems.map((item, i) => (
                     <tr key={i}>
-                      <th>{item.itemRestaurantName}</th>
+                      <th>
+                        {item.itemRestaurantName}
+                        <br />
+                        <small>
+                          <i>
+                            (Delivery Fee ${' '}
+                            {
+                              restaurantsList.filter(
+                                (restaurant) =>
+                                  restaurant.Name == item.itemRestaurantName
+                              )[0].Delivery_Fee
+                            }
+                            )
+                          </i>
+                        </small>
+                      </th>
                       <td>
                         {item.itemName}
                         <br />
@@ -249,8 +267,10 @@ const Checkout = () => {
                       <td>{item.itemComments}</td>
                       <td>{item.itemCount}</td>
                       <td>
-                        &#36;
-                        <span>{item.itemCalculatedPrice}</span>
+                        <b>
+                          &#36;
+                          <span>{item.itemCalculatedPrice}</span>
+                        </b>
                       </td>
                     </tr>
                   ))}
@@ -272,7 +292,7 @@ const Checkout = () => {
                 </li>
                 <li className="list-group-item">
                   <span className="float-left">Delivery Fee</span>
-                  <span className="float-right">&#36;0.00</span>
+                  <span className="float-right">&#36;{cartDeliveryFee}</span>
                 </li>
                 <li className="list-group-item py-2 total-bg font-weight-bold h5">
                   <span className="float-left ">Total</span>

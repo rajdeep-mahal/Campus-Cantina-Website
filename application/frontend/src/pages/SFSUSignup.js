@@ -3,6 +3,9 @@ import '../assets/css/login_Signup.css';
 import { Link, Redirect } from 'react-router-dom';
 
 import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
+
 
 const SFSUSignup = () => {
   return (

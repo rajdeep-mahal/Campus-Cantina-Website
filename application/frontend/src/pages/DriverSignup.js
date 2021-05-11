@@ -4,11 +4,14 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const DriverSignup = () => {
   const restaurantsList = useSelector(
-    (state) => state.searchReducer.allRestaurants
+      (state) => state.searchReducer.allRestaurants
   );
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form

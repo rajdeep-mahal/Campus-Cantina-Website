@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import {
   setCartItems,
   setCartItemsTotalCount,
   setCartTotal,
   setCartDeliveryInstructions,
-  // setCheckoutDeliveryAddress,
 } from '../redux/actions/cartItemsActions';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const Checkout = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
+  const restaurantsList = useSelector(
+    (state) => state.searchReducer.allRestaurants
+  );
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
@@ -25,31 +31,109 @@ const Checkout = () => {
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
   );
-  // const checkoutDeliveryAddress = useSelector(
-  //   (state) => state.cartItemsReducer.checkoutDeliveryAddress
-  // );
-
   const [deliveryAddress, setDeliveryAddress] = useState('');
-  // const [latLngtoSearch, setLatLngtoSearch] = useState({
-  //   lat: null,
-  //   lng: null,
-  // });
-  // const resultsSFSU = geocodeByAddress(
-  //   'San Francisco State University, 1600 Holloway Avenue, San Francisco, CA, USA'
-  // );
-  // setLatLngtoSearch(getLatLng(resultsSFSU[0]));
-  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  // const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  // condition to show or hide the modal
+  const [showModal, setShowModal] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  if (showAlert) {
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  }
 
   // for selecting address
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    console.log(results);
+    // console.log(results);
     const latlng = await getLatLng(results[0]);
-    console.log(latlng);
+    // console.log(latlng);
     setDeliveryAddress(value);
-    setCoordinates(latlng);
+    // setCoordinates(latlng);
   };
-  const [value, setValue] = useState(null);
+
+  const handleOrderCheckout = (e) => {
+    // get unique restaurants list if there are items from multiple restaurants in the cart
+    const cartRestaurantsList = [
+      ...new Set(cartItems.map((item) => item.itemRestaurantName)),
+    ];
+    // console.log(cartRestaurantsList.length);
+    console.log(cartRestaurantsList);
+    const filteredCartItems = [];
+    if (cartRestaurantsList.length > 1) {
+      for (let i = 0; i < cartRestaurantsList.length; i++) {
+        const list = cartItems.filter(
+          (cartItem) => cartItem.itemRestaurantName === cartRestaurantsList[i]
+        );
+        // console.log(list);
+        filteredCartItems.push(list);
+      }
+      console.log(filteredCartItems);
+      for (let i = 0; i < filteredCartItems.length; i++) {
+        let ID = nanoid();
+        // get restaurant Name, restaurant ID & restaurant Address
+        const currentRestaurant = restaurantsList.filter(
+          (restaurant) =>
+            restaurant.Name == filteredCartItems[i][0].itemRestaurantName
+        );
+        console.log(currentRestaurant[0]);
+        axios
+          .post('http://localhost:3001/api/order/place-order', {
+            orderID: ID,
+            orderSubID: i,
+            restaurantID: currentRestaurant[0].ID,
+            restaurantName: currentRestaurant[0].Name,
+            restaurantAddress: currentRestaurant[0].Address,
+            customerID: 4,
+            customerName: 'test',
+            deliveryLocation: deliveryAddress,
+            orderContents: filteredCartItems[i],
+            tip: 0.0,
+            deliveryFee: 0.0,
+            serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
+            total: (
+              parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+            ).toFixed(2),
+            deliveryETA: 'test',
+            deliveryInstructions: cartDeliveryInstructions,
+            driverID: 5,
+          })
+          .then((res) => {
+            console.log(res);
+          });
+      }
+    }
+
+    // let ID = nanoid();
+    // axios
+    //   .post('http://localhost:3001/api/order/place-order', {
+    //     orderID: ID,
+    //     restaurantID: 5,
+    //     restaurantName: 'ddd',
+    //     restaurantAddress: 'ddd',
+    //     customerID: 4,
+    //     customerName: 'ddd',
+    //     deliveryLocation: 'ddd',
+    //     orderContents: 'ddd',
+    //     tip: 2.77,
+    //     deliveryFee: 2.77,
+    //     serviceFee: 2.77,
+    //     total: 2.77,
+    //     deliveryETA: 'ddd',
+    //     deliveryInstructions: 'ddd',
+    //     driverID: 10,
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     // // set back to initial state
+    //     // dispatch(setCartItems([]));
+    //     // dispatch(setCartItemsTotalCount(0));
+    //     // dispatch(setCartTotal(0.0));
+    //     // dispatch(setCartDeliveryInstructions(''));
+    //     // setDeliveryAddress('');
+    //     history.push('/');
+    //   });
+  };
 
   return (
     <>
@@ -62,28 +146,41 @@ const Checkout = () => {
           </div>
           <div className="row">
             <div className="col-md-9 mx-auto">
-              <div className="form-group mx-auto w-50 mb-4">
-                <label htmlFor="inputAddress" className="font-weight-bold">
+              <div className="form-group w-75 mx-auto mb-4">
+                {showAlert ? (
+                  <div
+                    className="text-center mt-2 alert alert-success alert-dismissible fade show"
+                    role="alert"
+                  >
+                    Please enter Delivery Address to continue
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                ) : (
+                  <> </>
+                )}
+                <label
+                  htmlFor="inputAddress"
+                  className="float-left font-weight-bold"
+                >
                   Delivery Address:
                 </label>
                 <br />
-                {/* <input
-                  type="address"
-                  className="form-control border-warning "
-                  id="inputAddress"
-                  aria-describedby="addressHelp"
-                  placeholder="Dorm #323, SFSU, SF"
-                /> */}
-
                 <PlacesAutocomplete
                   value={deliveryAddress}
                   onChange={setDeliveryAddress}
-                  searchOptions={{
-                    location: { lat: 37.7241492, lng: -122.4799405 },
-                    radius: 4000,
-                    types: ['address'],
-                    componentRestrictions: { country: 'us' },
-                  }}
+                  // searchOptions={{
+                  //   location: { lat: 37.7241492, lng: -122.4799405 },
+                  //   radius: 4000,
+                  //   types: ['address'],
+                  //   componentRestrictions: { country: 'us' },
+                  // }}
                   onSelect={handleSelect}
                 >
                   {({
@@ -93,8 +190,8 @@ const Checkout = () => {
                     loading,
                   }) => (
                     <div>
-                      <p>Lat: {coordinates.lat}</p>
-                      <p>Lng: {coordinates.lng}</p>
+                      {/* <p>Lat: {coordinates.lat}</p>
+                      <p>Lng: {coordinates.lng}</p> */}
                       <input
                         {...getInputProps({
                           placeholder: 'Starting typing your address...',
@@ -112,6 +209,7 @@ const Checkout = () => {
                           return (
                             <div
                               {...getSuggestionItemProps(suggestion, { style })}
+                              key={i}
                             >
                               {suggestion.description}
                             </div>
@@ -136,16 +234,16 @@ const Checkout = () => {
                   {cartItems.map((item, i) => (
                     <tr key={i}>
                       <th>{item.itemRestaurantName}</th>
-                      <td>{item.itemName}</td>
+                      <td>
+                        {item.itemName}
+                        <br />
+                        <small>(Cost per unit ${item.itemPrice})</small>
+                      </td>
                       <td>{item.itemComments}</td>
                       <td>{item.itemCount}</td>
                       <td>
                         &#36;
-                        {item.itemCalculatedPrice === 0.0 ? (
-                          <span>{item.itemPrice}</span>
-                        ) : (
-                          <span>{item.itemCalculatedPrice}</span>
-                        )}
+                        <span>{item.itemCalculatedPrice}</span>
                       </td>
                     </tr>
                   ))}
@@ -195,6 +293,15 @@ const Checkout = () => {
                   className="btn confirm-order m-3 btn-block mx-auto text-white col-lg-8"
                   data-toggle="modal"
                   data-target="#confirmorder"
+                  onClick={(e) => {
+                    if (deliveryAddress == '') {
+                      setShowAlert(true);
+                      setShowModal(false);
+                    } else {
+                      setShowAlert(false);
+                      setShowModal(true);
+                    }
+                  }}
                 >
                   <span className="">Confirm Order</span>
                 </button>
@@ -203,51 +310,54 @@ const Checkout = () => {
           </div>
 
           {/* Confirm Order modal */}
-          <div
-            className="modal fade"
-            id="confirmorder"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="confirmorderTitle"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="confirmorderTitle">
-                    On the way!
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <div className="h5 font-weight-bold">
-                    Your order has been sent to the Restaurant!
+          {showModal ? (
+            <div
+              className="modal fade"
+              id="confirmorder"
+              tabIndex="-1"
+              role="dialog"
+              aria-labelledby="confirmorderTitle"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="confirmorderTitle">
+                      On the way!
+                    </h5>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                  <div className="h5 font-weight-bold">
-                    Please handover the payment to the driver after receiving
-                    your order.
+                  <div className="modal-body">
+                    <div className="h5 font-weight-bold">
+                      Your order has been sent to the Restaurant!
+                    </div>
+                    <div className="h5 font-weight-bold">
+                      Please handover the payment to the driver after receiving
+                      your order.
+                    </div>
+                    <div className="h5 mt-4">Thank you!</div>
+                    <button
+                      type="button"
+                      className="btn confirm-order mt-4 text-white"
+                      data-dismiss="modal"
+                      onClick={handleOrderCheckout}
+                    >
+                      GOT IT
+                    </button>
                   </div>
-                  <div className="h5 mt-4">Thank you!</div>
-
-                  <button
-                    type="button"
-                    className="btn confirm-order mt-4 text-white"
-                    onClick={(e) => {}}
-                  >
-                    GOT IT
-                    {/* <Link to="/">GOT IT!</Link> */}
-                  </button>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <> </>
+          )}
         </div>
       )}
     </>

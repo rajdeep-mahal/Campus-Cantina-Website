@@ -12,11 +12,40 @@ const OwnerMenu = () => {
   const [menuItemPrice, setMenuItemPrice] = useState('');
   const [menuItems, setMenuItems] = useState([]);
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
+  const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
-  let ID = nanoid();
-
+  
+  //const [editMenuItemID, setEditMenuItemID] = useState("");
+  //const [editItemName, setEditItemName] = useState("");
+  //const [editItemDescription, setEditItemDescription] = useState("");
+  //const [editItemPrice, setEditItemPrice] = useState("");
   //const [showAlert, setShowAlert] = useState(false);
 
+    //Edits items from DB
+    const handleEditMenuItem = (event) => {
+      event.preventDefault();
+      if (
+        menuItemName != '' &&
+        menuItemDescription != '' &&
+        menuItemPrice != ''
+      ) {
+      axios
+        .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', {
+          params: {
+          itemName: menuItemName,
+          itemDescription: menuItemDescription,
+          itemPrice: menuItemPrice,
+          itemID: editMenuItemID },
+        })
+        .then((res) => {
+          console.log(res);
+          setLoadData(true);
+          setMenuItemName('');
+          setMenuItemPrice('');
+          setMenuItemDescription('');
+        });
+      }
+    };
   //Deletes items from DB
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
@@ -32,6 +61,7 @@ const OwnerMenu = () => {
 
   //Adds items to DB
   const handleAddMenuItem = (event) => {
+    let ID = nanoid();
     event.preventDefault();
     if (
       menuItemName != '' &&
@@ -51,8 +81,8 @@ const OwnerMenu = () => {
           console.log(res);
           setLoadData(true);
           setMenuItemName('');
-          setMenuItemDescription('');
           setMenuItemPrice('');
+          setMenuItemDescription('');
         });
     }
   };
@@ -148,10 +178,18 @@ const OwnerMenu = () => {
                       <td>{items.Description}</td>
                       <td>
                         <i
+                          //EDIT ITEM ICON
                           className="fas fa-pen menu-icon "
                           aria-hidden="true"
                           data-toggle="modal"
                           data-target="#editItem"
+                          onClick={(e) => {
+                            setMenuItemName(items.Name);
+                            setMenuItemPrice(items.Price);
+                            setMenuItemDescription(items.Description);
+                            setEditMenuItemID(items.ID);
+                            handleEditMenuItem(e)
+                          }}
                         />
                       </td>
                       <td>
@@ -188,9 +226,7 @@ const OwnerMenu = () => {
       >
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            {/* Modal Header */}
             <div class="modal-header">
-              {' '}
               Add Menu Item
               <button
                 type="button"
@@ -201,7 +237,6 @@ const OwnerMenu = () => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            {/* Modal Body*/}
             <div class="modal-body modal-edit">
               <form className="editItem">
                 <input
@@ -320,7 +355,8 @@ const OwnerMenu = () => {
                       maxlength="20"
                       required
                       class="form-control"
-                      value="Burger"
+                      value={menuItemName}
+                      onChange={(e) => setMenuItemName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -336,7 +372,8 @@ const OwnerMenu = () => {
                       maxlength="3"
                       required
                       class="form-control"
-                      value="$12"
+                      value={menuItemPrice}
+                      onChange={(e) => setMenuItemPrice(e.target.value)}
                     />
                   </div>
                 </div>
@@ -352,6 +389,8 @@ const OwnerMenu = () => {
                       maxlength="40"
                       required
                       class="form-control"
+                      value={menuItemDescription}
+                      onChange={(e) => setMenuItemDescription(e.target.value)}
                     />
                   </div>
                 </div>
@@ -361,9 +400,9 @@ const OwnerMenu = () => {
                   class="btn save-btn btn-lg btn-block"
                   value="Submit"
                   data-dismiss="modal"
+                  onClick={handleEditMenuItem}
                 >
-                  {' '}
-                  Update{' '}
+                  Update
                 </button>
               </form>
             </div>
@@ -393,7 +432,9 @@ const OwnerMenu = () => {
             </div>
             <div class="modal-body modal-edit">
               <form className="deleteItem">
+                <div className="p-b-2">
                 <span> Are you sure? </span>
+                </div>
                 <br />
                 <button
                   type="submit"

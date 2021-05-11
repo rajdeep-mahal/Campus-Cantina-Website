@@ -146,7 +146,7 @@ const RestaurantPage = () => {
                     <tr>
                       <td className="align-middle primaryTextPage">
                         <p>
-                          $0.00 <br /> delivery fee
+                          ${item.Delivery_Fee} <br /> delivery fee
                         </p>
                       </td>
                       <td className="align-middle p-3 primaryTextPage">

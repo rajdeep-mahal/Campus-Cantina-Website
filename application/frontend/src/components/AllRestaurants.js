@@ -26,7 +26,7 @@ const AllRestaurants = ({ results }) => {
                 </div>
                 <div className="col">
                   <p className="float-right mr-2 primary-color">
-                    Free Delivery
+                    Delivery Fee: ${item.Delivery_Fee}
                   </p>
                 </div>
               </div>

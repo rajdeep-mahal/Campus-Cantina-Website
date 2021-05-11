@@ -7,10 +7,14 @@ import {
   setCartItemsTotalCount,
   setCartTotal,
   setCartDeliveryInstructions,
+  setCartDeliveryFee,
 } from '../redux/actions/cartItemsActions';
 
 const CustomerCart = () => {
   const dispatch = useDispatch();
+  const restaurantsList = useSelector(
+    (state) => state.searchReducer.allRestaurants
+  );
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
@@ -18,6 +22,9 @@ const CustomerCart = () => {
   const cartTotal = useSelector((state) => state.cartItemsReducer.cartTotal);
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
+  );
+  const cartDeliveryFee = useSelector(
+    (state) => state.cartItemsReducer.cartDeliveryFee
   );
 
   return (
@@ -120,6 +127,32 @@ const CustomerCart = () => {
                         dispatch(setCartTotal(tempCartTotal));
                         temp.splice(i, 1);
                         dispatch(setCartItems(temp));
+                        // set delivery fee in the cart
+                        const cartRestaurantsList = [
+                          ...new Set(
+                            temp.map((item) => item.itemRestaurantName)
+                          ),
+                        ];
+                        let tempDeliveryFee = 0.0;
+                        let filteredCartRestaurants = [];
+                        for (let i = 0; i < cartRestaurantsList.length; i++) {
+                          const tempCurrentRestaurant = restaurantsList.filter(
+                            (restaurant) =>
+                              restaurant.Name == cartRestaurantsList[i]
+                          );
+                          filteredCartRestaurants.push(tempCurrentRestaurant);
+                        }
+                        for (
+                          let i = 0;
+                          i < filteredCartRestaurants.length;
+                          i++
+                        ) {
+                          tempDeliveryFee +=
+                            filteredCartRestaurants[i][0].Delivery_Fee;
+                        }
+                        dispatch(
+                          setCartDeliveryFee(tempDeliveryFee.toFixed(2))
+                        );
                       }}
                     />
                   </td>
@@ -162,7 +195,7 @@ const CustomerCart = () => {
                 </tr>
                 <tr>
                   <td className="h6 text-left py-1">Delivery Fee</td>
-                  <td className="h6 text-right">$0.00</td>
+                  <td className="h6 text-right">${cartDeliveryFee}</td>
                 </tr>
                 <tr>
                   <td className="h5 text-left py-1">Order Total:</td>

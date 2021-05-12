@@ -27,12 +27,12 @@ const OwnerMenu = () => {
         editItemPrice != ''
       ) {
       axios
-        .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', {
-          
+        .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', null, {
+          params: {
           itemName: editItemName,
           itemDescription: editItemDescription,
           itemPrice: editItemPrice,
-          itemID: editMenuItemID,
+          itemID: editMenuItemID },
         })
         .then((res) => {
           console.log(res);
@@ -43,6 +43,7 @@ const OwnerMenu = () => {
         });
       }
     };
+
   //Deletes items from DB
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
@@ -161,7 +162,6 @@ const OwnerMenu = () => {
                       data-toggle="modal"
                       aria-hidden="true"
                       data-target="#addItem"
-                      //onClick={(e) => handleAddMenuItem(e)}
                     ></i>
                   </th>
                 </tr>
@@ -263,13 +263,18 @@ const OwnerMenu = () => {
                   </div>
                   <div class="col-4">
                     <input
-                      type="text"
-                      id="itemPrice"
-                      maxlength="3"
+                      type="number"
+                      min="0.00"
+                      step="any"
                       required
                       class="form-control"
                       value={menuItemPrice}
                       onChange={(e) => setMenuItemPrice(e.target.value)}
+                      onBlur={(e) => {
+                        let num = parseFloat(menuItemPrice);
+                        let cleanNum = num.toFixed(2);
+                        setMenuItemPrice(cleanNum);
+                      }}
                     />
                   </div>
                 </div>
@@ -358,13 +363,18 @@ const OwnerMenu = () => {
                   </div>
                   <div class="col-4">
                     <input
-                      type="text"
-                      id="itemPrice"
-                      maxlength="3"
+                      type="number"
+                      min="0.00"
+                      step="any"
                       required
                       class="form-control"
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
+                      onBlur={(e) => {
+                          let num = parseFloat(editItemPrice);
+                          let cleanNum = num.toFixed(2);
+                          setEditItemPrice(cleanNum);
+                        }}
                     />
                   </div>
                 </div>
@@ -419,7 +429,6 @@ const OwnerMenu = () => {
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
-
               </button>
             </div>
             <div class="modal-body modal-edit">

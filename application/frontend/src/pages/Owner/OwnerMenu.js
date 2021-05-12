@@ -421,7 +421,7 @@ const OwnerMenu = () => {
       {/* Delete Item Modal */}
       <div
         className="modal fade"
-        id="deleteItem"
+        id="deleteItemid"
         role="dialog"
         aria-labelledby="deleteItemLabel"
         aria-hidden="true"

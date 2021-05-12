@@ -37,6 +37,7 @@ const OwnerSignupExtended = () => {
   const [restaurantCuisine, setRestaurantCuisine] = useState('');
   const [restaurantTags, setRestaurantTags] = useState('');
   const [restaurantPriceLevel, setRestaurantPriceLevel] = useState('');
+  const [restaurantDeliveryFee, setRestaurantDeliveryFee] = useState('');
   const [restaurantBanner, setRestaurantBanner] = useState('');
 
   const onSubmitOwnerSignup2 = (event) => {
@@ -56,6 +57,7 @@ const OwnerSignupExtended = () => {
     form_data.append('restaurantCuisine', restaurantCuisine);
     form_data.append('restaurantTags', restaurantTags);
     form_data.append('restaurantPriceLevel', restaurantPriceLevel);
+    form_data.append('restaurantDeliveryFee', restaurantDeliveryFee);
     form_data.append('file', restaurantBanner);
 
     let ID = nanoid();
@@ -244,6 +246,27 @@ const OwnerSignupExtended = () => {
                   $$$$
                 </label>
               </div>
+              <br />
+              <label htmlFor="Delivery Fee" className="login-label">
+                Delivery Fee ($)
+              </label>
+              <input
+                id="tags"
+                className="login_input-field"
+                type="number"
+                placeholder="e.g. taco, burrito"
+                required
+                min="0.00"
+                step="any"
+                name="Delivery Fee"
+                value={restaurantDeliveryFee}
+                onChange={(e) => setRestaurantDeliveryFee(e.target.value)}
+                onBlur={(e) => {
+                  let num = parseFloat(restaurantDeliveryFee);
+                  let cleanNum = num.toFixed(2);
+                  setRestaurantDeliveryFee(cleanNum);
+                }}
+              />
               <div className="form-group mt-3">
                 <label htmlFor="BannerImage">Upload a Banner Image: </label>
                 <input

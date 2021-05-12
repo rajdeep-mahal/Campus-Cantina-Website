@@ -7,10 +7,10 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: <strong>54.219.159.229 or campuscantina.com</strong>
+1. Server URL or IP: <strong>18.144.169.222 or campuscantina.com</strong>
 2. SSH username: <strong>ubuntu</strong>
 3. SSH password or key: <strong>648team04.pem</strong>
-4. Database URL or IP and port used: <strong>54.219.159.229 port 3306</strong>
+4. Database URL or IP and port used: <strong>18.144.169.222 port 3306</strong>
 5. Database username: <strong>user</strong>
 6. Database password: <strong>CampusCantina2021$</strong>
 7. Database name: <strong>campuscantina_test</strong>

@@ -110,8 +110,10 @@ router.post('/place-order', (req, res) => {
     `','` +
     req.body.driverID +
     `',` +
-    `1)`; // Pending set to 1, change to 0 when order complete
-
+    1 + // Pending set to 1, change to 0 when order complete
+    `,` +
+    req.body.orderSubID +
+    `)`;
   // Send order query to db
   database.query(query, (err, result) => {
     console.log('Added order to db');

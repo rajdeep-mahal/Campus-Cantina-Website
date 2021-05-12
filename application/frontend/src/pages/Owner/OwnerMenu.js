@@ -17,23 +17,29 @@ const OwnerMenu = () => {
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
-  
-    //Edits items from DB
-    const handleEditMenuItem = (event) => {
-      event.preventDefault();
-      if (
-        editItemName != '' &&
-        editItemDescription != '' &&
-        editItemPrice != ''
-      ) {
+
+  //Edits items from DB
+  const handleEditMenuItem = (event) => {
+    event.preventDefault();
+    if (
+      editItemName != '' &&
+      editItemDescription != '' &&
+      editItemPrice != '' &&
+      editMenuItemID != ''
+    ) {
       axios
-        .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', {
-          
-          itemName: editItemName,
-          itemDescription: editItemDescription,
-          itemPrice: editItemPrice,
-          itemID: editMenuItemID,
-        })
+        .post(
+          'http://localhost:3001/api/restaurant-menu/edit-menu-item',
+          null,
+          {
+            params: {
+              itemName: editItemName,
+              itemDescription: editItemDescription,
+              itemPrice: editItemPrice,
+              itemID: editMenuItemID,
+            },
+          }
+        )
         .then((res) => {
           console.log(res);
           setLoadData(true);
@@ -41,8 +47,8 @@ const OwnerMenu = () => {
           setEditItemPrice('');
           setEditItemDescription('');
         });
-      }
-    };
+    }
+  };
   //Deletes items from DB
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
@@ -234,11 +240,7 @@ const OwnerMenu = () => {
             </div>
             <div class="modal-body modal-edit">
               <form>
-                <input
-                  id="redirect-input"
-                  type="hidden"
-                  name="redirect"
-                />
+                <input id="redirect-input" type="hidden" name="redirect" />
                 <br />
                 <div class="row">
                   <div class="col-6">
@@ -329,11 +331,7 @@ const OwnerMenu = () => {
             </div>
             <div class="modal-body modal-edit">
               <form>
-                <input
-                  id="redirect-input"
-                  type="hidden"
-                  name="redirect"
-                />
+                <input id="redirect-input" type="hidden" name="redirect" />
                 <br />
                 <div class="row">
                   <div class="col-6">
@@ -358,9 +356,11 @@ const OwnerMenu = () => {
                   </div>
                   <div class="col-4">
                     <input
-                      type="text"
+                      type="number"
                       id="itemPrice"
-                      maxlength="3"
+                      // maxlength="4"
+                      min="0.00"
+                      step="any"
                       required
                       class="form-control"
                       value={editItemPrice}
@@ -419,13 +419,12 @@ const OwnerMenu = () => {
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
-
               </button>
             </div>
             <div class="modal-body modal-edit">
               <form className="deleteItem">
                 <div className="p-b-2">
-                <span> Are you sure? </span>
+                  <span> Are you sure? </span>
                 </div>
                 <br />
                 <button

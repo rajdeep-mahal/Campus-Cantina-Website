@@ -18,6 +18,16 @@ const OwnerMenu = () => {
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
 
+  const [showMandatoryFieldsAlert, setShowMandatoryFieldsAlert] = useState(
+    false
+  );
+  // timeout for the alert
+  if (showMandatoryFieldsAlert) {
+    setTimeout(() => {
+      setShowMandatoryFieldsAlert(false);
+    }, 3000);
+  }
+
   //Edits items from DB
   const handleEditMenuItem = (event) => {
     event.preventDefault();
@@ -51,6 +61,8 @@ const OwnerMenu = () => {
           setEditItemDescription('');
           setEditMenuItemID('');
         });
+    } else {
+      setShowMandatoryFieldsAlert(true);
     }
   };
   //Deletes items from DB
@@ -94,6 +106,8 @@ const OwnerMenu = () => {
           setMenuItemPrice(0.0);
           setMenuItemDescription('');
         });
+    } else {
+      setShowMandatoryFieldsAlert(true);
     }
   };
 
@@ -158,6 +172,24 @@ const OwnerMenu = () => {
       <div className="container ">
         <div className="rp-menu-items m-4 ">
           <h4 className="text-center pb-3 pt-3"> Menu </h4>
+          {showMandatoryFieldsAlert ? (
+            <div
+              className="text-center mt-2 alert alert-danger alert-dismissible fade show w-75 mx-auto"
+              role="alert"
+            >
+              Please enter/update all fields to continue
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          ) : (
+            <> </>
+          )}
           <div className="panel-default">
             <table className="table text-center">
               {/* Menu Table */}
@@ -421,7 +453,7 @@ const OwnerMenu = () => {
       {/* Delete Item Modal */}
       <div
         className="modal fade"
-        id="deleteItemid"
+        id="deleteItem"
         role="dialog"
         aria-labelledby="deleteItemLabel"
         aria-hidden="true"

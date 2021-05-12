@@ -22,11 +22,14 @@ const OwnerMenu = () => {
   const handleEditMenuItem = (event) => {
     event.preventDefault();
     if (
-      editItemName != '' &&
-      editItemDescription != '' &&
-      editItemPrice != 0.0 &&
-      editMenuItemID != ''
+      editItemName !== '' &&
+      editItemDescription !== '' &&
+      editMenuItemID !== '' &&
+      !isNaN(editItemPrice) &&
+      editItemPrice !== '' &&
+      parseFloat(editItemPrice) !== 0.0
     ) {
+      console.log(editItemPrice);
       axios
         .post(
           'http://localhost:3001/api/restaurant-menu/edit-menu-item',
@@ -60,18 +63,21 @@ const OwnerMenu = () => {
       .then((res) => {
         console.log(res);
         setLoadData(true);
+        setDeleteMenuItemID('');
       });
   };
 
   //Adds items to DB
   const handleAddMenuItem = (event) => {
-    let ID = nanoid();
     event.preventDefault();
     if (
-      menuItemName != '' &&
-      menuItemDescription != '' &&
-      menuItemPrice != 0.0
+      menuItemName !== '' &&
+      menuItemDescription !== '' &&
+      !isNaN(menuItemPrice) &&
+      menuItemPrice !== '' &&
+      parseFloat(menuItemPrice) !== 0.0
     ) {
+      let ID = nanoid();
       axios
         .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
           itemID: ID,
@@ -168,7 +174,6 @@ const OwnerMenu = () => {
                       data-toggle="modal"
                       aria-hidden="true"
                       data-target="#addItem"
-                      //onClick={(e) => handleAddMenuItem(e)}
                     ></i>
                   </th>
                 </tr>
@@ -270,15 +275,17 @@ const OwnerMenu = () => {
                       type="number"
                       id="addItemPrice"
                       min="0.00"
-                      step="any"
+                      step="0.01"
                       required
                       className="form-control"
                       value={menuItemPrice}
                       onChange={(e) => setMenuItemPrice(e.target.value)}
                       onBlur={(e) => {
-                        let num = parseFloat(menuItemPrice);
-                        let cleanNum = num.toFixed(2);
-                        setMenuItemPrice(cleanNum);
+                        if (!isNaN(menuItemPrice) && menuItemPrice !== '') {
+                          let num = parseFloat(menuItemPrice);
+                          let cleanNum = num.toFixed(2);
+                          setMenuItemPrice(cleanNum);
+                        }
                       }}
                     />
                   </div>
@@ -371,9 +378,11 @@ const OwnerMenu = () => {
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
                       onBlur={(e) => {
-                        let num = parseFloat(editItemPrice);
-                        let cleanNum = num.toFixed(2);
-                        setEditItemPrice(cleanNum);
+                        if (!isNaN(editItemPrice) && editItemPrice !== '') {
+                          let num = parseFloat(editItemPrice);
+                          let cleanNum = num.toFixed(2);
+                          setEditItemPrice(cleanNum);
+                        }
                       }}
                     />
                   </div>

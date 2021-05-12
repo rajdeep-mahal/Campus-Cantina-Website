@@ -17,23 +17,29 @@ const OwnerMenu = () => {
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
-  
-    //Edits items from DB
-    const handleEditMenuItem = (event) => {
-      event.preventDefault();
-      if (
-        editItemName != '' &&
-        editItemDescription != '' &&
-        editItemPrice != ''
-      ) {
+
+  //Edits items from DB
+  const handleEditMenuItem = (event) => {
+    event.preventDefault();
+    if (
+      editItemName != '' &&
+      editItemDescription != '' &&
+      editItemPrice != '' &&
+      editMenuItemID != ''
+    ) {
       axios
-        .post('http://localhost:3001/api/restaurant-menu/edit-menu-item', null, {
-          params: {
-          itemName: editItemName,
-          itemDescription: editItemDescription,
-          itemPrice: editItemPrice,
-          itemID: editMenuItemID },
-        })
+        .post(
+          'http://localhost:3001/api/restaurant-menu/edit-menu-item',
+          null,
+          {
+            params: {
+              itemName: editItemName,
+              itemDescription: editItemDescription,
+              itemPrice: editItemPrice,
+              itemID: editMenuItemID,
+            },
+          }
+        )
         .then((res) => {
           console.log(res);
           setLoadData(true);
@@ -41,9 +47,8 @@ const OwnerMenu = () => {
           setEditItemPrice('');
           setEditItemDescription('');
         });
-      }
-    };
-
+    }
+  };
   //Deletes items from DB
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
@@ -234,11 +239,7 @@ const OwnerMenu = () => {
             </div>
             <div class="modal-body modal-edit">
               <form>
-                <input
-                  id="redirect-input"
-                  type="hidden"
-                  name="redirect"
-                />
+                <input id="redirect-input" type="hidden" name="redirect" />
                 <br />
                 <div class="row">
                   <div class="col-6">
@@ -264,6 +265,8 @@ const OwnerMenu = () => {
                   <div class="col-4">
                     <input
                       type="number"
+                      id="itemPrice"
+                      maxlength="4"
                       min="0.00"
                       step="any"
                       required
@@ -334,11 +337,7 @@ const OwnerMenu = () => {
             </div>
             <div class="modal-body modal-edit">
               <form>
-                <input
-                  id="redirect-input"
-                  type="hidden"
-                  name="redirect"
-                />
+                <input id="redirect-input" type="hidden" name="redirect" />
                 <br />
                 <div class="row">
                   <div class="col-6">
@@ -364,6 +363,8 @@ const OwnerMenu = () => {
                   <div class="col-4">
                     <input
                       type="number"
+                      id="itemPrice"
+                      maxlength="4"
                       min="0.00"
                       step="any"
                       required
@@ -371,10 +372,10 @@ const OwnerMenu = () => {
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
                       onBlur={(e) => {
-                          let num = parseFloat(editItemPrice);
-                          let cleanNum = num.toFixed(2);
-                          setEditItemPrice(cleanNum);
-                        }}
+                        let num = parseFloat(editItemPrice);
+                        let cleanNum = num.toFixed(2);
+                        setEditItemPrice(cleanNum);
+                      }}
                     />
                   </div>
                 </div>
@@ -434,7 +435,7 @@ const OwnerMenu = () => {
             <div class="modal-body modal-edit">
               <form className="deleteItem">
                 <div className="p-b-2">
-                <span> Are you sure? </span>
+                  <span> Are you sure? </span>
                 </div>
                 <br />
                 <button

@@ -1,26 +1,40 @@
-import React, { useEffect, useState } from 'react';
-//import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import '../../assets/css/about_individual.css';
-import Banner from '../../assets/img/restaurant/Restaurant_Banner.jpg';
-import { customAlphabet } from 'nanoid';
-const nanoid = customAlphabet('1234567890', 3);
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import axios from "axios";
+import "../../assets/css/about_individual.css";
+import Banner from "../../assets/img/restaurant/Restaurant_Banner.jpg";
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890", 3);
 
 const OwnerMenu = () => {
+  //menu items from backend
   const [menuItems, setMenuItems] = useState([]);
-  const [menuItemName, setMenuItemName] = useState('');
-  const [menuItemDescription, setMenuItemDescription] = useState('');
+  const [menuItemName, setMenuItemName] = useState("");
+  const [menuItemDescription, setMenuItemDescription] = useState("");
   const [menuItemPrice, setMenuItemPrice] = useState(0.0);
-  const [editItemName, setEditItemName] = useState('');
-  const [editItemDescription, setEditItemDescription] = useState('');
+  //edit menu item variables
+  const [editItemName, setEditItemName] = useState("");
+  const [editItemDescription, setEditItemDescription] = useState("");
   const [editItemPrice, setEditItemPrice] = useState(0.0);
-  const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
-  const [editMenuItemID, setEditMenuItemID] = useState('');
-  const [loadData, setLoadData] = useState(false);
+  const [editMenuItemID, setEditMenuItemID] = useState("");
+  //delete menu item variable
+  const [deleteMenuItemID, setDeleteMenuItemID] = useState("");
+  
+  //const [ownerInfo, setOwnerInfo] = useState([]);
 
+  //restaurants from backend
+  const restaurantsList = useSelector(
+    (state) => state.searchReducer.allRestaurants
+  );
+  const currentRestaurant = restaurantsList.filter(
+    (restaurant) => restaurant.Name.trim() === ('Taco Shell')
+  );
+
+  const [loadData, setLoadData] = useState(false);
   const [showMandatoryFieldsAlert, setShowMandatoryFieldsAlert] = useState(
     false
   );
+
   // timeout for the alert
   if (showMandatoryFieldsAlert) {
     setTimeout(() => {
@@ -32,17 +46,17 @@ const OwnerMenu = () => {
   const handleEditMenuItem = (event) => {
     event.preventDefault();
     if (
-      editItemName !== '' &&
-      editItemDescription !== '' &&
-      editMenuItemID !== '' &&
+      editItemName !== "" &&
+      editItemDescription !== "" &&
+      editMenuItemID !== "" &&
       !isNaN(editItemPrice) &&
-      editItemPrice !== '' &&
+      editItemPrice !== "" &&
       parseFloat(editItemPrice) !== 0.0
     ) {
       console.log(editItemPrice);
       axios
         .post(
-          'http://localhost:3001/api/restaurant-menu/edit-menu-item',
+          "http://localhost:3001/api/restaurant-menu/edit-menu-item",
           null,
           {
             params: {
@@ -56,26 +70,27 @@ const OwnerMenu = () => {
         .then((res) => {
           console.log(res);
           setLoadData(true);
-          setEditItemName('');
+          setEditItemName("");
           setEditItemPrice(0.0);
-          setEditItemDescription('');
-          setEditMenuItemID('');
+          setEditItemDescription("");
+          setEditMenuItemID("");
         });
     } else {
       setShowMandatoryFieldsAlert(true);
     }
   };
+
   //Deletes items from DB
   const handleDeleteMenuItem = (event) => {
     event.preventDefault();
     axios
-      .delete('http://localhost:3001/api/restaurant-menu/delete-menu-item', {
+      .delete("http://localhost:3001/api/restaurant-menu/delete-menu-item", {
         params: { itemID: deleteMenuItemID },
       })
       .then((res) => {
         console.log(res);
         setLoadData(true);
-        setDeleteMenuItemID('');
+        setDeleteMenuItemID("");
       });
   };
 
@@ -83,28 +98,28 @@ const OwnerMenu = () => {
   const handleAddMenuItem = (event) => {
     event.preventDefault();
     if (
-      menuItemName !== '' &&
-      menuItemDescription !== '' &&
+      menuItemName !== "" &&
+      menuItemDescription !== "" &&
       !isNaN(menuItemPrice) &&
-      menuItemPrice !== '' &&
+      menuItemPrice !== "" &&
       parseFloat(menuItemPrice) !== 0.0
     ) {
       let ID = nanoid();
       axios
-        .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
+        .post("http://localhost:3001/api/restaurant-menu/add-menu-item", {
           itemID: ID,
           restaurantID: 5,
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
-          restaurantName: 'Taco Shell',
+          restaurantName: "Taco Shell",
         })
         .then((res) => {
           console.log(res);
           setLoadData(true);
-          setMenuItemName('');
+          setMenuItemName("");
           setMenuItemPrice(0.0);
-          setMenuItemDescription('');
+          setMenuItemDescription("");
         });
     } else {
       setShowMandatoryFieldsAlert(true);
@@ -114,13 +129,22 @@ const OwnerMenu = () => {
   //Renders items from DB
   useEffect(() => {
     axios
-      .get('http://localhost:3001/api/restaurant-menu/restaurant-menu-items', {
-        params: { restaurantName: 'Taco Shell' },
+      .get("http://localhost:3001/api/restaurant-menu/restaurant-menu-items", {
+        params: { restaurantName: "Taco Shell" },
       })
       .then((res) => {
         setMenuItems(res.data);
         setLoadData(false);
       });
+    // axios
+    //   .get("http://localhost:3001/api/restaurant/owner-info", {
+    //     params: { ownerEmail: "kendrick@gmail.com" },
+    //   })
+    //   .then((res) => {
+    //     setOwnerInfo(res.data);
+    //     setLoadData(false);
+    //   });
+    //console.log(ownerInfo);
   }, [loadData]);
 
   return (
@@ -129,41 +153,53 @@ const OwnerMenu = () => {
         <img className="w-100 restaurantBanner" src={Banner} />
         <div className="container">
           <div className="pl-1">
-            <br />
-            {/* alert banners */}
-            <div
-              className="alert alert-warning alert-dismissible fade show text-center pending-alert"
-              role="alert"
-            >
-              <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div
-              className="alert alert-warning alert-dismissible fade show text-center live-alert"
-              role="alert"
-            >
-              <strong> Your restaurant is now live! </strong>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <p className="primaryTextPage h1">Pizza Zone </p>
-            <p className="text-muted mt-2">
-              $$ • Pizza, Wings, Pepperoni <br />
-              <span className="text-muted">145 Second Street</span> <br />
-            </p>
+            {/* map through restaurant details */}
+            {currentRestaurant.map((item, index) => (
+              <>
+              <br/>
+                <div
+                  className="alert alert-warning alert-dismissible fade show text-center pending-alert"
+                  role="alert"
+                >
+                  <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div
+                  className="alert alert-warning alert-dismissible fade show text-center live-alert"
+                  role="alert"
+                >
+                  <strong> Your restaurant is now live! </strong>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div key={index}>
+                <p className="primaryTextPage h1">
+                  {item.Name}{" "}
+                </p>
+                <p className="text-muted mt-2">
+                  {item.Price_Level} •{" "}
+                  {item.Cuisine}, {item.Tags}
+                  <br />
+                  <span className="text-muted">
+                    {item.Address}
+                  </span>{" "}
+                </p>
+                </div>
+              </>
+            ))}
           </div>
         </div>
       </div>
@@ -313,7 +349,7 @@ const OwnerMenu = () => {
                       value={menuItemPrice}
                       onChange={(e) => setMenuItemPrice(e.target.value)}
                       onBlur={(e) => {
-                        if (!isNaN(menuItemPrice) && menuItemPrice !== '') {
+                        if (!isNaN(menuItemPrice) && menuItemPrice !== "") {
                           let num = parseFloat(menuItemPrice);
                           let cleanNum = num.toFixed(2);
                           setMenuItemPrice(cleanNum);
@@ -364,7 +400,7 @@ const OwnerMenu = () => {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              {' '}
+              {" "}
               <strong> Edit Item</strong>
               <button
                 type="button"
@@ -410,7 +446,7 @@ const OwnerMenu = () => {
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
                       onBlur={(e) => {
-                        if (!isNaN(editItemPrice) && editItemPrice !== '') {
+                        if (!isNaN(editItemPrice) && editItemPrice !== "") {
                           let num = parseFloat(editItemPrice);
                           let cleanNum = num.toFixed(2);
                           setEditItemPrice(cleanNum);

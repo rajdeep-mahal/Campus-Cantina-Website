@@ -2,12 +2,17 @@ import React from "react";
 import restaurantcartoon from "../../assets/img/restaurant_ex.jpeg";
 //import "../../index.css";
 import "../../assets/css/index.css";
-import {useSelector} from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setOwnerName } from '../../redux/actions/ownerSignupActions';
 
 
 const OwnerProfile = () => {
+  //dispatch is a function - sends actions to redux
+  const dispatch = useDispatch(); 
 
-  const ownerName =useSelector(state => state.ownerSignupReducer.ownerName);
+  //extract value from global redux (reads from store)
+  const ownerName = useSelector(state => state.ownerSignupReducer.ownerName);
   return (
     <div className="container-fluid">
       <br />

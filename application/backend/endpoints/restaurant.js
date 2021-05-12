@@ -216,6 +216,7 @@ router.get('/owner-info', (req, res) => {
   database.query(query, (err, result) => {
     console.log('Got individual owner info from db');
     res.send(result);
+    console.log('result sent'); // []
   });
 });
 

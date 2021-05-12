@@ -11,6 +11,26 @@ const SFSULogin = () => {
 
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
+  const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
+    false
+  );
+
+  const onShowEmailError = () => {
+    if (customerEmail.endsWith('@mail.sfsu.edu')) {
+      setShowInvalidSuffixAlert(false);
+    } else {
+      setShowInvalidSuffixAlert(true);
+      setShowInvalidEmailAlert(false);
+      setShowInvalidPasswordAlert(false);
+    }
+  };
+
+  const onSubmitCustomerLogin = (event) => {
+    event.preventDefault();
+    onShowEmailError();
+    if (!showInvalidSuffixAlert) loginCustomer();
+  };
 
   const loginCustomer = () => {
     axios
@@ -59,7 +79,29 @@ const SFSULogin = () => {
         ) : (
           <> </>
         )}
-
+        {showInvalidEmailAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Email Address is not registered with us.</b> <br />{' '}
+            <i>
+              Please <Link to="/SFSUSignup">Register</Link>
+            </i>{' '}
+          </div>
+        ) : (
+          <> </>
+        )}
+        {showInvalidPasswordAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Incorrect Password.</b> <br /> Please try Again
+          </div>
+        ) : (
+          <> </>
+        )}
         <form
           className="signup-signin-form mx-auto"
           method="post"

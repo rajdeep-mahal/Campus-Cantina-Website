@@ -249,7 +249,7 @@ const OwnerMenu = () => {
                     <input
                       type="text"
                       id="itemName"
-                      maxlength="20"
+                      //maxlength="20"
                       required
                       class="form-control"
                       value={menuItemName}
@@ -266,7 +266,7 @@ const OwnerMenu = () => {
                     <input
                       type="number"
                       id="itemPrice"
-                      maxlength="4"
+                      //maxlength="4"
                       min="0.00"
                       step="any"
                       required
@@ -290,7 +290,7 @@ const OwnerMenu = () => {
                     <input
                       type="text"
                       id="itemDescip"
-                      maxlength="40"
+                      //maxlength="40"
                       required
                       class="form-control"
                       value={menuItemDescription}
@@ -347,7 +347,7 @@ const OwnerMenu = () => {
                     <input
                       type="text"
                       id="itemName"
-                      maxlength="20"
+                      //maxlength="20"
                       required
                       class="form-control"
                       value={editItemName}
@@ -364,7 +364,7 @@ const OwnerMenu = () => {
                     <input
                       type="number"
                       id="itemPrice"
-                      maxlength="4"
+                      //maxlength="4"
                       min="0.00"
                       step="any"
                       required
@@ -388,7 +388,7 @@ const OwnerMenu = () => {
                     <input
                       type="text"
                       id="itemDescip"
-                      maxlength="40"
+                      //maxlength="40"
                       required
                       class="form-control"
                       value={editItemDescription}

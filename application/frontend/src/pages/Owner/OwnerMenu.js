@@ -265,13 +265,20 @@ const OwnerMenu = () => {
                   </div>
                   <div class="col-4">
                     <input
-                      type="text"
+                      type="number"
                       id="itemPrice"
-                      maxlength="3"
+                      maxlength="4"
+                      min="0.00"
+                      step="any"
                       required
                       class="form-control"
                       value={menuItemPrice}
                       onChange={(e) => setMenuItemPrice(e.target.value)}
+                      onBlur={(e) => {
+                        let num = parseFloat(menuItemPrice);
+                        let cleanNum = num.toFixed(2);
+                        setMenuItemPrice(cleanNum);
+                      }}
                     />
                   </div>
                 </div>
@@ -358,13 +365,18 @@ const OwnerMenu = () => {
                     <input
                       type="number"
                       id="itemPrice"
-                      // maxlength="4"
+                      maxlength="4"
                       min="0.00"
                       step="any"
                       required
                       class="form-control"
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
+                      onBlur={(e) => {
+                        let num = parseFloat(editItemPrice);
+                        let cleanNum = num.toFixed(2);
+                        setEditItemPrice(cleanNum);
+                      }}
                     />
                   </div>
                 </div>

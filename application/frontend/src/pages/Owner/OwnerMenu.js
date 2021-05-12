@@ -198,6 +198,20 @@ const OwnerMenu = () => {
                   </span>{" "}
                 </p>
                 </div>
+                <div className="rp-info secondaryTextPage">
+                <table height="90px" className="mx-auto">
+                  <tbody>
+                    <tr>
+                      <td className="align-middle primaryTextPage">
+                        <p>
+                          $1.99 <br /> delivery fee
+                        </p>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               </>
             ))}
           </div>

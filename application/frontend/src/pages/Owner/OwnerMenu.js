@@ -10,10 +10,10 @@ const OwnerMenu = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [menuItemName, setMenuItemName] = useState('');
   const [menuItemDescription, setMenuItemDescription] = useState('');
-  const [menuItemPrice, setMenuItemPrice] = useState('');
+  const [menuItemPrice, setMenuItemPrice] = useState(0.0);
   const [editItemName, setEditItemName] = useState('');
   const [editItemDescription, setEditItemDescription] = useState('');
-  const [editItemPrice, setEditItemPrice] = useState('');
+  const [editItemPrice, setEditItemPrice] = useState(0.0);
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
   const [editMenuItemID, setEditMenuItemID] = useState('');
   const [loadData, setLoadData] = useState(false);
@@ -24,7 +24,7 @@ const OwnerMenu = () => {
     if (
       editItemName != '' &&
       editItemDescription != '' &&
-      editItemPrice != '' &&
+      editItemPrice != 0.0 &&
       editMenuItemID != ''
     ) {
       axios
@@ -44,8 +44,9 @@ const OwnerMenu = () => {
           console.log(res);
           setLoadData(true);
           setEditItemName('');
-          setEditItemPrice('');
+          setEditItemPrice(0.0);
           setEditItemDescription('');
+          setEditMenuItemID('');
         });
     }
   };
@@ -69,7 +70,7 @@ const OwnerMenu = () => {
     if (
       menuItemName != '' &&
       menuItemDescription != '' &&
-      menuItemPrice != ''
+      menuItemPrice != 0.0
     ) {
       axios
         .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
@@ -84,7 +85,7 @@ const OwnerMenu = () => {
           console.log(res);
           setLoadData(true);
           setMenuItemName('');
-          setMenuItemPrice('');
+          setMenuItemPrice(0.0);
           setMenuItemDescription('');
         });
     }
@@ -111,13 +112,13 @@ const OwnerMenu = () => {
             <br />
             {/* alert banners */}
             <div
-              class="alert alert-warning alert-dismissible fade show text-center pending-alert"
+              className="alert alert-warning alert-dismissible fade show text-center pending-alert"
               role="alert"
             >
               <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="alert"
                 aria-label="Close"
               >
@@ -125,13 +126,13 @@ const OwnerMenu = () => {
               </button>
             </div>
             <div
-              class="alert alert-warning alert-dismissible fade show text-center live-alert"
+              className="alert alert-warning alert-dismissible fade show text-center live-alert"
               role="alert"
             >
               <strong> Your restaurant is now live! </strong>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="alert"
                 aria-label="Close"
               >
@@ -151,16 +152,16 @@ const OwnerMenu = () => {
       <div className="container ">
         <div className="rp-menu-items m-4 ">
           <h4 className="text-center pb-3 pt-3"> Menu </h4>
-          <div class="panel-default">
-            <table class="table text-center">
+          <div className="panel-default">
+            <table className="table text-center">
               {/* Menu Table */}
-              <thead class="table-header-menu">
+              <thead className="table-header-menu">
                 <tr>
                   <th scope="col"> Item Name </th>
                   <th scope="col"> Price </th>
                   <th scope="col"> Description </th>
                   <th scope="col" />
-                  <th scope="col" class="text-right">
+                  <th scope="col" className="text-right">
                     <i
                       // ADD ITEM ICON
                       className="fas fa-plus menu-icon-plus"
@@ -172,46 +173,48 @@ const OwnerMenu = () => {
                   </th>
                 </tr>
               </thead>
-              {menuItems.length > 0 ? (
-                <>
-                  {menuItems.map((items, index) => (
-                    <tr key={index}>
-                      <td>{items.Name}</td>
-                      <td>${items.Price}</td>
-                      <td>{items.Description}</td>
-                      <td>
-                        <i
-                          //EDIT ITEM ICON
-                          className="fas fa-pen menu-icon "
-                          aria-hidden="true"
-                          data-toggle="modal"
-                          data-target="#editItem"
-                          onClick={(e) => {
-                            setEditItemName(items.Name);
-                            setEditItemPrice(items.Price);
-                            setEditItemDescription(items.Description);
-                            setEditMenuItemID(items.ID);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <i
-                          //DELETE ITEM ICON
-                          className="fas fa-trash menu-icon text-danger"
-                          aria-hidden="true"
-                          data-toggle="modal"
-                          data-target="#deleteItem"
-                          onClick={(e) => {
-                            setDeleteMenuItemID(items.ID);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </>
-              ) : (
-                <></>
-              )}
+              <tbody>
+                {menuItems.length > 0 ? (
+                  <>
+                    {menuItems.map((items, index) => (
+                      <tr key={index}>
+                        <td>{items.Name}</td>
+                        <td>${items.Price.toFixed(2)}</td>
+                        <td>{items.Description}</td>
+                        <td>
+                          <i
+                            //EDIT ITEM ICON
+                            className="fas fa-pen menu-icon "
+                            aria-hidden="true"
+                            data-toggle="modal"
+                            data-target="#editItem"
+                            onClick={(e) => {
+                              setEditItemName(items.Name);
+                              setEditItemPrice(items.Price.toFixed(2));
+                              setEditItemDescription(items.Description);
+                              setEditMenuItemID(items.ID);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <i
+                            //DELETE ITEM ICON
+                            className="fas fa-trash menu-icon text-danger"
+                            aria-hidden="true"
+                            data-toggle="modal"
+                            data-target="#deleteItem"
+                            onClick={(e) => {
+                              setDeleteMenuItemID(items.ID);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </>
+                ) : (
+                  <></>
+                )}
+              </tbody>
             </table>
           </div>
         </div>
@@ -219,59 +222,57 @@ const OwnerMenu = () => {
 
       {/* Add Item Modal */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="addItem"
         role="dialog"
         aria-labelledby="addItemLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
               Add Menu Item
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body modal-edit">
+            <div className="modal-body modal-edit">
               <form>
-                <input id="redirect-input" type="hidden" name="redirect" />
+                <input id="add-redirect-input" type="hidden" name="redirect" />
                 <br />
-                <div class="row">
-                  <div class="col-6">
+                <div className="row">
+                  <div className="col-6">
                     <label> Item Name </label>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <input
                       type="text"
-                      id="itemName"
-                      maxlength="20"
+                      id="addItemName"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={menuItemName}
                       onChange={(e) => setMenuItemName(e.target.value)}
                     />
                   </div>
                 </div>
                 <br />
-                <div class="row">
-                  <div class="col-6">
+                <div className="row">
+                  <div className="col-6">
                     <label> Price </label>
                   </div>
-                  <div class="col-4">
+                  <div className="col-4">
                     <input
                       type="number"
-                      id="itemPrice"
-                      maxlength="4"
+                      id="addItemPrice"
                       min="0.00"
                       step="any"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={menuItemPrice}
                       onChange={(e) => setMenuItemPrice(e.target.value)}
                       onBlur={(e) => {
@@ -283,17 +284,16 @@ const OwnerMenu = () => {
                   </div>
                 </div>
                 <br />
-                <div class="row">
-                  <div class="col-6">
+                <div className="row">
+                  <div className="col-6">
                     <label> Description </label>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <input
                       type="text"
-                      id="itemDescip"
-                      maxlength="40"
+                      id="addItemDescription"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={menuItemDescription}
                       onChange={(e) => setMenuItemDescription(e.target.value)}
                     />
@@ -302,7 +302,7 @@ const OwnerMenu = () => {
                 <br />
                 <button
                   type="submit"
-                  class="btn save-btn btn-lg btn-block"
+                  className="btn save-btn btn-lg btn-block"
                   value="Submit"
                   data-dismiss="modal"
                   onClick={handleAddMenuItem}
@@ -316,60 +316,58 @@ const OwnerMenu = () => {
       </div>
       {/* Edit Item Modal */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="editItem"
         role="dialog"
         aria-labelledby="editItemLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
               {' '}
               <strong> Edit Item</strong>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body modal-edit">
+            <div className="modal-body modal-edit">
               <form>
-                <input id="redirect-input" type="hidden" name="redirect" />
+                <input id="edit-redirect-input" type="hidden" name="redirect" />
                 <br />
-                <div class="row">
-                  <div class="col-6">
-                    <label for="Item "> Item Name </label>
+                <div className="row">
+                  <div className="col-6">
+                    <label htmlFor="Item "> Item Name </label>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <input
                       type="text"
-                      id="itemName"
-                      maxlength="20"
+                      id="editItemName"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={editItemName}
                       onChange={(e) => setEditItemName(e.target.value)}
                     />
                   </div>
                 </div>
                 <br />
-                <div class="row">
-                  <div class="col-6">
-                    <label for="Item "> Price </label>
+                <div className="row">
+                  <div className="col-6">
+                    <label htmlFor="Item "> Price </label>
                   </div>
-                  <div class="col-4">
+                  <div className="col-4">
                     <input
                       type="number"
-                      id="itemPrice"
-                      maxlength="4"
+                      id="editItemPrice"
                       min="0.00"
                       step="any"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={editItemPrice}
                       onChange={(e) => setEditItemPrice(e.target.value)}
                       onBlur={(e) => {
@@ -381,17 +379,16 @@ const OwnerMenu = () => {
                   </div>
                 </div>
                 <br />
-                <div class="row">
-                  <div class="col-6">
-                    <label for="Item "> Description </label>
+                <div className="row">
+                  <div className="col-6">
+                    <label htmlFor="Item "> Description </label>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <input
                       type="text"
-                      id="itemDescip"
-                      maxlength="40"
+                      id="editItemDescription"
                       required
-                      class="form-control"
+                      className="form-control"
                       value={editItemDescription}
                       onChange={(e) => setEditItemDescription(e.target.value)}
                     />
@@ -400,7 +397,7 @@ const OwnerMenu = () => {
                 <br />
                 <button
                   type="submit"
-                  class="btn save-btn btn-lg btn-block"
+                  className="btn save-btn btn-lg btn-block"
                   value="Submit"
                   data-dismiss="modal"
                   onClick={handleEditMenuItem}
@@ -414,26 +411,26 @@ const OwnerMenu = () => {
       </div>
       {/* Delete Item Modal */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="deleteItem"
         role="dialog"
         aria-labelledby="deleteItemLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
               <strong> Delete Item </strong>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body modal-edit">
+            <div className="modal-body modal-edit">
               <form className="deleteItem">
                 <div className="p-b-2">
                   <span> Are you sure? </span>
@@ -441,7 +438,7 @@ const OwnerMenu = () => {
                 <br />
                 <button
                   type="submit"
-                  class="btn save-btn btn-lg btn-block"
+                  className="btn save-btn btn-lg btn-block"
                   value="Submit"
                   data-dismiss="modal"
                   onClick={handleDeleteMenuItem}

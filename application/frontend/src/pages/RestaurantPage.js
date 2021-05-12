@@ -126,7 +126,16 @@ const RestaurantPage = () => {
   return (
     <div className="container-fluid">
       <div className="container">
-        <img className="w-100 restaurantBanner" src={Banner} alt="Banner" />
+        {currentRestaurant.map((item, i) => (
+          <img
+            key={i}
+            className="w-100 restaurantBanner"
+            src={
+              'data:image/jpeg;base64,' + new Buffer(item.Display_Pic_Banner)
+            }
+            alt="Banner"
+          />
+        ))}
         <div className="m-2 d-flex justify-content-around flex-wrap">
           {currentRestaurant.map((item, i) => (
             <div className="m-2" key={i}>
@@ -160,7 +169,10 @@ const RestaurantPage = () => {
               </div>
             </div>
           ))}
-          <div className="m-2 restaurant-home-map">{/* <MyMap></MyMap> */}</div>
+          <div className="m-2 restaurant-home-map">
+            {' '}
+            <MyMap></MyMap>{' '}
+          </div>
         </div>
       </div>
 

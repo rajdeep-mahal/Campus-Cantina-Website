@@ -11,6 +11,7 @@ import CuisineRow from '../components/CuisineRow';
 import Banner1 from '../assets/img/Home_Banner1.jpg';
 import driverBanner from '../assets/img/Driver_Home_Banner.png';
 import ownerBanner from '../assets/img/Owner_Home_Banner.png';
+import AllRestaurants from '../components/AllRestaurants';
 
 import {
   GoogleMap,
@@ -132,41 +133,7 @@ const Home = () => {
       {/* All Restaurants */}
       <div className="container">
         <h2 className="home-restaurants-heading">Restaurants</h2>
-        <div className="d-flex justify-content-around flex-wrap mt-4">
-          {restaurantsList.map((item, i) => (
-            <div key={i}>
-              <div className="card home-restaurant-card">
-                <img
-                  src={
-                    'data:image/jpeg;base64,' +
-                    new Buffer(item.Display_Pic_Thumbnail)
-                  }
-                  alt=""
-                  width="350px"
-                  height="250px"
-                />
-                <div className="row">
-                  <div className="col">
-                    <h5 className="text-align-left ml-2 mt-1">
-                      <strong>{item.Name}</strong>
-                    </h5>
-                  </div>
-                  <div className="col">
-                    <p className="float-right mr-2">Free Delivery</p>
-                  </div>
-                </div>
-                <div className="restaurants-price-tags">
-                  <span className="text-muted ml-2">
-                    {item.Price_Level} • {item.Cuisine}, <br />
-                    <span className="text-muted ml-2">{item.Tags}</span>
-                    <br />
-                    <span className="text-muted ml-2">{item.Address}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AllRestaurants results={restaurantsList} />
       </div>
     </div>
   );

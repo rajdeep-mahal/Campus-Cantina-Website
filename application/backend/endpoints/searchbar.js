@@ -1,4 +1,4 @@
-/* Endpoints needed for Search bar and drop down */
+/* Endpoints needed for search bar and drop down */
 
 const express = require('express');
 const router = express.Router();

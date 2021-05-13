@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
+import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const SFSUSignup = () => {
+  const [customerName, setCustomerName] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [customerType, setCustomerType] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerEmail, setCustomerEmail] = useState('');
+  const [customerPassword, setCustomerPassword] = useState('');
+
+  const onSubmitSFSUSignup = (event) => {
+    event.preventDefault();
+
+    let newcustomerID = nanoid();
+    axios
+      .post('http://localhost:3001/api/sfsucustomer/customer-signup', {
+        customerID: newcustomerID,
+        customerName: customerName,
+        customerAddress: customerAddress,
+        customerType: customerType,
+        customerPhone: customerPhone,
+        customerEmail: customerEmail,
+        customerPassword: customerPassword,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    alert('Thank you for Registering');
+  };
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
-      <form id="registration" className="signup-signin-form" method="POST">
+      <form
+        id="registration"
+        className="signup-signin-form"
+        method="POST"
+        onSubmit={onSubmitSFSUSignup}
+      >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
           <h2 className="font-weight-bold primary-color text-center">
@@ -22,6 +58,81 @@ const SFSUSignup = () => {
             placeholder="e.g. John Doe"
             required
             name="Name"
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
+          />
+          <br />
+          <br />
+          <label htmlFor="customerType" className="login-label first-label">
+            Select Customer Type
+          </label>
+          <br />
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="Student"
+              onChange={(e) => setCustomerType(e.target.value)}
+            />
+            <label className="form-check-label" htmlFor="inlineRadio3">
+              Student
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="Faculty"
+              onChange={(e) => setCustomerType(e.target.value)}
+            />
+            <label className="form-check-label" htmlFor="inlineRadio3">
+              Faculty
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio3"
+              value="Staff"
+              onChange={(e) => setCustomerType(e.target.value)}
+            />
+            <label className="form-check-label" htmlFor="inlineRadio3">
+              Staff
+            </label>
+          </div>
+          <br />
+          <label htmlFor="CustomerContactNumber" className="login-label">
+            Customer Contact Number
+          </label>
+          <input
+            id="CustomerContactNumber"
+            className="login_input-field"
+            type="text"
+            placeholder="e.g. 415-999-9999"
+            required
+            name="Customer Contact Number"
+            value={customerPhone}
+            onChange={(e) => setCustomerPhone(e.target.value)}
+          />
+          <br />
+          <label htmlFor="CustomerContactAddress" className="login-label">
+            Customer Contact Address
+          </label>
+          <input
+            id="CustomerContactAddress"
+            className="login_input-field"
+            type="text"
+            placeholder="e.g. 123 Main street, SF"
+            required
+            name="Customer Contact Address"
+            value={customerAddress}
+            onChange={(e) => setCustomerAddress(e.target.value)}
           />
           <label htmlFor="email" className="login-label">
             Email
@@ -33,6 +144,8 @@ const SFSUSignup = () => {
             placeholder="e.g. john.doe@mail.sfsu.edu"
             required
             name="email"
+            value={customerEmail}
+            onChange={(e) => setCustomerEmail(e.target.value)}
           />
           <label htmlFor="password" className="login-label">
             Password
@@ -44,6 +157,8 @@ const SFSUSignup = () => {
             placeholder="must have atleast 6 characters"
             required
             name="Password"
+            value={customerPassword}
+            onChange={(e) => setCustomerPassword(e.target.value)}
           />
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password

@@ -1,5 +1,9 @@
 @import '../css/index.css';
 
+.primary-color {
+  color: var(--primary-color);
+}
+
 /* Carousel & banner img height*/
 @media (max-width: 1000px) {
   .carousel {
@@ -67,20 +71,4 @@
   .driver-card {
     margin-top: 20px;
   }
-}
-
-/* All Restaurants */
-.home-restaurants-heading {
-  font-size: 195%;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.home-restaurant-card {
-  border: 3.5px solid var(--secondary-color);
-  margin-bottom: 1.5rem;
-}
-
-.restaurants-price-tags {
-  margin-top: -10px;
 }

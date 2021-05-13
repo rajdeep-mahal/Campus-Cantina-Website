@@ -7,14 +7,33 @@ Summary of MenuSideBar.js:
 import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
 import { Link } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
+import { GuestMenuItems } from './GuestMenuItems';
+import { OwnerMenuItems } from './OwnerMenuItems';
+import { DriverMenuItems } from './DriverMenuItems';
+import { SFSUMenuItems } from './SFSUMenuItems';
+import { useSelector } from 'react-redux';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
 import CustomerCart from '../pages/CustomerCart';
 
 const MenuSideBar = () => {
+  // state variables
   const [menu, setMenu] = useState(false);
   const [cart, setCart] = useState(false);
+  // redux state variables
+  const cartItemsTotalCount = useSelector(
+    (state) => state.cartItemsReducer.cartItemsTotalCount
+  );
+  const loggedInUserRole = useSelector(
+    (state) => state.userReducer.loggedInUserRole
+  );
+  // deduce user role and the menu items based on the role
+  let MenuItems = [];
+  if (loggedInUserRole === 'sfsu') MenuItems = SFSUMenuItems;
+  else if (loggedInUserRole === 'owner') MenuItems = OwnerMenuItems;
+  else if (loggedInUserRole === 'driver') MenuItems = DriverMenuItems;
+  else MenuItems = GuestMenuItems;
+
   const showMenu = () => setMenu(!menu);
   const showCart = () => setCart(!cart);
   const ref = useRef(null);
@@ -54,12 +73,10 @@ const MenuSideBar = () => {
       <div className="navbar sticky-top flex-nowrap">
         <section className="pt-2 col-md-3">
           <div className="row">
-            <Link to="#" className="">
-              <i
-                className="fas fa-bars text-white h4 hamburger"
-                onClick={showMenu}
-              ></i>
-            </Link>
+            <i
+              className="fas fa-bars text-white h4 hamburger"
+              onClick={showMenu}
+            ></i>
             <Link to="/" className="" style={{ marginLeft: '10px' }}>
               <img
                 src={CCLogo}
@@ -92,21 +109,47 @@ const MenuSideBar = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <Link to="#" className="float-right cart-icon-container">
-            <button
-              className="btn secondary-color-bg primary-color cart-btn-container"
-              onClick={showCart}
-            >
-              <div style={{ display: 'flex' }}>
-                <div style={{ marginTop: '-1px' }}>
-                  <i className="fas fa-shopping-cart h4 primary-color msb-cart-icon" />
+          <div className="d-flex justify-content-around">
+            <Link to="/sfsulogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-sign-in-alt h5 primary-color" />
+              </button>
+              {/* <div className="d-none d-xl-block"> */}
+              <p className="lblIconText">SFSU Login</p>
+              <p className="lblIconText1">Login</p>
+              {/* </div> */}
+            </Link>
+            <Link to="/ownerlogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-utensils h5 primary-color" />
+              </button>
+              <p className="lblIconText">Owner Login</p>
+              <p className="lblIconText1">Owner</p>
+            </Link>
+            <Link to="/driverlogin" className="d-none d-xl-block text-center">
+              <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <i className="fas fa-biking h5 primary-color" />
+              </button>
+              <p className="lblIconText">Driver Login</p>
+              <p className="lblIconText1">Driver</p>
+            </Link>
+            <div className="text-center">
+              <button
+                className="btn secondary-color-bg primary-color nav-btn-container"
+                onClick={showCart}
+              >
+                <div style={{ display: 'flex' }}>
+                  <i className="fas fa-shopping-cart h5 primary-color" />
+                  <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
+                    <span className="badge badge-light">
+                      {cartItemsTotalCount}
+                    </span>
+                  </div>
                 </div>
-                <div style={{ marginTop: '-6px' }}>
-                  <span className="lblCartCount">9</span>
-                </div>
-              </div>
-            </button>
-          </Link>
+              </button>
+              <p className="lblCartText">Cart</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="navbar second-nav">
@@ -128,6 +171,7 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
+
           {MenuItems.map((item, index) => {
             return (
               <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>

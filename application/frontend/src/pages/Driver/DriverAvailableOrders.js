@@ -4,8 +4,9 @@ Summary of DriverAvailableOrders.js:
  - to load when clicked on Order History on the Sidebar for Drivers' login
  - View button is a modal to display the order details
 */
-import React from 'react';
-import '../assets/css/driver.css';
+import '../../assets/css/driver.css';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 function viewOrder() {
   var popup = document.getElementById('viewOrder');
@@ -13,6 +14,21 @@ function viewOrder() {
 }
 
 const DriverAvailableOrders = () => {
+
+  const [orders, setOrders] = useState([]);
+
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/api/order/user-orders', {
+        params: { 
+          driverID: 2},
+      })
+      .then((res) => {
+        setOrders(res.data)
+      });
+  }, []);
+  
   return (
     <div className="container text-center">
       <div className="order_header h3 text-white text-center py-2">
@@ -40,71 +56,20 @@ const DriverAvailableOrders = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th className="border border_body">#111125</th>
-            <td className="border border_body">
-              Will Smith
-              <br /> (415) 123 4567
-            </td>
-            <td className="border border_body">&#36;50</td>
-            <td className="border border_body">
-              <span className="text-info font-italic">Completed</span>
-            </td>
-            <td className="border border_body">
-              <button
-                type="button"
-                className="btn btn-warning btn-sm border border_header"
-                data-toggle="modal"
-                data-target="#viewOrder1"
-              >
-                View
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <th className="border border_body">#111124</th>
-            <td className="border border_body">
-              Robert
-              <br /> (415) 555 5554
-            </td>
-            <td className="border border_body">&#36;40</td>
-            <td className="border border_body">
-              <span className="font-italic text-info">Completed</span>
-            </td>
-            <td className="border border_body">
-              <button
-                type="button"
-                className="btn btn-warning btn-sm border border_header"
-                data-toggle="modal"
-                data-target="#viewOrder2"
-              >
-                View
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <th className="border border_body">#111119</th>
-            <td className="border border_body">
-              Jack
-              <br /> (415) 535 5554
-            </td>
-            <td className="border border_body">&#36;20</td>
-            <td className="border border_body">
-              <span className="font-italic text-info">Completed</span>
-            </td>
-            <td className="border border_body">
-              <button
-                type="button"
-                className="btn btn-warning btn-sm border border_header"
-                data-toggle="modal"
-                data-target="#viewOrder3"
-              >
-                View
-              </button>
-            </td>
-          </tr>
+        
+            
+              {orders.map((items, i) => (
+                
+                <tr key = {i}>
+                  <td className="border border_body"></td>
+                  <td className="border border_body">{items.Customer_Name}</td>
+                  <td className="border border_body">&#36;{items.Total}</td>
+                  {/* <td className="border border_body"><span className="text-info font-italic">Completed</span></td> */}
+                  
+                </tr>
+              
+                ))
+                }
         </tbody>
       </table>
 

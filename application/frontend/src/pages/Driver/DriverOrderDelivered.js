@@ -1,6 +1,6 @@
 import React from "react";
-import '../assets/css/driver.css';
-import map_sample from '../assets/img/map_customerorder.png';
+import '../../assets/css/driver.css';
+import map_sample from '../../assets/img/map_customerorder.png';
 
 
 

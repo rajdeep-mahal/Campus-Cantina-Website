@@ -12,9 +12,8 @@ const SFSULogin = () => {
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
-  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
-    false
-  );
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] =
+    useState(false);
 
   const onCheckEmailSuffix = () => {
     if (customerEmail.endsWith('sfsu.edu')) {
@@ -30,8 +29,6 @@ const SFSULogin = () => {
     event.preventDefault();
     onCheckEmailSuffix();
     if (!showInvalidSuffixAlert) loginCustomer();
-    if (!showInvalidEmailAlert) loginCustomer();
-    if (!showInvalidPasswordAlert) loginCustomer();
   };
 
   const loginCustomer = () => {

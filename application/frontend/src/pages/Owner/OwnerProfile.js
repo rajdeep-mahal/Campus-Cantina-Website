@@ -114,16 +114,6 @@ const OwnerProfile = () => {
                                   </label>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col">
-                                  <label className="form-descrip">
-                                    <strong>Marketing Post</strong>
-                                  </label>
-                                </div>
-                                <div class="col">
-                                  <label for="marketing">Save $5 on first 5 orders! </label>
-                                </div>
-                              </div>
                             </div>
                             <div class="col-6">
                               <img

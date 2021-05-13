@@ -18,18 +18,12 @@ import Mexican from '../assets/img/cuisines/Mexican.png';
 import Pizza from '../assets/img/cuisines/Pizza.png';
 import Vietnamese from '../assets/img/cuisines/Vietnamese.png';
 import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  useJsApiLoader,
-} from '@react-google-maps/api';
-import config from '../config.js';
-import {
   setCartItems,
   setCartItemsTotalCount,
   setCartTotal,
   setCartDeliveryFee,
 } from '../redux/actions/cartItemsActions';
+import MyMap from '../components/MyMap';
 // import ReactDOM from 'react-dom';
 
 const RestaurantPage = () => {
@@ -81,47 +75,6 @@ const RestaurantPage = () => {
       source.cancel();
     };
   }, []);
-
-  // Google Map
-  const center = {
-    lat: 37.7234,
-    lng: -122.481,
-  };
-
-  function MyMap() {
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: config.googleAPI,
-    });
-
-    const [map, setMap] = React.useState(null);
-
-    const onLoad = React.useCallback(function callback(map) {
-      setMap(map);
-    }, []);
-
-    const onUnmount = React.useCallback(function callback(map) {
-      setMap(null);
-    }, []);
-
-    return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={{ height: '270px', width: '350px' }}
-        zoom={17}
-        center={center}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-        options={{
-          streetViewControl: false,
-          mapTypeControl: false,
-        }}
-      >
-        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-      </GoogleMap>
-    ) : (
-      <></>
-    );
-  } //end of MyMap function
 
   return (
     <div className="container-fluid">

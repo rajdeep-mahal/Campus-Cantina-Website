@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
 
 const SFSUSignup = () => {
+  const history = useHistory();
   const [customerName, setCustomerName] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [customerType, setCustomerType] = useState('');
@@ -32,6 +33,7 @@ const SFSUSignup = () => {
         console.log(res);
       });
     alert('Thank you for Registering');
+    history.push('/SFSULogin');
   };
 
   return (

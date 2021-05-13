@@ -15,8 +15,8 @@ const MyMap = () => {
 
   // Google Map
   const center = {
-    lat: 37.7234,
-    lng: -122.481,
+    lat: 37.72377664594963,
+    lng: -122.47965529711159,
   };
 
   const [map, setMap] = React.useState(null);
@@ -41,7 +41,7 @@ const MyMap = () => {
         mapTypeControl: false,
       }}
     >
-      <Marker position={{ lat: 37.7234, lng: -122.481 }} />
+      <Marker position={{ lat: 37.72377664594963, lng: -122.47965529711159 }} />
     </GoogleMap>
   ) : (
     <></>

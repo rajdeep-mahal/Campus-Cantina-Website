@@ -88,7 +88,7 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
   // Send restaurant query to db
   database.query(query, (err, result) => {
     if (err) throw err;
-    console.log(query);
+    // console.log(query);
     console.log('Uploaded restaurant info to db');
     res.send(result);
   });

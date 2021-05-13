@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../assets/css/login_Signup.css';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
@@ -12,6 +12,7 @@ const DriverSignup = () => {
       (state) => state.searchReducer.allRestaurants
   );
 
+  const history = useHistory();
   const [driverName, setDriverName] = useState('');
   const [driverContactNumber, setDriverContactNumber] = useState('');
   const [driverEmail, setDriverEmail] = useState('');
@@ -34,6 +35,8 @@ const DriverSignup = () => {
         .then((res) => {
           console.log(res);
         });
+        alert('Thank you for Registering');
+        history.push('/DriverLogin');
   };
 
 

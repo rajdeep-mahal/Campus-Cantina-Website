@@ -1,14 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
 
 const DriverLogin = () => {
+  const history = useHistory();
+  const [driverEmail, setDriverEmail] = useState('');
+  const [driverPassword, setDriverPassword] = useState('');
+
+  // show error alert for invalid email suffix
+  const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
+  const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
+    false
+  );
+
+  const onSubmitDriverLogin = (event) => {
+    event.preventDefault();
+    if (!showInvalidSuffixAlert) loginDriver();
+  };
+
+  const loginDriver = () => {
+    axios
+      .get('http://localhost:3001/api/driver/driver-info', {
+        params: {
+          driverEmail: driverEmail,
+        },
+      })
+      .then((res) => {
+        bcrypt.compare(
+          driverPassword,
+          res.data[0].Password,
+          (err, isMatch) => {
+            if (err) {
+              throw err;
+            } else if (!isMatch) {
+              //Password doesn't match!
+              setShowInvalidEmailAlert(false);
+              setShowInvalidPasswordAlert(true);
+            } else {
+              // 'Password matches!'
+              setShowInvalidEmailAlert(false);
+              setShowInvalidPasswordAlert(false);
+              history.push('/');
+            }
+          }
+        );
+      })
+      .catch((err) => {
+        setShowInvalidEmailAlert(true);
+        setShowInvalidPasswordAlert(false);
+      });
+  };
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
+      
+      {showInvalidEmailAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Email Address is not registered with us.</b> <br />{' '}
+            <i>
+              Please <Link to="/SFSUSignup">Register</Link>
+            </i>{' '}
+          </div>
+        ) : (
+          <> </>
+        )}
+        
+      {showInvalidPasswordAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Incorrect Password.</b> <br /> Please try Again
+          </div>
+        ) : (
+          <> </>
+        )}
+        
       <form
         className="signup-signin-form"
         method="post"
         encType="application/x-www-form-urlencoded"
+        onSubmit={onSubmitDriverLogin}
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
@@ -24,6 +102,8 @@ const DriverLogin = () => {
             id="displayNameInput"
             name="displayName"
             placeholder="e.g. john.doe@gmail.com"
+            value={driverEmail}
+            onChange={(e) => setDriverEmail(e.target.value)}
             required
           />
           <label htmlFor="Password" className="login-label">
@@ -36,6 +116,8 @@ const DriverLogin = () => {
             name="password"
             placeholder="must have atleast 6 characters"
             required
+            value={driverPassword}
+            onChange={(e) => setDriverPassword(e.target.value)}
           />
           <br />
           <br />

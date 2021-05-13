@@ -207,7 +207,6 @@ const OwnerMenu = () => {
                           $1.99 <br /> delivery fee
                         </p>
                       </td>
-                      
                     </tr>
                   </tbody>
                 </table>

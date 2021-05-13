@@ -211,11 +211,15 @@ router.get('/owner-info', (req, res) => {
     `SELECT * FROM Restaurant_Owners WHERE Email = '` +
     req.query.ownerEmail +
     `'`;
+    console.log("Owner email is: ");
+    console.log(req.query.ownerEmail);
 
   // Send owner info query to db
   database.query(query, (err, result) => {
     console.log('Got individual owner info from db');
     res.send(result);
+    console.log("result is : " + result);
+    console.log(result);
   });
 });
 

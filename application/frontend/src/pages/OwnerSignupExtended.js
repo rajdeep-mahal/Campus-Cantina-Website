@@ -254,7 +254,7 @@ const OwnerSignupExtended = () => {
                 id="tags"
                 className="login_input-field"
                 type="number"
-                placeholder="e.g. taco, burrito"
+                placeholder="e.g. $$"
                 required
                 min="0.00"
                 step="any"

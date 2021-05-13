@@ -10,15 +10,13 @@ const OwnerLogin = () => {
   const [ownerPassword, setOwnerPassword] = useState('');
 
   // show error alert for invalid email suffix
-  const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
-  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
-    false
-  );
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(false);
 
   const onSubmitOwnerLogin = (event) => {
     event.preventDefault();
-    if (!showInvalidSuffixAlert) loginOwner();
+    if (!showInvalidEmailAlert) loginOwner();
+    if (!showInvalidPasswordAlert) loginOwner();
   };
 
   const loginOwner = () => {

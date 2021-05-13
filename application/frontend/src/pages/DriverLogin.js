@@ -10,15 +10,13 @@ const DriverLogin = () => {
   const [driverPassword, setDriverPassword] = useState('');
 
   // show error alert for invalid email suffix
-  const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
-  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
-    false
-  );
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(false);
 
   const onSubmitDriverLogin = (event) => {
     event.preventDefault();
-    if (!showInvalidSuffixAlert) loginDriver();
+    if (!showInvalidEmailAlert) loginDriver();
+    if (!showInvalidPasswordAlert) loginDriver();
   };
 
   const loginDriver = () => {
@@ -81,7 +79,7 @@ const DriverLogin = () => {
         ) : (
           <> </>
         )}
-        
+
       <form
         className="signup-signin-form"
         method="post"

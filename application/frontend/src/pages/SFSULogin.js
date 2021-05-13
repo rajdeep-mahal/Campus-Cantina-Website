@@ -30,6 +30,8 @@ const SFSULogin = () => {
     event.preventDefault();
     onCheckEmailSuffix();
     if (!showInvalidSuffixAlert) loginCustomer();
+    if (!showInvalidEmailAlert) loginCustomer();
+    if (!showInvalidPasswordAlert) loginCustomer();
   };
 
   const loginCustomer = () => {

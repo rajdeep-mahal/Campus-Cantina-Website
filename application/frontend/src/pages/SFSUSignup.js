@@ -15,8 +15,21 @@ const SFSUSignup = () => {
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
 
+    // show error alert for invalid email suffix
+    const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
+
+
+    const onCheckEmailSuffix = () => {
+      if (customerEmail.endsWith('sfsu.edu')) {
+        setShowInvalidSuffixAlert(false);
+      } else {
+        setShowInvalidSuffixAlert(true);
+      }
+    };
+
   const onSubmitSFSUSignup = (event) => {
     event.preventDefault();
+    onCheckEmailSuffix();
 
     let newcustomerID = nanoid();
     axios
@@ -38,6 +51,18 @@ const SFSUSignup = () => {
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
+      <div>
+        {showInvalidSuffixAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Please enter a valid SFSU email address to continue.</b> <br />{' '}
+            <i>Example: john.doe@mail.sfsu.edu or john.doe@sfsu.edu</i>
+          </div>
+        ) : (
+          <> </>
+        )}
       <form
         id="registration"
         className="signup-signin-form"
@@ -148,6 +173,7 @@ const SFSUSignup = () => {
             name="email"
             value={customerEmail}
             onChange={(e) => setCustomerEmail(e.target.value)}
+            onBlur={onCheckEmailSuffix}
           />
           <label htmlFor="password" className="login-label">
             Password
@@ -198,6 +224,7 @@ const SFSUSignup = () => {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

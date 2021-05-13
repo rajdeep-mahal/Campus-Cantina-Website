@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import {
-  setCartItems,
-  setCartItemsTotalCount,
-  setCartTotal,
-  setCartDeliveryInstructions,
-} from '../redux/actions/cartItemsActions';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import { Redirect, useHistory } from 'react-router-dom';
+import { setCartDeliveryInstructions } from '../redux/actions/cartItemsActions';
+import PlacesAutocomplete from 'react-places-autocomplete'; //getLatLng, //geocodeByAddress,
+import ReactDependentScript from 'react-dependent-script';
+import config from '../config.js';
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
@@ -179,60 +173,69 @@ const Checkout = () => {
                   Delivery Address:
                 </label>
                 <br />
-                <PlacesAutocomplete
-                  value={deliveryAddress}
-                  onChange={setDeliveryAddress}
-                  searchOptions={{
-                    location: new window.google.maps.LatLng(37, -122),
-                    radius: 4000,
-                    types: ['address'],
-                    componentRestrictions: { country: 'us' },
-                  }}
-                  onSelect={(value) => {
-                    setDeliveryAddress(value);
-                  }}
-                  onError={(status, clearSuggestions) => {
-                    // console.log(
-                    //   'Google Maps API returned error with status: ',
-                    //   status
-                    // );
-                    clearSuggestions();
-                  }}
+                <ReactDependentScript
+                  loadingComponent={<div>Loading....</div>}
+                  scripts={[
+                    `https://maps.googleapis.com/maps/api/js?key=${config.googleAPI}&libraries=places`,
+                  ]}
                 >
-                  {({
-                    getInputProps,
-                    suggestions,
-                    getSuggestionItemProps,
-                    loading,
-                  }) => (
-                    <div>
-                      <input
-                        {...getInputProps({
-                          placeholder: 'Start typing your current address...',
-                          className: 'location-search-input',
-                        })}
-                      />
-                      <div className="autocomplete-dropdown-container">
-                        {loading ? <div>...loading</div> : null}
-                        {suggestions.map((suggestion, i) => {
-                          const style = {
-                            backgroundColor: suggestion.active
-                              ? '#41b6e6'
-                              : '#fff',
-                          };
-                          return (
-                            <div
-                              {...getSuggestionItemProps(suggestion, { style })}
-                              key={i}
-                            >
-                              {suggestion.description}
-                            </div>
-                          );
-                        })}
+                  <PlacesAutocomplete
+                    value={deliveryAddress}
+                    onChange={setDeliveryAddress}
+                    searchOptions={{
+                      location: new window.google.maps.LatLng(37, -122),
+                      radius: 4000,
+                      types: ['address'],
+                      componentRestrictions: { country: 'us' },
+                    }}
+                    onSelect={(value) => {
+                      setDeliveryAddress(value);
+                    }}
+                    onError={(status, clearSuggestions) => {
+                      // console.log(
+                      //   'Google Maps API returned error with status: ',
+                      //   status
+                      // );
+                      clearSuggestions();
+                    }}
+                  >
+                    {({
+                      getInputProps,
+                      suggestions,
+                      getSuggestionItemProps,
+                      loading,
+                    }) => (
+                      <div>
+                        <input
+                          {...getInputProps({
+                            placeholder: 'Start typing your current address...',
+                            className: 'location-search-input',
+                          })}
+                        />
+                        <div className="autocomplete-dropdown-container">
+                          {loading ? <div>...loading</div> : null}
+                          {suggestions.map((suggestion, i) => {
+                            const style = {
+                              backgroundColor: suggestion.active
+                                ? '#41b6e6'
+                                : '#fff',
+                            };
+                            return (
+                              <div
+                                {...getSuggestionItemProps(suggestion, {
+                                  style,
+                                })}
+                                key={i}
+                              >
+                                {suggestion.description}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </PlacesAutocomplete>
+                    )}
+                  </PlacesAutocomplete>
+                </ReactDependentScript>
               </div>
 
               <table className="table checkout-border border-bottom">

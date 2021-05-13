@@ -50,14 +50,14 @@ const Checkout = () => {
   }
 
   // for selecting address from the list populated
-  const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value);
-    // console.log(results);
-    const latlng = await getLatLng(results[0]);
-    // console.log(latlng);
-    setDeliveryAddress(value);
-    // setCoordinates(latlng);
-  };
+  // const handleSelect = async (value) => {
+  //   const results = await geocodeByAddress(value);
+  //   console.log(results);
+  //   const latlng = await getLatLng(results[0]);
+  //   console.log(latlng);
+  //   setDeliveryAddress(value);
+  //   setCoordinates(latlng);
+  // };
 
   const handleOrderCheckout = (e) => {
     // get unique restaurants list if there are items from multiple restaurants in the cart
@@ -182,13 +182,22 @@ const Checkout = () => {
                 <PlacesAutocomplete
                   value={deliveryAddress}
                   onChange={setDeliveryAddress}
-                  // searchOptions={{
-                  //   location: { lat: 37.7241492, lng: -122.4799405 },
-                  //   radius: 4000,
-                  //   types: ['address'],
-                  //   componentRestrictions: { country: 'us' },
-                  // }}
-                  onSelect={handleSelect}
+                  searchOptions={{
+                    location: new window.google.maps.LatLng(37, -122),
+                    radius: 4000,
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' },
+                  }}
+                  onSelect={(value) => {
+                    setDeliveryAddress(value);
+                  }}
+                  onError={(status, clearSuggestions) => {
+                    // console.log(
+                    //   'Google Maps API returned error with status: ',
+                    //   status
+                    // );
+                    clearSuggestions();
+                  }}
                 >
                   {({
                     getInputProps,
@@ -197,8 +206,6 @@ const Checkout = () => {
                     loading,
                   }) => (
                     <div>
-                      {/* <p>Lat: {coordinates.lat}</p>
-                      <p>Lng: {coordinates.lng}</p> */}
                       <input
                         {...getInputProps({
                           placeholder: 'Start typing your current address...',

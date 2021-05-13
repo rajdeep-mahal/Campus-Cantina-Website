@@ -129,7 +129,7 @@ const RestaurantPage = () => {
         {currentRestaurant.map((item, i) => (
           <img
             key={i}
-            className="w-100 restaurantBanner"
+            className="img-fluid restaurantBanner"
             src={
               'data:image/jpeg;base64,' + new Buffer(item.Display_Pic_Banner)
             }

@@ -24,6 +24,7 @@ const DriverSignup = () => {
     useState(false);
   const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
     useState(false);
+
   const checkLengthofPwd = () => {
     if (driverPassword.length < 6) {
       setShowInvalidPwdLengthAlert(true);
@@ -41,6 +42,8 @@ const DriverSignup = () => {
 
   const onSubmitDriverSignup = (event) => {
     event.preventDefault();
+    checkLengthofPwd();
+    comparePasswords();
     if (!showPasswordsMismatchAlert && !showInvalidPwdLengthAlert) {
       let newDriverID = nanoid();
       axios
@@ -209,6 +212,7 @@ const DriverSignup = () => {
             type="submit"
             className="login_button d-flex align-items-center justify-content-center"
             value="Register"
+            onClick={comparePasswords}
           >
             Sign up
           </button>

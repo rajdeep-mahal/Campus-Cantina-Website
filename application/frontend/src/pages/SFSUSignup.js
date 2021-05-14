@@ -20,9 +20,9 @@ const SFSUSignup = () => {
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
   const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
     useState(false);
-
   const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
     useState(false);
+
   const checkLengthofPwd = () => {
     if (customerPassword.length < 6) {
       setShowInvalidPwdLengthAlert(true);
@@ -50,6 +50,8 @@ const SFSUSignup = () => {
   const onSubmitSFSUSignup = (event) => {
     event.preventDefault();
     checkEmailSuffix();
+    checkLengthofPwd();
+    comparePasswords();
     if (
       !showInvalidSuffixAlert &&
       !showPasswordsMismatchAlert &&
@@ -265,6 +267,7 @@ const SFSUSignup = () => {
             type="submit"
             className="login_button d-flex align-items-center justify-content-center"
             value="Register"
+            onClick={comparePasswords}
           >
             Sign up
           </button>

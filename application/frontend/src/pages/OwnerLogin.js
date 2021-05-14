@@ -108,7 +108,7 @@ const OwnerLogin = () => {
               type="password"
               id="passwordInput"
               name="password"
-              placeholder="must have atleast 6 characters"
+              placeholder="must have at least 6 characters"
               required
               value={ownerPassword}
               onChange={(e) => setOwnerPassword(e.target.value)}

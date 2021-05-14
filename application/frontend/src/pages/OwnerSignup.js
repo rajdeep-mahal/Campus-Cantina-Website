@@ -124,7 +124,7 @@ const OwnerSignup = () => {
             className="login_input-field"
             id="password"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="Password"
             value={ownerPassword}
@@ -146,7 +146,7 @@ const OwnerSignup = () => {
             className="login_input-field"
             id="PassConfirmation"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="cpassword"
             value={ownerConfirmPassword}

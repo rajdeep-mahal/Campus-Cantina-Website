@@ -12,12 +12,11 @@ const SFSULogin = () => {
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
-  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] = useState(
-    false
-  );
+  const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] =
+    useState(false);
 
-  const onShowEmailError = () => {
-    if (customerEmail.endsWith('@mail.sfsu.edu')) {
+  const onCheckEmailSuffix = () => {
+    if (customerEmail.endsWith('sfsu.edu')) {
       setShowInvalidSuffixAlert(false);
     } else {
       setShowInvalidSuffixAlert(true);
@@ -28,7 +27,7 @@ const SFSULogin = () => {
 
   const onSubmitCustomerLogin = (event) => {
     event.preventDefault();
-    onShowEmailError();
+    onCheckEmailSuffix();
     if (!showInvalidSuffixAlert) loginCustomer();
   };
 
@@ -74,7 +73,7 @@ const SFSULogin = () => {
             role="alert"
           >
             <b>Please enter a valid SFSU email address to continue.</b> <br />{' '}
-            <i>Example: john.doe@mail.sfsu.edu</i>
+            <i>Example: john.doe@mail.sfsu.edu or john.doe@sfsu.edu</i>
           </div>
         ) : (
           <> </>
@@ -124,7 +123,7 @@ const SFSULogin = () => {
               placeholder="e.g. john.doe@mail.sfsu.edu"
               value={customerEmail}
               onChange={(e) => setCustomerEmail(e.target.value)}
-              onBlur={onShowEmailError}
+              onBlur={onCheckEmailSuffix}
               required
             />
             <label htmlFor="Password" className="login-label">
@@ -135,7 +134,7 @@ const SFSULogin = () => {
               type="password"
               id="passwordInput"
               name="password"
-              placeholder="must have atleast 6 characters"
+              placeholder="must have at least 6 characters"
               required
               value={customerPassword}
               onChange={(e) => setCustomerPassword(e.target.value)}

@@ -71,7 +71,7 @@ router.get('/get-appuser', (req, res) => {
 
 // Sign out
 router.get('/signout', (req, res) => {
-  console.log('Called signout endpoit');
+  console.log('Called signout endpoint');
   appUser.email = 'guest';
   appUser.name = 'Guest';
   appUser.type = 'guest';

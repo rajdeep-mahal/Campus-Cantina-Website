@@ -16,7 +16,7 @@ export const SFSUMenuItems = [
   },
   {
     title: 'Sign out',
-    path: '/',
+    path: '/signout',
     cName: 'primary-color fas fa-sign-out-alt',
   },
 ];

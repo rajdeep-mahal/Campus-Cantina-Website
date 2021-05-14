@@ -11,7 +11,6 @@ const SFSULogin = () => {
   const history = useHistory();
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
-  const [appUserEmail, setAppUserEmail] = useState('');
 
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);

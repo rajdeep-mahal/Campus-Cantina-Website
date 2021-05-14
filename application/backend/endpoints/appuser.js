@@ -23,7 +23,6 @@ router.get('/customer-login', (req, res) => {
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
-    console.log(appUser);
     res.send(appUser);
   });
 });
@@ -43,7 +42,6 @@ router.get('/owner-login', (req, res) => {
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
-    console.log(appUser);
     res.send(appUser);
   });
 });
@@ -61,7 +59,6 @@ router.get('/driver-login', (req, res) => {
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
-    console.log(appUser);
     res.send(appUser);
   });
 });
@@ -71,5 +68,14 @@ router.get('/get-appuser', (req, res) => {
   console.log('Called get-appuser endpoint');
   res.send(appUser);
 });
+
+// Sign out
+router.get('/signout', (req, res) => {
+  console.log('Called signout endpoit');
+  appUser.email = 'guest';
+  appUser.name = 'Guest';
+  appUser.type = 'guest';
+  res.send(appUser);
+})
 
 module.exports = router;

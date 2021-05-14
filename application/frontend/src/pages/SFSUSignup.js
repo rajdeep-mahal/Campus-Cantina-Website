@@ -21,6 +21,16 @@ const SFSUSignup = () => {
   const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
     useState(false);
 
+  const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
+    useState(false);
+  const checkLengthofPwd = () => {
+    if (customerPassword.length < 6) {
+      setShowInvalidPwdLengthAlert(true);
+    } else {
+      setShowInvalidPwdLengthAlert(false);
+    }
+  };
+
   const checkEmailSuffix = () => {
     if (customerEmail.endsWith('sfsu.edu')) {
       setShowInvalidSuffixAlert(false);
@@ -40,7 +50,11 @@ const SFSUSignup = () => {
   const onSubmitSFSUSignup = (event) => {
     event.preventDefault();
     checkEmailSuffix();
-    if (!showInvalidSuffixAlert && !showPasswordsMismatchAlert) {
+    if (
+      !showInvalidSuffixAlert &&
+      !showPasswordsMismatchAlert &&
+      !showInvalidPwdLengthAlert
+    ) {
       let newcustomerID = nanoid();
       axios
         .post('http://localhost:3001/api/sfsucustomer/customer-signup', {
@@ -140,12 +154,16 @@ const SFSUSignup = () => {
           <input
             id="CustomerContactNumber"
             className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
+            type="number"
+            placeholder="e.g. 4159999999"
+            min="0"
             required
             name="Customer Contact Number"
             value={customerPhone}
             onChange={(e) => setCustomerPhone(e.target.value)}
+            onBlur={(e) => {
+              setCustomerPhone(parseInt(customerPhone));
+            }}
           />
           <br />
           <label htmlFor="CustomerContactAddress" className="login-label">
@@ -195,7 +213,16 @@ const SFSUSignup = () => {
             name="Password"
             value={customerPassword}
             onChange={(e) => setCustomerPassword(e.target.value)}
+            onBlur={checkLengthofPwd}
           />
+          {showInvalidPwdLengthAlert ? (
+            <div className="invalid-feedback">
+              <b>Password should have at least 6 characters</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password
           </label>

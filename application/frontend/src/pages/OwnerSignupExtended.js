@@ -7,13 +7,15 @@ Summary of OwnerSignupExtended.js:
 import React, { useState, useEffect } from 'react';
 import '../assets/css/login_Signup.css';
 import { Link, useHistory, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
+import { setOwnerFormSubmitted } from '../redux/actions/ownerSignupActions';
 const nanoid = customAlphabet('1234567890', 3);
 
 const OwnerSignupExtended = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const ownerName = useSelector((state) => state.ownerSignupReducer.ownerName);
   const ownerContactNumber = useSelector(
     (state) => state.ownerSignupReducer.ownerContactNumber
@@ -251,7 +253,7 @@ const OwnerSignupExtended = () => {
                 Delivery Fee ($)
               </label>
               <input
-                id="tags"
+                id="delivery fee"
                 className="login_input-field"
                 type="number"
                 placeholder="e.g. $$"
@@ -286,7 +288,10 @@ const OwnerSignupExtended = () => {
                   the admin. It shall be live only after approval.
                 </label>
               </div>
-              <Link to="/OwnerSignup">
+              <Link
+                to="/OwnerSignup"
+                onClick={(e) => dispatch(setOwnerFormSubmitted(false))}
+              >
                 <i className="fas fa-chevron-left small mt-3"></i> Back
               </Link>
               <br />

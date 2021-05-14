@@ -14,55 +14,70 @@ const SFSUSignup = () => {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
+  const [customerConfirmPassword, setCustomerConfirmPassword] = useState('');
 
-    // show error alert for invalid email suffix
-    const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
+  // show error alert for invalid email suffix
+  const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
+  const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
+    useState(false);
+  const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
+    useState(false);
 
+  const checkLengthofPwd = () => {
+    if (customerPassword.length < 6) {
+      setShowInvalidPwdLengthAlert(true);
+    } else {
+      setShowInvalidPwdLengthAlert(false);
+    }
+  };
 
-    const onCheckEmailSuffix = () => {
-      if (customerEmail.endsWith('sfsu.edu')) {
-        setShowInvalidSuffixAlert(false);
-      } else {
-        setShowInvalidSuffixAlert(true);
-      }
-    };
+  const checkEmailSuffix = () => {
+    if (customerEmail.endsWith('sfsu.edu')) {
+      setShowInvalidSuffixAlert(false);
+    } else {
+      setShowInvalidSuffixAlert(true);
+    }
+  };
+
+  const comparePasswords = () => {
+    if (customerPassword !== customerConfirmPassword) {
+      setShowPasswordsMismatchAlert(true);
+    } else {
+      setShowPasswordsMismatchAlert(false);
+    }
+  };
 
   const onSubmitSFSUSignup = (event) => {
     event.preventDefault();
-    onCheckEmailSuffix();
-
-    let newcustomerID = nanoid();
-    axios
-      .post('http://localhost:3001/api/sfsucustomer/customer-signup', {
-        customerID: newcustomerID,
-        customerName: customerName,
-        customerAddress: customerAddress,
-        customerType: customerType,
-        customerPhone: customerPhone,
-        customerEmail: customerEmail,
-        customerPassword: customerPassword,
-      })
-      .then((res) => {
-        console.log(res);
-      });
-    alert('Thank you for Registering');
-    history.push('/SFSULogin');
+    checkEmailSuffix();
+    checkLengthofPwd();
+    comparePasswords();
+    if (
+      !showInvalidSuffixAlert &&
+      !showPasswordsMismatchAlert &&
+      !showInvalidPwdLengthAlert
+    ) {
+      let newcustomerID = nanoid();
+      axios
+        .post('http://localhost:3001/api/sfsucustomer/customer-signup', {
+          customerID: newcustomerID,
+          customerName: customerName,
+          customerAddress: customerAddress,
+          customerType: customerType,
+          customerPhone: customerPhone,
+          customerEmail: customerEmail,
+          customerPassword: customerPassword,
+        })
+        .then((res) => {
+          console.log(res);
+          alert('Thank you for Registering');
+          history.push('/SFSULogin');
+        });
+    }
   };
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
-      <div>
-        {showInvalidSuffixAlert ? (
-          <div
-            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
-            role="alert"
-          >
-            <b>Please enter a valid SFSU email address to continue.</b> <br />{' '}
-            <i>Example: john.doe@mail.sfsu.edu or john.doe@sfsu.edu</i>
-          </div>
-        ) : (
-          <> </>
-        )}
       <form
         id="registration"
         className="signup-signin-form"
@@ -101,6 +116,7 @@ const SFSUSignup = () => {
               name="inlineRadioOptions"
               id="inlineRadio1"
               value="Student"
+              required
               onChange={(e) => setCustomerType(e.target.value)}
             />
             <label className="form-check-label" htmlFor="inlineRadio3">
@@ -140,12 +156,16 @@ const SFSUSignup = () => {
           <input
             id="CustomerContactNumber"
             className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
+            type="number"
+            placeholder="e.g. 4159999999"
+            min="0"
             required
             name="Customer Contact Number"
             value={customerPhone}
             onChange={(e) => setCustomerPhone(e.target.value)}
+            onBlur={(e) => {
+              setCustomerPhone(parseInt(customerPhone));
+            }}
           />
           <br />
           <label htmlFor="CustomerContactAddress" className="login-label">
@@ -173,8 +193,16 @@ const SFSUSignup = () => {
             name="email"
             value={customerEmail}
             onChange={(e) => setCustomerEmail(e.target.value)}
-            onBlur={onCheckEmailSuffix}
+            onBlur={checkEmailSuffix}
           />
+          {showInvalidSuffixAlert ? (
+            <div className="invalid-feedback">
+              <b>Please enter a valid SFSU email address to continue.</b> <br />
+              <i>Example: john.doe@mail.sfsu.edu or john.doe@sfsu.edu</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="password" className="login-label">
             Password
           </label>
@@ -182,12 +210,21 @@ const SFSUSignup = () => {
             className="login_input-field"
             id="password"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="Password"
             value={customerPassword}
             onChange={(e) => setCustomerPassword(e.target.value)}
+            onBlur={checkLengthofPwd}
           />
+          {showInvalidPwdLengthAlert ? (
+            <div className="invalid-feedback">
+              <b>Password should have at least 6 characters</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password
           </label>
@@ -195,10 +232,21 @@ const SFSUSignup = () => {
             className="login_input-field"
             id="PassConfirmation"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="cpassword"
+            value={customerConfirmPassword}
+            onChange={(e) => setCustomerConfirmPassword(e.target.value)}
+            onBlur={comparePasswords}
           />
+          {showPasswordsMismatchAlert ? (
+            <div className="invalid-feedback">
+              <b>Password & Confirm Password do not match</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <div className="form-check mt-4 ml-1">
             <input
               className="form-check-input mt-2"
@@ -219,12 +267,12 @@ const SFSUSignup = () => {
             type="submit"
             className="login_button d-flex align-items-center justify-content-center"
             value="Register"
+            onClick={comparePasswords}
           >
             Sign up
           </button>
         </div>
       </form>
-      </div>
     </div>
   );
 };

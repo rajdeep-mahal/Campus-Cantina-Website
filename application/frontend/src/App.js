@@ -21,9 +21,7 @@ import Bhavani from './pages/About/Bhavani';
 import Frederick from './pages/About/Frederick';
 import German from './pages/About/German';
 import Henzon from './pages/About/Henzon';
-import VPHome from './pages/VPHome';
 import Home from './pages/Home';
-// import MenuSideBar from './components/MenuSideBar';
 import SearchResults from './pages/SearchResults';
 import SFSULogin from './pages/SFSULogin';
 import SFSUSignup from './pages/SFSUSignup';
@@ -46,7 +44,7 @@ import { setAllRestaurants } from './redux/actions/searchActions';
 import DisplayCart from './pages/CustomerCart';
 import DriverAvailableOrders from './pages/DriverAvailableOrders';
 import DriverOrderDelivered from './pages/DriverOrderDelivered';
-import SwitchedMenuSideBar from './components/SwitchedMenuSideBar';
+import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
 
@@ -66,8 +64,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <MenuSideBar /> */}
-        <SwitchedMenuSideBar />
+        <MenuSideBar />
         <ScrollToTop />
         <Switch>
           <Route path="/searchresults">
@@ -76,7 +73,7 @@ function App() {
           <Route path="/cuisineresults">
             <CuisineResults />
           </Route>
-          <Route path="/restaurantpage">
+          <Route path="/restaurant/:clickedRestaurantName">
             <RestaurantPage />
           </Route>
           <Route path="/about/rajdeep">
@@ -99,9 +96,6 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
-          </Route>
-          <Route path="/vphome">
-            <VPHome />
           </Route>
           <Route path="/sfsulogin">
             <SFSULogin />

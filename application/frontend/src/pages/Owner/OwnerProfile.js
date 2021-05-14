@@ -16,7 +16,7 @@ const OwnerProfile = () => {
   const currentRestaurant = restaurantsList.filter(
     (restaurant) => restaurant.Name.trim() === "Taco Shell"
   );
-
+  
   const [loadData, setLoadData] = useState(false);
 
   useEffect(() => {

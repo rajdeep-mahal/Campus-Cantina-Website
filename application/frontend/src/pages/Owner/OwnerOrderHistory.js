@@ -8,16 +8,12 @@ import "../../assets/css/ownerlayout.css";
 import "../../assets/css/index.css";
 import axios from "axios";
 
-const items = [
-  { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },
-  { id: "100331", driver: "Jen O.", customer: "Tom S.", price: "$22" },
-  { id: "556772", driver: "Steven Y.", customer: "Susan B.", price: "$20" },
-  { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
-];
+// const items = [
+//   { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },
+//   { id: "100331", driver: "Jen O.", customer: "Tom S.", price: "$22" },
+//   { id: "556772", driver: "Steven Y.", customer: "Susan B.", price: "$20" },
+//   { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
 
-{
-  /* Renders each row for Orders Table */
-}
 // const renderOrderItem = (item, index) => {
 //   return (
 //     <tr key={index}>
@@ -51,7 +47,7 @@ const OwnerOrderHistory = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/user-orders/user-orders", {
+      .get("http://localhost:3001/api/order/user-orders", {
         params: { restaurantName: "Taco Shell" },
       })
       .then((res) => {

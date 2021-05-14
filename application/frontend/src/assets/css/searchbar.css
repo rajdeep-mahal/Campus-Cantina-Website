@@ -37,9 +37,12 @@
 }
 @media (max-width: 548px) {
   .search-bar {
-    width: 130px;
+    width: 120px;
     height: 35px;
     line-height: 45px;
+  }
+  .search-container {
+    margin-right: -20px;
   }
 }
 @media (max-width: 499px) {
@@ -49,7 +52,7 @@
     line-height: 45px;
   }
   .search-container {
-    margin-left: -30px;
+    margin-left: -25px;
   }
 }
 

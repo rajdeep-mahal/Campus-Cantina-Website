@@ -1,6 +1,5 @@
 import React from "react";
 import "../../assets/css/ownerlayout.css";
-//import "../../index.css";
 import "../../assets/css/index.css";
 
 const OwnerEditProfile = () => {

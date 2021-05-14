@@ -1,19 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+import axios from 'axios';
+import { customAlphabet } from 'nanoid';
+const nanoid = customAlphabet('1234567890', 3);
 
 const DriverSignup = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
+
+  const history = useHistory();
+  const [driverName, setDriverName] = useState('');
+  const [driverContactNumber, setDriverContactNumber] = useState('');
+  const [driverEmail, setDriverEmail] = useState('');
+  const [driverRestaurant, setDriverRestaurant] = useState('');
+  const [driverPassword, setDriverPassword] = useState('');
+  const [driverConfirmPassword, setDriverConfirmPassword] = useState('');
+
+  const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
+    useState(false);
+  const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
+    useState(false);
+
+  const checkLengthofPwd = () => {
+    if (driverPassword.length < 6) {
+      setShowInvalidPwdLengthAlert(true);
+    } else {
+      setShowInvalidPwdLengthAlert(false);
+    }
+  };
+  const comparePasswords = () => {
+    if (driverPassword !== driverConfirmPassword) {
+      setShowPasswordsMismatchAlert(true);
+    } else {
+      setShowPasswordsMismatchAlert(false);
+    }
+  };
+
+  const onSubmitDriverSignup = (event) => {
+    event.preventDefault();
+    checkLengthofPwd();
+    comparePasswords();
+    if (!showPasswordsMismatchAlert && !showInvalidPwdLengthAlert) {
+      let newDriverID = nanoid();
+      axios
+        .post('http://localhost:3001/api/driver/driver-signup', {
+          driverID: newDriverID,
+          driverName: driverName,
+          driverPhone: driverContactNumber,
+          driverEmail: driverEmail,
+          driverPassword: driverPassword,
+          driverRestaurant: driverRestaurant,
+        })
+        .then((res) => {
+          console.log(res);
+          alert('Thank you for Registering');
+          history.push('/DriverLogin');
+        });
+    }
+  };
+
   return (
     <div className="login-container d-flex align-items-center justify-content-center">
       <form
         id="registration"
         className="signup-signin-form"
         method="POST"
-        action="/users/register"
+        onSubmit={onSubmitDriverSignup}
       >
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
@@ -31,6 +87,8 @@ const DriverSignup = () => {
             placeholder="e.g. Jane Doe"
             required
             name="Driver Name"
+            value={driverName}
+            onChange={(e) => setDriverName(e.target.value)}
           />
           <br />
           <label
@@ -41,10 +99,13 @@ const DriverSignup = () => {
             Choose a Restaurant to work for
           </label>
           <select
-            className="text-muted login_input-field"
-            defaultValue={'Select Restaurant...'}
+            className="custom-select text-muted login_input-field"
+            id="inlineFormCustomSelect"
+            defaultValue={''}
+            onChange={(e) => setDriverRestaurant(e.target.value)}
+            required
           >
-            <option value="Select Restaurant..." disabled>
+            <option value="" disabled>
               Select a Restaurant...
             </option>
             {restaurantsList.map((restaurant, i) => (
@@ -60,10 +121,16 @@ const DriverSignup = () => {
           <input
             id="DriverContactNumber"
             className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
+            type="number"
+            placeholder="e.g. 4159999999"
+            min="0"
             required
             name="Driver Contact Number"
+            value={driverContactNumber}
+            onChange={(e) => setDriverContactNumber(e.target.value)}
+            onBlur={(e) => {
+              setDriverContactNumber(parseInt(driverContactNumber));
+            }}
           />
           <br />
           <label htmlFor="DriverEmail" className="login-label">
@@ -77,6 +144,8 @@ const DriverSignup = () => {
             placeholder="e.g. jane.doe@gmail.com"
             required
             name="email"
+            value={driverEmail}
+            onChange={(e) => setDriverEmail(e.target.value)}
           />{' '}
           <br />
           <label htmlFor="password" className="login-label">
@@ -89,8 +158,18 @@ const DriverSignup = () => {
             placeholder="must have atleast 6 characters"
             required
             name="Password"
+            value={driverPassword}
+            onChange={(e) => setDriverPassword(e.target.value)}
+            onBlur={checkLengthofPwd}
           />
-          <br />
+          {showInvalidPwdLengthAlert ? (
+            <div className="invalid-feedback">
+              <b>Password should have at least 6 characters</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password{' '}
           </label>
@@ -101,7 +180,18 @@ const DriverSignup = () => {
             placeholder="must have atleast 6 characters"
             required
             name="cpassword"
+            value={driverConfirmPassword}
+            onChange={(e) => setDriverConfirmPassword(e.target.value)}
+            onBlur={comparePasswords}
           />
+          {showPasswordsMismatchAlert ? (
+            <div className="invalid-feedback">
+              <b>Password & Confirm Password do not match</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <div className="form-check mt-4 ml-1">
             <input
               className="form-check-input mt-2"
@@ -122,6 +212,7 @@ const DriverSignup = () => {
             type="submit"
             className="login_button d-flex align-items-center justify-content-center"
             value="Register"
+            onClick={comparePasswords}
           >
             Sign up
           </button>

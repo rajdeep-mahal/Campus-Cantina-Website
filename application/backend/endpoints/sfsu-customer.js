@@ -74,6 +74,4 @@ router.get('/customer-info', (req, res) => {
   });
 });
 
-// Customer log in
-
 module.exports = router;

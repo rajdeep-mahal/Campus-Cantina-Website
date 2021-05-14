@@ -27,6 +27,9 @@ const MenuSideBar = () => {
   const loggedInUserRole = useSelector(
     (state) => state.userReducer.loggedInUserRole
   );
+  const appUser = useSelector(
+    (state) => state.appUserReducer.appUser
+  );
   // deduce user role and the menu items based on the role
   let MenuItems = [];
   if (loggedInUserRole === 'sfsu') MenuItems = SFSUMenuItems;
@@ -171,9 +174,11 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
+          <h2 className="primary-color">hello {appUser.name}</h2>
 
           {MenuItems.map((item, index) => {
             return (
+      
               <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
                 <Link to={item.path}>
                   <i className={item.cName} style={{ width: '10px' }} />

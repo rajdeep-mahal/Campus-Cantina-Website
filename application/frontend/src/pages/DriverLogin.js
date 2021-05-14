@@ -3,8 +3,11 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useDispatch } from 'react-redux';
 
 const DriverLogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [driverEmail, setDriverEmail] = useState('');
   const [driverPassword, setDriverPassword] = useState('');
@@ -39,6 +42,7 @@ const DriverLogin = () => {
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
             history.push('/');
+            loginAppUser(driverEmail);
           }
         });
       })
@@ -47,6 +51,20 @@ const DriverLogin = () => {
         setShowInvalidPasswordAlert(false);
       });
   };
+
+  const loginAppUser = (email) => {
+    axios
+    .get('http://localhost:3001/api/appuser/driver-login', {
+      params: {
+        appUserEmail: email,
+        appUserType: 'driver',
+      },
+    })
+    .then((res) => {
+      dispatch(setAppUser(res.data))
+    })
+  }
+
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

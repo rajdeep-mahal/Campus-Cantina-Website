@@ -3,11 +3,15 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useDispatch } from 'react-redux';
 
 const SFSULogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
+  const [appUserEmail, setAppUserEmail] = useState('');
 
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);
@@ -54,15 +58,30 @@ const SFSULogin = () => {
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
               history.push('/');
+              loginAppUser(customerEmail);
             }
           }
         );
+        
       })
       .catch((err) => {
         setShowInvalidEmailAlert(true);
         setShowInvalidPasswordAlert(false);
       });
   };
+
+  const loginAppUser = (email) => {
+    axios
+    .get('http://localhost:3001/api/appuser/customer-login', {
+      params: {
+        appUserEmail: email,
+        appUserType: 'customer',
+      },
+    })
+    .then((res) => {
+      dispatch(setAppUser(res.data))
+    })
+  }
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

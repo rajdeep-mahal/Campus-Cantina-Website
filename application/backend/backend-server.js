@@ -6,6 +6,7 @@ const restaurants = require('./endpoints/restaurant'); // Used for restaurant AP
 const restaurantMenu = require('./endpoints/restaurant-menu'); // Used for restaurant menu APIs
 const sfsuCustomers = require('./endpoints/sfsu-customer'); // Used for sfsu customer APIs
 const orders = require('./endpoints/order'); // Used for order APIs
+const appuser = require('./endpoints/appuser')
 const app = express();
 
 port = 3001;
@@ -17,5 +18,6 @@ app.use('/api/restaurant', restaurants);
 app.use('/api/restaurant-menu', restaurantMenu);
 app.use('/api/sfsucustomer', sfsuCustomers);
 app.use('/api/order', orders);
+app.use('/api/appuser', appuser);
 
 app.listen(port, () => console.log(`Backend server on port ${port}!`));

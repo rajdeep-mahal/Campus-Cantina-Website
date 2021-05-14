@@ -54,16 +54,16 @@ const OwnerLogin = () => {
 
   const loginAppUser = (email) => {
     axios
-    .get('http://localhost:3001/api/appuser/owner-login', {
-      params: {
-        appUserEmail: email,
-        appUserType: 'owner',
-      },
-    })
-    .then((res) => {
-      dispatch(setAppUser(res.data))
-    })
-  }
+      .get('http://localhost:3001/api/appuser/owner-login', {
+        params: {
+          appUserEmail: email,
+          appUserType: 'owner',
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
+      });
+  };
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

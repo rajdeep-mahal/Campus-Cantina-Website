@@ -1,4 +1,4 @@
-/* Endpoints needed for driver login and dashboard */
+/* Endpoints needed for driver signup and dashboard */
 
 const express = require('express');
 const router = express.Router();

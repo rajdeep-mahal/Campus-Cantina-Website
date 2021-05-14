@@ -62,7 +62,6 @@ const SFSULogin = () => {
             }
           }
         );
-        
       })
       .catch((err) => {
         setShowInvalidEmailAlert(true);
@@ -72,16 +71,16 @@ const SFSULogin = () => {
 
   const loginAppUser = (email) => {
     axios
-    .get('http://localhost:3001/api/appuser/customer-login', {
-      params: {
-        appUserEmail: email,
-        appUserType: 'customer',
-      },
-    })
-    .then((res) => {
-      dispatch(setAppUser(res.data))
-    })
-  }
+      .get('http://localhost:3001/api/appuser/customer-login', {
+        params: {
+          appUserEmail: email,
+          appUserType: 'customer',
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
+      });
+  };
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

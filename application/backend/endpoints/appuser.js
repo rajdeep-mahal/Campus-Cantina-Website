@@ -1,3 +1,5 @@
+/* Endpoints needed for app users */
+
 const express = require('express');
 const database = require('../db');
 const router = express.Router();
@@ -17,7 +19,7 @@ router.get('/customer-login', (req, res) => {
     req.query.appUserEmail +
     `'`;
 
-  // Send customer info query to db
+  // Get customer info from db
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
@@ -37,7 +39,7 @@ router.get('/owner-login', (req, res) => {
     req.query.appUserEmail +
     `'`;
 
-  // Send customer info query to db
+  // Get owner info from db
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
@@ -53,11 +55,9 @@ router.get('/driver-login', (req, res) => {
 
   // Generate SQL query
   let query =
-    `SELECT * FROM Drivers WHERE Email = '` +
-    req.query.appUserEmail +
-    `'`;
+    `SELECT * FROM Drivers WHERE Email = '` + req.query.appUserEmail + `'`;
 
-  // Send customer info query to db
+  // Send driver info from db
   database.query(query, (err, result) => {
     appUser.email = result[0].Email;
     appUser.name = result[0].Name;
@@ -71,6 +71,5 @@ router.get('/get-appuser', (req, res) => {
   console.log('Called get-appuser endpoint');
   res.send(appUser);
 });
-
 
 module.exports = router;

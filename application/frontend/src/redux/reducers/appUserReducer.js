@@ -1,5 +1,5 @@
 const initState = () => ({
-  appUser: ''
+  appUser: '',
 });
 
 const appUserReducer = (state = initState(), action) => {

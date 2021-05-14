@@ -54,17 +54,16 @@ const DriverLogin = () => {
 
   const loginAppUser = (email) => {
     axios
-    .get('http://localhost:3001/api/appuser/driver-login', {
-      params: {
-        appUserEmail: email,
-        appUserType: 'driver',
-      },
-    })
-    .then((res) => {
-      dispatch(setAppUser(res.data))
-    })
-  }
-
+      .get('http://localhost:3001/api/appuser/driver-login', {
+        params: {
+          appUserEmail: email,
+          appUserType: 'driver',
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
+      });
+  };
 
   return (
     <div className="login-container d-flex align-items-center justify-content-center">

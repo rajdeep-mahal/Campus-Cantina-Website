@@ -60,11 +60,9 @@ function App() {
         dispatch(setAllRestaurants(res.data));
       });
 
-    axios
-      .get('http://localhost:3001/api/appuser/get-appuser')
-      .then((res) => {
-        dispatch(setAppUser(res.data));
-      });
+    axios.get('http://localhost:3001/api/appuser/get-appuser').then((res) => {
+      dispatch(setAppUser(res.data));
+    });
   });
 
   return (

@@ -114,6 +114,7 @@ router.post('/place-order', (req, res) => {
     `,` +
     req.body.orderSubID +
     `)`;
+
   // Send order query to db
   database.query(query, (err, result) => {
     console.log('Added order to db');

@@ -6,13 +6,6 @@ Summary of SearchResults.js:
  - Restaurant results displayed on the page
 */
 import React from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  useJsApiLoader,
-} from '@react-google-maps/api'; // For Google Maps
-import config from '../config'; // For Google Maps
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,52 +25,6 @@ const SearchResults = () => {
   if (searchedCuisine === '') {
     allCuisines = 'All Cuisines';
   }
-
-  // For Google Maps
-  // const { loadError } = useLoadScript({
-  //   googleMapsApiKey: config.googleAPI,
-  // });
-
-  //Google Map
-  const center = {
-    lat: 37.7234,
-    lng: -122.481,
-  };
-
-  function MyMap() {
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: config.googleAPI,
-    });
-
-    const [map, setMap] = React.useState(null);
-
-    const onLoad = React.useCallback(function callback(map) {
-      setMap(map);
-    }, []);
-
-    const onUnmount = React.useCallback(function callback(map) {
-      setMap(null);
-    }, []);
-
-    return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={{ height: '200px', width: '300px' }}
-        zoom={17}
-        center={center}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-        options={{
-          streetViewControl: false,
-          mapTypeControl: false,
-        }}
-      >
-        <Marker position={{ lat: 37.7234, lng: -122.481 }} />
-      </GoogleMap>
-    ) : (
-      <></>
-    );
-  } //end of MyMap function
 
   return (
     <div className="d-flex justify-content-center">

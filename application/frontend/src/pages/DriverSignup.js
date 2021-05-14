@@ -20,11 +20,28 @@ const DriverSignup = () => {
   const [driverPassword, setDriverPassword] = useState('');
   const [driverConfirmPassword, setDriverConfirmPassword] = useState('');
 
+  const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
+    useState(false);
+  const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
+    useState(false);
+  const checkLengthofPwd = () => {
+    if (driverPassword.length < 6) {
+      setShowInvalidPwdLengthAlert(true);
+    } else {
+      setShowInvalidPwdLengthAlert(false);
+    }
+  };
+  const comparePasswords = () => {
+    if (driverPassword !== driverConfirmPassword) {
+      setShowPasswordsMismatchAlert(true);
+    } else {
+      setShowPasswordsMismatchAlert(false);
+    }
+  };
+
   const onSubmitDriverSignup = (event) => {
     event.preventDefault();
-    if (driverPassword !== driverConfirmPassword) {
-      alert('Passwords do not match');
-    } else {
+    if (!showPasswordsMismatchAlert && !showInvalidPwdLengthAlert) {
       let newDriverID = nanoid();
       axios
         .post('http://localhost:3001/api/driver/driver-signup', {
@@ -37,9 +54,9 @@ const DriverSignup = () => {
         })
         .then((res) => {
           console.log(res);
+          alert('Thank you for Registering');
+          history.push('/DriverLogin');
         });
-      alert('Thank you for Registering');
-      history.push('/DriverLogin');
     }
   };
 
@@ -101,12 +118,16 @@ const DriverSignup = () => {
           <input
             id="DriverContactNumber"
             className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
+            type="number"
+            placeholder="e.g. 4159999999"
+            min="0"
             required
             name="Driver Contact Number"
             value={driverContactNumber}
             onChange={(e) => setDriverContactNumber(e.target.value)}
+            onBlur={(e) => {
+              setDriverContactNumber(parseInt(driverContactNumber));
+            }}
           />
           <br />
           <label htmlFor="DriverEmail" className="login-label">
@@ -136,8 +157,16 @@ const DriverSignup = () => {
             name="Password"
             value={driverPassword}
             onChange={(e) => setDriverPassword(e.target.value)}
+            onBlur={checkLengthofPwd}
           />
-          <br />
+          {showInvalidPwdLengthAlert ? (
+            <div className="invalid-feedback">
+              <b>Password should have at least 6 characters</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password{' '}
           </label>
@@ -150,7 +179,16 @@ const DriverSignup = () => {
             name="cpassword"
             value={driverConfirmPassword}
             onChange={(e) => setDriverConfirmPassword(e.target.value)}
+            onBlur={comparePasswords}
           />
+          {showPasswordsMismatchAlert ? (
+            <div className="invalid-feedback">
+              <b>Password & Confirm Password do not match</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <div className="form-check mt-4 ml-1">
             <input
               className="form-check-input mt-2"

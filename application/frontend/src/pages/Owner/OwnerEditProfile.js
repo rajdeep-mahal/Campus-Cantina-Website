@@ -19,21 +19,7 @@ const OwnerEditProfile = () => {
           type="hidden"
           name="redirect"
         />
-        <div className="row">
-          <div class="col-8">
-            <label for="restaurant-name">
-              {" "}
-              <strong>Restaurant Name</strong>
-            </label>
-            <input
-              type="text"
-              id="restaurant-name"
-              required
-              class="form-control"
-              placeholder="Ex: Sally's Sandwiches"
-            />
-          </div>
-        </div>
+
         <br />
         <div class="row">
           <div class="col-8">
@@ -86,78 +72,12 @@ const OwnerEditProfile = () => {
             />
           </div>
         </div>
-        <br />
-        <label for="address">
-          <strong>Restaurant Address</strong>
-        </label>
-        <input
-          type="text"
-          id="address"
-          required
-          class="form-control"
-          placeholder="123 Street Name"
-        />
-        <br />
-        <label for="img">
-          <strong>Restaurant Image</strong>
-        </label>
-        <input type="file" id="img" class="form-control" />
-        <br />
-        <label for="food">
-          <strong>Cuisine</strong>
-        </label>
-        <input
-          class="form-control"
-          type="text"
-          id="food"
-          required
-          placeholder="Ex: American"
-        />
-        <br />
-        <label for="tags">
-          <strong>Food tags</strong>
-        </label>
-        <input
-          class="form-control"
-          type="text"
-          id="tags"
-          placeholder="Burgers, fries, wings"
-        />
-        <br />
-        <div class="row">
-          <div class="col-4">
-            <label for="price">
-              <strong>Restaurant Pricing</strong>
-            </label>
-          </div>
-          <div class="col">
-            <div
-              class="btn-group btn-group-toggle price-button"
-              data-toggle="buttons"
-            >
-              <label class="btn btn-secondary active">
-                <input type="radio" name="price" autoComplete="off" checked /> $
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="price" autoComplete="off" /> $$
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="price" autoComplete="off" /> $$$
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="price" autoComplete="off" /> $$$$
-              </label>
-            </div>
-          </div>
-        </div>
-        <br />
-        <label for="post">
-          <strong>Marketing Post</strong>
-        </label>
-        <textarea class="form-control" rows="3" placeholder="Announcements" />
+
+
+
         <br />
         {/* footer buttons */}
-        <div class="row">
+        <div class="row p-b-3">
           <div class="col">
             <button
               type="submit"

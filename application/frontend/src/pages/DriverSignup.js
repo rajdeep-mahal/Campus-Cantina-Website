@@ -79,12 +79,13 @@ const DriverSignup = () => {
             Choose a Restaurant to work for
           </label>
           <select
-            className="text-muted login_input-field"
-            defaultValue={'Select Restaurant...'}
-            value={driverRestaurant}
+            className="custom-select text-muted login_input-field"
+            id="inlineFormCustomSelect"
+            defaultValue={''}
             onChange={(e) => setDriverRestaurant(e.target.value)}
+            required
           >
-            <option value="Select Restaurant..." disabled>
+            <option value="" disabled>
               Select a Restaurant...
             </option>
             {restaurantsList.map((restaurant, i) => (

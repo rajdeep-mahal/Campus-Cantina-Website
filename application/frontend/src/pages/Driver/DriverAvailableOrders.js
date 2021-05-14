@@ -8,33 +8,32 @@ import '../../assets/css/driver.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
+// try using bootstrap modal for viewing order details
 function viewOrder() {
   var popup = document.getElementById('viewOrder');
   popup.classList.toggle('show');
 }
 
 const DriverAvailableOrders = () => {
-
   const [orders, setOrders] = useState([]);
-
 
   useEffect(() => {
     axios
       .get('http://localhost:3001/api/order/user-orders', {
-        params: { 
-          driverID: 2},
+        params: {
+          driverID: 2,
+        },
       })
       .then((res) => {
-        setOrders(res.data)
+        setOrders(res.data);
       });
   }, []);
-  
+
   return (
-    <div className="container text-center">
+    <div className="container text-center m-4">
       <div className="order_header h3 text-white text-center py-2">
         Order History
       </div>
-
       <table className="table table_order">
         <thead>
           <tr>
@@ -45,10 +44,13 @@ const DriverAvailableOrders = () => {
               <span className="font-italic">Customer Name</span>
             </th>
             <th className="border border_header">
-              <span className="font-italic">Order Total</span>
+              <span className="font-italic">Delivery Address</span>
             </th>
             <th className="border border_header">
               <span className="font-italic">Order Status</span>
+            </th>
+            <th className="border border_header">
+              <span className="font-italic">Order Total</span>
             </th>
             <th className="border border_header">
               <span className="font-italic">Order Details</span>
@@ -56,48 +58,48 @@ const DriverAvailableOrders = () => {
           </tr>
         </thead>
         <tbody>
-        
-            
-              {orders.map((items, i) => (
-                
-                <tr key = {i}>
-                  <td className="border border_body"></td>
-                  <td className="border border_body">{items.Customer_Name}</td>
-                  <td className="border border_body">&#36;{items.Total}</td>
-                  {/* <td className="border border_body"><span className="text-info font-italic">Completed</span></td> */}
-                  
-                </tr>
-              
-                ))
-                }
+          {orders
+            .filter((order) => order.Completed === 1)
+            .map((item, i) => (
+              <tr key={i}>
+                <td className="border border_body">{item.ID}</td>
+                <td className="border border_body">{item.Customer_Name}</td>
+                <td className="border border_body">{item.Delivery_Location}</td>
+                <td className="border border_body">
+                  <span className="text-info font-italic">Completed</span>
+                </td>
+                <td className="border border_body">&#36;{item.Total}</td>
+                <td className="border border_body">{item.Order_Contents}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
       {/* View order 1 */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="viewOrder1"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="viewOrderTitle"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="viewOrderTitle">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="viewOrderTitle">
                 Order Details
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <table className="table table-light">
                 <thead>
                   <tr>
@@ -127,29 +129,29 @@ const DriverAvailableOrders = () => {
 
       {/* View order 2 */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="viewOrder2"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="viewOrderTitle"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="viewOrderTitle">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="viewOrderTitle">
                 Order Details
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <table className="table table-light">
                 <thead>
                   <tr>
@@ -184,29 +186,29 @@ const DriverAvailableOrders = () => {
 
       {/* View order 3 */}
       <div
-        class="modal fade"
+        className="modal fade"
         id="viewOrder3"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="viewOrderTitle"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="viewOrderTitle">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="viewOrderTitle">
                 Order Details
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <table className="table table-light">
                 <thead>
                   <tr>

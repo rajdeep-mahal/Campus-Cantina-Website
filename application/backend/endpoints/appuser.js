@@ -6,7 +6,13 @@ const router = express.Router();
 
 router.use(express.json());
 
+// Holds the current app user info
 let appUser = new Object();
+
+// Set initial app user to guest
+appUser.name = 'Guest';
+appUser.email = 'guest';
+appUser.type = 'guest';
 
 // Customer log in
 router.get('/customer-login', (req, res) => {

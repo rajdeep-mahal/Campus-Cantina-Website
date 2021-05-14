@@ -170,8 +170,8 @@ const MenuSideBar = () => {
             </Link>
           </li>
 
-          {/* For testing/needs styling */}
-          <h2 className="primary-color">Hello {appUser.name}</h2>
+          {/* Needs styling */}
+          <h3 className="text-dark ml-2">Hello {appUser.name}</h3>
 
           {MenuItems.map((item, index) => {
             return (

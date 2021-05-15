@@ -194,3 +194,7 @@
     display: none;
   }
 }
+
+.signout-buttons:hover {
+  text-decoration: none;
+}

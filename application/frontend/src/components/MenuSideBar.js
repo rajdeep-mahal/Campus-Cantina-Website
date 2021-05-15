@@ -6,17 +6,21 @@ Summary of MenuSideBar.js:
 */
 import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/menu_sidebar.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { GuestMenuItems } from './GuestMenuItems';
 import { OwnerMenuItems } from './OwnerMenuItems';
 import { DriverMenuItems } from './DriverMenuItems';
 import { SFSUMenuItems } from './SFSUMenuItems';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
 import CustomerCart from '../pages/CustomerCart';
+import { setAppUser } from '../redux/actions/appUserActions';
+import axios from 'axios';
 
 const MenuSideBar = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   // state variables
   const [menu, setMenu] = useState(false);
   const [cart, setCart] = useState(false);
@@ -44,6 +48,13 @@ const MenuSideBar = () => {
     if (!ref.current.contains(event.target)) {
       showCart();
     }
+  };
+  //  user signout
+  const handleUserSignout = (event) => {
+    axios.get('http://localhost:3001/api/appuser/signout').then((res) => {
+      dispatch(setAppUser(res.data));
+    });
+    history.push('/');
   };
   useEffect(() => {
     if (menu) {
@@ -160,12 +171,17 @@ const MenuSideBar = () => {
                 <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
                   <b>Hello, {appUser.name}</b>
                 </p>
-                <Link to="/signout" className="d-none d-xl-block text-center">
-                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <div className="text-center d-none d-xl-block">
+                  <button
+                    className="btn secondary-color-bg primary-color nav-btn-container"
+                    aria-hidden="true"
+                    data-toggle="modal"
+                    data-target="#signout"
+                  >
                     <i className="fas fa-sign-out-alt h5 primary-color" />
                   </button>
                   <p className="lblCartText">Signout</p>
-                </Link>
+                </div>
                 <div className="text-center">
                   <button
                     className="btn secondary-color-bg primary-color nav-btn-container"
@@ -188,24 +204,34 @@ const MenuSideBar = () => {
                 <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
                   <b>Hello, {appUser.name}</b>
                 </p>
-                <Link to="/signout" className="text-center">
-                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <div className="text-center">
+                  <button
+                    className="btn secondary-color-bg primary-color nav-btn-container "
+                    aria-hidden="true"
+                    data-toggle="modal"
+                    data-target="#signout"
+                  >
                     <i className="fas fa-sign-out-alt h5 primary-color" />
                   </button>
                   <p className="lblCartText">Signout</p>
-                </Link>
+                </div>
               </>
             ) : appUser.type === 'driver' ? (
               <>
                 <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
                   <b>Hello, {appUser.name}</b>
                 </p>
-                <Link to="/signout" className="text-center">
-                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                <div className="text-center">
+                  <button
+                    className="btn secondary-color-bg primary-color nav-btn-container "
+                    aria-hidden="true"
+                    data-toggle="modal"
+                    data-target="#signout"
+                  >
                     <i className="fas fa-sign-out-alt h5 primary-color" />
                   </button>
                   <p className="lblCartText">Signout</p>
-                </Link>
+                </div>
               </>
             ) : (
               <> </>
@@ -242,14 +268,11 @@ const MenuSideBar = () => {
 
           {MenuItems.map((item, index) => {
             return (
-              <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
-                <Link to={item.path}>
-                  <i className={item.cName} style={{ width: '10px' }} />
-                  <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
-                    {item.title}
-                  </span>
-                </Link>
-              </li>
+              <li
+                key={index}
+                className="menu-item p-2 m-2"
+                onClick={showMenu}
+              ></li>
             );
           })}
           <li
@@ -277,6 +300,52 @@ const MenuSideBar = () => {
         </div>
         <br />
       </nav>
+
+      {/* signout modal */}
+      <div
+        className="modal fade"
+        id="signout"
+        role="dialog"
+        aria-labelledby="signoutLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header h5">
+              <strong> Sign Out </strong>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body modal-edit">
+              <p className="h4 primary-color mb-4"> Are you sure? </p>
+              <div className="d-flex justify-contents-center">
+                <button
+                  type="button"
+                  className="btn save-btn btn-lg btn-block primary-color text-center m-1 signout-buttons"
+                  data-dismiss="modal"
+                  onClick={handleUserSignout}
+                >
+                  Yes
+                </button>
+                <button
+                  type="submit"
+                  className="btn save-btn btn-lg btn-block m-1 primary-color"
+                  value="Submit"
+                  data-dismiss="modal"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

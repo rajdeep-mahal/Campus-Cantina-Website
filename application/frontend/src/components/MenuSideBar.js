@@ -197,6 +197,9 @@ const MenuSideBar = () => {
               </>
             ) : appUser.type === 'driver' ? (
               <>
+                <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
+                  <b>Hello, {appUser.name}</b>
+                </p>
                 <Link to="/signout" className="text-center">
                   <button className="btn secondary-color-bg primary-color nav-btn-container ">
                     <i className="fas fa-sign-out-alt h5 primary-color" />

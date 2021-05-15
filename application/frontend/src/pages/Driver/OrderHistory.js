@@ -70,7 +70,7 @@ const DriverAvailableOrders = () => {
                   <span className="text-info font-italic">Completed</span>
                 </td>
                 <td className="border border_body">&#36;{item.Total}</td>
-                <td className="border border_body">{item.OrderContents[i].itemRestaurantName}</td>
+                <td className="border border_body">{item.OrderContents.itemRestaurantName}</td>
                 <td className="border border_body"><button
                 type="button"
                 className="btn btn-warning btn-sm border border_header"

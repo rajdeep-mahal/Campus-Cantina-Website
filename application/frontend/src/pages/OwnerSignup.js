@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
@@ -26,12 +26,33 @@ const OwnerSignup = () => {
   const ownerConfirmPassword = useSelector(
     (state) => state.ownerSignupReducer.ownerConfirmPassword
   );
+
+  const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
+    useState(false);
+  const [showInvalidPwdLengthAlert, setShowInvalidPwdLengthAlert] =
+    useState(false);
+
+  const checkLengthofPwd = () => {
+    if (ownerPassword.length < 6) {
+      setShowInvalidPwdLengthAlert(true);
+    } else {
+      setShowInvalidPwdLengthAlert(false);
+    }
+  };
+  const comparePasswords = () => {
+    if (ownerPassword !== ownerConfirmPassword) {
+      setShowPasswordsMismatchAlert(true);
+    } else {
+      setShowPasswordsMismatchAlert(false);
+    }
+  };
   const history = useHistory();
+
   const onSubmitOwnerSignup1 = (event) => {
     event.preventDefault();
-    if (ownerPassword !== ownerConfirmPassword) {
-      alert('Passwords do not match');
-    } else {
+    checkLengthofPwd();
+    comparePasswords();
+    if (!showPasswordsMismatchAlert && !showInvalidPwdLengthAlert) {
       dispatch(setOwnerFormSubmitted(true));
       history.push('/ownersignup2');
     }
@@ -72,12 +93,16 @@ const OwnerSignup = () => {
           <input
             id="ownerContactNumber"
             className="login_input-field"
-            type="text"
-            placeholder="e.g. 415-999-9999"
+            type="number"
+            placeholder="e.g. 4159999999"
+            min="0"
             required
             name="Restaurant Owner Contact Number"
             value={ownerContactNumber}
             onChange={(e) => dispatch(setOwnerContactNumber(e.target.value))}
+            onBlur={(e) => {
+              setOwnerContactNumber(parseInt(ownerContactNumber));
+            }}
           />
           <label htmlFor="ownerEmail" className="login-label">
             Owner Email
@@ -99,12 +124,21 @@ const OwnerSignup = () => {
             className="login_input-field"
             id="password"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="Password"
             value={ownerPassword}
             onChange={(e) => dispatch(setOwnerPassword(e.target.value))}
+            onBlur={checkLengthofPwd}
           />
+          {showInvalidPwdLengthAlert ? (
+            <div className="invalid-feedback">
+              <b>Password should have at least 6 characters</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <label htmlFor="PassConfirmation" className="login-label">
             Confirm Password
           </label>
@@ -112,12 +146,21 @@ const OwnerSignup = () => {
             className="login_input-field"
             id="PassConfirmation"
             type="password"
-            placeholder="must have atleast 6 characters"
+            placeholder="must have at least 6 characters"
             required
             name="cpassword"
             value={ownerConfirmPassword}
             onChange={(e) => dispatch(setOwnerConfirmPassword(e.target.value))}
+            onBlur={comparePasswords}
           />
+          {showPasswordsMismatchAlert ? (
+            <div className="invalid-feedback">
+              <b>Password & Confirm Password do not match</b> <br />
+              <i>Try again</i>
+            </div>
+          ) : (
+            <> </>
+          )}
           <div className="form-check mt-4 ml-1">
             <input
               className="form-check-input mt-2"
@@ -138,6 +181,7 @@ const OwnerSignup = () => {
             type="submit"
             className="login_button w-75 d-flex  justify-content-center"
             value="Register"
+            onClick={comparePasswords}
           >
             Proceed to Restaurant Registration
           </button>

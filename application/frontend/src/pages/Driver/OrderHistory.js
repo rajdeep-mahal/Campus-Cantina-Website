@@ -57,14 +57,14 @@ const DriverAvailableOrders = () => {
             .filter((order) => order.Completed === 1)
             .map((item, i) => (
               <tr key={i}>
-                <td className="border border_body">{item.ID}</td>
-                <td className="border border_body">{item.Customer_Name}</td>
-                <td className="border border_body">{item.Delivery_Location}</td>
-                <td className="border border_body">
+                <td className="border border_purple">{item.ID}</td>
+                <td className="border border_purple">{item.Customer_Name}</td>
+                <td className="border border_purple">{item.Delivery_Location}</td>
+                <td className="border border_purple">
                   <span className="text-info font-italic">Completed</span>
                 </td>
-                <td className="border border_body">&#36;{item.Total}</td>
-                <td className="border border_body">
+                <td className="border border_purple">&#36;{item.Total}</td>
+                <td className="border border_purple">
                   <button
                     type="button"
                     className="btn btn-warning btn-sm border border_header"
@@ -111,26 +111,26 @@ const DriverAvailableOrders = () => {
               </button>
             </div>
             <div className="modal-body">
-              <table className="table table-light">
+              <table className="table-responsive">
                 <thead>
                   <tr>
-                    <th className="font-italic border"> Restaurant </th>
-                    <th className="font-italic border"> Item </th>
-                    <th className="font-italic border"> Item Price </th>
-                    <th className="font-italic border"> Quantity </th>
-                    <th className="font-italic border"> Comments </th>
-                    <th className="font-italic border"> Item Total Price </th>
+                    <th className="font-italic border border_purple p-2"> Restaurant </th>
+                    <th className="font-italic border border_purple"> Item </th>
+                    <th className="font-italic border border_purple p-2"> Item Price </th>
+                    <th className="font-italic border border_purple p-2"> Quantity </th>
+                    <th className="font-italic border border_purple p-2"> Comments </th>
+                    <th className="font-italic border border_purple p-2"> Item Total Price </th>
                   </tr>
                 </thead>
                 <tbody>
                   {modalItems.map((item, i) => (
                     <tr key={i}>
-                      <td className="border">{item.itemRestaurantName}</td>
-                      <td className="border">{item.itemName}</td>
-                      <td className="border">{item.itemPrice}</td>
-                      <td className="border">{item.itemCount}</td>
-                      <td className="border">{item.itemComments}</td>
-                      <td className="border">{item.itemCalculatedPrice}</td>
+                      <td className="border border_purple p-2">{item.itemRestaurantName}</td>
+                      <td className="border border_purple">{item.itemName}</td>
+                      <td className="border border_purple">{item.itemPrice}</td>
+                      <td className="border border_purple">{item.itemCount}</td>
+                      <td className="border border_purple p-2">{item.itemComments}</td>
+                      <td className="border border_purple">&#36;{item.itemCalculatedPrice}</td>
                     </tr>
                   ))}
                 </tbody>

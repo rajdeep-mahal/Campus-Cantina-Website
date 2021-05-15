@@ -1,24 +1,24 @@
 import React from "react";
-import { getMaxListeners } from "../../../backend/db";
+// import { getMaxListeners } from "../../../backend/db";
 import '../../assets/css/driver.css';
 import map_sample from '../../assets/img/map_customerorder.png';
 
 
 
 const DriverOrderDelivered = () =>{
-    const [driverOrders, setDriverOrders] = useState([])
+    // const [driverOrders, setDriverOrders] = useState([])
 
-    useEffect(() => {
-        axios
-          .get('http://localhost:3001/api/order/user-orders', {
-            params: {
-              Email: "will@gmail.com",
-            },
-          })
-          .then((res) => {
-            setDriverOrders(res.data);
-          });
-      },[]);
+    // useEffect(() => {
+    //     axios
+    //       .get('http://localhost:3001/api/order/user-orders', {
+    //         params: {
+    //           Email: "will@gmail.com",
+    //         },
+    //       })
+    //       .then((res) => {
+    //         setDriverOrders(res.data);
+    //       });
+    //   },[]);
 
     return(
         <div className = "container-fluid">

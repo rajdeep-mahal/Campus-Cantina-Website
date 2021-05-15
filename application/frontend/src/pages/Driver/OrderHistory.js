@@ -16,18 +16,19 @@ function viewOrder() {
 
 const DriverAvailableOrders = () => {
   const [orders, setOrders] = useState([]);
+  const [orderID, setOrderID] = useState('');
 
   useEffect(() => {
     axios
       .get('http://localhost:3001/api/order/user-orders', {
         params: {
-          driverID: 2,
+          driverID: 5,
         },
       })
       .then((res) => {
         setOrders(res.data);
       });
-  }, []);
+  },[]);
 
   return (
     <div className="container text-center m-4">
@@ -69,6 +70,18 @@ const DriverAvailableOrders = () => {
                   <span className="text-info font-italic">Completed</span>
                 </td>
                 <td className="border border_body">&#36;{item.Total}</td>
+                <td className="border border_body">{item.OrderContents[i].itemRestaurantName}</td>
+                <td className="border border_body"><button
+                type="button"
+                className="btn btn-warning btn-sm border border_header"
+                data-toggle="modal"
+                data-target="#viewOrder1"
+                onClick={(e) => {
+                  setOrderID(item.ID);
+                }}
+              >
+                View
+              </button></td>
                 <td className="border border_body">{item.Order_Contents}</td>
               </tr>
             ))}
@@ -103,23 +116,23 @@ const DriverAvailableOrders = () => {
               <table className="table table-light">
                 <thead>
                   <tr>
-                    <th className="font-italic"> Items </th>
+                    <th className="font-italic"> Restaurant </th>
+                    <th className="font-italic"> Item </th>
+                    <th className="font-italic"> Item Price </th>
                     <th className="font-italic"> Quantity </th>
-                    <th className="font-italic"> Price </th>
+                    <th className="font-italic"> Comments </th>
+                    <th className="font-italic"> Sub Total </th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <tr>
-                    <th> Burrito</th>
-                    <th> 2 </th>
-                    <th> &#36; 24 </th>
-                  </tr>
-                  <tr>
-                    <th>Lemonade</th>
-                    <th>1</th>
-                    <th>&#36; 4.99</th>
-                  </tr>
+                {/* {orders
+            .filter((order) => order.ID === orderID)
+            .map((item, i) => (
+              <tr key={i}>
+                
+              </tr>
+            ))} */}
                 </tbody>
               </table>
             </div>

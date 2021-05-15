@@ -41,8 +41,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
 import DisplayCart from './pages/CustomerCart';
-import DriverAvailableOrders from './pages/Driver/DriverAvailableOrders';
-import DriverOrderDelivered from './pages/Driver/DriverOrderDelivered';
+import OrderHistory from './pages/Driver/OrderHistory';
+import CurrentOrder from './pages/Driver/CurrentOrder';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
@@ -136,10 +136,10 @@ function App() {
             <Checkout />
           </Route>
           <Route path="/driver/orderhistory">
-            <DriverAvailableOrders />
+            <OrderHistory />
           </Route>
           <Route path="/driver/currentorder">
-            <DriverOrderDelivered />
+            <CurrentOrder />
           </Route>
           <Route path="/">
             <Home />

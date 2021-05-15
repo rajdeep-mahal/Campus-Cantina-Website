@@ -116,17 +116,17 @@ const DriverAvailableOrders = () => {
                   <tr>
                     <th className="font-italic border border_purple p-2"> Restaurant </th>
                     <th className="font-italic border border_purple"> Item </th>
-                    <th className="font-italic border border_purple p-2"> Item Price </th>
-                    <th className="font-italic border border_purple p-2"> Quantity </th>
+                    <th className="font-italic border border_purple p-1"> Item Price </th>
+                    <th className="font-italic border border_purple p-1"> Quantity </th>
                     <th className="font-italic border border_purple p-2"> Comments </th>
-                    <th className="font-italic border border_purple p-2"> Item Total Price </th>
+                    <th className="font-italic border border_purple p-1"> Item Total Price </th>
                   </tr>
                 </thead>
                 <tbody>
                   {modalItems.map((item, i) => (
                     <tr key={i}>
                       <td className="border border_purple p-2">{item.itemRestaurantName}</td>
-                      <td className="border border_purple">{item.itemName}</td>
+                      <td className="border border_purple p-2">{item.itemName}</td>
                       <td className="border border_purple">{item.itemPrice}</td>
                       <td className="border border_purple">{item.itemCount}</td>
                       <td className="border border_purple p-2">{item.itemComments}</td>

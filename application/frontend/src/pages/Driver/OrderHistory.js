@@ -8,15 +8,9 @@ import '../../assets/css/driver.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-// try using bootstrap modal for viewing order details
-function viewOrder() {
-  var popup = document.getElementById('viewOrder');
-  popup.classList.toggle('show');
-}
-
 const DriverAvailableOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [orderID, setOrderID] = useState('');
+  const [modalItems, setModalItems] = useState([]);
 
   useEffect(() => {
     axios
@@ -28,10 +22,10 @@ const DriverAvailableOrders = () => {
       .then((res) => {
         setOrders(res.data);
       });
-  },[]);
+  }, []);
 
   return (
-    <div className="container text-center m-4">
+    <div className="container text-center m-4 mx-auto">
       <div className="order_header h3 text-white text-center py-2">
         Order History
       </div>
@@ -70,19 +64,23 @@ const DriverAvailableOrders = () => {
                   <span className="text-info font-italic">Completed</span>
                 </td>
                 <td className="border border_body">&#36;{item.Total}</td>
-                <td className="border border_body">{item.Order_Contents}</td>
-                <td className="border border_body"><button
-                type="button"
-                className="btn btn-warning btn-sm border border_header"
-                data-toggle="modal"
-                data-target="#viewOrder1"
-                onClick={(e) => {
-                  setOrderID(item.ID);
-                }}
-              >
-                View
-              </button></td>
-                <td className="border border_body">{item.Order_Contents[i].itemName}</td>
+                <td className="border border_body">
+                  <button
+                    type="button"
+                    className="btn btn-warning btn-sm border border_header"
+                    data-toggle="modal"
+                    data-target="#viewOrder1"
+                    onClick={(e) => {
+                      orders
+                        .filter((order) => order.ID === item.ID)
+                        .map((item, i) => {
+                          setModalItems(JSON.parse(item.Order_Contents));
+                        });
+                    }}
+                  >
+                    View
+                  </button>
+                </td>
               </tr>
             ))}
         </tbody>
@@ -116,137 +114,25 @@ const DriverAvailableOrders = () => {
               <table className="table table-light">
                 <thead>
                   <tr>
-                    <th className="font-italic"> Restaurant </th>
-                    <th className="font-italic"> Item </th>
-                    <th className="font-italic"> Item Price </th>
-                    <th className="font-italic"> Quantity </th>
-                    <th className="font-italic"> Comments </th>
-                    <th className="font-italic"> Sub Total </th>
+                    <th className="font-italic border"> Restaurant </th>
+                    <th className="font-italic border"> Item </th>
+                    <th className="font-italic border"> Item Price </th>
+                    <th className="font-italic border"> Quantity </th>
+                    <th className="font-italic border"> Comments </th>
+                    <th className="font-italic border"> Item Total Price </th>
                   </tr>
                 </thead>
-
                 <tbody>
-                {/* {orders
-            .filter((order) => order.ID === orderID)
-            .map((item, i) => (
-              <tr key={i}>
-                
-              </tr>
-            ))} */}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* View order 2 */}
-      <div
-        className="modal fade"
-        id="viewOrder2"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="viewOrderTitle"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="viewOrderTitle">
-                Order Details
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <table className="table table-light">
-                <thead>
-                  <tr>
-                    <th className="font-italic"> Items </th>
-                    <th className="font-italic"> Quantity </th>
-                    <th className="font-italic"> Price </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <th> Pho combination</th>
-                    <th> 1 </th>
-                    <th> &#36; 15 </th>
-                  </tr>
-                  <tr>
-                    <th>Thai Iced Tea</th>
-                    <th>1</th>
-                    <th>&#36; 4.50</th>
-                  </tr>
-                  <tr>
-                    <th>Egg rolls</th>
-                    <th>1</th>
-                    <th>&#36; 6.50</th>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* View order 3 */}
-      <div
-        className="modal fade"
-        id="viewOrder3"
-        tabIndex="-1"
-        role="dialog"
-        aria-labelledby="viewOrderTitle"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="viewOrderTitle">
-                Order Details
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <table className="table table-light">
-                <thead>
-                  <tr>
-                    <th className="font-italic"> Items </th>
-                    <th className="font-italic"> Quantity </th>
-                    <th className="font-italic"> Price </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <th> Burger</th>
-                    <th> 1 </th>
-                    <th> &#36; 8.50 </th>
-                  </tr>
-                  <tr>
-                    <th>Coca Cola</th>
-                    <th>1</th>
-                    <th>&#36; 2.50</th>
-                  </tr>
-                  <tr>
-                    <th>Sweet Potato Fries</th>
-                    <th>1</th>
-                    <th>&#36; 4.50</th>
-                  </tr>
+                  {modalItems.map((item, i) => (
+                    <tr key={i}>
+                      <td className="border">{item.itemRestaurantName}</td>
+                      <td className="border">{item.itemName}</td>
+                      <td className="border">{item.itemPrice}</td>
+                      <td className="border">{item.itemCount}</td>
+                      <td className="border">{item.itemComments}</td>
+                      <td className="border">{item.itemCalculatedPrice}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

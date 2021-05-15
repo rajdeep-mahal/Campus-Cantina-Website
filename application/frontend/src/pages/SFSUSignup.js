@@ -164,7 +164,8 @@ const SFSUSignup = () => {
             value={customerPhone}
             onChange={(e) => setCustomerPhone(e.target.value)}
             onBlur={(e) => {
-              setCustomerPhone(parseInt(customerPhone));
+              let temp = customerPhone.substring(0, 10);
+              setCustomerPhone(parseInt(temp));
             }}
           />
           <br />

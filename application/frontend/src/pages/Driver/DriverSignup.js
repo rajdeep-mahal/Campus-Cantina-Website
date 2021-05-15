@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import '../../assets/css/login_Signup.css';
 
@@ -131,7 +130,8 @@ const DriverSignup = () => {
             value={driverContactNumber}
             onChange={(e) => setDriverContactNumber(e.target.value)}
             onBlur={(e) => {
-              setDriverContactNumber(parseInt(driverContactNumber));
+              let temp = driverContactNumber.substring(0, 10);
+              setDriverContactNumber(parseInt(temp));
             }}
           />
           <br />

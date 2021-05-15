@@ -65,21 +65,21 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
   let query =
     `INSERT INTO Restaurants VALUES (` +
     req.body.restaurantID +
-    `,'` +
+    `,"` +
     req.body.restaurantName +
-    `','` +
+    `","` +
     req.body.restaurantCuisine +
-    `','` +
+    `","` +
     req.body.restaurantTags +
-    `','` +
+    `","` +
     req.body.restaurantPriceLevel +
-    `','` +
+    `","` +
     req.body.restaurantAddress +
-    `','` +
+    `","` +
     thumbnail +
-    `',37.7301,-122.477,'` +
+    `",37.7301,-122.477,"` +
     banner +
-    `',` +
+    `",` +
     0 + // approved status is defaulted to 0, change to 1 when approved
     `,` +
     req.body.restaurantDeliveryFee +

@@ -1,5 +1,5 @@
 import React from "react";
-import { getMaxListeners } from "../../../../backend/db";
+import { getMaxListeners } from "../../../backend/db";
 import '../../assets/css/driver.css';
 import map_sample from '../../assets/img/map_customerorder.png';
 
@@ -19,7 +19,7 @@ const DriverOrderDelivered = () =>{
             setDriverOrders(res.data);
           });
       },[]);
-      
+
     return(
         <div className = "container-fluid">
             <div className = "order_header h3 text-white text-center mx-auto py-2 w-50">Order Details</div>

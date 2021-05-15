@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
@@ -15,6 +15,8 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   // redux items
+  // redux global variable
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
@@ -138,264 +140,275 @@ const Checkout = () => {
 
   return (
     <>
-      {!cartItemsTotalCount > 0 ? (
-        <Redirect to="/" />
-      ) : (
-        <div className="container text-center mb-5">
-          <div className="h1 checkout-border border-bottom p-2 m-4 primary-color font-weight-bold">
-            Checkout
-          </div>
-          <div className="row">
-            <div className="col-md-9 mx-auto">
-              <div className="form-group w-75 mx-auto mb-4">
-                {showAlert ? (
-                  <div
-                    className="text-center mt-2 alert alert-success alert-dismissible fade show"
-                    role="alert"
-                  >
-                    Please enter Delivery Address to continue
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
+      {appUser.type === 'customer' ? (
+        !cartItemsTotalCount > 0 ? (
+          <Redirect to="/" />
+        ) : (
+          <div className="container text-center mb-5">
+            <div className="h1 checkout-border border-bottom p-2 m-4 primary-color font-weight-bold">
+              Checkout
+            </div>
+            <div className="row">
+              <div className="col-md-9 mx-auto">
+                <div className="form-group w-75 mx-auto mb-4">
+                  {showAlert ? (
+                    <div
+                      className="text-center mt-2 alert alert-success alert-dismissible fade show"
+                      role="alert"
                     >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                ) : (
-                  <> </>
-                )}
-                <label
-                  htmlFor="inputAddress"
-                  className="float-left font-weight-bold"
-                >
-                  Delivery Address:
-                </label>
-                <br />
-                <ReactDependentScript
-                  loadingComponent={<div>Loading....</div>}
-                  scripts={[
-                    `https://maps.googleapis.com/maps/api/js?key=${config.googleAPI}&libraries=places`,
-                  ]}
-                >
-                  <PlacesAutocomplete
-                    value={deliveryAddress}
-                    onChange={setDeliveryAddress}
-                    searchOptions={{
-                      location: new window.google.maps.LatLng(37, -122),
-                      radius: 4000,
-                      types: ['address'],
-                      componentRestrictions: { country: 'us' },
-                    }}
-                    onSelect={(value) => {
-                      setDeliveryAddress(value);
-                    }}
-                    onError={(status, clearSuggestions) => {
-                      // console.log(
-                      //   'Google Maps API returned error with status: ',
-                      //   status
-                      // );
-                      clearSuggestions();
-                    }}
+                      Please enter Delivery Address to continue
+                      <button
+                        type="button"
+                        className="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <> </>
+                  )}
+                  <label
+                    htmlFor="inputAddress"
+                    className="float-left font-weight-bold"
                   >
-                    {({
-                      getInputProps,
-                      suggestions,
-                      getSuggestionItemProps,
-                      loading,
-                    }) => (
-                      <div>
-                        <input
-                          {...getInputProps({
-                            placeholder: 'Start typing your current address...',
-                            className: 'location-search-input',
-                          })}
-                        />
-                        <div className="autocomplete-dropdown-container">
-                          {loading ? <div>...loading</div> : null}
-                          {suggestions.map((suggestion, i) => {
-                            const style = {
-                              backgroundColor: suggestion.active
-                                ? '#41b6e6'
-                                : '#fff',
-                            };
-                            return (
-                              <div
-                                {...getSuggestionItemProps(suggestion, {
-                                  style,
-                                })}
-                                key={i}
-                              >
-                                {suggestion.description}
-                              </div>
-                            );
-                          })}
+                    Delivery Address:
+                  </label>
+                  <br />
+                  <ReactDependentScript
+                    loadingComponent={<div>Loading....</div>}
+                    scripts={[
+                      `https://maps.googleapis.com/maps/api/js?key=${config.googleAPI}&libraries=places`,
+                    ]}
+                  >
+                    <PlacesAutocomplete
+                      value={deliveryAddress}
+                      onChange={setDeliveryAddress}
+                      searchOptions={{
+                        location: new window.google.maps.LatLng(37, -122),
+                        radius: 4000,
+                        types: ['address'],
+                        componentRestrictions: { country: 'us' },
+                      }}
+                      onSelect={(value) => {
+                        setDeliveryAddress(value);
+                      }}
+                      onError={(status, clearSuggestions) => {
+                        // console.log(
+                        //   'Google Maps API returned error with status: ',
+                        //   status
+                        // );
+                        clearSuggestions();
+                      }}
+                    >
+                      {({
+                        getInputProps,
+                        suggestions,
+                        getSuggestionItemProps,
+                        loading,
+                      }) => (
+                        <div>
+                          <input
+                            {...getInputProps({
+                              placeholder:
+                                'Start typing your current address...',
+                              className: 'location-search-input',
+                            })}
+                          />
+                          <div className="autocomplete-dropdown-container">
+                            {loading ? <div>...loading</div> : null}
+                            {suggestions.map((suggestion, i) => {
+                              const style = {
+                                backgroundColor: suggestion.active
+                                  ? '#41b6e6'
+                                  : '#fff',
+                              };
+                              return (
+                                <div
+                                  {...getSuggestionItemProps(suggestion, {
+                                    style,
+                                  })}
+                                  key={i}
+                                >
+                                  {suggestion.description}
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </PlacesAutocomplete>
-                </ReactDependentScript>
-              </div>
+                      )}
+                    </PlacesAutocomplete>
+                  </ReactDependentScript>
+                </div>
 
-              <table className="table checkout-border border-bottom">
-                <thead className="bg-warning">
-                  <tr>
-                    <th className="font-italic">Restaurant Name</th>
-                    <th className="font-italic">Item Name</th>
-                    <th className="font-italic">Instructions to Chef</th>
-                    <th className="font-italic">Quantity</th>
-                    <th className="font-italic">Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartItems.map((item, i) => (
-                    <tr key={i}>
-                      <th>
-                        {item.itemRestaurantName}
-                        <br />
-                        <small>
-                          <i>
-                            (Delivery Fee ${' '}
-                            {
-                              restaurantsList.filter(
-                                (restaurant) =>
-                                  restaurant.Name == item.itemRestaurantName
-                              )[0].Delivery_Fee
-                            }
-                            )
-                          </i>
-                        </small>
-                      </th>
-                      <td>
-                        {item.itemName}
-                        <br />
-                        <small>
-                          <i>(Cost per unit ${item.itemPrice})</i>
-                        </small>
-                      </td>
-                      <td>{item.itemComments}</td>
-                      <td>{item.itemCount}</td>
-                      <td>
-                        <b>
-                          &#36;
-                          <span>{item.itemCalculatedPrice}</span>
-                        </b>
-                      </td>
+                <table className="table checkout-border border-bottom">
+                  <thead className="bg-warning">
+                    <tr>
+                      <th className="font-italic">Restaurant Name</th>
+                      <th className="font-italic">Item Name</th>
+                      <th className="font-italic">Instructions to Chef</th>
+                      <th className="font-italic">Quantity</th>
+                      <th className="font-italic">Price</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {cartItems.map((item, i) => (
+                      <tr key={i}>
+                        <th>
+                          {item.itemRestaurantName}
+                          <br />
+                          <small>
+                            <i>
+                              (Delivery Fee ${' '}
+                              {
+                                restaurantsList.filter(
+                                  (restaurant) =>
+                                    restaurant.Name == item.itemRestaurantName
+                                )[0].Delivery_Fee
+                              }
+                              )
+                            </i>
+                          </small>
+                        </th>
+                        <td>
+                          {item.itemName}
+                          <br />
+                          <small>
+                            <i>(Cost per unit ${item.itemPrice})</i>
+                          </small>
+                        </td>
+                        <td>{item.itemComments}</td>
+                        <td>{item.itemCount}</td>
+                        <td>
+                          <b>
+                            &#36;
+                            <span>{item.itemCalculatedPrice}</span>
+                          </b>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {/* total box */}
+              <div className="card col-md-3 total-box">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">
+                    <span className="float-left">Subtotal</span>
+                    <span className="float-right">&#36;{cartTotal}</span>
+                  </li>
+                  <li className="list-group-item">
+                    <span className="float-left">Tax Amount</span>
+                    <span className="float-right">
+                      &#36;{(0.1 * parseFloat(cartTotal)).toFixed(2)}
+                    </span>
+                  </li>
+                  <li className="list-group-item">
+                    <span className="float-left">Delivery Fee</span>
+                    <span className="float-right">&#36;{cartDeliveryFee}</span>
+                  </li>
+                  <li className="list-group-item py-2 total-bg font-weight-bold h5">
+                    <span className="float-left ">Total</span>
+                    <span className="float-right">
+                      &#36;
+                      {(
+                        parseFloat(cartTotal) +
+                        parseFloat(0.1 * parseFloat(cartTotal))
+                      ).toFixed(2)}
+                    </span>
+                  </li>
+                  <p className="text-muted mt-2 text-center font-italic h6">
+                    **Please pay total amount to delivery driver in cash**
+                  </p>
+                  <p className="text-center"> Delivery Instructions:</p>
+                  <textarea
+                    className="mb-3 w-100"
+                    value={cartDeliveryInstructions}
+                    onChange={(e) => {
+                      dispatch(setCartDeliveryInstructions(e.target.value));
+                    }}
+                  />
+                  <button
+                    type="button"
+                    className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
+                    data-toggle="modal"
+                    data-target="#confirmorder"
+                    onClick={(e) => {
+                      if (deliveryAddress == '') {
+                        setShowAlert(true);
+                        setShowModal(false);
+                      } else {
+                        setShowAlert(false);
+                        setShowModal(true);
+                      }
+                    }}
+                  >
+                    <span className="">Confirm Order</span>
+                  </button>
+                </ul>
+              </div>
             </div>
-            {/* total box */}
-            <div className="card col-md-3 total-box">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <span className="float-left">Subtotal</span>
-                  <span className="float-right">&#36;{cartTotal}</span>
-                </li>
-                <li className="list-group-item">
-                  <span className="float-left">Tax Amount</span>
-                  <span className="float-right">
-                    &#36;{(0.1 * parseFloat(cartTotal)).toFixed(2)}
-                  </span>
-                </li>
-                <li className="list-group-item">
-                  <span className="float-left">Delivery Fee</span>
-                  <span className="float-right">&#36;{cartDeliveryFee}</span>
-                </li>
-                <li className="list-group-item py-2 total-bg font-weight-bold h5">
-                  <span className="float-left ">Total</span>
-                  <span className="float-right">
-                    &#36;
-                    {(
-                      parseFloat(cartTotal) +
-                      parseFloat(0.1 * parseFloat(cartTotal))
-                    ).toFixed(2)}
-                  </span>
-                </li>
-                <p className="text-muted mt-2 text-center font-italic h6">
-                  **Please pay total amount to delivery driver in cash**
-                </p>
-                <p className="text-center"> Delivery Instructions:</p>
-                <textarea
-                  className="mb-3 w-100"
-                  value={cartDeliveryInstructions}
-                  onChange={(e) => {
-                    dispatch(setCartDeliveryInstructions(e.target.value));
-                  }}
-                />
-                <button
-                  type="button"
-                  className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
-                  data-toggle="modal"
-                  data-target="#confirmorder"
-                  onClick={(e) => {
-                    if (deliveryAddress == '') {
-                      setShowAlert(true);
-                      setShowModal(false);
-                    } else {
-                      setShowAlert(false);
-                      setShowModal(true);
-                    }
-                  }}
-                >
-                  <span className="">Confirm Order</span>
-                </button>
-              </ul>
-            </div>
-          </div>
 
-          {/* Confirm Order modal */}
-          {showModal ? (
-            <div
-              className="modal fade"
-              id="confirmorder"
-              tabIndex="-1"
-              role="dialog"
-              aria-labelledby="confirmorderTitle"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="confirmorderTitle">
-                      On the way!
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    <div className="h5 font-weight-bold">
-                      Your order has been sent to the Restaurant!
+            {/* Confirm Order modal */}
+            {showModal ? (
+              <div
+                className="modal fade"
+                id="confirmorder"
+                tabIndex="-1"
+                role="dialog"
+                aria-labelledby="confirmorderTitle"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="confirmorderTitle">
+                        On the way!
+                      </h5>
+                      <button
+                        type="button"
+                        className="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    <div className="h5 font-weight-bold">
-                      Please handover the payment to the driver after receiving
-                      your order.
+                    <div className="modal-body">
+                      <div className="h5 font-weight-bold">
+                        Your order has been sent to the Restaurant!
+                      </div>
+                      <div className="h5 font-weight-bold">
+                        Please handover the payment to the driver after
+                        receiving your order.
+                      </div>
+                      <div className="h5 mt-4">Thank you!</div>
+                      <button
+                        type="button"
+                        className="btn confirm-order mt-4 text-white"
+                        data-dismiss="modal"
+                        onClick={handleOrderCheckout}
+                      >
+                        GOT IT
+                      </button>
                     </div>
-                    <div className="h5 mt-4">Thank you!</div>
-                    <button
-                      type="button"
-                      className="btn confirm-order mt-4 text-white"
-                      data-dismiss="modal"
-                      onClick={handleOrderCheckout}
-                    >
-                      GOT IT
-                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <> </>
-          )}
-        </div>
+            ) : (
+              <> </>
+            )}
+          </div>
+        )
+      ) : appUser.type === 'guest' || appUser.type === undefined ? (
+        <Redirect to="/sfsulogin" />
+      ) : appUser.type === 'owner' ? (
+        <Redirect to="/owner/menu" />
+      ) : appUser.type === 'driver' ? (
+        <Redirect to="/driver/currentorder" />
+      ) : (
+        <> </>
       )}
     </>
   );

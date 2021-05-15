@@ -42,7 +42,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
 import { setAppUser } from './redux/actions/appUserActions';
-import DisplayCart from './pages/CustomerCart';
+import CustomerCart from './pages/CustomerCart';
 import OrderHistory from './pages/Driver/OrderHistory';
 import CurrentOrder from './pages/Driver/CurrentOrder';
 import MenuSideBar from './components/MenuSideBar';
@@ -141,7 +141,7 @@ function App() {
             <DriverSignup />
           </Route>
           <Route path="/customerdisplaycart">
-            <DisplayCart />
+            <CustomerCart />
           </Route>
           <Route path="/customer/orders">
             <CustomerOrder />

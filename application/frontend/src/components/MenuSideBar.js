@@ -25,6 +25,7 @@ const MenuSideBar = () => {
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
   );
+  // global user state variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
   // deduce user role and the menu items based on the role
   let MenuItems = [];

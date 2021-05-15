@@ -117,7 +117,9 @@ const OwnerSignupExtended = () => {
 
   return (
     <>
-      {ownerFormSubmitted ? (
+      {!ownerFormSubmitted ? (
+        <Redirect to="/ownersignup" />
+      ) : (
         <div className="login-container d-flex align-items-center justify-content-center">
           <form
             id="registration"
@@ -307,8 +309,6 @@ const OwnerSignupExtended = () => {
             </div>
           </form>
         </div>
-      ) : (
-        <Redirect to="/ownersignup" />
       )}
     </>
   );

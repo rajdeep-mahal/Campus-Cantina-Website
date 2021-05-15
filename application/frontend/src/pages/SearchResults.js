@@ -8,7 +8,7 @@ Summary of SearchResults.js:
 import React from 'react';
 import '../assets/css/vphome.css';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AllRestaurants from '../components/AllRestaurants';
 
 const SearchResults = () => {
@@ -26,38 +26,21 @@ const SearchResults = () => {
     allCuisines = 'All Cuisines';
   }
 
+  // redux global variable
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
+
   return (
-    <div className="d-flex justify-content-center">
-      {/* Search Results */}
-      <div className="">
-        {searchedTerm ? (
-          <div>
-            <h4 className="pt-3 text-center" style={{ fontWeight: '800' }}>
-              Results for "{searchedTerm}"
-            </h4>
-            {searchResults.length === 1 ? (
-              <p className="text-center  pr-2 primary-color">1 STORE NEARBY</p>
-            ) : (
-              <p className="text-center  pr-2 primary-color">
-                {searchResults.length} STORES NEARBY
-              </p>
-            )}
-          </div>
-        ) : (
-          <div>
-            {allCuisines ? (
-              <>
+    <>
+      {appUser.type === 'guest' ||
+      appUser.type === 'customer' ||
+      appUser.type === undefined ? (
+        <div className="d-flex justify-content-center">
+          {/* Search Results */}
+          <div className="">
+            {searchedTerm ? (
+              <div>
                 <h4 className="pt-3 text-center" style={{ fontWeight: '800' }}>
-                  Results for "{allCuisines}"
-                </h4>
-                <p className="text-center  pr-2 primary-color">
-                  {searchResults.length} STORES NEARBY
-                </p>
-              </>
-            ) : (
-              <>
-                <h4 className="pt-3 text-center" style={{ fontWeight: '800' }}>
-                  Results for "{searchedCuisine}"
+                  Results for "{searchedTerm}"
                 </h4>
                 {searchResults.length === 1 ? (
                   <p className="text-center  pr-2 primary-color">
@@ -68,29 +51,69 @@ const SearchResults = () => {
                     {searchResults.length} STORES NEARBY
                   </p>
                 )}
-              </>
+              </div>
+            ) : (
+              <div>
+                {allCuisines ? (
+                  <>
+                    <h4
+                      className="pt-3 text-center"
+                      style={{ fontWeight: '800' }}
+                    >
+                      Results for "{allCuisines}"
+                    </h4>
+                    <p className="text-center  pr-2 primary-color">
+                      {searchResults.length} STORES NEARBY
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h4
+                      className="pt-3 text-center"
+                      style={{ fontWeight: '800' }}
+                    >
+                      Results for "{searchedCuisine}"
+                    </h4>
+                    {searchResults.length === 1 ? (
+                      <p className="text-center  pr-2 primary-color">
+                        1 STORE NEARBY
+                      </p>
+                    ) : (
+                      <p className="text-center  pr-2 primary-color">
+                        {searchResults.length} STORES NEARBY
+                      </p>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+            <div className="container">
+              <AllRestaurants results={searchResults} />
+            </div>
+            <h6 className="text-center">
+              <br />
+              {noResult}
+            </h6>
+            {noResult && (
+              <div>
+                <br />
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                  <h5 className="text-center">
+                    <i class="fas fa-chevron-left h6 "></i> Back
+                  </h5>
+                </Link>
+              </div>
             )}
           </div>
-        )}
-        <div className="container">
-          <AllRestaurants results={searchResults} />
         </div>
-        <h6 className="text-center">
-          <br />
-          {noResult}
-        </h6>
-        {noResult && (
-          <div>
-            <br />
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <h5 className="text-center">
-                <i class="fas fa-chevron-left h6 "></i> Back
-              </h5>
-            </Link>
-          </div>
-        )}
-      </div>
-    </div>
+      ) : appUser.type === 'owner' ? (
+        <Redirect to="/owner/menu" />
+      ) : appUser.type === 'driver' ? (
+        <Redirect to="/driver/currentorder" />
+      ) : (
+        <> </>
+      )}
+    </>
   );
 };
 

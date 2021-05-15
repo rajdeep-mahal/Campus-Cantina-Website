@@ -29,7 +29,7 @@ const MenuSideBar = () => {
   let MenuItems = [];
   if (appUser.type === 'customer') MenuItems = SFSUMenuItems;
   else if (appUser.type === 'owner') MenuItems = OwnerMenuItems;
-  else if (appUser.type  === 'driver') MenuItems = DriverMenuItems;
+  else if (appUser.type === 'driver') MenuItems = DriverMenuItems;
   else MenuItems = GuestMenuItems;
 
   const showMenu = () => setMenu(!menu);
@@ -108,45 +108,105 @@ const MenuSideBar = () => {
         </div>
         <div className="col-md-3">
           <div className="d-flex justify-content-around">
-            <Link to="/sfsulogin" className="d-none d-xl-block text-center">
-              <button className="btn secondary-color-bg primary-color nav-btn-container ">
-                <i className="fas fa-sign-in-alt h5 primary-color" />
-              </button>
-              {/* <div className="d-none d-xl-block"> */}
-              <p className="lblIconText">SFSU Login</p>
-              <p className="lblIconText1">Login</p>
-              {/* </div> */}
-            </Link>
-            <Link to="/ownerlogin" className="d-none d-xl-block text-center">
-              <button className="btn secondary-color-bg primary-color nav-btn-container ">
-                <i className="fas fa-utensils h5 primary-color" />
-              </button>
-              <p className="lblIconText">Owner Login</p>
-              <p className="lblIconText1">Owner</p>
-            </Link>
-            <Link to="/driverlogin" className="d-none d-xl-block text-center">
-              <button className="btn secondary-color-bg primary-color nav-btn-container ">
-                <i className="fas fa-biking h5 primary-color" />
-              </button>
-              <p className="lblIconText">Driver Login</p>
-              <p className="lblIconText1">Driver</p>
-            </Link>
-            <div className="text-center">
-              <button
-                className="btn secondary-color-bg primary-color nav-btn-container"
-                onClick={showCart}
-              >
-                <div style={{ display: 'flex' }}>
-                  <i className="fas fa-shopping-cart h5 primary-color" />
-                  <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
-                    <span className="badge badge-light">
-                      {cartItemsTotalCount}
-                    </span>
-                  </div>
+            {/* conditional rendering based on the logged in user's role */}
+            {appUser.type === 'guest' ? (
+              <>
+                <Link to="/sfsulogin" className="d-none d-xl-block text-center">
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-sign-in-alt h5 primary-color" />
+                  </button>
+                  <p className="lblIconText">SFSU Login</p>
+                  <p className="lblIconText1">Login</p>
+                </Link>
+                <Link
+                  to="/ownerlogin"
+                  className="d-none d-xl-block text-center"
+                >
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-utensils h5 primary-color" />
+                  </button>
+                  <p className="lblIconText">Owner Login</p>
+                  <p className="lblIconText1">Owner</p>
+                </Link>
+                <Link
+                  to="/driverlogin"
+                  className="d-none d-xl-block text-center"
+                >
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-biking h5 primary-color" />
+                  </button>
+                  <p className="lblIconText">Driver Login</p>
+                  <p className="lblIconText1">Driver</p>
+                </Link>
+                <div className="text-center">
+                  <button
+                    className="btn secondary-color-bg primary-color nav-btn-container"
+                    onClick={showCart}
+                  >
+                    <div style={{ display: 'flex' }}>
+                      <i className="fas fa-shopping-cart h5 primary-color" />
+                      <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
+                        <span className="badge badge-light">
+                          {cartItemsTotalCount}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                  <p className="lblCartText">Cart</p>
                 </div>
-              </button>
-              <p className="lblCartText">Cart</p>
-            </div>
+              </>
+            ) : appUser.type === 'customer' ? (
+              <>
+                <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
+                  <b>Hello, {appUser.name}</b>
+                </p>
+                <Link to="/signout" className="d-none d-xl-block text-center">
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-sign-out-alt h5 primary-color" />
+                  </button>
+                  <p className="lblCartText">Signout</p>
+                </Link>
+                <div className="text-center">
+                  <button
+                    className="btn secondary-color-bg primary-color nav-btn-container"
+                    onClick={showCart}
+                  >
+                    <div style={{ display: 'flex' }}>
+                      <i className="fas fa-shopping-cart h5 primary-color" />
+                      <div style={{ marginTop: '-5px', marginLeft: '2px' }}>
+                        <span className="badge badge-light">
+                          {cartItemsTotalCount}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                  <p className="lblCartText">Cart</p>
+                </div>
+              </>
+            ) : appUser.type === 'owner' ? (
+              <>
+                <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
+                  <b>Hello, {appUser.name}</b>
+                </p>
+                <Link to="/signout" className="text-center">
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-sign-out-alt h5 primary-color" />
+                  </button>
+                  <p className="lblCartText">Signout</p>
+                </Link>
+              </>
+            ) : appUser.type === 'driver' ? (
+              <>
+                <Link to="/signout" className="text-center">
+                  <button className="btn secondary-color-bg primary-color nav-btn-container ">
+                    <i className="fas fa-sign-out-alt h5 primary-color" />
+                  </button>
+                  <p className="lblCartText">Signout</p>
+                </Link>
+              </>
+            ) : (
+              <> </>
+            )}
           </div>
         </div>
       </div>
@@ -170,8 +230,12 @@ const MenuSideBar = () => {
             </Link>
           </li>
 
-          {/* Needs styling */}
-          <h3 className="text-dark ml-2">Hello {appUser.name}</h3>
+          {/* Welcome Message */}
+          <div className="secondary-color-bg pt-2">
+            <p className="h4 primary-color ml-4">
+              <b>Hello, {appUser.name}</b>
+            </p>
+          </div>
 
           {MenuItems.map((item, index) => {
             return (
@@ -206,10 +270,6 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-left h4"></i>
             </Link>
           </li>
-          {/* <li style={{ marginTop: '10px' }}>
-            <span className=" p-2 m-1 h5">Your Cart is empty</span>
-            <p className="primary-color p-2 m-1">Add items to get started</p>
-          </li> */}
           <CustomerCart />
         </div>
         <br />

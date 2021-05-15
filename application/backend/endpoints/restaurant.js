@@ -224,6 +224,4 @@ router.get('/owner-info', (req, res) => {
   });
 });
 
-// Restaurant owner login
-
 module.exports = router;

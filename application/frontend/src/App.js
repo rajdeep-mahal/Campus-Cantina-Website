@@ -40,12 +40,14 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
+import { setAppUser } from './redux/actions/appUserActions';
 import DisplayCart from './pages/CustomerCart';
 import DriverAvailableOrders from './pages/DriverAvailableOrders';
 import DriverOrderDelivered from './pages/DriverOrderDelivered';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
+import Signout from './pages/Signout';
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +60,11 @@ function App() {
       .then((res) => {
         dispatch(setAllRestaurants(res.data));
       });
+
+    axios.get('http://localhost:3001/api/appuser/get-appuser').then((res) => {
+      // console.log(res.data)
+      dispatch(setAppUser(res.data));
+    });
   });
 
   return (
@@ -66,6 +73,9 @@ function App() {
         <MenuSideBar />
         <ScrollToTop />
         <Switch>
+        <Route path="/signout">
+            <Signout />
+          </Route>
           <Route path="/searchresults">
             <SearchResults />
           </Route>

@@ -3,8 +3,11 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useDispatch } from 'react-redux';
 
 const OwnerLogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [ownerEmail, setOwnerEmail] = useState('');
   const [ownerPassword, setOwnerPassword] = useState('');
@@ -39,12 +42,26 @@ const OwnerLogin = () => {
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
             history.push('/');
+            loginAppUser(ownerEmail);
           }
         });
       })
       .catch((err) => {
         setShowInvalidEmailAlert(true);
         setShowInvalidPasswordAlert(false);
+      });
+  };
+
+  const loginAppUser = (email) => {
+    axios
+      .get('http://localhost:3001/api/appuser/owner-login', {
+        params: {
+          appUserEmail: email,
+          appUserType: 'owner',
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
       });
   };
 

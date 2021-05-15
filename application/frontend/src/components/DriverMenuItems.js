@@ -16,7 +16,7 @@ export const DriverMenuItems = [
   },
   {
     title: 'Sign Out',
-    path: '/',
+    path: '/signout',
     cName: 'primary-color fas fa-sign-out-alt',
   },
 ];

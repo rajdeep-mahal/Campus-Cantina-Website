@@ -62,7 +62,7 @@ function App() {
       });
 
     axios.get('http://localhost:3001/api/appuser/get-appuser').then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       dispatch(setAppUser(res.data));
     });
   });

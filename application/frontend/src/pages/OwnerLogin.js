@@ -41,7 +41,7 @@ const OwnerLogin = () => {
             // 'Password matches!'
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
-            history.push('/');
+            history.push('/owner/menu');
             loginAppUser(ownerEmail);
           }
         });

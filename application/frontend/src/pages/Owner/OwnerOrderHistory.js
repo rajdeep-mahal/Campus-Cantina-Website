@@ -3,56 +3,64 @@ Summary of OwnerOrderHistory.js:
  - Renders on '/owner/orders'
  - to load when clicked on Orders on the Sidebar for Owner's login
 */
-import React, { useState } from 'react';
-import '../../assets/css/ownerlayout.css';
-//import "../../index.css";
-import '../../assets/css/index.css';
+import React, { useEffect, useState } from "react";
+import "../../assets/css/ownerlayout.css";
+import "../../assets/css/index.css";
+import axios from "axios";
 
-const items = [
-  { id: '111232', driver: 'John C.', customer: 'Mark S.', price: '$15' },
-  { id: '100331', driver: 'Jen O.', customer: 'Tom S.', price: '$22' },
-  { id: '556772', driver: 'Steven Y.', customer: 'Susan B.', price: '$20' },
-  { id: '900344', driver: 'John. L', customer: 'Maria M.', price: '$25' },
-];
+// const items = [
+//   { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },
+//   { id: "100331", driver: "Jen O.", customer: "Tom S.", price: "$22" },
+//   { id: "556772", driver: "Steven Y.", customer: "Susan B.", price: "$20" },
+//   { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
 
-{
-  /* Renders each row for Orders Table */
-}
-const renderOrderItem = (item, index) => {
-  return (
-    <tr key={index}>
-      <td>{item.id}</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-outline-dark view-btn"
-          data-toggle="modal"
-          data-target="#viewModal"
-        >
-          View
-        </button>
-      </td>
-      <td>{item.driver}</td>
-      <td>{item.customer}</td>
-      <td>{item.price}</td>
-      <td>
-        <select class="form-select order-status">
-          <option selected>Pending</option>
-          <option value="progress">In Progress</option>
-          <option value="complete">Completed</option>
-        </select>
-      </td>
-    </tr>
-  );
-};
+// const renderOrderItem = (item, index) => {
+//   return (
+//     <tr key={index}>
+//       <td>{item.id}</td>
+//       <td>
+//         <button
+//           type="button"
+//           class="btn btn-outline-dark view-btn"
+//           data-toggle="modal"
+//           data-target="#viewModal"
+//         >
+//           View
+//         </button>
+//       </td>
+//       <td>{item.driver}</td>
+//       <td>{item.customer}</td>
+//       <td>{item.price}</td>
+//       <td>
+//         <select class="form-select order-status">
+//           <option selected>Pending</option>
+//           <option value="progress">In Progress</option>
+//           <option value="complete">Completed</option>
+//         </select>
+//       </td>
+//     </tr>
+//   );
+// };
 
 const OwnerOrderHistory = () => {
+  const [orderItems, setOrderItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/order/user-orders", {
+        params: { restaurantName: "Taco Shell" },
+      })
+      .then((res) => {
+        setOrderItems(res.data);
+        //setLoadData(false);
+      });
+  }, []);//loadData]);
+
   return (
     <div className="container-fluid">
       <br />
-      <div className="text-center">
-        <h3> Orders</h3>
-      </div>
+      <h3 className="owner-heading text-center"> Orders</h3>
+
       {/* Orders Table */}
       <div className="table-responsive-sm order-table">
         <table class="table table-striped ">
@@ -66,7 +74,40 @@ const OwnerOrderHistory = () => {
               <th scope="col">Order Status</th>
             </tr>
           </thead>
-          <tbody>{items.map(renderOrderItem)}</tbody>
+
+          <tbody>
+            {orderItems.length > 0 ? (
+              <>
+                {orderItems.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.id}</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark view-btn"
+                        data-toggle="modal"
+                        data-target="#viewModal"
+                      >
+                        View
+                      </button>
+                    </td>
+                    <td>{item.driver}</td>
+                    <td>{item.customer}</td>
+                    <td>{item.price}</td>
+                    <td>
+                      <select class="form-select order-status">
+                        <option selected>Pending</option>
+                        <option value="progress">In Progress</option>
+                        <option value="complete">Completed</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ) : (
+              <> </>
+            )}
+          </tbody>
         </table>
       </div>
       {/* View Modal */}

@@ -71,7 +71,6 @@ const DriverAvailableOrders = () => {
                     data-toggle="modal"
                     data-target="#viewOrder1"
                     onClick={(e) => {
-                      // setViewOrderID(item.ID);
                       orders
                         .filter((order) => order.ID === item.ID)
                         .map((item, i) => {

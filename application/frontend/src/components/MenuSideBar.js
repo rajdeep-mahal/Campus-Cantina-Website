@@ -11,15 +11,12 @@ import { GuestMenuItems } from './GuestMenuItems';
 import { OwnerMenuItems } from './OwnerMenuItems';
 import { DriverMenuItems } from './DriverMenuItems';
 import { SFSUMenuItems } from './SFSUMenuItems';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CCLogo from '../assets/img/CC_Logo.png';
 import SearchBar from '../components/SearchBar';
 import CustomerCart from '../pages/CustomerCart';
-import { setAppUser } from '../redux/actions/appUserActions';
-import axios from 'axios';
 
 const MenuSideBar = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   // state variables
   const [menu, setMenu] = useState(false);
@@ -48,13 +45,6 @@ const MenuSideBar = () => {
     if (!ref.current.contains(event.target)) {
       showCart();
     }
-  };
-  //  user signout
-  const handleUserSignout = (event) => {
-    axios.get('http://localhost:3001/api/appuser/signout').then((res) => {
-      dispatch(setAppUser(res.data));
-    });
-    history.push('/');
   };
   useEffect(() => {
     if (menu) {
@@ -348,7 +338,7 @@ const MenuSideBar = () => {
                   type="button"
                   className="btn save-btn btn-lg btn-block primary-color text-center m-1 signout-buttons"
                   data-dismiss="modal"
-                  onClick={handleUserSignout}
+                  onClick={(e) => history.push('/signout')}
                 >
                   Yes
                 </button>

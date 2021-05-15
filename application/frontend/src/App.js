@@ -47,6 +47,7 @@ import DriverOrderDelivered from './pages/DriverOrderDelivered';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
+import Signout from './pages/Signout';
 
 function App() {
   const dispatch = useDispatch();
@@ -72,6 +73,9 @@ function App() {
         <MenuSideBar />
         <ScrollToTop />
         <Switch>
+          <Route path="/signout">
+            <Signout />
+          </Route>
           <Route path="/searchresults">
             <SearchResults />
           </Route>

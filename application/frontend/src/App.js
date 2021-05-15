@@ -32,8 +32,8 @@ import OwnerEditProfile from './pages/Owner/OwnerEditProfile';
 import OwnerProfile from './pages/Owner/OwnerProfile';
 import OwnerOrderHistory from './pages/Owner/OwnerOrderHistory';
 import OwnerMenu from './pages/Owner/OwnerMenu';
-import DriverLogin from './pages/DriverLogin';
-import DriverSignup from './pages/DriverSignup';
+import DriverLogin from './pages/Driver/DriverLogin';
+import DriverSignup from './pages/Driver/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
 import CuisineResults from './pages/CuisineResults';
 import React from 'react';
@@ -42,8 +42,8 @@ import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
 import { setAppUser } from './redux/actions/appUserActions';
 import DisplayCart from './pages/CustomerCart';
-import DriverAvailableOrders from './pages/DriverAvailableOrders';
-import DriverOrderDelivered from './pages/DriverOrderDelivered';
+import OrderHistory from './pages/Driver/OrderHistory';
+import CurrentOrder from './pages/Driver/CurrentOrder';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
@@ -146,10 +146,10 @@ function App() {
             <Checkout />
           </Route>
           <Route path="/driver/orderhistory">
-            <DriverAvailableOrders />
+            <OrderHistory />
           </Route>
           <Route path="/driver/currentorder">
-            <DriverOrderDelivered />
+            <CurrentOrder />
           </Route>
           <Route path="/">
             <Home />

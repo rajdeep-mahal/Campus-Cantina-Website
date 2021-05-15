@@ -96,7 +96,7 @@ const Checkout = () => {
             ).toFixed(2),
             deliveryETA: 'test',
             deliveryInstructions: cartDeliveryInstructions,
-            driverID: 5,
+            driverID: 2,
           })
           .then((res) => {
             console.log(res);
@@ -128,7 +128,7 @@ const Checkout = () => {
           ).toFixed(2),
           deliveryETA: 'test',
           deliveryInstructions: cartDeliveryInstructions,
-          driverID: 5,
+          driverID: 2,
         })
         .then((res) => {
           console.log(res);

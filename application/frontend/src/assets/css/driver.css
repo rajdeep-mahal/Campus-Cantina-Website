@@ -18,8 +18,11 @@
    border-color: var(--primary-color) !important;
 }
 /*border of body table*/
-.border_body{
+.border_purple{
     border-color: var(--primary-color) !important;
+}
+.border_yellow{
+    border-color: var(--secondary-color) !important;
 }
 /*border of customer order card body*/
 .card_customerorder_body{

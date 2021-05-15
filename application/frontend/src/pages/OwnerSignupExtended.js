@@ -99,7 +99,7 @@ const OwnerSignupExtended = () => {
       });
 
     alert('Thank you for Registering');
-    history.push('/');
+    history.push('/OwnerLogin');
   };
 
   useEffect(() => {

@@ -268,11 +268,30 @@ const MenuSideBar = () => {
 
           {MenuItems.map((item, index) => {
             return (
-              <li
-                key={index}
-                className="menu-item p-2 m-2"
-                onClick={showMenu}
-              ></li>
+              <li key={index} className="menu-item p-2 m-2" onClick={showMenu}>
+                {item.path !== '/signout' ? (
+                  <Link to={item.path}>
+                    <i className={item.cName} style={{ width: '10px' }} />
+                    <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
+                      {item.title}
+                    </span>
+                  </Link>
+                ) : item.path === '/signout' ? (
+                  <Link
+                    to="#"
+                    aria-hidden="true"
+                    data-toggle="modal"
+                    data-target="#signout"
+                  >
+                    <i className={item.cName} style={{ width: '10px' }} />
+                    <span className="side-menu-text primary-color p-2 m-1 ml-3 h5">
+                      {item.title}
+                    </span>
+                  </Link>
+                ) : (
+                  <> </>
+                )}
+              </li>
             );
           })}
           <li

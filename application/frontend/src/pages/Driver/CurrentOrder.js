@@ -1,10 +1,25 @@
 import React from "react";
+import { getMaxListeners } from "../../../../backend/db";
 import '../../assets/css/driver.css';
 import map_sample from '../../assets/img/map_customerorder.png';
 
 
 
 const DriverOrderDelivered = () =>{
+    const [driverOrders, setDriverOrders] = useState([])
+
+    useEffect(() => {
+        axios
+          .get('http://localhost:3001/api/order/user-orders', {
+            params: {
+              Email: "will@gmail.com",
+            },
+          })
+          .then((res) => {
+            setDriverOrders(res.data);
+          });
+      },[]);
+      
     return(
         <div className = "container-fluid">
             <div className = "order_header h3 text-white text-center mx-auto py-2 w-50">Order Details</div>
@@ -23,7 +38,7 @@ const DriverOrderDelivered = () =>{
                         <li className = "items">Coke</li>
                     </ul>
                         </div>
-                        <div className = "row h5 font-weight-bold pt-4">Total: <span> &#36;24</span></div>
+                        <div className = "row h5 font-weight-bold pt-4">Total:<span className = "px-1">&#36;24</span></div>
                         <div className = "row h5 pt-3 pt-4">Order Status: <span className = "font-italic text-info font-weight-bold pl-1">Pending</span></div>
                         </div>
 
@@ -35,7 +50,7 @@ const DriverOrderDelivered = () =>{
                                     <li className = "items px-2">(415) 123-4567</li>
                                 </ul>
                             </div>
-                            <button type = "myDirections" className = "row btn btn-warning mb-2 ml-2 text-white mt-4" onclick = "myDirections()">Directions</button>
+                            {/* <button type = "myDirections" className = "row btn btn-warning mb-2 ml-2 text-white mt-4" onclick = "myDirections()">Directions</button> */}
                             <div className = "delivery_instructions h6 pt-4 row">Delivery Instructions: <br/><span className = "font-italic">Our apartment is located at the back of the building</span></div>
                         </div>
                     </div>

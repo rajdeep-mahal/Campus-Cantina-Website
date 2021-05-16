@@ -12,6 +12,7 @@ const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderContent, setOrderContent] = useState([]);
   const [itemID, setItemID] = useState("");
+  const [orderStatus, setOrderStatus] = useState('');
   const [loadData, setLoadData] = useState(false);
 
   const handleOrderStatusChange = (event) => {
@@ -33,7 +34,6 @@ const OwnerOrderHistory = () => {
       })
       .then((res) => {
         setOrderItems(res.data);
-        //console.log(orderItems);
         setLoadData(false);
       });
   }, [loadData]);
@@ -105,7 +105,9 @@ const OwnerOrderHistory = () => {
                 ))}
               </>
             ) : (
-              <> </>
+              <> 
+              <label>Waiting to recieve orders...</label>
+              </>
             )}
           </tbody>
         </table>

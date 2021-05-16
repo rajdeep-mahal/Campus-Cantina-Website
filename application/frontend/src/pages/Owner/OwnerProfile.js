@@ -27,14 +27,11 @@ const OwnerProfile = () => {
       })
       .then((res) => {
         setOwnerInfo(res.data);
-        //console.log(ownerInfo);
         setLoadData(false);
       });
-    //console.log(ownerInfo);
   }, [loadData]);
 
   //extract value from global redux (reads from store)
-  //const ownerName = useSelector((state) => state.ownerSignupReducer.ownerName);
   return (
     <div className="container-fluid">
       <br />

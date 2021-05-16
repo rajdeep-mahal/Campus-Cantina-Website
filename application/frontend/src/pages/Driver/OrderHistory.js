@@ -25,15 +25,15 @@ const DriverAvailableOrders = () => {
   }, []);
 
   return (
-    <div className="container text-center m-4 mx-auto">
+    <div className="container text-center my-4 mx-auto table-responsive">
       <div className="order_header h3 text-white text-center py-2">
         Order History
       </div>
-      <table className="table table_order">
+      <table className="table table_order mx-auto my-auto">
         <thead>
-          <tr>
+          <tr className="table-dark primary-color">
             <th className="border border_header">
-              <span className="font-italic"> Order ID</span>
+              <span className="font-italic "> Order ID</span>
             </th>
             <th className="border border_header">
               <span className="font-italic">Customer Name</span>
@@ -59,7 +59,9 @@ const DriverAvailableOrders = () => {
               <tr key={i}>
                 <td className="border border_purple">{item.ID}</td>
                 <td className="border border_purple">{item.Customer_Name}</td>
-                <td className="border border_purple">{item.Delivery_Location}</td>
+                <td className="border border_purple">
+                  {item.Delivery_Location}
+                </td>
                 <td className="border border_purple">
                   <span className="text-info font-italic">Completed</span>
                 </td>
@@ -85,7 +87,6 @@ const DriverAvailableOrders = () => {
             ))}
         </tbody>
       </table>
-
       {/* View order 1 */}
       <div
         className="modal fade"
@@ -114,23 +115,46 @@ const DriverAvailableOrders = () => {
               <table className="table-responsive">
                 <thead>
                   <tr>
-                    <th className="font-italic border border_purple p-2"> Restaurant </th>
+                    <th className="font-italic border border_purple p-2">
+                      {' '}
+                      Restaurant{' '}
+                    </th>
                     <th className="font-italic border border_purple"> Item </th>
-                    <th className="font-italic border border_purple p-1"> Item Price </th>
-                    <th className="font-italic border border_purple p-1"> Quantity </th>
-                    <th className="font-italic border border_purple p-2"> Comments </th>
-                    <th className="font-italic border border_purple p-1"> Item Total Price </th>
+                    <th className="font-italic border border_purple p-1">
+                      {' '}
+                      Item Price{' '}
+                    </th>
+                    <th className="font-italic border border_purple p-1">
+                      {' '}
+                      Quantity{' '}
+                    </th>
+                    <th className="font-italic border border_purple p-2">
+                      {' '}
+                      Comments{' '}
+                    </th>
+                    <th className="font-italic border border_purple p-1">
+                      {' '}
+                      Item Total Price{' '}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {modalItems.map((item, i) => (
                     <tr key={i}>
-                      <td className="border border_purple p-2">{item.itemRestaurantName}</td>
-                      <td className="border border_purple p-2">{item.itemName}</td>
+                      <td className="border border_purple p-2">
+                        {item.itemRestaurantName}
+                      </td>
+                      <td className="border border_purple p-2">
+                        {item.itemName}
+                      </td>
                       <td className="border border_purple">{item.itemPrice}</td>
                       <td className="border border_purple">{item.itemCount}</td>
-                      <td className="border border_purple p-2">{item.itemComments}</td>
-                      <td className="border border_purple">&#36;{item.itemCalculatedPrice}</td>
+                      <td className="border border_purple p-2">
+                        {item.itemComments}
+                      </td>
+                      <td className="border border_purple">
+                        &#36;{item.itemCalculatedPrice}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

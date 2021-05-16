@@ -131,6 +131,8 @@ router.post('/place-order', (req, res) => {
     res.send('Invalid driver ID');
   } else if (!validator.isInt(req.body.orderSubID)) {
     res.send('Invalid order sub ID');
+  } else if (!validator.isFloat(req.body.deliveryFee)) {
+    res.send('Invalid delivery fee');
   } else {
     // Generate SQL query with order info
     let query =
@@ -162,6 +164,8 @@ router.post('/place-order', (req, res) => {
       0 + // Completed set to 0, change to 1 when order complete
       `,` +
       req.body.orderSubID +
+      `,` +
+      req.body.deliveryFee +
       `)`;
 
     // Send order query to db

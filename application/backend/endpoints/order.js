@@ -124,10 +124,6 @@ router.post('/place-order', (req, res) => {
   } else if (!validator.isFloat(req.body.total)) {
     res.send('Invalid total');
   } else if (
-    !validator.isAlphanumeric(req.body.deliveryETA.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid delivery ETA');
-  } else if (
     !validator.isAlphanumeric(req.body.deliveryInstructions.replace(/\s/g, ''))
   ) {
     res.send('Invalid delivery instructions');
@@ -158,8 +154,6 @@ router.post('/place-order', (req, res) => {
       req.body.serviceFee +
       `','` +
       req.body.total +
-      `','` +
-      req.body.deliveryETA +
       `','` +
       req.body.deliveryInstructions +
       `','` +

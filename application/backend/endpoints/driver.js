@@ -25,51 +25,61 @@ router.get('/all-drivers', (req, res) => {
 router.post('/driver-signup', (req, res) => {
   console.log('Called driver-singnup endpoint');
 
-  // TODO: Validate driver data
+  // Validate driver data
+  if (!validator.isInt(req.body.driverID)) {
+    res.send('Invalid driver ID');
+  } else if (!validator.isAlphanumeric(req.body.driverName)) {
+    res.send('Invalid driver name');
+  } else if (!validator.isInt(req.body.driverPhone)) {
+    res.send('Invalid driver phone number');
+  } else if (!validator.isEmail(req.body.driverEmail)) {
+    res.send('Invalid driver email');
+  } else {
+    // Encyprt password
+    let hash = bcrypt.hashSync(req.body.driverPassword, 10);
 
-  // Encyprt password
-  let hash = bcrypt.hashSync(req.body.driverPassword, 10);
+    // Generate SQL query with driver info
+    let query =
+      `INSERT INTO Drivers VALUES (` +
+      req.body.driverID +
+      `,"` +
+      req.body.driverName +
+      `","` +
+      req.body.driverPhone +
+      `","` +
+      req.body.driverEmail +
+      `","` +
+      hash +
+      `","` +
+      req.body.driverRestaurant +
+      `")`;
 
-  // Generate SQL query with driver info
-  let query =
-    `INSERT INTO Drivers VALUES (` +
-    req.body.driverID +
-    `,'` +
-    req.body.driverName +
-    `','` +
-    req.body.driverPhone +
-    `','` +
-    req.body.driverEmail +
-    `','` +
-    hash +
-    `','` +
-    req.body.driverRestaurant +
-    `')`;
-
-  // Send driver query to db
-  database.query(query, (err, result) => {
-    console.log('Uploaded driver info to db');
-    res.send(result);
-  });
+    // Send driver query to db
+    database.query(query, (err, result) => {
+      console.log('Uploaded driver info to db');
+      res.send(result);
+    });
+  }
 });
 
 // Get individual driver info
 router.get('/driver-info', (req, res) => {
   console.log('Called driver-info endpoint');
 
-  // TODO: Validate data
+  // Validate email
+  if (!validator.isEmail(req.query.driverEmail)) {
+    res.send('Invalid driver email');
+  } else {
+    // Generate SQL query
+    let query =
+      `SELECT * FROM Drivers WHERE Email = "` + req.query.driverEmail + `"`;
 
-  // Generate SQL query
-  let query =
-    `SELECT * FROM Drivers WHERE Email = '` + req.query.driverEmail + `'`;
-
-  // Send driver info query to db
-  database.query(query, (err, result) => {
-    console.log('Got individual driver info from db');
-    res.send(result);
-  });
+    // Send driver info query to db
+    database.query(query, (err, result) => {
+      console.log('Got individual driver info from db');
+      res.send(result);
+    });
+  }
 });
-
-// Driver login
 
 module.exports = router;

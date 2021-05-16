@@ -33,7 +33,7 @@ const OwnerOrderHistory = () => {
       })
       .then((res) => {
         setOrderItems(res.data);
-        console.log(orderItems);
+        //console.log(orderItems);
         setLoadData(false);
       });
   }, [loadData]);

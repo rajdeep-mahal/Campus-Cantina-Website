@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import '../../assets/css/about_individual.css';
-import Banner from '../../assets/img/restaurant/Restaurant_Banner.jpg';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
 
@@ -19,8 +18,6 @@ const OwnerMenu = () => {
   const [editMenuItemID, setEditMenuItemID] = useState('');
   //delete menu item variable
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
-
-  //const [ownerInfo, setOwnerInfo] = useState([]);
 
   //restaurants from backend
   const restaurantsList = useSelector(
@@ -135,15 +132,6 @@ const OwnerMenu = () => {
         setMenuItems(res.data);
         setLoadData(false);
       });
-    // axios
-    //   .get("http://localhost:3001/api/restaurant/owner-info", {
-    //     params: { ownerEmail: "kendrick@gmail.com" },
-    //   })
-    //   .then((res) => {
-    //     setOwnerInfo(res.data);
-    //     setLoadData(false);
-    //   });
-    //console.log(ownerInfo);
   }, [loadData]);
 
   return (

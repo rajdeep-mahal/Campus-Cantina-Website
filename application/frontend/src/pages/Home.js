@@ -96,7 +96,7 @@ const Home = () => {
       ) : appUser.type === 'owner' ? (
         <Redirect to="/owner/menu" />
       ) : appUser.type === 'driver' ? (
-        <Redirect to="/driver/currentorder" />
+        <Redirect to="/driver/current-orders" />
       ) : (
         <> </>
       )}

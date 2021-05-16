@@ -44,7 +44,7 @@ const DriverLogin = () => {
             // 'Password matches!'
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
-            history.push('/driver/currentorder');
+            history.push('/driver/current-orders');
             loginAppUser(driverEmail);
           }
         });

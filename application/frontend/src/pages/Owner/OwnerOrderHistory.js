@@ -8,42 +8,24 @@ import "../../assets/css/ownerlayout.css";
 import "../../assets/css/index.css";
 import axios from "axios";
 
-// const items = [
-//   { id: "111232", driver: "John C.", customer: "Mark S.", price: "$15" },
-//   { id: "100331", driver: "Jen O.", customer: "Tom S.", price: "$22" },
-//   { id: "556772", driver: "Steven Y.", customer: "Susan B.", price: "$20" },
-//   { id: "900344", driver: "John. L", customer: "Maria M.", price: "$25" },
-
-// const renderOrderItem = (item, index) => {
-//   return (
-//     <tr key={index}>
-//       <td>{item.id}</td>
-//       <td>
-//         <button
-//           type="button"
-//           class="btn btn-outline-dark view-btn"
-//           data-toggle="modal"
-//           data-target="#viewModal"
-//         >
-//           View
-//         </button>
-//       </td>
-//       <td>{item.driver}</td>
-//       <td>{item.customer}</td>
-//       <td>{item.price}</td>
-//       <td>
-//         <select class="form-select order-status">
-//           <option selected>Pending</option>
-//           <option value="progress">In Progress</option>
-//           <option value="complete">Completed</option>
-//         </select>
-//       </td>
-//     </tr>
-//   );
-// };
-
 const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
+  const [orderContent, setOrderContent] = useState([]);
+  const [itemID, setItemID] = useState("");
+  const [orderStatus, setOrderStatus] = useState('');
+  const [loadData, setLoadData] = useState(false);
+
+  const handleOrderStatusChange = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3001/api/order/order-completed", null, {
+        params: { orderID: itemID },
+      })
+      .then((res) => {
+        console.log(res);
+        setLoadData(true);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -52,9 +34,9 @@ const OwnerOrderHistory = () => {
       })
       .then((res) => {
         setOrderItems(res.data);
-        //setLoadData(false);
+        setLoadData(false);
       });
-  }, []);//loadData]);
+  }, [loadData]);
 
   return (
     <div className="container-fluid">
@@ -80,32 +62,52 @@ const OwnerOrderHistory = () => {
               <>
                 {orderItems.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{item.ID}</td>
                     <td>
                       <button
                         type="button"
                         class="btn btn-outline-dark view-btn"
                         data-toggle="modal"
                         data-target="#viewModal"
+                        onClick={(e) => {
+                          setOrderContent(item.Order_Contents);
+                        }}
                       >
                         View
                       </button>
                     </td>
-                    <td>{item.driver}</td>
-                    <td>{item.customer}</td>
-                    <td>{item.price}</td>
+                    <td>Marcus S.</td>
+                    <td>{item.Customer_Name}</td>
+                    <td>${item.Total}</td>
                     <td>
-                      <select class="form-select order-status">
-                        <option selected>Pending</option>
-                        <option value="progress">In Progress</option>
-                        <option value="complete">Completed</option>
+                      <select
+                        class="form-select order-status"
+                        onClick={(e) => {
+                          setItemID(item.ID);
+                          handleOrderStatusChange(); 
+                        }}
+                      >
+                        {item.Completed < 1 ? (
+                          <>
+                            <option value="progress" selected>
+                              In Progress
+                            </option>
+                            <option value="complete">Completed</option>
+                          </>
+                        ) : (
+                          <option value="complete" selected>
+                            Completed
+                          </option>
+                        )}
                       </select>
                     </td>
                   </tr>
                 ))}
               </>
             ) : (
-              <> </>
+              <> 
+              <label>Waiting to recieve orders...</label>
+              </>
             )}
           </tbody>
         </table>
@@ -137,9 +139,7 @@ const OwnerOrderHistory = () => {
             </div>
             <div class="modal-body">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">1 x Cheeseburger </li>
-                <li class="list-group-item">1 x Large Diet Coke </li>
-                <li class="list-group-item">Special Instructions: No Onions</li>
+                <li class="list-group-item">{orderContent}</li>
               </ul>
             </div>
             <div class="modal-footer">

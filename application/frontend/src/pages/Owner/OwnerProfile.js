@@ -3,7 +3,7 @@ import restaurantcartoon from "../../assets/img/restaurant_ex.jpeg";
 import axios from "axios";
 import "../../assets/css/index.css";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const OwnerProfile = () => {
 
@@ -19,6 +19,7 @@ const OwnerProfile = () => {
   
   const [loadData, setLoadData] = useState(false);
 
+  //Renders owner info from DB
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/restaurant/owner-info", {
@@ -26,14 +27,11 @@ const OwnerProfile = () => {
       })
       .then((res) => {
         setOwnerInfo(res.data);
-        console.log(ownerInfo);
         setLoadData(false);
       });
-    console.log(ownerInfo);
   }, [loadData]);
 
   //extract value from global redux (reads from store)
-  //const ownerName = useSelector((state) => state.ownerSignupReducer.ownerName);
   return (
     <div className="container-fluid">
       <br />

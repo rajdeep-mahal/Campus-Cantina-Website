@@ -7,6 +7,20 @@ import React, { useState, useEffect } from 'react';
 
 const CurrentOrders = () => {
   const [orders, setOrders] = useState([]);
+  const [orderStatus, setOrderStatus] = useState(0);
+  const [modalItems, setModalItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post('http://localhost:3001/api/order/order-completed', {
+        params: {
+          orderID:461,
+        },
+      })
+      .then((res) => {
+        console.log(res.data)
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -21,10 +35,9 @@ const CurrentOrders = () => {
   }, []);
 
   return (
-      <div>
+      <>
       {orders.filter((order) => order.Completed == 0).map((item,i) => (
 
-      
     <div className="container">
       <div className="card border card_customerorder_body mx-auto mt-3 mb-3">
        
@@ -109,17 +122,54 @@ const CurrentOrders = () => {
             <button
               type="button"
               className="col-sm-12 col-4 py-2 btn btn-block delivered_button mx-auto text-white"
-              onClick="myDirections()"
+              data-toggle="modal"
+              data-target="#CompletedOrder"
+              onClick={(e) => {
+                orders.filter((order) => order.ID === item.ID)
+                .map((item, i) => {
+                  setModalItems(JSON.parse(item.ID));
+                  setOrderStatus()
+                });
+              }}
             >
               Delivered!
             </button>
           
         </div>
       </div>
+      <div
+        className="modal fade"
+        id="CompletedOrder"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="viewOrderTitle"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="viewOrderTitle">
+                Order Details
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+             <div className = "h4 text-center m-5">Delivery completed! Thank you!</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
     ))}
-    </div>
+    </>
   );
 };
 export default CurrentOrders;

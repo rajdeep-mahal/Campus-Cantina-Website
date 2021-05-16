@@ -42,7 +42,7 @@ import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
 import DisplayCart from './pages/CustomerCart';
 import OrderHistory from './pages/Driver/OrderHistory';
-import CurrentOrder from './pages/Driver/CurrentOrder';
+import CurrentOrders from './pages/Driver/CurrentOrders';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
@@ -138,8 +138,8 @@ function App() {
           <Route path="/driver/orderhistory">
             <OrderHistory />
           </Route>
-          <Route path="/driver/currentorder">
-            <CurrentOrder />
+          <Route path="/driver/current-orders">
+            <CurrentOrders />
           </Route>
           <Route path="/">
             <Home />

@@ -4,6 +4,14 @@
     background-color:var(--primary-color);
     opacity: 0.9;
 }
+.current-order-text{
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.current-orders-map{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 .delivered_text{
     margin-right:auto;
     margin-left:auto;
@@ -43,14 +51,16 @@
 }
 /*text within delivered button for responsiveness*/
 .delivered_text{
-    font-size: 2vw;
 }
 /*deliver button background color and width responsiveness size*/
 .delivered_button{
     background-color:var(--primary-color);
-    width:15vw !important;
+}
+.delivery_instructions{
+    width: 25vw;
 }
 /*removes customer info's bullet points*/
 .customer_info{
     list-style: none;
 }
+

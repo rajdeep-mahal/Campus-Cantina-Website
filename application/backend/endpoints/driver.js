@@ -34,6 +34,10 @@ router.post('/driver-signup', (req, res) => {
     res.send('Invalid driver phone number');
   } else if (!validator.isEmail(req.body.driverEmail)) {
     res.send('Invalid driver email');
+  } else if (
+    !validator.isAlphanumeric(req.body.driverRestaurant.replace(/\s/g, ''))
+  ) {
+    res.send('Invalid driver restaurant');
   } else {
     // Encyprt password
     let hash = bcrypt.hashSync(req.body.driverPassword, 10);

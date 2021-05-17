@@ -12,18 +12,21 @@ const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderContent, setOrderContent] = useState([]);
   const [itemID, setItemID] = useState("");
-  const [orderStatus, setOrderStatus] = useState('');
+  const [orderStatus, setOrderStatus] = useState("Pending");
   const [loadData, setLoadData] = useState(false);
 
   const handleOrderStatusChange = (event) => {
     event.preventDefault();
+    console.log("calling handleOrderStatusChange");
+    console.log(itemID);
     axios
-      .post("http://localhost:3001/api/order/order-completed", null, {
+      .post("http://localhost:3001/api/order/order-completed", {
         params: { orderID: itemID },
       })
       .then((res) => {
         console.log(res);
         setLoadData(true);
+        setItemID("");
       });
   };
 
@@ -80,33 +83,39 @@ const OwnerOrderHistory = () => {
                     <td>{item.Customer_Name}</td>
                     <td>${item.Total}</td>
                     <td>
-                      <select
+                      {/* <select
                         class="form-select order-status"
                         onClick={(e) => {
-                          setItemID(item.ID);
-                          handleOrderStatusChange(); 
+                          setItemID(item.ID);; 
                         }}
                       >
-                        {item.Completed < 1 ? (
+                      */}
+                      {item.Completed < 1 ? (
+                        <label> Pending</label>
+                      ) : (
+                        <label> Completed</label>
+                      )}
+                      {/*
                           <>
                             <option value="progress" selected>
                               In Progress
                             </option>
-                            <option value="complete">Completed</option>
+                            <option value="complete" onSelect={handleOrderStatusChange}>Completed</option>
                           </>
                         ) : (
                           <option value="complete" selected>
                             Completed
                           </option>
+
                         )}
-                      </select>
+                      </select> */}
                     </td>
                   </tr>
                 ))}
               </>
             ) : (
-              <> 
-              <label>Waiting to recieve orders...</label>
+              <>
+                <label>Waiting to recieve orders...</label>
               </>
             )}
           </tbody>

@@ -14,7 +14,6 @@ const OwnerLogin = () => {
 
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
-  console.log(appUser.type);
 
   // show error alert for invalid email suffix
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);

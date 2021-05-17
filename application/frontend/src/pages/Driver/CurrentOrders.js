@@ -11,11 +11,13 @@ const CurrentOrders = () => {
   const [orders, setOrders] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   const [loadData, setLoadData] = useState(false);
+  const [clickedOrderID, setClickedOrderID] = useState(false);
 
   // alert will disappear automatically after 3 sec
   if (showAlert) {
     setTimeout(() => {
       setShowAlert(false);
+      setLoadData(false);
     }, 3000);
   }
 
@@ -128,12 +130,68 @@ const CurrentOrders = () => {
                     data-toggle="modal"
                     data-target="#CompletedOrder"
                     onClick={(e) => {
-                      let clickedOrderID = parseInt(item.ID);
-                      changeOrderStatus(clickedOrderID);
+                      setClickedOrderID(parseInt(item.ID));
                     }}
                   >
                     Delivered!
                   </button>
+                </div>
+                {/* delivery confirmation modal */}
+                <div
+                  className="modal fade"
+                  id="CompletedOrder"
+                  role="dialog"
+                  aria-labelledby="#CompletedOrder"
+                  aria-hidden="true"
+                >
+                  <div
+                    className="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div className="modal-content">
+                      <div className="modal-header h5">
+                        <strong> Confirm Delivery </strong>
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body modal-edit">
+                        <p className="h5 primary-color mb-4 mx-auto text-center">
+                          Please confirm that you have received payment for this
+                          order
+                        </p>
+                        <div className="d-flex justify-content-center">
+                          <div className="mx-4">
+                            <button
+                              type="button"
+                              className="btn save-btn btn-lg primary-color text-center m-1 signout-buttons"
+                              data-dismiss="modal"
+                              onClick={(e) => {
+                                changeOrderStatus(clickedOrderID);
+                              }}
+                            >
+                              Yes
+                            </button>
+                          </div>
+                          <div className="mx-4">
+                            <button
+                              type="submit"
+                              className="btn save-btn btn-lg  m-1 primary-color"
+                              value="Submit"
+                              data-dismiss="modal"
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))

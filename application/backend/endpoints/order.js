@@ -184,8 +184,6 @@ router.post('/place-order', (req, res) => {
 
     // Send order query to db
     database.query(query, (err, result) => {
-      if (err) console.log(err);
-      console.log(query);
       console.log('Added order to db');
       res.send(result);
     });

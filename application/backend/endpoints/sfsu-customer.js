@@ -28,14 +28,15 @@ router.post('/customer-signup', (req, res) => {
   // Validate data
   if (!validator.isInt(req.body.customerID)) {
     res.send('Invalid customer ID');
-  } else if (
-    !validator.isAlphanumeric(req.body.customerName.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid customer name');
-  } else if (
-    !validator.isAlphanumeric(req.body.customerAddress.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid customer address');
+    // }
+    // else if (
+    //   !validator.isAlphanumeric(req.body.customerName.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid customer name');
+    // else if (
+    //   !validator.isAlphanumeric(req.body.customerAddress.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid customer address');
   } else if (
     !validator.isAlphanumeric(req.body.customerType.replace(/\s/g, ''))
   ) {
@@ -68,6 +69,7 @@ router.post('/customer-signup', (req, res) => {
 
     // Send driver query to db
     database.query(query, (err, result) => {
+      console.log(query);
       console.log('Uploaded customer info to db');
       res.send(result);
     });

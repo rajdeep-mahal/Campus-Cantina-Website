@@ -23,14 +23,16 @@ router.get('/all-drivers', (req, res) => {
 
 // Driver signup
 router.post('/driver-signup', (req, res) => {
-  console.log('Called driver-singnup endpoint');
+  console.log('Called driver-signup endpoint');
 
   // Validate driver data
   if (!validator.isInt(req.body.driverID)) {
     res.send('Invalid driver ID');
-  } else if (!validator.isAlphanumeric(req.body.driverName)) {
-    res.send('Invalid driver name');
-  } else if (!validator.isInt(req.body.driverPhone)) {
+  }
+  // else if (!validator.isAlphanumeric(req.body.driverName)) {
+  //   res.send('Invalid driver name');
+  // }
+  else if (!validator.isInt(req.body.driverPhone)) {
     res.send('Invalid driver phone number');
   } else if (!validator.isEmail(req.body.driverEmail)) {
     res.send('Invalid driver email');

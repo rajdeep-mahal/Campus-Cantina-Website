@@ -65,22 +65,26 @@ router.post('/register-restaurant', upload.single('file'), async (req, res) => {
   } else if (
     !validator.isAlphanumeric(req.body.restaurantName.replace(/\s/g, ''))
   ) {
-    res.send('Inlvaid restaurant name');
+    res.send('Invalid restaurant name');
   } else if (
     !validator.isAlphanumeric(req.body.restaurantCuisine.replace(/\s/g, ''))
   ) {
     res.send('Invalid restaurant cuisine');
-  } else if (
-    !validator.isAlphanumeric(req.body.restaurantTags.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid restaurant tags');
-  } else if (!validator.isCurrency(req.body.restaurantPriceLevel)) {
-    res.send('Invalid price level');
-  } else if (
-    !validator.isAlphanumeric(req.body.restaurantAddress.replace(/\s/g, ''))
-  ) {
-    res.send('Ivalid restaurant address');
-  } else if (!validator.isFloat(req.body.restaurantDeliveryFee)) {
+  }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.restaurantTags.replace(/\s/g, ''))
+  // ) {
+  //   res.send('Invalid restaurant tags');
+  // }
+  // else if (!validator.isCurrency(req.body.restaurantPriceLevel)) {
+  //   res.send('Invalid price level');
+  // }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.restaurantAddress.replace(/\s/g, ''))
+  // ) {
+  //   res.send('Invalid restaurant address');
+  // }
+  else if (!validator.isFloat(req.body.restaurantDeliveryFee)) {
     res.send('Invalid delivery fee');
   } else {
     // Generate SQL query with restaurant info

@@ -155,11 +155,7 @@ const OwnerOrderHistory = () => {
                 <li class="list-group-item">{orderContent}</li>
               </ul>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn modal-confirm-btn">
-                Confirm
-              </button>
-            </div>
+
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ const CurrentOrders = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [loadData, setLoadData] = useState(false);
   const [clickedOrderID, setClickedOrderID] = useState(false);
+  const [driverDetails, setDriverDetails] = useState([]);
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
   const [modalItems, setModalItems] = useState([]);
@@ -44,6 +45,7 @@ const CurrentOrders = () => {
           },
         })
         .then((res) => {
+          setDriverDetails(res.data[0]);
           axios
             .get('http://localhost:3001/api/order/user-orders', {
               params: {
@@ -71,7 +73,18 @@ const CurrentOrders = () => {
           ) : (
             <></>
           )}
-          <div className="container">
+          <div className="container mt-3">
+            <div className=" text-center h5">
+              <span className="font-weight-bold">Hello, </span>
+              <span className=" current-order-text font-weight-bold  font-italic">
+                {appUser.name}{' '}
+              </span>{' '}
+              <br />
+              <span className="font-weight-bold">You are working for : </span>
+              <span className="current-order-text font-weight-bold font-italic">
+                {driverDetails.Restaurant}{' '}
+              </span>
+            </div>
             <div
               className="modal fade"
               id="viewOrder"

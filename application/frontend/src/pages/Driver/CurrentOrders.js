@@ -10,19 +10,24 @@ import React, { useState, useEffect } from 'react';
 const CurrentOrders = () => {
   const [orders, setOrders] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
+  const [loadData, setLoadData] = useState(false);
+
+  // alert will disappear automatically after 3 sec
+  if (showAlert) {
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  }
 
   const changeOrderStatus = (clickedOrderID) => {
-    console.log(clickedOrderID);
-    // setShowAlert(true);
-
-    // axios
-    //   .post('http://localhost:3001/api/order/order-completed', {
-    //     params: { orderID: clickedOrderID },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     setShowAlert(true);
-    //   });
+    axios
+      .post('http://localhost:3001/api/order/order-completed', null, {
+        params: { orderID: clickedOrderID },
+      })
+      .then((res) => {
+        setShowAlert(true);
+        setLoadData(true);
+      });
   };
 
   useEffect(() => {
@@ -35,16 +40,16 @@ const CurrentOrders = () => {
       .then((res) => {
         setOrders(res.data);
       });
-  }, []);
+  }, [loadData]);
 
   return (
-    <>
+    <div className="container-fluid">
       {showAlert ? (
         <div
           className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"
           role="alert"
         >
-          <strong>Success!</strong> Added Item to the Cart
+          <strong>Success!</strong> Order Delivered
           <button
             type="button"
             className="close"
@@ -145,7 +150,10 @@ const CurrentOrders = () => {
                   className="col-sm-12 col-4 py-2 btn btn-block delivered_button mx-auto text-white"
                   data-toggle="modal"
                   data-target="#CompletedOrder"
-                  onClick={changeOrderStatus(item.ID)}
+                  onClick={(e) => {
+                    let clickedOrderID = parseInt(item.ID);
+                    changeOrderStatus(clickedOrderID);
+                  }}
                 >
                   Delivered!
                 </button>
@@ -153,7 +161,7 @@ const CurrentOrders = () => {
             </div>
           </div>
         ))}
-    </>
+    </div>
   );
 };
 export default CurrentOrders;

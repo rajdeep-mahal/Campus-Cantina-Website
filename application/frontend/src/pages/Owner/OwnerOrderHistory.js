@@ -129,10 +129,9 @@ const OwnerOrderHistory = () => {
       <div
         class="modal fade"
         id="viewModal"
-        data-backdrop="static"
         tabindex="-1"
         role="dialog"
-        aria-labelledby="viewModalLabel"
+        data-dismiss="modal"
         aria-hidden="true"
       >
         <div class="modal-dialog " role="document">
@@ -155,7 +154,6 @@ const OwnerOrderHistory = () => {
                 <li class="list-group-item">{orderContent}</li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>

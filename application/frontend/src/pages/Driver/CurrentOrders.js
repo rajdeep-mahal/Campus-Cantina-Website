@@ -14,7 +14,6 @@ const CurrentOrders = () => {
   const [clickedOrderID, setClickedOrderID] = useState(false);
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
-  const [orderStatus, setOrderStatus] = useState(0);
   const [modalItems, setModalItems] = useState([]);
 
   // alert will disappear automatically after 3 sec
@@ -48,11 +47,11 @@ const CurrentOrders = () => {
           axios
             .get('http://localhost:3001/api/order/user-orders', {
               params: {
-                driverID: 586,
+                driverID: res.data[0].ID,
               },
             })
-            .then((res) => {
-              setOrders(res.data);
+            .then((res1) => {
+              setOrders(res1.data);
             });
         });
     }
@@ -160,7 +159,10 @@ const CurrentOrders = () => {
               orders
                 .filter((order) => order.Completed == 0)
                 .map((item, i) => (
-                  <div className="card border card_customerorder_body my-3">
+                  <div
+                    className="card border card_customerorder_body my-3"
+                    key={i}
+                  >
                     <div className="card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">
                       Customer Order:
                       <span className="h4 pl-2">#{item.ID}</span>
@@ -208,16 +210,6 @@ const CurrentOrders = () => {
                                   Total :
                                 </th>
                                 <td>&#36;{item.Total}</td>
-                              </tr>
-                              <tr>
-                                <th scope="row" className="current-order-text">
-                                  Order Contents
-                                </th>
-                                <td>
-                                  {' '}
-                                  TBD
-                                  {/* {item.Contents} */}
-                                </td>
                               </tr>
                               <tr>
                                 <th scope="row" className="current-order-text">

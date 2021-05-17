@@ -52,15 +52,22 @@ const DriverSignup = () => {
         .post('http://localhost:3001/api/driver/driver-signup', {
           driverID: newDriverID,
           driverName: driverName,
-          driverPhone: driverContactNumber,
+          driverPhone: `${driverContactNumber}`,
           driverEmail: driverEmail,
           driverPassword: driverPassword,
           driverRestaurant: driverRestaurant,
         })
         .then((res) => {
-          console.log(res);
-          alert('Thank you for Registering');
-          history.push('/DriverLogin');
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              alert(
+                `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+              );
+            }
+          } else {
+            alert('Thank you for Registering');
+            history.push('/DriverLogin');
+          }
         });
     }
   };
@@ -135,8 +142,10 @@ const DriverSignup = () => {
                 value={driverContactNumber}
                 onChange={(e) => setDriverContactNumber(e.target.value)}
                 onBlur={(e) => {
-                  let temp = driverContactNumber.substring(0, 10);
-                  setDriverContactNumber(parseInt(temp));
+                  if (!isNaN(driverContactNumber)) {
+                    let temp = driverContactNumber.substring(0, 10);
+                    setDriverContactNumber(parseInt(temp));
+                  }
                 }}
               />
               <br />

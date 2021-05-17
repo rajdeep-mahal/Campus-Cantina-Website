@@ -180,18 +180,10 @@ const Checkout = () => {
                 <div className="form-group w-75 mx-auto mb-4">
                   {showAlert ? (
                     <div
-                      className="text-center mt-2 alert alert-success alert-dismissible fade show"
+                      className="text-center mt-2 alert alert-danger fade show"
                       role="alert"
                     >
                       Please enter Delivery Address to continue
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
                     </div>
                   ) : (
                     <> </>

@@ -55,7 +55,6 @@ const RestaurantPage = () => {
 
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
-  console.log(appUser.name);
 
   if (showAlert) {
     setTimeout(() => {
@@ -68,7 +67,7 @@ const RestaurantPage = () => {
   useEffect(() => {
     if (
       appUser.type === 'guest' ||
-      appUser.type == 'customer' ||
+      appUser.type === 'customer' ||
       appUser.type === undefined
     ) {
       let source = axios.CancelToken.source();

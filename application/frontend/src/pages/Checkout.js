@@ -260,58 +260,59 @@ const Checkout = () => {
                     </PlacesAutocomplete>
                   </ReactDependentScript>
                 </div>
-
-                <table className="table checkout-border border-bottom">
-                  <thead className="bg-warning">
-                    <tr>
-                      <th className="font-italic">Restaurant Name</th>
-                      <th className="font-italic">Item Name</th>
-                      <th className="font-italic">Instructions to Chef</th>
-                      <th className="font-italic">Quantity</th>
-                      <th className="font-italic">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartItems.map((item, i) => (
-                      <tr key={i}>
-                        <th>
-                          {item.itemRestaurantName}
-                          <br />
-                          <small>
-                            <i>
-                              (Delivery Fee ${' '}
-                              {
-                                restaurantsList.filter(
-                                  (restaurant) =>
-                                    restaurant.Name == item.itemRestaurantName
-                                )[0].Delivery_Fee
-                              }
-                              )
-                            </i>
-                          </small>
-                        </th>
-                        <td>
-                          {item.itemName}
-                          <br />
-                          <small>
-                            <i>(Cost per unit ${item.itemPrice})</i>
-                          </small>
-                        </td>
-                        <td>{item.itemComments}</td>
-                        <td>{item.itemCount}</td>
-                        <td>
-                          <b>
-                            &#36;
-                            <span>{item.itemCalculatedPrice}</span>
-                          </b>
-                        </td>
+                <div className="table-responsive">
+                  <table className="table checkout-border border-bottom">
+                    <thead className="bg-warning">
+                      <tr>
+                        <th className="font-italic">Restaurant Name</th>
+                        <th className="font-italic">Item Name</th>
+                        <th className="font-italic">Instructions to Chef</th>
+                        <th className="font-italic">Quantity</th>
+                        <th className="font-italic">Price</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {cartItems.map((item, i) => (
+                        <tr key={i}>
+                          <th>
+                            {item.itemRestaurantName}
+                            <br />
+                            <small>
+                              <i>
+                                (Delivery Fee ${' '}
+                                {
+                                  restaurantsList.filter(
+                                    (restaurant) =>
+                                      restaurant.Name == item.itemRestaurantName
+                                  )[0].Delivery_Fee
+                                }
+                                )
+                              </i>
+                            </small>
+                          </th>
+                          <td>
+                            {item.itemName}
+                            <br />
+                            <small>
+                              <i>(Cost per unit ${item.itemPrice})</i>
+                            </small>
+                          </td>
+                          <td>{item.itemComments}</td>
+                          <td>{item.itemCount}</td>
+                          <td>
+                            <b>
+                              &#36;
+                              <span>{item.itemCalculatedPrice}</span>
+                            </b>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
               {/* total box */}
-              <div className="card col-md-3 total-box">
+              <div className="card col-md-3 total-box mt-2">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">
                     <span className="float-left">Subtotal</span>

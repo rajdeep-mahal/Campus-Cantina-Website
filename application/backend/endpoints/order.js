@@ -32,13 +32,15 @@ router.get('/user-orders', (req, res) => {
   if (typeof driverID != 'undefined' && !validator.isInt(driverID)) {
     res.send('Invalid driver ID');
   } else if (
-    typeof customerName != 'undefined' &&
-    !validator.isAlphanumeric(customerName)
+    typeof customerName != 'undefined'
+    // &&
+    // !validator.isAlphanumeric(customerName)
   ) {
     res.send('Invalid customer name');
   } else if (
-    typeof restaurantName != 'undefined' &&
-    !validator.isAlphanumeric(restaurantName.replace(/\s/g, ''))
+    typeof restaurantName != 'undefined'
+    // &&
+    // !validator.isAlphanumeric(restaurantName.replace(/\s/g, ''))
   ) {
     res.send('Invalid restaurant name');
   } else {
@@ -100,67 +102,79 @@ router.post('/place-order', (req, res) => {
   if (!validator.isInt(req.body.orderID)) {
     res.send('Invalid order ID');
   } else if (!validator.isInt(req.body.restaurantID)) {
+    console.log('Invalid restaurant ID');
     res.send('Invalid restaurant ID');
-  } else if (
-    !validator.isAlphanumeric(req.body.restaurantName.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid restaurant name');
-  } else if (
-    !validator.isAlphanumeric(req.body.restaurantAddress.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid restaurant address');
-  } else if (!validator.isInt(req.body.customerID)) {
+  }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.restaurantName.replace(/\s/g, ''))
+  // ) {
+  //   res.send('Invalid restaurant name');
+  // }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.restaurantAddress.replace(/\s/g, ''))
+  // ) {
+  //   res.send('Invalid restaurant address');
+  // }
+  else if (!validator.isInt(req.body.customerID)) {
     res.send('Invalid customer ID');
-  } else if (
-    !validator.isAlphanumeric(req.body.customerName.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid customer name');
-  } else if (
-    !validator.isAlphanumeric(req.body.deliveryLocation.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid delivery location');
-  } else if (!validator.isFloat(req.body.serviceFee)) {
+  }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.customerName.replace(/\s/g, ''))
+  // ) {
+  //   res.send('Invalid customer name');
+  // }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.deliveryLocation.replace(/\s/g, ''))
+  // ) {
+  //   console.log(req.body.deliveryLocation);
+  //   res.send('Invalid delivery location');
+  // }
+  else if (!validator.isFloat(req.body.serviceFee)) {
     res.send('Invalid service fee');
   } else if (!validator.isFloat(req.body.total)) {
     res.send('Invalid total');
-  } else if (
-    !validator.isAlphanumeric(req.body.deliveryInstructions.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid delivery instructions');
-  } else if (!validator.isInt(req.body.driverID)) {
+  }
+  // else if (
+  //   !validator.isAlphanumeric(req.body.deliveryInstructions.replace(/\s/g, ''))
+  // )   {
+  //   res.send('Invalid delivery instructions');
+  // }
+  else if (!validator.isInt(req.body.driverID)) {
     res.send('Invalid driver ID');
-  } else if (!validator.isInt(req.body.orderSubID)) {
-    res.send('Invalid order sub ID');
-  } else if (!validator.isFloat(req.body.deliveryFee)) {
+  }
+  // else if (!validator.isInt(req.body.orderSubID)) {
+  //   res.send('Invalid order sub ID');
+  // }
+  else if (!validator.isFloat(req.body.deliveryFee)) {
     res.send('Invalid delivery fee');
   } else {
     // Generate SQL query with order info
     let query =
       `INSERT INTO Orders VALUES (` +
       req.body.orderID +
-      `,"` +
+      `,` +
       req.body.restaurantID +
-      `","` +
+      `,"` +
       req.body.restaurantName +
       `","` +
       req.body.restaurantAddress +
-      `","` +
+      `",` +
       req.body.customerID +
-      `","` +
+      `,"` +
       req.body.customerName +
       `","` +
       req.body.deliveryLocation +
-      `","` +
+      `",'` +
       req.body.orderContents + // Order contents will be stored as stringified JSON
-      `","` +
+      `',` +
       req.body.serviceFee +
-      `","` +
+      `,` +
       req.body.total +
-      `","` +
+      `,"` +
       req.body.deliveryInstructions +
-      `","` +
-      req.body.driverID +
       `",` +
+      req.body.driverID +
+      `,` +
       0 + // Completed set to 0, change to 1 when order complete
       `,` +
       req.body.orderSubID +
@@ -170,6 +184,8 @@ router.post('/place-order', (req, res) => {
 
     // Send order query to db
     database.query(query, (err, result) => {
+      if (err) console.log(err);
+      console.log(query);
       console.log('Added order to db');
       res.send(result);
     });

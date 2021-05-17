@@ -11,7 +11,7 @@ app.use(session({
   secret: 'csc648spring2021campuscantina',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: true, originalMaxAge: 6000000 } // Set secure to true for https
+  cookie: { secure: false, originalMaxAge: 6000000 }
 }))
 
 let guest = new Object();

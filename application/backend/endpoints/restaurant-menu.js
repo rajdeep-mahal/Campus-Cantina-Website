@@ -113,11 +113,11 @@ router.post('/edit-menu-item', (req, res) => {
   } else {
     // Generate SQL query
     let query =
-      `UPDATE Menu_Items SET Name = '` +
+      `UPDATE Menu_Items SET Name = "` +
       req.query.itemName +
-      `', Description = '` +
+      `", Description = "` +
       req.query.itemDescription +
-      `', Price = ` +
+      `", Price = ` +
       req.query.itemPrice +
       `WHERE ID = ` +
       req.query.itemID;

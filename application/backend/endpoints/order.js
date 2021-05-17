@@ -43,7 +43,7 @@ router.get('/user-orders', (req, res) => {
     res.send('Invalid restaurant name');
   } else {
     // Generate SQL query based on user type
-    let query = '';
+    let query = "";
 
     if (
       typeof restaurantName === 'undefined' &&
@@ -138,29 +138,29 @@ router.post('/place-order', (req, res) => {
     let query =
       `INSERT INTO Orders VALUES (` +
       req.body.orderID +
-      `,'` +
+      `,"` +
       req.body.restaurantID +
-      `','` +
+      `","` +
       req.body.restaurantName +
-      `','` +
+      `","` +
       req.body.restaurantAddress +
-      `','` +
+      `","` +
       req.body.customerID +
-      `','` +
+      `","` +
       req.body.customerName +
-      `','` +
+      `","` +
       req.body.deliveryLocation +
-      `','` +
+      `","` +
       req.body.orderContents + // Order contents will be stored as stringified JSON
-      `','` +
+      `","` +
       req.body.serviceFee +
-      `','` +
+      `","` +
       req.body.total +
-      `','` +
+      `","` +
       req.body.deliveryInstructions +
-      `','` +
+      `","` +
       req.body.driverID +
-      `',` +
+      `",` +
       0 + // Completed set to 0, change to 1 when order complete
       `,` +
       req.body.orderSubID +

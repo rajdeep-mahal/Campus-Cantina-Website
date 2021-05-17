@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
@@ -17,6 +17,7 @@ const Checkout = () => {
   // redux items
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
+
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
@@ -34,7 +35,7 @@ const Checkout = () => {
 
   // local state variables
   const [deliveryAddress, setDeliveryAddress] = useState('');
-  // const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  const [userInfo, setUserInfo] = useState([]);
 
   // condition to show or hide the modal
   const [showModal, setShowModal] = useState(false);
@@ -83,22 +84,20 @@ const Checkout = () => {
           .post('http://localhost:3001/api/order/place-order', {
             orderID: ID,
             orderSubID: ID1,
-            restaurantID: currentRestaurant[0].ID,
+            restaurantID: `${currentRestaurant[0].ID}`,
             restaurantName: currentRestaurant[0].Name,
             restaurantAddress: currentRestaurant[0].Address,
-            customerID: 4,
-            customerName: 'test',
+            customerID: `${userInfo[0].ID}`,
+            customerName: userInfo[0].Name,
             deliveryLocation: deliveryAddress,
             orderContents: JSON.stringify(filteredCartItems[i]),
-            tip: 0.0,
-            deliveryFee: 0.0,
+            deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
             serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
             total: (
               parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
             ).toFixed(2),
-            deliveryETA: 'test',
             deliveryInstructions: cartDeliveryInstructions,
-            driverID: 2,
+            driverID: '0',
           })
           .then((res) => {
             console.log(res);
@@ -115,28 +114,42 @@ const Checkout = () => {
         .post('http://localhost:3001/api/order/place-order', {
           orderID: ID,
           orderSubID: null,
-          restaurantID: currentRestaurant[0].ID,
+          restaurantID: `${currentRestaurant[0].ID}`,
           restaurantName: currentRestaurant[0].Name,
           restaurantAddress: currentRestaurant[0].Address,
-          customerID: 4,
-          customerName: 'test',
+          customerID: `${userInfo[0].ID}`,
+          customerName: userInfo[0].Name,
           deliveryLocation: deliveryAddress,
           orderContents: JSON.stringify(cartItems),
-          tip: 0.0,
-          deliveryFee: 0.0,
+          deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
           serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
           total: (
             parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
           ).toFixed(2),
-          deliveryETA: 'test',
           deliveryInstructions: cartDeliveryInstructions,
-          driverID: 2,
+          driverID: '0',
         })
         .then((res) => {
           console.log(res);
         });
     }
   };
+
+  useEffect(() => {
+    if (appUser.type === 'customer') {
+      let source = axios.CancelToken.source();
+      axios
+        .get('http://localhost:3001/api/sfsucustomer/customer-info', {
+          params: { customerEmail: appUser.email },
+          cancelToken: source.token,
+        })
+        .then((res) => setUserInfo(res.data))
+        .catch((err) => err);
+      return () => {
+        source.cancel();
+      };
+    }
+  }, []);
 
   return (
     <>

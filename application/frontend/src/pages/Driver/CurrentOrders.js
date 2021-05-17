@@ -61,7 +61,7 @@ const CurrentOrders = () => {
           orders
             .filter((order) => order.Completed == 0)
             .map((item, i) => (
-              <div className="card border card_customerorder_body m-3">
+              <div className="card border card_customerorder_body my-3">
                 <div className="card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">
                   Customer Order:
                   <span className="h4 pl-2">#{item.ID}</span>
@@ -123,18 +123,18 @@ const CurrentOrders = () => {
                   </div>
                   <div className="click_delivered text-center text-muted">
                     *Click delivered once food is handed to customer*
+                    <button
+                      type="button"
+                      className="btn bg-warning current-order-text text-center"
+                      data-toggle="modal"
+                      data-target="#CompletedOrder"
+                      onClick={(e) => {
+                        setClickedOrderID(parseInt(item.ID));
+                      }}
+                    >
+                      Delivered!
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    className="btn btn-block bg-warning delivered_button current-order-text w-25 mx-auto"
-                    data-toggle="modal"
-                    data-target="#CompletedOrder"
-                    onClick={(e) => {
-                      setClickedOrderID(parseInt(item.ID));
-                    }}
-                  >
-                    Delivered!
-                  </button>
                 </div>
                 {/* delivery confirmation modal */}
                 <div

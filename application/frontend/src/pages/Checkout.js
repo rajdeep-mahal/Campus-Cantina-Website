@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { setCartDeliveryInstructions } from '../redux/actions/cartItemsActions';
+import {
+  setCartDeliveryInstructions,
+  setCartItems,
+  setCartItemsTotalCount,
+} from '../redux/actions/cartItemsActions';
 import PlacesAutocomplete from 'react-places-autocomplete'; //getLatLng, //geocodeByAddress,
 import ReactDependentScript from 'react-dependent-script';
 import config from '../config.js';
@@ -100,6 +104,8 @@ const Checkout = () => {
                 alert(
                   'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
                 );
+                dispatch(setCartItems([]));
+                dispatch(setCartItemsTotalCount(0));
                 history.push('/');
               }
             }
@@ -143,6 +149,8 @@ const Checkout = () => {
             alert(
               'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
             );
+            dispatch(setCartItems([]));
+            dispatch(setCartItemsTotalCount(0));
             history.push('/');
           }
         });

@@ -123,6 +123,8 @@ const CurrentOrders = () => {
                   </div>
                   <div className="click_delivered text-center text-muted">
                     *Click delivered once food is handed to customer*
+                  </div>
+                  <div className="text-center">
                     <button
                       type="button"
                       className="btn bg-warning current-order-text text-center"

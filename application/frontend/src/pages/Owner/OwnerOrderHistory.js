@@ -11,8 +11,8 @@ import axios from "axios";
 const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderContent, setOrderContent] = useState([]);
-  const [itemID, setItemID] = useState("");
-  const [orderStatus, setOrderStatus] = useState("Pending");
+ // const [itemID, setItemID] = useState("");
+ // const [orderStatus, setOrderStatus] = useState("Pending");
   const [loadData, setLoadData] = useState(false);
 
   // const handleOrderStatusChange = (event) => {

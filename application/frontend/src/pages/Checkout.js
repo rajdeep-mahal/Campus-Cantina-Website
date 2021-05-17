@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/customer_checkout.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { setCartDeliveryInstructions } from '../redux/actions/cartItemsActions';
+import {
+  setCartDeliveryInstructions,
+  setCartItems,
+  setCartItemsTotalCount,
+} from '../redux/actions/cartItemsActions';
 import PlacesAutocomplete from 'react-places-autocomplete'; //getLatLng, //geocodeByAddress,
 import ReactDependentScript from 'react-dependent-script';
 import config from '../config.js';
@@ -17,6 +21,7 @@ const Checkout = () => {
   // redux items
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
+
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
@@ -34,26 +39,14 @@ const Checkout = () => {
 
   // local state variables
   const [deliveryAddress, setDeliveryAddress] = useState('');
-  // const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  const [userInfo, setUserInfo] = useState([]);
 
-  // condition to show or hide the modal
-  const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   if (showAlert) {
     setTimeout(() => {
       setShowAlert(false);
     }, 3000);
   }
-
-  // for selecting address from the list populated
-  // const handleSelect = async (value) => {
-  //   const results = await geocodeByAddress(value);
-  //   console.log(results);
-  //   const latlng = await getLatLng(results[0]);
-  //   console.log(latlng);
-  //   setDeliveryAddress(value);
-  //   setCoordinates(latlng);
-  // };
 
   const handleOrderCheckout = (e) => {
     // get unique restaurants list if there are items from multiple restaurants in the cart
@@ -83,25 +76,39 @@ const Checkout = () => {
           .post('http://localhost:3001/api/order/place-order', {
             orderID: ID,
             orderSubID: ID1,
-            restaurantID: currentRestaurant[0].ID,
+            restaurantID: `${currentRestaurant[0].ID}`,
             restaurantName: currentRestaurant[0].Name,
             restaurantAddress: currentRestaurant[0].Address,
-            customerID: 4,
-            customerName: 'test',
+            customerID: `${userInfo[0].ID}`,
+            customerName: userInfo[0].Name,
             deliveryLocation: deliveryAddress,
             orderContents: JSON.stringify(filteredCartItems[i]),
-            tip: 0.0,
-            deliveryFee: 0.0,
+            deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
             serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
             total: (
               parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
             ).toFixed(2),
-            deliveryETA: 'test',
             deliveryInstructions: cartDeliveryInstructions,
-            driverID: 2,
+            driverID: '0',
           })
           .then((res) => {
-            console.log(res);
+            console.log(res.data);
+            if (typeof res.data === 'string') {
+              if (res.data.substring(0, 7) === 'Invalid') {
+                alert(
+                  `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+                );
+              }
+            } else {
+              if (i === filteredCartItems.length - 1) {
+                alert(
+                  'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
+                );
+                dispatch(setCartItems([]));
+                dispatch(setCartItemsTotalCount(0));
+                history.push('/');
+              }
+            }
           });
       }
     }
@@ -115,28 +122,56 @@ const Checkout = () => {
         .post('http://localhost:3001/api/order/place-order', {
           orderID: ID,
           orderSubID: null,
-          restaurantID: currentRestaurant[0].ID,
+          restaurantID: `${currentRestaurant[0].ID}`,
           restaurantName: currentRestaurant[0].Name,
           restaurantAddress: currentRestaurant[0].Address,
-          customerID: 4,
-          customerName: 'test',
+          customerID: `${userInfo[0].ID}`,
+          customerName: userInfo[0].Name,
           deliveryLocation: deliveryAddress,
           orderContents: JSON.stringify(cartItems),
-          tip: 0.0,
-          deliveryFee: 0.0,
+          deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
           serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
           total: (
             parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
           ).toFixed(2),
-          deliveryETA: 'test',
           deliveryInstructions: cartDeliveryInstructions,
-          driverID: 2,
+          driverID: '0',
         })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              alert(
+                `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+              );
+            }
+          } else {
+            alert(
+              'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
+            );
+            dispatch(setCartItems([]));
+            dispatch(setCartItemsTotalCount(0));
+            history.push('/');
+          }
         });
     }
   };
+
+  useEffect(() => {
+    if (appUser.type === 'customer') {
+      let source = axios.CancelToken.source();
+      axios
+        .get('http://localhost:3001/api/sfsucustomer/customer-info', {
+          params: { customerEmail: appUser.email },
+          cancelToken: source.token,
+        })
+        .then((res) => setUserInfo(res.data))
+        .catch((err) => err);
+      return () => {
+        source.cancel();
+      };
+    }
+  }, []);
 
   return (
     <>
@@ -153,18 +188,10 @@ const Checkout = () => {
                 <div className="form-group w-75 mx-auto mb-4">
                   {showAlert ? (
                     <div
-                      className="text-center mt-2 alert alert-success alert-dismissible fade show"
+                      className="text-center mt-2 alert alert-danger fade show"
                       role="alert"
                     >
                       Please enter Delivery Address to continue
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
                     </div>
                   ) : (
                     <> </>
@@ -241,58 +268,59 @@ const Checkout = () => {
                     </PlacesAutocomplete>
                   </ReactDependentScript>
                 </div>
-
-                <table className="table checkout-border border-bottom">
-                  <thead className="bg-warning">
-                    <tr>
-                      <th className="font-italic">Restaurant Name</th>
-                      <th className="font-italic">Item Name</th>
-                      <th className="font-italic">Instructions to Chef</th>
-                      <th className="font-italic">Quantity</th>
-                      <th className="font-italic">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartItems.map((item, i) => (
-                      <tr key={i}>
-                        <th>
-                          {item.itemRestaurantName}
-                          <br />
-                          <small>
-                            <i>
-                              (Delivery Fee ${' '}
-                              {
-                                restaurantsList.filter(
-                                  (restaurant) =>
-                                    restaurant.Name == item.itemRestaurantName
-                                )[0].Delivery_Fee
-                              }
-                              )
-                            </i>
-                          </small>
-                        </th>
-                        <td>
-                          {item.itemName}
-                          <br />
-                          <small>
-                            <i>(Cost per unit ${item.itemPrice})</i>
-                          </small>
-                        </td>
-                        <td>{item.itemComments}</td>
-                        <td>{item.itemCount}</td>
-                        <td>
-                          <b>
-                            &#36;
-                            <span>{item.itemCalculatedPrice}</span>
-                          </b>
-                        </td>
+                <div className="table-responsive">
+                  <table className="table checkout-border border-bottom">
+                    <thead className="bg-warning">
+                      <tr>
+                        <th className="font-italic">Restaurant Name</th>
+                        <th className="font-italic">Item Name</th>
+                        <th className="font-italic">Instructions to Chef</th>
+                        <th className="font-italic">Quantity</th>
+                        <th className="font-italic">Price</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {cartItems.map((item, i) => (
+                        <tr key={i}>
+                          <th>
+                            {item.itemRestaurantName}
+                            <br />
+                            <small>
+                              <i>
+                                (Delivery Fee ${' '}
+                                {
+                                  restaurantsList.filter(
+                                    (restaurant) =>
+                                      restaurant.Name == item.itemRestaurantName
+                                  )[0].Delivery_Fee
+                                }
+                                )
+                              </i>
+                            </small>
+                          </th>
+                          <td>
+                            {item.itemName}
+                            <br />
+                            <small>
+                              <i>(Cost per unit ${item.itemPrice})</i>
+                            </small>
+                          </td>
+                          <td>{item.itemComments}</td>
+                          <td>{item.itemCount}</td>
+                          <td>
+                            <b>
+                              &#36;
+                              <span>{item.itemCalculatedPrice}</span>
+                            </b>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
               {/* total box */}
-              <div className="card col-md-3 total-box">
+              <div className="card col-md-3 total-box mt-2">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">
                     <span className="float-left">Subtotal</span>
@@ -332,15 +360,12 @@ const Checkout = () => {
                   <button
                     type="button"
                     className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
-                    data-toggle="modal"
-                    data-target="#confirmorder"
                     onClick={(e) => {
                       if (deliveryAddress == '') {
                         setShowAlert(true);
-                        setShowModal(false);
                       } else {
                         setShowAlert(false);
-                        setShowModal(true);
+                        handleOrderCheckout();
                       }
                     }}
                   >
@@ -349,56 +374,6 @@ const Checkout = () => {
                 </ul>
               </div>
             </div>
-
-            {/* Confirm Order modal */}
-            {showModal ? (
-              <div
-                className="modal fade"
-                id="confirmorder"
-                tabIndex="-1"
-                role="dialog"
-                aria-labelledby="confirmorderTitle"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="confirmorderTitle">
-                        On the way!
-                      </h5>
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      <div className="h5 font-weight-bold">
-                        Your order has been sent to the Restaurant!
-                      </div>
-                      <div className="h5 font-weight-bold">
-                        Please handover the payment to the driver after
-                        receiving your order.
-                      </div>
-                      <div className="h5 mt-4">Thank you!</div>
-                      <button
-                        type="button"
-                        className="btn confirm-order mt-4 text-white"
-                        data-dismiss="modal"
-                        onClick={handleOrderCheckout}
-                      >
-                        GOT IT
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <> </>
-            )}
           </div>
         )
       ) : appUser.type === 'guest' || appUser.type === undefined ? (

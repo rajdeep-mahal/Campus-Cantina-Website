@@ -68,14 +68,23 @@ const SFSUSignup = () => {
           customerName: customerName,
           customerAddress: customerAddress,
           customerType: customerType,
-          customerPhone: customerPhone,
+          customerPhone: `${customerPhone}`,
           customerEmail: customerEmail,
           customerPassword: customerPassword,
         })
         .then((res) => {
-          console.log(res);
-          alert('Thank you for Registering');
-          history.push('/SFSULogin');
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              console.log(res.data);
+              alert(
+                `Please Try Again.. Check for special characters \n Error: ${res.data}`
+              );
+            }
+          } else {
+            console.log(res.data);
+            alert('Thank you for Registering');
+            history.push('/SFSULogin');
+          }
         });
     }
   };
@@ -172,8 +181,10 @@ const SFSUSignup = () => {
                 value={customerPhone}
                 onChange={(e) => setCustomerPhone(e.target.value)}
                 onBlur={(e) => {
-                  let temp = customerPhone.substring(0, 10);
-                  setCustomerPhone(parseInt(temp));
+                  if (!isNaN(customerPhone)) {
+                    let temp = customerPhone.substring(0, 10);
+                    setCustomerPhone(parseInt(temp));
+                  }
                 }}
               />
               <br />

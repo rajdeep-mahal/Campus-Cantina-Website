@@ -110,8 +110,10 @@ const OwnerSignup = () => {
                   dispatch(setOwnerContactNumber(e.target.value))
                 }
                 onBlur={(e) => {
-                  let temp = ownerContactNumber.substring(0, 10);
-                  dispatch(setOwnerContactNumber(parseInt(temp)));
+                  if (!isNaN(ownerContactNumber)) {
+                    let temp = ownerContactNumber.substring(0, 10);
+                    dispatch(setOwnerContactNumber(parseInt(temp)));
+                  }
                 }}
               />
               <label htmlFor="ownerEmail" className="login-label">

@@ -12,6 +12,7 @@ const CurrentOrders = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [loadData, setLoadData] = useState(false);
   const [clickedOrderID, setClickedOrderID] = useState(false);
+  const [modalItems, setModalItems] = useState([]);
 
   // alert will disappear automatically after 3 sec
   if (showAlert) {
@@ -45,6 +46,7 @@ const CurrentOrders = () => {
   }, [loadData]);
 
   return (
+
     <div className="container-fluid">
       {showAlert ? (
         <div
@@ -54,9 +56,85 @@ const CurrentOrders = () => {
           <strong>Success!</strong> Order Delivered
         </div>
       ) : (
-        <></>
-      )}
+          <></>
+        )}
+
       <div className="container">
+        <div
+          className="modal fade"
+          id="viewOrder"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="viewOrderTitle"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="viewOrderTitle">
+                  Order Details
+              </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <table className="table-responsive">
+                  <thead>
+                    <tr>
+                      <th className="font-italic border border_purple p-2 text-center">
+                        {' '}
+                      Restaurant{' '}
+                      </th>
+                      <th className="font-italic border border_purple text-center"> Item </th>
+                      <th className="font-italic border border_purple p-1 text-center">
+                        {' '}
+                      Item Price{' '}
+                      </th>
+                      <th className="font-italic border border_purple p-1 text-center">
+                        {' '}
+                      Quantity{' '}
+                      </th>
+                      <th className="font-italic border border_purple p-2 text-center">
+                        {' '}
+                      Comments{' '}
+                      </th>
+                      <th className="font-italic border border_purple p-1 text-center">
+                        {' '}
+                      Item Total Price{' '}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {modalItems.map((item, i) => (
+                      <tr key={i}>
+                        <td className="border border_purple p-2 text-center">
+                          {item.itemRestaurantName}
+                        </td>
+                        <td className="border border_purple p-2 text-center">
+                          {item.itemName}
+                        </td>
+                        <td className="border border_purple text-center"><span className="font-weight-bold">&#36;</span>{item.itemPrice}</td>
+                        <td className="border border_purple text-center">{item.itemCount}</td>
+                        <td className="border border_purple p-2 text-center">
+                          {item.itemComments}
+                        </td>
+                        <td className="border border_purple text-center">
+                          &#36;{item.itemCalculatedPrice}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
         {orders.filter((order) => order.Completed == 0).length > 0 ? (
           orders
             .filter((order) => order.Completed == 0)
@@ -82,9 +160,30 @@ const CurrentOrders = () => {
                           </tr>
                           <tr>
                             <th scope="row" className="current-order-text">
+                              Order Details:
+                            </th>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn btn-warning current-order-text"
+                                data-toggle="modal"
+                                data-target="#viewOrder"
+                                onClick={(e) => {
+                                  orders
+                                    .filter((order) => order.ID === item.ID)
+                                    .map((item, i) => {
+                                      setModalItems(JSON.parse(item.Order_Contents));
+                                    });
+                                }}>
+                                View
+                                </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
                               Total :
                             </th>
-                            <td>{item.Total}</td>
+                            <td>&#36;{item.Total}</td>
                           </tr>
                           <tr>
                             <th scope="row" className="current-order-text">
@@ -134,7 +233,7 @@ const CurrentOrders = () => {
                         setClickedOrderID(parseInt(item.ID));
                       }}
                     >
-                      Delivered!
+                      <span className="font-weight-bold">Delivered!</span>
                     </button>
                   </div>
                 </div>
@@ -197,11 +296,12 @@ const CurrentOrders = () => {
                 </div>
               </div>
             ))
+
         ) : (
-          <div className="container my-4">
-            <h3>No Pending Orders.. Please check back</h3>
-          </div>
-        )}
+            <div className="container my-4">
+              <h3>No Pending Orders.. Please check back</h3>
+            </div>
+          )}
       </div>
     </div>
   );

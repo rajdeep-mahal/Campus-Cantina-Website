@@ -71,7 +71,7 @@ const DriverAvailableOrders = () => {
                     type="button"
                     className="btn btn-warning btn-sm border border_header"
                     data-toggle="modal"
-                    data-target="#viewOrder1"
+                    data-target="#viewOrder"
                     onClick={(e) => {
                       orders
                         .filter((order) => order.ID === item.ID)
@@ -87,10 +87,10 @@ const DriverAvailableOrders = () => {
             ))}
         </tbody>
       </table>
-      {/* View order 1 */}
+      {/* View Order Details*/}
       <div
         className="modal fade"
-        id="viewOrder1"
+        id="viewOrder"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="viewOrderTitle"
@@ -115,24 +115,24 @@ const DriverAvailableOrders = () => {
               <table className="table-responsive">
                 <thead>
                   <tr>
-                    <th className="font-italic border border_purple p-2">
+                    <th className="font-italic border border_purple p-2 text-center">
                       {' '}
                       Restaurant{' '}
                     </th>
-                    <th className="font-italic border border_purple"> Item </th>
-                    <th className="font-italic border border_purple p-1">
+                    <th className="font-italic border border_purple text-center"> Item </th>
+                    <th className="font-italic border border_purple p-1 text-center">
                       {' '}
                       Item Price{' '}
                     </th>
-                    <th className="font-italic border border_purple p-1">
+                    <th className="font-italic border border_purple p-1 text-center">
                       {' '}
                       Quantity{' '}
                     </th>
-                    <th className="font-italic border border_purple p-2">
+                    <th className="font-italic border border_purple p-2 text-center">
                       {' '}
                       Comments{' '}
                     </th>
-                    <th className="font-italic border border_purple p-1">
+                    <th className="font-italic border border_purple p-1 text-center">
                       {' '}
                       Item Total Price{' '}
                     </th>
@@ -141,18 +141,18 @@ const DriverAvailableOrders = () => {
                 <tbody>
                   {modalItems.map((item, i) => (
                     <tr key={i}>
-                      <td className="border border_purple p-2">
+                      <td className="border border_purple p-2 text-center">
                         {item.itemRestaurantName}
                       </td>
-                      <td className="border border_purple p-2">
+                      <td className="border border_purple p-2 text-center">
                         {item.itemName}
                       </td>
-                      <td className="border border_purple">{item.itemPrice}</td>
-                      <td className="border border_purple">{item.itemCount}</td>
-                      <td className="border border_purple p-2">
+                      <td className="border border_purple text-center"><span className="font-weight-bold">&#36;</span>{item.itemPrice}</td>
+                      <td className="border border_purple text-center">{item.itemCount}</td>
+                      <td className="border border_purple p-2 text-center">
                         {item.itemComments}
                       </td>
-                      <td className="border border_purple">
+                      <td className="border border_purple text-center">
                         &#36;{item.itemCalculatedPrice}
                       </td>
                     </tr>

@@ -38,10 +38,6 @@ router.post('/driver-signup', (req, res) => {
     !validator.isAlphanumeric(req.body.driverRestaurant.replace(/\s/g, ''))
   ) {
     res.send('Invalid driver restaurant');
-  } else if (
-    !validator.isAlphanumeric(req.body.driverPassword.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid driver password format');
   } else {
     // Encyprt password
     let hash = bcrypt.hashSync(req.body.driverPassword, 10);

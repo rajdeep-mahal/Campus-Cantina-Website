@@ -134,8 +134,6 @@ router.post('/register-owner', (req, res) => {
     !validator.isAlphanumeric(data.ownerRestaurant.replace(/\s/g, ''))
   ) {
     res.send('Invalid owner restaurant name');
-  } else if (!validator.isAlphanumeric(data.ownerPassword.replace(/\s/g, ''))) {
-    res.send('Invalid owner password format');
   } else {
     // Encyprt password
     let hash = bcrypt.hashSync(data.ownerPassword, 10);

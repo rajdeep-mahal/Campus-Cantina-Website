@@ -44,10 +44,6 @@ router.post('/customer-signup', (req, res) => {
     res.send('Invalid customer phone');
   } else if (!validator.isEmail(req.body.customerEmail)) {
     res.send('Invalid customer email');
-  } else if (
-    !validator.isAlphanumeric(req.body.customerPassword.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid customer password format');
   } else {
     // Encyprt password
     let hash = bcrypt.hashSync(req.body.customerPassword, 10);

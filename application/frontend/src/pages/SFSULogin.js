@@ -57,7 +57,7 @@ const SFSULogin = () => {
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
               history.push('/');
-              loginAppUser(customerEmail);
+              loginAppUser(customerEmail, res.data[0].Name);
             }
           }
         );
@@ -68,12 +68,13 @@ const SFSULogin = () => {
       });
   };
 
-  const loginAppUser = (email) => {
+  const loginAppUser = (useremail, username) => {
     axios
-      .get('http://localhost:3001/api/appuser/customer-login', {
+      .get('/start-session', {
         params: {
-          appUserEmail: email,
-          appUserType: 'customer',
+          email: useremail,
+          type: 'customer',
+          name: username,
         },
       })
       .then((res) => {

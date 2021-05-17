@@ -42,7 +42,7 @@ const OwnerLogin = () => {
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
             history.push('/');
-            loginAppUser(ownerEmail);
+            loginAppUser(ownerEmail, res.data[0].Name);
           }
         });
       })
@@ -52,12 +52,13 @@ const OwnerLogin = () => {
       });
   };
 
-  const loginAppUser = (email) => {
+  const loginAppUser = (useremail, username) => {
     axios
-      .get('http://localhost:3001/api/appuser/owner-login', {
+      .get('/start-session', {
         params: {
-          appUserEmail: email,
-          appUserType: 'owner',
+          email: useremail,
+          type: 'owner',
+          name: username,
         },
       })
       .then((res) => {

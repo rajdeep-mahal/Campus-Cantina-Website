@@ -42,7 +42,7 @@ const DriverLogin = () => {
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
             history.push('/');
-            loginAppUser(driverEmail);
+            loginAppUser(driverEmail, res.data[0].Name);
           }
         });
       })
@@ -52,12 +52,13 @@ const DriverLogin = () => {
       });
   };
 
-  const loginAppUser = (email) => {
+  const loginAppUser = (useremail, username) => {
     axios
-      .get('http://localhost:3001/api/appuser/driver-login', {
+      .get('/start-session', {
         params: {
-          appUserEmail: email,
-          appUserType: 'driver',
+          email: useremail,
+          type: 'driver',
+          name: username,
         },
       })
       .then((res) => {

@@ -37,24 +37,12 @@ const Checkout = () => {
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [userInfo, setUserInfo] = useState([]);
 
-  // condition to show or hide the modal
-  const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   if (showAlert) {
     setTimeout(() => {
       setShowAlert(false);
     }, 3000);
   }
-
-  // for selecting address from the list populated
-  // const handleSelect = async (value) => {
-  //   const results = await geocodeByAddress(value);
-  //   console.log(results);
-  //   const latlng = await getLatLng(results[0]);
-  //   console.log(latlng);
-  //   setDeliveryAddress(value);
-  //   setCoordinates(latlng);
-  // };
 
   const handleOrderCheckout = (e) => {
     // get unique restaurants list if there are items from multiple restaurants in the cart
@@ -107,6 +95,13 @@ const Checkout = () => {
                   `Please Try Again.. Check for special characters  \n Error: ${res.data}`
                 );
               }
+            } else {
+              if (i === filteredCartItems.length - 1) {
+                alert(
+                  'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
+                );
+                history.push('/');
+              }
             }
           });
       }
@@ -144,6 +139,11 @@ const Checkout = () => {
                 `Please Try Again.. Check for special characters  \n Error: ${res.data}`
               );
             }
+          } else {
+            alert(
+              'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
+            );
+            history.push('/');
           }
         });
     }
@@ -352,15 +352,12 @@ const Checkout = () => {
                   <button
                     type="button"
                     className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
-                    data-toggle="modal"
-                    data-target="#confirmorder"
                     onClick={(e) => {
                       if (deliveryAddress == '') {
                         setShowAlert(true);
-                        setShowModal(false);
                       } else {
                         setShowAlert(false);
-                        setShowModal(true);
+                        handleOrderCheckout();
                       }
                     }}
                   >
@@ -369,56 +366,6 @@ const Checkout = () => {
                 </ul>
               </div>
             </div>
-
-            {/* Confirm Order modal */}
-            {showModal ? (
-              <div
-                className="modal fade"
-                id="confirmorder"
-                tabIndex="-1"
-                role="dialog"
-                aria-labelledby="confirmorderTitle"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="confirmorderTitle">
-                        On the way!
-                      </h5>
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div className="modal-body">
-                      <div className="h5 font-weight-bold">
-                        Your order has been sent to the Restaurant!
-                      </div>
-                      <div className="h5 font-weight-bold">
-                        Please handover the payment to the driver after
-                        receiving your order.
-                      </div>
-                      <div className="h5 mt-4">Thank you!</div>
-                      <button
-                        type="button"
-                        className="btn confirm-order mt-4 text-white"
-                        data-dismiss="modal"
-                        onClick={handleOrderCheckout}
-                      >
-                        GOT IT
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <> </>
-            )}
           </div>
         )
       ) : appUser.type === 'guest' || appUser.type === undefined ? (

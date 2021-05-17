@@ -9,22 +9,21 @@ import React, { useState, useEffect } from 'react';
 
 const CurrentOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [clickedOrderID, setClickedOrderID] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
-  const changeOrderStatus = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:3001/api/order/order-completed", {
-        params: { orderID: clickedOrderID 
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setShowAlert(true);
-      });
-  };
+  const changeOrderStatus = (clickedOrderID) => {
+    console.log(clickedOrderID);
+    // setShowAlert(true);
 
+    // axios
+    //   .post('http://localhost:3001/api/order/order-completed', {
+    //     params: { orderID: clickedOrderID },
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     setShowAlert(true);
+    //   });
+  };
 
   useEffect(() => {
     axios
@@ -40,20 +39,24 @@ const CurrentOrders = () => {
 
   return (
     <>
-    {showAlert ? (<div
-              className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"
-              role="alert"
-            >
-              <strong>Success!</strong> Added Item to the Cart
-              <button
-                type="button"
-                className="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>):(<></>)}
+      {showAlert ? (
+        <div
+          className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"
+          role="alert"
+        >
+          <strong>Success!</strong> Added Item to the Cart
+          <button
+            type="button"
+            className="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
       {orders
         .filter((order) => order.Completed == 0)
         .map((item, i) => (
@@ -142,7 +145,7 @@ const CurrentOrders = () => {
                   className="col-sm-12 col-4 py-2 btn btn-block delivered_button mx-auto text-white"
                   data-toggle="modal"
                   data-target="#CompletedOrder"
-                  onClick={changeOrderStatus}
+                  onClick={changeOrderStatus(item.ID)}
                 >
                   Delivered!
                 </button>

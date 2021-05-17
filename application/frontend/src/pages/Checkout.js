@@ -100,7 +100,14 @@ const Checkout = () => {
             driverID: '0',
           })
           .then((res) => {
-            console.log(res);
+            console.log(res.data);
+            if (typeof res.data === 'string') {
+              if (res.data.substring(0, 7) === 'Invalid') {
+                alert(
+                  `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+                );
+              }
+            }
           });
       }
     }
@@ -130,7 +137,14 @@ const Checkout = () => {
           driverID: '0',
         })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              alert(
+                `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+              );
+            }
+          }
         });
     }
   };

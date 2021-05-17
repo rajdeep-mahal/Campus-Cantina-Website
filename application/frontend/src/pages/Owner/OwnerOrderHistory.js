@@ -15,20 +15,20 @@ const OwnerOrderHistory = () => {
   const [orderStatus, setOrderStatus] = useState("Pending");
   const [loadData, setLoadData] = useState(false);
 
-  const handleOrderStatusChange = (event) => {
-    event.preventDefault();
-    console.log("calling handleOrderStatusChange");
-    console.log(itemID);
-    axios
-      .post("http://localhost:3001/api/order/order-completed", {
-        params: { orderID: itemID },
-      })
-      .then((res) => {
-        console.log(res);
-        setLoadData(true);
-        setItemID("");
-      });
-  };
+  // const handleOrderStatusChange = (event) => {
+  //   event.preventDefault();
+  //   console.log("calling handleOrderStatusChange");
+  //   console.log(itemID);
+  //   axios
+  //     .post("http://localhost:3001/api/order/order-completed", {
+  //       params: { orderID: itemID },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       setLoadData(true);
+  //       setItemID("");
+  //     });
+  // };
 
   useEffect(() => {
     axios
@@ -46,22 +46,22 @@ const OwnerOrderHistory = () => {
       <br />
       <h3 className="owner-heading text-center"> Orders</h3>
 
-      {/* Orders Table */}
-      <div className="table-responsive-sm order-table">
-        <table class="table table-striped ">
-          <thead>
-            <tr class="table-secondary" className="order-list-title">
-              <th scope="col">Order #</th>
-              <th scope="col">Items</th>
-              <th scope="col">Driver</th>
-              <th scope="col">Customer</th>
-              <th scope="col">Price</th>
-              <th scope="col">Order Status</th>
-            </tr>
-          </thead>
+      {orderItems.length > 0 ? (
+        <div className="table-responsive-sm order-table">
+          {/* Orders Table */}
+          <table class="table table-striped ">
+            <thead>
+              <tr class="table-secondary" className="order-list-title">
+                <th scope="col">Order #</th>
+                <th scope="col">Items</th>
+                <th scope="col">Driver</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Price</th>
+                <th scope="col">Order Status</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {orderItems.length > 0 ? (
+            <tbody>
               <>
                 {orderItems.map((item, index) => (
                   <tr key={index}>
@@ -113,14 +113,18 @@ const OwnerOrderHistory = () => {
                   </tr>
                 ))}
               </>
-            ) : (
-              <>
-                <label>Waiting to recieve orders...</label>
-              </>
-            )}
-          </tbody>
-        </table>
-      </div>
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <>
+          <br /> <br />
+          <h4 className="owner-heading text-center">
+            {" "}
+            Waiting to recieve orders...
+          </h4>
+        </>
+      )}
       {/* View Modal */}
       <div
         class="modal fade"

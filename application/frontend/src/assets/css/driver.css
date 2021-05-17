@@ -25,7 +25,6 @@
 /*border of customer order card body*/
 .card_customerorder_body {
   border-color: var(--primary-color) !important;
-  
 }
 /*background color of customer order header*/
 .card_customerorder {
@@ -37,12 +36,12 @@
 }
 /*Text above delivered button made smaller for subtle hint*/
 .click_delivered {
-  font-size: 10px;
+  font-size: 15px;
 }
 /*shifts order detail items to left, was originally more right side*/
-.items {
+/* .items {
   padding-right: 100px;
-}
+} */
 /*text within delivered button for responsiveness*/
 /* .delivered_text{
 } */
@@ -56,25 +55,22 @@
   list-style: none;
 }
 
-
-
 /* @media (max-width: 426px){
   .delivered_button {
    width:90%;
   }
 } */
-
-@media (max-width: 415px){
+/* 
+@media (max-width: 415px) {
   .right-col {
-   margin-left: 50px !important;
+    margin-left: 50px !important;
   }
 }
-@media (max-width: 376px){
+@media (max-width: 376px) {
   .delivered_button {
-   margin-right: 125px !important;
+    margin-right: 125px !important;
   }
-  .right-col{
+  .right-col {
     margin-left: 10px !important;
   }
-}
-
+} */

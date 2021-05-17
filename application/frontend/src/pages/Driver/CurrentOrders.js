@@ -54,93 +54,77 @@ const CurrentOrders = () => {
       ) : (
         <></>
       )}
-      {orders.filter((order) => order.Completed == 0).length > 0 ? (
-        orders
-          .filter((order) => order.Completed == 0)
-          .map((item, i) => (
-            <div className="container">
-              <div className="card border card_customerorder_body mx-auto mt-3 mb-3">
+      <div className="container">
+        {orders.filter((order) => order.Completed == 0).length > 0 ? (
+          orders
+            .filter((order) => order.Completed == 0)
+            .map((item, i) => (
+              <div className="card border card_customerorder_body m-3">
                 <div className="card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">
                   Customer Order:
                   <span className="h4 pl-2">#{item.ID}</span>
                 </div>
-
-                <div className="card-body mx-auto">
+                <div className="card-body">
                   <div className="h3 text-center font-weight-bold current-order-text">
                     Head to Customer
+                  </div>
+                  <div className="d-flex justify-content-around mt-4 flex-wrap">
                     <div>
-                      {' '}
-                      <MyMap></MyMap>{' '}
+                      <table className="table">
+                        <tbody>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Order No :
+                            </th>
+                            <td>#{item.ID}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Total :
+                            </th>
+                            <td>{item.Total}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Order Contents
+                            </th>
+                            <td>
+                              {' '}
+                              TBD
+                              {/* {item.Contents} */}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Customer Name :
+                            </th>
+                            <td>{item.Customer_Name}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Delivery Location :
+                            </th>
+                            <td>{item.Delivery_Location}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" className="current-order-text">
+                              Delivery Instructions:
+                            </th>
+                            <td>{item.Delivery_Instruction}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div>
+                      <MyMap></MyMap>
                     </div>
                   </div>
-                  <div className="container text-center">
-                    <div className="row">
-                      <div className="left-col col-5 col-sm-6">
-                        <div className="pt-4">
-                          <span className="current-order-text h5 font-weight-bold">
-                            Order Details
-                          </span>
-
-                          <ul>
-                            <div>{item.Restaurant_Name}</div>
-                          </ul>
-                        </div>
-                        <div className="pt-4">
-                          {' '}
-                          <span className="current-order-text font-weight-bold h5">
-                            Total
-                          </span>
-                          <ul>
-                            <div>&#36;{item.Total}</div>
-                          </ul>
-                        </div>
-
-                        <div className="pt-4">
-                          <span className="current-order-text font-weight-bold h5">
-                            Order Status:
-                          </span>
-                          <div className="pl-2 font-italic text-info">
-                            Pending
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="right-col col-5 col-sm-6">
-                        <div className="pt-4">
-                          <span className="current-order-text font-weight-bold h5">
-                            Order No.
-                          </span>{' '}
-                          <ul>
-                            <div>#{item.ID}</div>
-                          </ul>
-                        </div>
-                        <div className="pt-4">
-                          <span className="current-order-text font-weight-bold h5">
-                            Customer Info:
-                          </span>{' '}
-                          <ul>
-                            <div>{item.Customer_Name}</div>
-                          </ul>
-                        </div>
-                        <div className="pt-2">
-                          <span className="current-order-text font-weight-bold h5">
-                            Delivery Instructions:
-                          </span>
-
-                          <ul>
-                            <div>{item.Delivery_Instruction}</div>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="click_delivered text-center col-md-12 mt-2 mb-2 text-muted">
+                  <div className="click_delivered text-center text-muted">
                     *Click delivered once food is handed to customer*
                   </div>
                   <button
                     type="button"
-                    className="col-sm-12 col-4 py-2 btn btn-block delivered_button mx-auto text-white"
+                    className="btn btn-block bg-warning delivered_button current-order-text w-25 mx-auto"
                     data-toggle="modal"
                     data-target="#CompletedOrder"
                     onClick={(e) => {
@@ -152,13 +136,13 @@ const CurrentOrders = () => {
                   </button>
                 </div>
               </div>
-            </div>
-          ))
-      ) : (
-        <div className="container my-4">
-          <h3>No Pending Orders.. Please check back</h3>
-        </div>
-      )}
+            ))
+        ) : (
+          <div className="container my-4">
+            <h3>No Pending Orders.. Please check back</h3>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

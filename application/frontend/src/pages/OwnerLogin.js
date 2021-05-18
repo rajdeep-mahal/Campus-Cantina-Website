@@ -65,6 +65,7 @@ const OwnerLogin = () => {
       })
       .then((res) => {
         dispatch(setAppUser(res.data));
+        history.push('owner/menu');
       });
   };
 

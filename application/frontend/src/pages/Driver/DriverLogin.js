@@ -69,96 +69,85 @@ const DriverLogin = () => {
   };
 
   return (
-    <>
-      {appUser.type === 'guest' || appUser.type === undefined ? (
-        <div className="login-container d-flex align-items-center justify-content-center">
-          <div>
-            {showInvalidEmailAlert ? (
-              <div
-                className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
-                role="alert"
-              >
-                <b>Email Address is not registered with us.</b> <br />{' '}
-                <i>
-                  Please <Link to="/SFSUSignup">Register</Link>
-                </i>{' '}
-              </div>
-            ) : (
-              <> </>
-            )}
-
-            {showInvalidPasswordAlert ? (
-              <div
-                className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
-                role="alert"
-              >
-                <b>Incorrect Password.</b> <br /> Please try Again
-              </div>
-            ) : (
-              <> </>
-            )}
-
-            <form
-              className="signup-signin-form mx-auto"
-              method="post"
-              encType="application/x-www-form-urlencoded"
-              onSubmit={onSubmitDriverLogin}
-            >
-              <div className="m-3">
-                <input id="redirect-input" type="hidden" name="redirect" />
-                <h2 className="font-weight-bold primary-color text-center">
-                  Driver Login
-                </h2>
-                <label htmlFor="Email" className="login-label">
-                  Email
-                </label>
-                <input
-                  className="login_input-field"
-                  type="email"
-                  id="displayNameInput"
-                  name="displayName"
-                  placeholder="e.g. john.doe@gmail.com"
-                  value={driverEmail}
-                  onChange={(e) => setDriverEmail(e.target.value)}
-                  required
-                />
-                <label htmlFor="Password" className="login-label">
-                  Password
-                </label>
-                <input
-                  className="login_input-field"
-                  type="password"
-                  id="passwordInput"
-                  name="password"
-                  placeholder="must have at least 6 characters"
-                  required
-                  value={driverPassword}
-                  onChange={(e) => setDriverPassword(e.target.value)}
-                />
-                <br />
-                <br />
-                <a href="/">Forgot Password?</a> <br />
-                <Link to="/DriverSignup">Don't have an account?</Link> <br />
-                <br />
-                <button
-                  type="submit"
-                  className="login_button d-flex align-items-center justify-content-center"
-                >
-                  Login
-                </button>
-              </div>
-            </form>
+    <div className="login-container d-flex align-items-center justify-content-center">
+      <div>
+        {showInvalidEmailAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Email Address is not registered with us.</b> <br />{' '}
+            <i>
+              Please <Link to="/SFSUSignup">Register</Link>
+            </i>{' '}
           </div>
-        </div>
-      ) : (
-        <>
-          <Redirect to="/" />
-          {alert(
-            `You are logged in as ${appUser.type} \n Redirecting to home page`
-          )}
-        </>
-      )}
-    </>
+        ) : (
+          <> </>
+        )}
+
+        {showInvalidPasswordAlert ? (
+          <div
+            className="text-center mx-auto mt-2 alert alert-danger fade show w-100"
+            role="alert"
+          >
+            <b>Incorrect Password.</b> <br /> Please try Again
+          </div>
+        ) : (
+          <> </>
+        )}
+
+        <form
+          className="signup-signin-form mx-auto"
+          method="post"
+          encType="application/x-www-form-urlencoded"
+          onSubmit={onSubmitDriverLogin}
+        >
+          <div className="m-3">
+            <input id="redirect-input" type="hidden" name="redirect" />
+            <h2 className="font-weight-bold primary-color text-center">
+              Driver Login
+            </h2>
+            <label htmlFor="Email" className="login-label">
+              Email
+            </label>
+            <input
+              className="login_input-field"
+              type="email"
+              id="displayNameInput"
+              name="displayName"
+              placeholder="e.g. john.doe@gmail.com"
+              value={driverEmail}
+              onChange={(e) => setDriverEmail(e.target.value)}
+              required
+            />
+            <label htmlFor="Password" className="login-label">
+              Password
+            </label>
+            <input
+              className="login_input-field"
+              type="password"
+              id="passwordInput"
+              name="password"
+              placeholder="must have at least 6 characters"
+              required
+              value={driverPassword}
+              onChange={(e) => setDriverPassword(e.target.value)}
+            />
+            <br />
+            <br />
+            <a href="/">Forgot Password?</a> <br />
+            <Link to="/DriverSignup">Don't have an account?</Link> <br />
+            <br />
+            <button
+              type="submit"
+              className="login_button d-flex align-items-center justify-content-center"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

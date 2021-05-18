@@ -41,22 +41,43 @@ const OwnerOrderHistory = () => {
   };
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/order/user-orders', {
-        params: { restaurantName: 'Taco Shell' },
-      })
-      .then((res) => {
-        setOrderItems(res.data);
-        setLoadData(false);
-        setOrderContent([]);
-      });
+    if (appUser.type === 'owner') {
+      axios
+        .get('http://localhost:3001/api/restaurant/all-restaurants')
+        .then((res) => {
+          // console.log(res.data);
+          setLoadData(false);
+          axios
+            .get('http://localhost:3001/api/restaurant/owner-info', {
+              params: { ownerEmail: appUser.email },
+            })
+            .then((res1) => {
+              setLoadData(false);
+              const tempOwnerRestaurant = res.data.filter(
+                (restaurant) =>
+                  restaurant.Name.trim() === res1.data[0].Restaurant_Name
+              );
+              axios
+                .get('http://localhost:3001/api/order/user-orders', {
+                  params: { restaurantName: tempOwnerRestaurant[0].Name },
+                })
+                .then((res) => {
+                  setOrderItems(res.data);
+                  setLoadData(false);
+                  setOrderContent([]);
+                });
 
-    axios.get('http://localhost:3001/api/driver/all-drivers').then((res) => {
-      const tempList = res.data.filter(
-        (row) => row.Restaurant === 'Taco Shell'
-      );
-      setDriversList(tempList);
-    });
+              axios
+                .get('http://localhost:3001/api/driver/all-drivers')
+                .then((res) => {
+                  const tempList = res.data.filter(
+                    (row) => row.Restaurant === tempOwnerRestaurant[0].Name
+                  );
+                  setDriversList(tempList);
+                });
+            });
+        });
+    }
   }, [loadData]);
 
   return (

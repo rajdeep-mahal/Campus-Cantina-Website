@@ -79,9 +79,6 @@
   border: 5px solid var(--primary-color);
   border-radius: 10px;
   border-top: 0;
-  width: 700px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* table header */
@@ -186,4 +183,13 @@
   font-size: 195%;
   font-weight: bold;
   color: var(--primary-color);
+}
+
+/* icons for assigning order to drivers */
+.assign-driver-icon {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.assign-driver-icon:hover {
+  color: var(--secondary-color);
 }

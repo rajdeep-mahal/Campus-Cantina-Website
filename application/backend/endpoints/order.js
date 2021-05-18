@@ -31,18 +31,19 @@ router.get('/user-orders', (req, res) => {
   // Validate data
   if (typeof driverID != 'undefined' && !validator.isInt(driverID)) {
     res.send('Invalid driver ID');
-  } else if (
-    typeof customerName != 'undefined'
+    // }
+    // else if (
+    //   typeof customerName != 'undefined'
     // &&
     // !validator.isAlphanumeric(customerName)
-  ) {
-    res.send('Invalid customer name');
-  } else if (
-    typeof restaurantName != 'undefined'
+    // ) {
+    //   res.send('Invalid customer name');
+    // } else if (
+    //   typeof restaurantName != 'undefined'
     // &&
     // !validator.isAlphanumeric(restaurantName.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid restaurant name');
+    // ) {
+    //   res.send('Invalid restaurant name');
   } else {
     // Generate SQL query based on user type
     let query = '';

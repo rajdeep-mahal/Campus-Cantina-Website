@@ -39,7 +39,7 @@ const CurrentOrders = () => {
   return (
     <>
       {orders
-        .filter((order) => order.Completed == 0)
+        .filter((order) => order.Completed === 0)
         .map((item, i) => (
           <div className="container">
             <div className="card border card_customerorder_body mx-auto mt-3 mb-3">

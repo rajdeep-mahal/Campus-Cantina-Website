@@ -11,8 +11,8 @@ import axios from "axios";
 const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderContent, setOrderContent] = useState([]);
- // const [itemID, setItemID] = useState("");
- // const [orderStatus, setOrderStatus] = useState("Pending");
+  // const [itemID, setItemID] = useState("");
+  // const [orderStatus, setOrderStatus] = useState("Pending");
   const [loadData, setLoadData] = useState(false);
 
   // const handleOrderStatusChange = (event) => {
@@ -150,9 +150,34 @@ const OwnerOrderHistory = () => {
               </button>
             </div>
             <div class="modal-body">
-              <ul class="list-group list-group-flush">
+            {/* {orderContent.map((item, index) => ( */}
+
+              <table class="table">
+                <thead>
+                  <tr class="table-secondary" className="order-list-title">
+                    <th scope="col">Item</th>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orderContent.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.itemName}</td>
+                      <td>{item.itemPrice}</td>
+                      <td>{item.itemCount}</td>
+                      <td>{item.itemComments}</td>
+                      <td>{item.itemCalculatedPrice}</td>
+                    </tr>
+                  ))} 
+                </tbody>
+              </table>
+             {/* ))} */}
+              {/* <ul class="list-group list-group-flush">
                 <li class="list-group-item">{orderContent}</li>
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>

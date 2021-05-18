@@ -44,7 +44,7 @@ const OwnerProfile = () => {
             {/* content header */}
             <div className="border-bottom my-3 text-center">
               <div className="row text-left">
-                <div class="col-7">
+                <div class="col">
                   <label for="name">
                     {" "}
                     <h5>

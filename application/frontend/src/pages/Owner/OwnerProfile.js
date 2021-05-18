@@ -41,16 +41,16 @@ const OwnerProfile = () => {
       {currentRestaurant.map((item, index) => (
         <div className="editprofile" key={index}>
           {/* content header */}
-          <div className="border-bottom text-left">
+          <div className="border-bottom border-warning text-left">
             {' '}
             <h3>
-              <strong>{item.Name}</strong>
+              <strong className="text-warning">{item.Name}</strong>
             </h3>
           </div>
 
           {/* content body */}
           {ownerInfo.map((ownerItem, i) => (
-            <div className="profile-content" key={i}>
+            <div className="profile-content mt-3" key={i}>
               <div className="row">
                 <div className="col">
                   <label className="form-descrip">
@@ -119,6 +119,16 @@ const OwnerProfile = () => {
                 </div>
                 <div className="col">
                   <label htmlFor="address">{item.Price_Level}</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label className="form-descrip">
+                    <strong>Delivery Fee</strong>
+                  </label>
+                </div>
+                <div className="col">
+                  <label htmlFor="address">${item.Delivery_Fee}</label>
                 </div>
               </div>
             </div>

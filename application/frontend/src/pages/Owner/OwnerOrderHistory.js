@@ -15,24 +15,30 @@ const OwnerOrderHistory = () => {
   const appUser = useSelector((state) => state.appUserReducer.appUser);
   const [orderItems, setOrderItems] = useState([]);
   const [orderContent, setOrderContent] = useState([]);
-  // const [itemID, setItemID] = useState("");
-  // const [orderStatus, setOrderStatus] = useState("Pending");
+  const [driversList, setDriversList] = useState([]);
+  const [clickedOrderIDAssignDriver, setClickedOrderIDAssignDriver] =
+    useState('');
+  const [selectedDriverName, setSelectedDriverName] = useState('');
   const [loadData, setLoadData] = useState(false);
 
-  // const handleOrderStatusChange = (event) => {
-  //   event.preventDefault();
-  //   console.log("calling handleOrderStatusChange");
-  //   console.log(itemID);
-  //   axios
-  //     .post("http://localhost:3001/api/order/order-completed", {
-  //       params: { orderID: itemID },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       setLoadData(true);
-  //       setItemID("");
-  //     });
-  // };
+  const handleAssignDriver = (e) => {
+    e.preventDefault();
+    let selectedDriverID = driversList
+      .filter((driver) => driver.Name === selectedDriverName)
+      .map((d1) => d1.ID);
+    axios
+      .post('http://localhost:3001/api/order/assign-driver', null, {
+        params: {
+          orderID: clickedOrderIDAssignDriver,
+          driverID: selectedDriverID[0],
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        setSelectedDriverName('');
+        setLoadData(true);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -44,28 +50,37 @@ const OwnerOrderHistory = () => {
         setLoadData(false);
         setOrderContent([]);
       });
+
+    axios.get('http://localhost:3001/api/driver/all-drivers').then((res) => {
+      const tempList = res.data.filter(
+        (row) => row.Restaurant === 'Taco Shell'
+      );
+      setDriversList(tempList);
+    });
   }, [loadData]);
 
   return (
     <>
       {appUser.type === 'owner' ? (
-        <div className="container-fluid">
+        <div className="container text-center">
           <br />
-          <h3 className="owner-heading text-center"> Orders</h3>
+          <h3 className="owner-heading"> Orders</h3>
+
           {orderItems.length > 0 ? (
-            <div className="table-responsive-sm order-table">
+            <div className="table-responsive order-table">
               {/* Orders Table */}
-              <table class="table table-striped ">
+              <table className="table table-striped ">
                 <thead>
-                  <tr class="table-secondary" className="order-list-title">
+                  <tr className="table-secondary" className="order-list-title">
                     <th scope="col">Order #</th>
                     <th scope="col">Items</th>
-                    <th scope="col">Driver</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Price</th>
                     <th scope="col">Order Status</th>
+                    <th scope="col">Driver</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   <>
                     {orderItems.map((item, index) => (
@@ -74,7 +89,7 @@ const OwnerOrderHistory = () => {
                         <td>
                           <button
                             type="button"
-                            class="btn btn-outline-dark view-btn"
+                            className="btn btn-outline-dark view-btn"
                             data-toggle="modal"
                             data-target="#viewModal"
                             onClick={(e) => {
@@ -84,35 +99,33 @@ const OwnerOrderHistory = () => {
                             View
                           </button>
                         </td>
-                        <td>Marcus S.</td>
-                        <td>{item.Customer_Name}</td>
-                        <td>${item.Total}</td>
                         <td>
-                          {/* <select	
-                      class="form-select order-status"	
-                      onClick={(e) => {	
-                        setItemID(item.ID);; 	
-                      }}	
-                    >	
-                    */}
-                          {item.Completed < 1 ? (
+                          {item.Completed === 0 ? (
                             <label> Pending</label>
                           ) : (
                             <label> Completed</label>
                           )}
-                          {/*	
-                        <>	
-                          <option value="progress" selected>	
-                            In Progress	
-                          </option>	
-                          <option value="complete" onSelect={handleOrderStatusChange}>Completed</option>	
-                        </>	
-                      ) : (	
-                        <option value="complete" selected>	
-                          Completed	
-                        </option>	
-                      )}	
-                    </select> */}
+                        </td>
+                        <td>{item.Customer_Name}</td>
+                        <td>${item.Total}</td>
+                        <td>
+                          {item.Driver_ID !== 0 ? (
+                            driversList
+                              .filter((driver) => driver.ID === item.Driver_ID)
+                              .map((d1) => d1.Name)
+                          ) : (
+                            <>
+                              {item.Driver_ID}
+                              <i
+                                className="fas fa-edit assign-driver-icon ml-3 h4"
+                                data-toggle="modal"
+                                data-target="#assignModal"
+                                onClick={(e) => {
+                                  setClickedOrderIDAssignDriver(item.ID);
+                                }}
+                              />
+                            </>
+                          )}
                         </td>
                       </tr>
                     ))}
@@ -131,32 +144,35 @@ const OwnerOrderHistory = () => {
           )}
           {/* View Modal */}
           <div
-            class="modal fade"
+            className="modal fade"
             id="viewModal"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             data-dismiss="modal"
             aria-hidden="true"
           >
-            <div class="modal-dialog " role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="viewModalLabel">
+            <div className="modal-dialog " role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="viewModalLabel">
                     Ordered Items
                   </h5>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <table class="table text-center">
+                <div className="modal-body">
+                  <table className="table text-center">
                     <thead>
-                      <tr class="table-warning" className="order-list-title">
+                      <tr
+                        className="table-warning"
+                        className="order-list-title"
+                      >
                         <th scope="col">Item</th>
                         <th scope="col">Comments</th>
                         <th scope="col">Price</th>
@@ -180,6 +196,63 @@ const OwnerOrderHistory = () => {
                       ))}
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Assign Driver Modal */}
+          <div
+            className="modal fade pb-5"
+            id="assignModal"
+            tabIndex="-1"
+            role="dialog"
+            data-dismiss="modal"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog " role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="viewModalLabel">
+                    Assign to Driver
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <select
+                    className="custom-select"
+                    id="inlineFormCustomSelect"
+                    value={selectedDriverName}
+                    // defaultValue={''}
+                    onChange={(e) => setSelectedDriverName(e.target.value)}
+                    required
+                  >
+                    <option value="" disabled>
+                      Assign to a Driver...
+                    </option>
+                    {driversList.map((driver, i) => (
+                      <option value={driver.Name} key={i}>
+                        {driver.Name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      type="button"
+                      className="btn save-btn btn-lg btn-block primary-color text-center mt-5 w-25"
+                      data-dismiss="modal"
+                      onClick={handleAssignDriver}
+                    >
+                      Assign
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

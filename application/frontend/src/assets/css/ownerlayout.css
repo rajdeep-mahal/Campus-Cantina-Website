@@ -4,12 +4,12 @@
   color: white;
   background-color: var(--primary-color-opac);
   border-radius: 15px;
-  padding: 3%;
+  padding: 2%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   font-size: 100%;
-  color: var(--primary-color);
+  color: white;
 }
 
 /* Ownerprofile/editprofile responsive */
@@ -24,17 +24,17 @@
   }
 }
 
-.cancel-btn:hover,
+/* .cancel-btn:hover,
 .edit-btn:hover {
   text-decoration: none;
 }
 
 .edit-btn {
   color: var(--primary-color);
-}
+} */
 
 /* save button */
-.save-btn {
+/* .save-btn {
   background-color: var(--secondary-color-opac);
   color: white;
 }
@@ -42,7 +42,7 @@
   border-radius: 5px;
   background-color: var(--secondary-color);
   color: white;
-}
+} */
 
 /* OwnerProfile */
 
@@ -50,9 +50,9 @@
 .profile-content {
   margin-left: auto;
 }
-.edit-link {
+/* .edit-link {
   text-decoration: none;
-}
+} */
 
 /* modal width */
 @media (max-width: 500px) {

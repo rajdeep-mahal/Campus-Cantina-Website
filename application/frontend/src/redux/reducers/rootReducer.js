@@ -3,12 +3,12 @@ import { combineReducers } from 'redux';
 import searchReducer from './searchReducer';
 import ownerSignupReducer from './ownerSignupReducer';
 import cartItemsReducer from './cartItemsReducer';
-import userReducer from './userReducer';
+import appUserReducer from './appUserReducer';
 
 export default combineReducers({
   searchReducer,
   ownerSignupReducer,
   cartItemsReducer,
-  userReducer,
+  appUserReducer,
   // TODO: Add more reducers
 });

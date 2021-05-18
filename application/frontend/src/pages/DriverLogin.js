@@ -3,8 +3,11 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useDispatch } from 'react-redux';
 
 const DriverLogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [driverEmail, setDriverEmail] = useState('');
   const [driverPassword, setDriverPassword] = useState('');
@@ -39,12 +42,27 @@ const DriverLogin = () => {
             setShowInvalidEmailAlert(false);
             setShowInvalidPasswordAlert(false);
             history.push('/');
+            loginAppUser(driverEmail, res.data[0].Name);
           }
         });
       })
       .catch((err) => {
         setShowInvalidEmailAlert(true);
         setShowInvalidPasswordAlert(false);
+      });
+  };
+
+  const loginAppUser = (useremail, username) => {
+    axios
+      .get('/start-session', {
+        params: {
+          email: useremail,
+          type: 'driver',
+          name: username,
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
       });
   };
 

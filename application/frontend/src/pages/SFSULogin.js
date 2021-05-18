@@ -3,8 +3,11 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useDispatch } from 'react-redux';
 
 const SFSULogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
@@ -54,6 +57,7 @@ const SFSULogin = () => {
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
               history.push('/');
+              loginAppUser(customerEmail, res.data[0].Name);
             }
           }
         );
@@ -61,6 +65,20 @@ const SFSULogin = () => {
       .catch((err) => {
         setShowInvalidEmailAlert(true);
         setShowInvalidPasswordAlert(false);
+      });
+  };
+
+  const loginAppUser = (useremail, username) => {
+    axios
+      .get('/start-session', {
+        params: {
+          email: useremail,
+          type: 'customer',
+          name: username,
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
       });
   };
 

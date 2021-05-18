@@ -24,14 +24,12 @@ const MenuSideBar = () => {
   const cartItemsTotalCount = useSelector(
     (state) => state.cartItemsReducer.cartItemsTotalCount
   );
-  const loggedInUserRole = useSelector(
-    (state) => state.userReducer.loggedInUserRole
-  );
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
   // deduce user role and the menu items based on the role
   let MenuItems = [];
-  if (loggedInUserRole === 'sfsu') MenuItems = SFSUMenuItems;
-  else if (loggedInUserRole === 'owner') MenuItems = OwnerMenuItems;
-  else if (loggedInUserRole === 'driver') MenuItems = DriverMenuItems;
+  if (appUser.type === 'customer') MenuItems = SFSUMenuItems;
+  else if (appUser.type === 'owner') MenuItems = OwnerMenuItems;
+  else if (appUser.type  === 'driver') MenuItems = DriverMenuItems;
   else MenuItems = GuestMenuItems;
 
   const showMenu = () => setMenu(!menu);
@@ -171,6 +169,9 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-right h4 m-3"></i>
             </Link>
           </li>
+
+          {/* Needs styling */}
+          <h3 className="text-dark ml-2">Hello {appUser.name}</h3>
 
           {MenuItems.map((item, index) => {
             return (

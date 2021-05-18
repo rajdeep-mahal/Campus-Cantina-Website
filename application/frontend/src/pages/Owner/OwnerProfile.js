@@ -117,13 +117,6 @@ const OwnerProfile = () => {
                     />
                   </div>
                 </div>
-                {/* edit icon */}
-                <br />
-                <div class="text-center">
-                  <a className="edit-btn" href="/owner/editprofile">
-                    <i className="far fa-edit " aria-hidden="true"></i> Edit{" "}
-                  </a>
-                </div>
               </div>
             ))}
           </div>

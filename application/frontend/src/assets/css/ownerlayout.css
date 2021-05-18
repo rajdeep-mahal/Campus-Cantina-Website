@@ -162,7 +162,7 @@
   }
 }
 .menu-icon {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
 }
 .menu-icon-plus {
@@ -170,7 +170,7 @@
 }
 .menu-icon:hover,
 .menu-icon-plus:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   transition: all 0.5s ease;
 }
 
@@ -187,4 +187,19 @@
   font-size: 195%;
   font-weight: bold;
   color: var(--primary-color);
+}
+
+.restaurant-info {
+  border: solid 1px;
+  color: var(--secondary-color);
+  height: 80px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(154, 160, 185, 0.05),
+    0 2px 2px rgba(166, 173, 201, 0.2);
+}
+
+/* close icon in the alert */
+.close-live {
+  opacity: 1;
 }

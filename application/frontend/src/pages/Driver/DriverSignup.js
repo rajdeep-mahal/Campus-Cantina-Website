@@ -239,7 +239,12 @@ const DriverSignup = () => {
           </form>
         </div>
       ) : (
-        <Redirect to="/" />
+        <>
+          <Redirect to="/" />
+          {alert(
+            `You are logged in as ${appUser.type} \n Redirecting to home page`
+          )}
+        </>
       )}
     </>
   );

@@ -159,25 +159,30 @@ const Checkout = () => {
 
   useEffect(() => {
     if (appUser.type === 'customer') {
-      let source = axios.CancelToken.source();
-      axios
-        .get('http://localhost:3001/api/sfsucustomer/customer-info', {
-          params: { customerEmail: appUser.email },
-          cancelToken: source.token,
-        })
-        .then((res) => setUserInfo(res.data))
-        .catch((err) => err);
-      return () => {
-        source.cancel();
-      };
+      if (cartItems.length !== 0) {
+        let source = axios.CancelToken.source();
+        axios
+          .get('http://localhost:3001/api/sfsucustomer/customer-info', {
+            params: { customerEmail: appUser.email },
+            cancelToken: source.token,
+          })
+          .then((res) => setUserInfo(res.data))
+          .catch((err) => err);
+        return () => {
+          source.cancel();
+        };
+      }
     }
   }, []);
 
   return (
     <>
       {appUser.type === 'customer' ? (
-        !cartItemsTotalCount > 0 ? (
-          <Redirect to="/" />
+        cartItems.length === 0 ? (
+          <>
+            {alert(`No Cart Items to checkout.. \n Redirecting to Home page`)}
+            <Redirect to="/" />
+          </>
         ) : (
           <div className="container text-center mb-5">
             <div className="h1 checkout-border border-bottom p-2 m-4 primary-color font-weight-bold">

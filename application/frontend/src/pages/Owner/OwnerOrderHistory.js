@@ -38,6 +38,7 @@ const OwnerOrderHistory = () => {
       .then((res) => {
         setOrderItems(res.data);
         setLoadData(false);
+        setOrderContent([]);
       });
   }, [loadData]);
 
@@ -73,7 +74,7 @@ const OwnerOrderHistory = () => {
                         data-toggle="modal"
                         data-target="#viewModal"
                         onClick={(e) => {
-                          setOrderContent(item.Order_Contents);
+                          setOrderContent(JSON.parse(item.Order_Contents));;
                         }}
                       >
                         View
@@ -150,34 +151,30 @@ const OwnerOrderHistory = () => {
               </button>
             </div>
             <div class="modal-body">
-            {/* {orderContent.map((item, index) => ( */}
-
-              <table class="table">
+              <table class="table text-center">
                 <thead>
-                  <tr class="table-secondary" className="order-list-title">
+                  <tr class="table-warning" className="order-list-title">
                     <th scope="col">Item</th>
                     <th scope="col">Comments</th>
                     <th scope="col">Price</th>
+                    <th scope="col"></th>
                     <th scope="col">Amount</th>
                     <th scope="col">Total</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {orderContent.map((item, index) => (
+                  {orderContent.map((items, index) => (
                     <tr key={index}>
-                      <td>{item.itemName}</td>
-                      <td>{item.itemPrice}</td>
-                      <td>{item.itemCount}</td>
-                      <td>{item.itemComments}</td>
-                      <td>{item.itemCalculatedPrice}</td>
+                      <td>{items.itemName}</td>
+                      <td>{items.itemComments}</td>
+                      <td>{items.itemPrice}</td>
+                      <td> x </td>
+                      <td>{items.itemCount}</td>
+                      <td><strong>{items.itemCalculatedPrice}</strong></td>
                     </tr>
                   ))} 
                 </tbody>
               </table>
-             {/* ))} */}
-              {/* <ul class="list-group list-group-flush">
-                <li class="list-group-item">{orderContent}</li>
-              </ul> */}
             </div>
           </div>
         </div>

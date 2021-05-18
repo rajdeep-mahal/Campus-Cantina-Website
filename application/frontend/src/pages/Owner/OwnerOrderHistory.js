@@ -3,10 +3,10 @@ Summary of OwnerOrderHistory.js:
  - Renders on '/owner/orders'
  - to load when clicked on Orders on the Sidebar for Owner's login
 */
-import React, { useEffect, useState } from "react";
-import "../../assets/css/ownerlayout.css";
-import "../../assets/css/index.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import '../../assets/css/ownerlayout.css';
+import '../../assets/css/index.css';
+import axios from 'axios';
 
 const OwnerOrderHistory = () => {
   const [orderItems, setOrderItems] = useState([]);
@@ -32,8 +32,8 @@ const OwnerOrderHistory = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/order/user-orders", {
-        params: { restaurantName: "Taco Shell" },
+      .get('http://localhost:3001/api/order/user-orders', {
+        params: { restaurantName: 'Taco Shell' },
       })
       .then((res) => {
         setOrderItems(res.data);
@@ -73,7 +73,7 @@ const OwnerOrderHistory = () => {
                         data-toggle="modal"
                         data-target="#viewModal"
                         onClick={(e) => {
-                          setOrderContent(item.Order_Contents);
+                          setOrderContent(JSON.parse(item.Order_Contents));
                         }}
                       >
                         View
@@ -120,7 +120,7 @@ const OwnerOrderHistory = () => {
         <>
           <br /> <br />
           <h4 className="owner-heading text-center">
-            {" "}
+            {' '}
             Waiting to recieve orders...
           </h4>
         </>
@@ -150,7 +150,7 @@ const OwnerOrderHistory = () => {
               </button>
             </div>
             <div class="modal-body">
-            {/* {orderContent.map((item, index) => ( */}
+              {/* {orderContent.map((item, index) => ( */}
 
               <table class="table">
                 <thead>
@@ -171,10 +171,10 @@ const OwnerOrderHistory = () => {
                       <td>{item.itemComments}</td>
                       <td>{item.itemCalculatedPrice}</td>
                     </tr>
-                  ))} 
+                  ))}
                 </tbody>
               </table>
-             {/* ))} */}
+              {/* ))} */}
               {/* <ul class="list-group list-group-flush">
                 <li class="list-group-item">{orderContent}</li>
               </ul> */}

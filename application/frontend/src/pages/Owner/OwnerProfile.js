@@ -4,8 +4,12 @@ import axios from 'axios';
 import '../../assets/css/index.css';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const OwnerProfile = () => {
+  // redux global variable
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
+
   const [ownerInfo, setOwnerInfo] = useState([]);
 
   //restaurants from backend
@@ -20,14 +24,16 @@ const OwnerProfile = () => {
 
   //Renders owner info from DB
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/restaurant/owner-info', {
-        params: { ownerEmail: 'marshall.herrera@example.com' },
-      })
-      .then((res) => {
-        setOwnerInfo(res.data);
-        setLoadData(false);
-      });
+    if (appUser.type === 'owner') {
+      axios
+        .get('http://localhost:3001/api/restaurant/owner-info', {
+          params: { ownerEmail: 'marshall.herrera@example.com' },
+        })
+        .then((res) => {
+          setOwnerInfo(res.data);
+          setLoadData(false);
+        });
+    }
   }, [loadData]);
 
   //extract value from global redux (reads from store)

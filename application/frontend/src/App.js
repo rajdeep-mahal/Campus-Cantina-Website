@@ -127,7 +127,7 @@ function App() {
           <Route path="/owner/orders">
             <OwnerOrderHistory />
           </Route>
-          <Route path="/owner">
+          <Route path="/owner/menu">
             <OwnerMenu />
           </Route>
           <Route path="/driverlogin">

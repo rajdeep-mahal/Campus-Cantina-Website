@@ -81,7 +81,14 @@ const OwnerSignupExtended = () => {
         params: { formdata: dataJson2 },
       })
       .then((res) => {
-        console.log(res);
+        if (typeof res.data === 'string') {
+          if (res.data.substring(0, 7) === 'Invalid') {
+            alert(
+              `Please Try Again.. Check  for special characters \n Error: ${res.data}`
+            );
+          }
+        } else {
+        }
       });
 
     axios
@@ -95,11 +102,17 @@ const OwnerSignupExtended = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        if (typeof res.data === 'string') {
+          if (res.data.substring(0, 7) === 'Invalid') {
+            alert(
+              `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+            );
+          }
+        } else {
+          alert('Thank you for Registering');
+          history.push('/OwnerLogin');
+        }
       });
-
-    alert('Thank you for Registering');
-    history.push('/OwnerLogin');
   };
 
   useEffect(() => {
@@ -266,9 +279,11 @@ const OwnerSignupExtended = () => {
                 value={restaurantDeliveryFee}
                 onChange={(e) => setRestaurantDeliveryFee(e.target.value)}
                 onBlur={(e) => {
-                  let num = parseFloat(restaurantDeliveryFee);
-                  let cleanNum = num.toFixed(2);
-                  setRestaurantDeliveryFee(cleanNum);
+                  if (!isNaN(restaurantDeliveryFee)) {
+                    let num = parseFloat(restaurantDeliveryFee);
+                    let cleanNum = num.toFixed(2);
+                    setRestaurantDeliveryFee(cleanNum);
+                  }
                 }}
               />
               <div className="form-group mt-3">

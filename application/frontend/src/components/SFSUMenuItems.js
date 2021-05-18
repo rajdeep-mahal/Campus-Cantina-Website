@@ -11,7 +11,7 @@ export const SFSUMenuItems = [
   },
   {
     title: 'Orders',
-    path: '/owner/orders',
+    path: '/customer/orders',
     cName: 'primary-color fas fa-utensils',
   },
   {

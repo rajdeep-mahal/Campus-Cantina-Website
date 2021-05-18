@@ -9,146 +9,85 @@ import React, { useState, useEffect } from 'react';
 
 const CurrentOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [orderStatus, setOrderStatus] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [loadData, setLoadData] = useState(false);
+  const [clickedOrderID, setClickedOrderID] = useState(false);
+  const [driverDetails, setDriverDetails] = useState([]);
+  // redux global variable
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
   const [modalItems, setModalItems] = useState([]);
 
-  useEffect(() => {
+  // alert will disappear automatically after 3 sec
+  if (showAlert) {
+    setTimeout(() => {
+      setShowAlert(false);
+      setLoadData(false);
+    }, 3000);
+  }
+
+  const changeOrderStatus = (clickedOrderID) => {
     axios
-      .post('http://localhost:3001/api/order/order-completed', {
-        params: {
-          orderID: 461,
-        },
+      .post('http://localhost:3001/api/order/order-completed', null, {
+        params: { orderID: clickedOrderID },
       })
       .then((res) => {
-        console.log(res.data);
+        setShowAlert(true);
+        setLoadData(true);
       });
-  }, []);
+  };
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/order/user-orders', {
-        params: {
-          driverID: 586,
-        },
-      })
-      .then((res) => {
-        setOrders(res.data);
-      });
-  }, []);
+    if (appUser.type === 'driver') {
+      axios
+        .get('http://localhost:3001/api/driver/driver-info', {
+          params: {
+            driverEmail: appUser.email,
+          },
+        })
+        .then((res) => {
+          setDriverDetails(res.data[0]);
+          axios
+            .get('http://localhost:3001/api/order/user-orders', {
+              params: {
+                driverID: res.data[0].ID,
+              },
+            })
+            .then((res1) => {
+              setOrders(res1.data);
+            });
+        });
+    }
+  }, [loadData]);
 
   return (
     <>
-      {orders
-        .filter((order) => order.Completed == 0)
-        .map((item, i) => (
-          <div className="container">
-            <div className="card border card_customerorder_body mx-auto mt-3 mb-3">
-              <div className="card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">
-                Customer Order:
-                <span className="h4 pl-2">#{item.ID}</span>
-              </div>
-
-              <div className="card-body mx-auto">
-                <div className="h3 text-center font-weight-bold current-order-text">
-                  Head to Customer
-                  <div>
-                    {' '}
-                    <MyMap></MyMap>{' '}
-                  </div>
-                </div>
-                <div className="container text-center">
-                  <div className="row">
-                    <div className="left-col col-5 col-sm-6">
-                      <div className="pt-4">
-                        <span className="current-order-text h5 font-weight-bold">
-                          Order Details
-                        </span>
-
-                        <ul>
-                          <div>{item.Restaurant_Name}</div>
-                        </ul>
-                      </div>
-                      <div className="pt-4">
-                        {' '}
-                        <span className="current-order-text font-weight-bold h5">
-                          Total
-                        </span>
-                        <ul>
-                          <div>&#36;{item.Total}</div>
-                        </ul>
-                      </div>
-
-                      <div className="pt-4">
-                        <span className="current-order-text font-weight-bold h5">
-                          Order Status:
-                        </span>
-                        <div className="pl-2 font-italic text-info">
-                          Pending
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="right-col col-5 col-sm-6">
-                      <div className="pt-4">
-                        <span className="current-order-text font-weight-bold h5">
-                          Order No.
-                        </span>{' '}
-                        <ul>
-                          <div>#{item.ID}</div>
-                        </ul>
-                      </div>
-                      <div className="pt-4">
-                        <span className="current-order-text font-weight-bold h5">
-                          Customer Info:
-                        </span>{' '}
-                        <ul>
-                          <div>{item.Customer_Name}</div>
-                        </ul>
-                      </div>
-                      <div className="pt-2">
-                        <span className="current-order-text font-weight-bold h5">
-                          Delivery Instructions:
-                        </span>
-
-                        <ul>
-                          <div>{item.Delivery_Instruction}</div>
-                        </ul>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      className="col-9 col-sm-5 col-md-4 mx-auto delivered_button btn btn-block text-white"
-                      onclick="myDirections()"
-                    >
-                      Delivered!
-                    </button>
-                  </div>
-                </div>
-
-                <div className="click_delivered text-center col-md-12 mt-2 mb-2 text-muted">
-                  *Click delivered once food is handed to customer*
-                </div>
-                <button
-                  type="button"
-                  className="col-sm-12 col-4 py-2 btn btn-block delivered_button mx-auto text-white"
-                  data-toggle="modal"
-                  data-target="#CompletedOrder"
-                  onClick={(e) => {
-                    orders
-                      .filter((order) => order.ID === item.ID)
-                      .map((item, i) => {
-                        setModalItems(JSON.parse(item.ID));
-                        setOrderStatus();
-                      });
-                  }}
-                >
-                  Delivered!
-                </button>
-              </div>
+      {appUser.type === 'driver' ? (
+        <div className="container-fluid">
+          {showAlert ? (
+            <div
+              className="text-center mx-auto mt-2 alert alert-success fade show w-50"
+              role="alert"
+            >
+              <strong>Success!</strong> Order Delivered
+            </div>
+          ) : (
+            <></>
+          )}
+          <div className="container mt-3">
+            <div className=" text-center h5">
+              <span className="font-weight-bold">Hello, </span>
+              <span className=" current-order-text font-weight-bold  font-italic">
+                {appUser.name}{' '}
+              </span>{' '}
+              <br />
+              <span className="font-weight-bold">You are working for : </span>
+              <span className="current-order-text font-weight-bold font-italic">
+                {driverDetails.Restaurant}{' '}
+              </span>
             </div>
             <div
               className="modal fade"
-              id="CompletedOrder"
+              id="viewOrder"
               tabIndex="-1"
               role="dialog"
               aria-labelledby="viewOrderTitle"
@@ -170,15 +109,238 @@ const CurrentOrders = () => {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <div className="h4 text-center m-5">
-                      Delivery completed! Thank you!
-                    </div>
+                    <table className="table-responsive">
+                      <thead>
+                        <tr>
+                          <th className="font-italic border border_purple p-2 text-center">
+                            {' '}
+                            Restaurant{' '}
+                          </th>
+                          <th className="font-italic border border_purple text-center">
+                            {' '}
+                            Item{' '}
+                          </th>
+                          <th className="font-italic border border_purple p-1 text-center">
+                            {' '}
+                            Item Price{' '}
+                          </th>
+                          <th className="font-italic border border_purple p-1 text-center">
+                            {' '}
+                            Quantity{' '}
+                          </th>
+                          <th className="font-italic border border_purple p-2 text-center">
+                            {' '}
+                            Comments{' '}
+                          </th>
+                          <th className="font-italic border border_purple p-1 text-center">
+                            {' '}
+                            Item Total Price{' '}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {modalItems.map((item, i) => (
+                          <tr key={i}>
+                            <td className="border border_purple p-2 text-center">
+                              {item.itemRestaurantName}
+                            </td>
+                            <td className="border border_purple p-2 text-center">
+                              {item.itemName}
+                            </td>
+                            <td className="border border_purple text-center">
+                              <span className="font-weight-bold">&#36;</span>
+                              {item.itemPrice}
+                            </td>
+                            <td className="border border_purple text-center">
+                              {item.itemCount}
+                            </td>
+                            <td className="border border_purple p-2 text-center">
+                              {item.itemComments}
+                            </td>
+                            <td className="border border_purple text-center">
+                              &#36;{item.itemCalculatedPrice}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
+            {orders.filter((order) => order.Completed == 0).length > 0 ? (
+              orders
+                .filter((order) => order.Completed == 0)
+                .map((item, i) => (
+                  <div
+                    className="card border card_customerorder_body my-3"
+                    key={i}
+                  >
+                    <div className="card-header card_customerorder h4 pt-3 font-italic font-weight-bold text-white">
+                      Customer Order:
+                      <span className="h4 pl-2">#{item.ID}</span>
+                    </div>
+                    <div className="card-body">
+                      <div className="h3 text-center font-weight-bold current-order-text">
+                        Head to Customer
+                      </div>
+                      <div className="d-flex justify-content-around mt-4 flex-wrap">
+                        <div>
+                          <table className="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Order No :
+                                </th>
+                                <td>#{item.ID}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Order Details:
+                                </th>
+                                <td>
+                                  <button
+                                    type="button"
+                                    className="btn btn-warning current-order-text"
+                                    data-toggle="modal"
+                                    data-target="#viewOrder"
+                                    onClick={(e) => {
+                                      orders
+                                        .filter((order) => order.ID === item.ID)
+                                        .map((item, i) => {
+                                          setModalItems(
+                                            JSON.parse(item.Order_Contents)
+                                          );
+                                        });
+                                    }}
+                                  >
+                                    View
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Total :
+                                </th>
+                                <td>&#36;{item.Total}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Customer Name :
+                                </th>
+                                <td>{item.Customer_Name}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Delivery Location :
+                                </th>
+                                <td>{item.Delivery_Location}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" className="current-order-text">
+                                  Delivery Instructions:
+                                </th>
+                                <td>{item.Delivery_Instruction}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div>
+                          <MyMap></MyMap>
+                        </div>
+                      </div>
+                      <div className="click_delivered text-center text-muted">
+                        *Click delivered once food is handed to customer*
+                      </div>
+                      <div className="text-center">
+                        <button
+                          type="button"
+                          className="btn bg-warning current-order-text text-center"
+                          data-toggle="modal"
+                          data-target="#CompletedOrder"
+                          onClick={(e) => {
+                            setClickedOrderID(parseInt(item.ID));
+                          }}
+                        >
+                          <span className="font-weight-bold">Delivered!</span>
+                        </button>
+                      </div>
+                    </div>
+                    {/* delivery confirmation modal */}
+                    <div
+                      className="modal fade"
+                      id="CompletedOrder"
+                      role="dialog"
+                      aria-labelledby="#CompletedOrder"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div className="modal-content">
+                          <div className="modal-header h5">
+                            <strong> Confirm Delivery </strong>
+                            <button
+                              type="button"
+                              className="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div className="modal-body modal-edit">
+                            <p className="h5 primary-color mb-4 mx-auto text-center">
+                              Please confirm that you have received payment for
+                              this order
+                            </p>
+                            <div className="d-flex justify-content-center">
+                              <div className="mx-4">
+                                <button
+                                  type="button"
+                                  className="btn save-btn btn-lg primary-color text-center m-1 signout-buttons"
+                                  data-dismiss="modal"
+                                  onClick={(e) => {
+                                    changeOrderStatus(clickedOrderID);
+                                  }}
+                                >
+                                  Yes
+                                </button>
+                              </div>
+                              <div className="mx-4">
+                                <button
+                                  type="submit"
+                                  className="btn save-btn btn-lg  m-1 primary-color"
+                                  value="Submit"
+                                  data-dismiss="modal"
+                                >
+                                  No
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+            ) : (
+              <div className="container my-4">
+                <h3>No Pending Orders.. Please check back</h3>
+              </div>
+            )}
           </div>
-        ))}
+        </div>
+      ) : appUser.type === 'guest' ||
+        appUser.type === undefined ||
+        appUser.type === 'customer' ? (
+        <Redirect to="/" />
+      ) : appUser.type === 'owner' ? (
+        <Redirect to="/owner/menu" />
+      ) : (
+        <> </>
+      )}
     </>
   );
 };

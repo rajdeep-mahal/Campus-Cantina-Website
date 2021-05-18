@@ -121,4 +121,21 @@ router.post('/place-order', (req, res) => {
   });
 });
 
+// Call to Update an order - assign driver
+router.post('/assign-driver', (req, res) => {
+  console.log('Called edit-order endpoint');
+  let orderID = req.query.orderID;
+  // Generate SQL query with order info
+  let query =
+    `UPDATE Orders SET Driver_ID = ` +
+    req.query.driverID +
+    ` WHERE ID = ` +
+    orderID;
+  // Send order query to db
+  database.query(query, (err, result) => {
+    console.log('Assigned Driver to order in db');
+    res.send(result);
+  });
+});
+
 module.exports = router;

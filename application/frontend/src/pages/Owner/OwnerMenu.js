@@ -62,12 +62,12 @@ const OwnerMenu = () => {
               itemName: editItemName,
               itemDescription: editItemDescription,
               itemPrice: editItemPrice,
-              itemID: editMenuItemID,
+              itemID: `${editMenuItemID}`,
             },
           }
         )
         .then((res) => {
-          // console.log(res);
+          // console.log(res.data);
           setLoadData(true);
           setEditItemName('');
           setEditItemPrice(0.0);
@@ -84,10 +84,10 @@ const OwnerMenu = () => {
     event.preventDefault();
     axios
       .delete('http://localhost:3001/api/restaurant-menu/delete-menu-item', {
-        params: { itemID: deleteMenuItemID },
+        params: { itemID: `${deleteMenuItemID}` },
       })
       .then((res) => {
-        // console.log(res);
+        // console.log(res.data);
         setLoadData(true);
         setDeleteMenuItemID('');
       });
@@ -107,14 +107,14 @@ const OwnerMenu = () => {
       axios
         .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
           itemID: ID,
-          restaurantID: 5,
+          restaurantID: `5`,
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
           restaurantName: 'Taco Shell',
         })
         .then((res) => {
-          // console.log(res);
+          // console.log(res.data);
           setLoadData(true);
           setMenuItemName('');
           setMenuItemPrice(0.0);

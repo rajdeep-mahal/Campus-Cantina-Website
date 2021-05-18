@@ -160,7 +160,7 @@ const OwnerMenu = () => {
                   className="alert alert-warning alert-dismissible fade show text-center live-alert w-75 mx-auto mt-4"
                   role="alert"
                 >
-                  <strong> YOUR RESTAURANT IS NOW LIVE! </strong>
+                  <strong> YOUR RESTAURANT IS NOW LIVE ! </strong>
                   <button
                     type="button"
                     className="close close-live text-warning"

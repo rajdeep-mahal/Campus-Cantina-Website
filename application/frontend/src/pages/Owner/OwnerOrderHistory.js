@@ -88,7 +88,7 @@ const OwnerOrderHistory = () => {
           <h3 className="owner-heading"> Orders</h3>
 
           {orderItems.length > 0 ? (
-            <div className="table-responsive order-table">
+            <div className="table-responsive order-table mb-5">
               {/* Orders Table */}
               <table className="table table-striped ">
                 <thead>
@@ -96,8 +96,9 @@ const OwnerOrderHistory = () => {
                     <th scope="col">Order #</th>
                     <th scope="col">Items</th>
                     <th scope="col">Customer</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Total Price</th>
                     <th scope="col">Order Status</th>
+                    <th scope="col">Delivery Address</th>
                     <th scope="col">Driver</th>
                   </tr>
                 </thead>
@@ -120,6 +121,9 @@ const OwnerOrderHistory = () => {
                             View
                           </button>
                         </td>
+
+                        <td>{item.Customer_Name}</td>
+                        <td>${item.Total}</td>
                         <td>
                           {item.Completed === 0 ? (
                             <label> Pending</label>
@@ -127,8 +131,7 @@ const OwnerOrderHistory = () => {
                             <label> Completed</label>
                           )}
                         </td>
-                        <td>{item.Customer_Name}</td>
-                        <td>${item.Total}</td>
+                        <td style={{ width: 300 }}>{item.Delivery_Location}</td>
                         <td>
                           {item.Driver_ID !== 0 ? (
                             driversList
@@ -136,7 +139,7 @@ const OwnerOrderHistory = () => {
                               .map((d1) => d1.Name)
                           ) : (
                             <>
-                              {item.Driver_ID}
+                              TBD
                               <i
                                 className="fas fa-edit assign-driver-icon ml-3 h4"
                                 data-toggle="modal"
@@ -198,7 +201,7 @@ const OwnerOrderHistory = () => {
                         <th scope="col">Comments</th>
                         <th scope="col">Price</th>
                         <th scope="col"></th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">Quantity</th>
                         <th scope="col">Total</th>
                       </tr>
                     </thead>

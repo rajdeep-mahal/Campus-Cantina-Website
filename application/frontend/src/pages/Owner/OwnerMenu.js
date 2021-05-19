@@ -21,14 +21,7 @@ const OwnerMenu = () => {
   const [editMenuItemID, setEditMenuItemID] = useState('');
   //delete menu item variable
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
-
-  //restaurants from backend
-  const restaurantsList = useSelector(
-    (state) => state.searchReducer.allRestaurants
-  );
-  const currentRestaurant = restaurantsList.filter(
-    (restaurant) => restaurant.Name.trim() === 'Taco Shell'
-  );
+  const [ownerRestaurant, setOwnerRestaurant] = useState([]);
 
   const [loadData, setLoadData] = useState(false);
   const [showMandatoryFieldsAlert, setShowMandatoryFieldsAlert] =
@@ -107,11 +100,11 @@ const OwnerMenu = () => {
       axios
         .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
           itemID: ID,
-          restaurantID: `5`,
+          restaurantID: `${ownerRestaurant[0].ID}`,
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
-          restaurantName: 'Taco Shell',
+          restaurantName: ownerRestaurant[0].Name,
         })
         .then((res) => {
           // console.log(res.data);
@@ -129,15 +122,33 @@ const OwnerMenu = () => {
   useEffect(() => {
     if (appUser.type === 'owner') {
       axios
-        .get(
-          'http://localhost:3001/api/restaurant-menu/restaurant-menu-items',
-          {
-            params: { restaurantName: 'Taco Shell' },
-          }
-        )
+        .get('http://localhost:3001/api/restaurant/all-restaurants')
         .then((res) => {
-          setMenuItems(res.data);
+          // console.log(res.data);
           setLoadData(false);
+          axios
+            .get('http://localhost:3001/api/restaurant/owner-info', {
+              params: { ownerEmail: appUser.email },
+            })
+            .then((res1) => {
+              setLoadData(false);
+              const tempOwnerRestaurant = res.data.filter(
+                (restaurant) =>
+                  restaurant.Name.trim() === res1.data[0].Restaurant_Name
+              );
+              setOwnerRestaurant(tempOwnerRestaurant);
+              axios
+                .get(
+                  'http://localhost:3001/api/restaurant-menu/restaurant-menu-items',
+                  {
+                    params: { restaurantName: tempOwnerRestaurant[0].Name },
+                  }
+                )
+                .then((res) => {
+                  setMenuItems(res.data);
+                  setLoadData(false);
+                });
+            });
         });
     }
   }, [loadData]);
@@ -147,7 +158,7 @@ const OwnerMenu = () => {
       {appUser.type === 'owner' ? (
         <div className="container-fluid text-center">
           <div className="mx-5">
-            {currentRestaurant.map((item, i) => (
+            {ownerRestaurant.map((item, i) => (
               <div key={i}>
                 <img
                   className="img-fluid restaurantBanner"

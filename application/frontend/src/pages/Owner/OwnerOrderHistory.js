@@ -96,7 +96,7 @@ const OwnerOrderHistory = () => {
                     <th scope="col">Order #</th>
                     <th scope="col">Items</th>
                     <th scope="col">Customer</th>
-                    {/* <th scope="col">Total Price</th> */}
+                    <th scope="col">Total Price</th>
                     <th scope="col">Delivery Address</th>
                     <th scope="col">Order Status</th>
                     <th scope="col">Driver</th>
@@ -123,7 +123,7 @@ const OwnerOrderHistory = () => {
                         </td>
 
                         <td style={{ width: 150 }}>{item.Customer_Name}</td>
-                        {/* <td>${item.Total}</td> */}
+                        <td>${item.Total}</td>
                         <td style={{ width: 300 }}>{item.Delivery_Location}</td>
                         <td>
                           {item.Completed === 0 ? (

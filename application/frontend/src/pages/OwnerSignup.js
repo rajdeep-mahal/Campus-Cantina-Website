@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../assets/css/login_Signup.css';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   setOwnerName,
   setOwnerContactNumber,
@@ -26,9 +26,6 @@ const OwnerSignup = () => {
   const ownerConfirmPassword = useSelector(
     (state) => state.ownerSignupReducer.ownerConfirmPassword
   );
-
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
     useState(false);

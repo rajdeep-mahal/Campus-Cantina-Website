@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import { setAppUser } from '../redux/actions/appUserActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const OwnerLogin = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [ownerEmail, setOwnerEmail] = useState('');
   const [ownerPassword, setOwnerPassword] = useState('');
-
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   // show error alert for invalid email suffix
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);

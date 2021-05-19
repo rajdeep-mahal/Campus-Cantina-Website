@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../assets/css/login_Signup.css';
-import { Link, useHistory, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
@@ -16,9 +15,6 @@ const SFSUSignup = () => {
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
   const [customerConfirmPassword, setCustomerConfirmPassword] = useState('');
-
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   // show error alert for invalid email suffix
   const [showInvalidSuffixAlert, setShowInvalidSuffixAlert] = useState(false);

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../assets/css/customer_cart.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   setCartItems,
   setCartItemsTotalCount,
@@ -27,12 +27,9 @@ const CustomerCart = () => {
     (state) => state.cartItemsReducer.cartDeliveryFee
   );
 
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
-
   return (
     <>
-      {cartItems.length == 0 ? (
+      {cartItems.length === 0 ? (
         <li style={{ marginTop: '10px' }}>
           <span className=" p-2 m-1 h5">Your Cart is empty</span>
           <p className="primary-color p-2 m-1">Add items to get started</p>
@@ -141,7 +138,7 @@ const CustomerCart = () => {
                         for (let i = 0; i < cartRestaurantsList.length; i++) {
                           const tempCurrentRestaurant = restaurantsList.filter(
                             (restaurant) =>
-                              restaurant.Name == cartRestaurantsList[i]
+                              restaurant.Name === cartRestaurantsList[i]
                           );
                           filteredCartRestaurants.push(tempCurrentRestaurant);
                         }

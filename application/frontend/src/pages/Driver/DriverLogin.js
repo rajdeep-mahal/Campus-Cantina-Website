@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import '../../assets/css/login_Signup.css';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import { setAppUser } from '../../redux/actions/appUserActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const DriverLogin = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,6 @@ const DriverLogin = () => {
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
   const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] =
     useState(false);
-
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   const onSubmitDriverLogin = (event) => {
     event.preventDefault();

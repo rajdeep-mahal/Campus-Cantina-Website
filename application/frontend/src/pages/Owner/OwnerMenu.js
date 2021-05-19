@@ -151,7 +151,7 @@ const OwnerMenu = () => {
             });
         });
     }
-  }, [loadData]);
+  }, [loadData, appUser.email, appUser.type]);
 
   return (
     <>

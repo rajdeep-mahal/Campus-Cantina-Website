@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../assets/css/login_Signup.css';
 import { useSelector } from 'react-redux';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
@@ -18,9 +18,6 @@ const DriverSignup = () => {
   const [driverRestaurant, setDriverRestaurant] = useState('');
   const [driverPassword, setDriverPassword] = useState('');
   const [driverConfirmPassword, setDriverConfirmPassword] = useState('');
-
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   const [showPasswordsMismatchAlert, setShowPasswordsMismatchAlert] =
     useState(false);

@@ -26,9 +26,9 @@ const Checkout = () => {
     (state) => state.searchReducer.allRestaurants
   );
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
-  const cartItemsTotalCount = useSelector(
-    (state) => state.cartItemsReducer.cartItemsTotalCount
-  );
+  // const cartItemsTotalCount = useSelector(
+  //   (state) => state.cartItemsReducer.cartItemsTotalCount
+  // );
   const cartTotal = useSelector((state) => state.cartItemsReducer.cartTotal);
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
@@ -70,7 +70,7 @@ const Checkout = () => {
         // get current restaurant for  restaurant Name, restaurant ID & restaurant Address
         const currentRestaurant = restaurantsList.filter(
           (restaurant) =>
-            restaurant.Name == filteredCartItems[i][0].itemRestaurantName
+            restaurant.Name === filteredCartItems[i][0].itemRestaurantName
         );
         axios
           .post('http://localhost:3001/api/order/place-order', {
@@ -116,7 +116,7 @@ const Checkout = () => {
     else {
       let ID = nanoid();
       const currentRestaurant = restaurantsList.filter(
-        (restaurant) => restaurant.Name == cartRestaurantsList[0]
+        (restaurant) => restaurant.Name === cartRestaurantsList[0]
       );
       axios
         .post('http://localhost:3001/api/order/place-order', {
@@ -173,7 +173,7 @@ const Checkout = () => {
         };
       }
     }
-  }, []);
+  }, [appUser.email, appUser.type, cartItems.length]);
 
   return (
     <>
@@ -296,7 +296,8 @@ const Checkout = () => {
                                 {
                                   restaurantsList.filter(
                                     (restaurant) =>
-                                      restaurant.Name == item.itemRestaurantName
+                                      restaurant.Name ===
+                                      item.itemRestaurantName
                                   )[0].Delivery_Fee
                                 }
                                 )
@@ -366,7 +367,7 @@ const Checkout = () => {
                     type="button"
                     className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
                     onClick={(e) => {
-                      if (deliveryAddress == '') {
+                      if (deliveryAddress === '') {
                         setShowAlert(true);
                       } else {
                         setShowAlert(false);

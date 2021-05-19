@@ -37,7 +37,7 @@ const OwnerProfile = () => {
             });
         });
     }
-  }, [loadData]);
+  }, [loadData, appUser]);
 
   //extract value from global redux (reads from store)
   return (

@@ -1,6 +1,5 @@
 // import { getMaxListeners } from "../../../backend/db";
 import '../../assets/css/driver.css';
-import map_sample from '../../assets/img/map_customerorder.png';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MyMap from '../../components/MyMap';
@@ -57,7 +56,7 @@ const CurrentOrders = () => {
             });
         });
     }
-  }, [loadData]);
+  }, [loadData, appUser.email, appUser.type]);
 
   return (
     <>
@@ -168,9 +167,9 @@ const CurrentOrders = () => {
                 </div>
               </div>
             </div>
-            {orders.filter((order) => order.Completed == 0).length > 0 ? (
+            {orders.filter((order) => order.Completed === 0).length > 0 ? (
               orders
-                .filter((order) => order.Completed == 0)
+                .filter((order) => order.Completed === 0)
                 .map((item, i) => (
                   <div
                     className="card border card_customerorder_body my-3"
@@ -207,11 +206,11 @@ const CurrentOrders = () => {
                                     onClick={(e) => {
                                       orders
                                         .filter((order) => order.ID === item.ID)
-                                        .map((item, i) => {
+                                        .map((item, i) =>
                                           setModalItems(
                                             JSON.parse(item.Order_Contents)
-                                          );
-                                        });
+                                          )
+                                        );
                                     }}
                                   >
                                     View

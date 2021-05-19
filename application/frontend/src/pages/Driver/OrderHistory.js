@@ -37,7 +37,7 @@ const DriverAvailableOrders = () => {
             });
         });
     }
-  }, []);
+  }, [appUser.email, appUser.type]);
 
   return (
     <>
@@ -94,9 +94,9 @@ const DriverAvailableOrders = () => {
                         onClick={(e) => {
                           orders
                             .filter((order) => order.ID === item.ID)
-                            .map((item, i) => {
-                              setModalItems(JSON.parse(item.Order_Contents));
-                            });
+                            .map((item, i) =>
+                              setModalItems(JSON.parse(item.Order_Contents))
+                            );
                         }}
                       >
                         View
@@ -133,10 +133,7 @@ const DriverAvailableOrders = () => {
                 <div className="modal-body table-responsive">
                   <table className="table text-center">
                     <thead>
-                      <tr
-                        className="table-warning"
-                        className="order-list-title"
-                      >
+                      <tr className="table-warning order-list-title">
                         <th scope="col"> Item </th>
                         <th scope="col"> Comments </th>
                         <th scope="col"> Item Price </th>

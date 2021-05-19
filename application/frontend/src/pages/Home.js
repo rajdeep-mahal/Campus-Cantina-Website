@@ -7,7 +7,6 @@ import React from 'react';
 import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
 import CuisineRow from '../components/CuisineRow';
-import { Redirect } from 'react-router-dom';
 import Banner1 from '../assets/img/Home_Banner1.jpg';
 import driverBanner from '../assets/img/Driver_Home_Banner.png';
 import ownerBanner from '../assets/img/Owner_Home_Banner.png';
@@ -17,8 +16,6 @@ const Home = () => {
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
   );
-  // redux global variable
-  const appUser = useSelector((state) => state.appUserReducer.appUser);
 
   return (
     <div>

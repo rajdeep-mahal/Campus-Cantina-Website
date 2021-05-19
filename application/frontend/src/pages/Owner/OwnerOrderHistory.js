@@ -92,7 +92,7 @@ const OwnerOrderHistory = () => {
               {/* Orders Table */}
               <table className="table table-striped ">
                 <thead>
-                  <tr className="table-secondary order-list-title">
+                  <tr className="order-list-title">
                     <th scope="col">Order #</th>
                     <th scope="col">Items</th>
                     <th scope="col">Customer</th>
@@ -194,7 +194,7 @@ const OwnerOrderHistory = () => {
                 <div className="modal-body">
                   <table className="table text-center">
                     <thead>
-                      <tr className="table-warning order-list-title">
+                      <tr className="bg-warning">
                         <th scope="col">Item</th>
                         <th scope="col">Comments</th>
                         <th scope="col">Price</th>

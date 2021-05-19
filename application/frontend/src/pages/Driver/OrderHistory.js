@@ -133,7 +133,7 @@ const DriverAvailableOrders = () => {
                 <div className="modal-body table-responsive">
                   <table className="table text-center">
                     <thead>
-                      <tr className="table-warning order-list-title">
+                      <tr className="bg-warning">
                         <th scope="col"> Item </th>
                         <th scope="col"> Comments </th>
                         <th scope="col"> Item Price </th>

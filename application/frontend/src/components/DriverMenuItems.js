@@ -1,6 +1,11 @@
 export const DriverMenuItems = [
   {
-    title: 'Current Order',
+    title: 'Home',
+    path: '/',
+    cName: 'primary-color fas fa-home',
+  },
+  {
+    title: 'Current Orders',
     path: '/driver/current-orders',
     cName: 'primary-color fas fa-utensils',
   },

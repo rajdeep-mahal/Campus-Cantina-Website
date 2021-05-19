@@ -21,14 +21,7 @@ const OwnerMenu = () => {
   const [editMenuItemID, setEditMenuItemID] = useState('');
   //delete menu item variable
   const [deleteMenuItemID, setDeleteMenuItemID] = useState('');
-
-  //restaurants from backend
-  const restaurantsList = useSelector(
-    (state) => state.searchReducer.allRestaurants
-  );
-  const currentRestaurant = restaurantsList.filter(
-    (restaurant) => restaurant.Name.trim() === 'Taco Shell'
-  );
+  const [ownerRestaurant, setOwnerRestaurant] = useState([]);
 
   const [loadData, setLoadData] = useState(false);
   const [showMandatoryFieldsAlert, setShowMandatoryFieldsAlert] =
@@ -52,7 +45,7 @@ const OwnerMenu = () => {
       editItemPrice !== '' &&
       parseFloat(editItemPrice) !== 0.0
     ) {
-      console.log(editItemPrice);
+      // console.log(editItemPrice);
       axios
         .post(
           'http://localhost:3001/api/restaurant-menu/edit-menu-item',
@@ -62,12 +55,12 @@ const OwnerMenu = () => {
               itemName: editItemName,
               itemDescription: editItemDescription,
               itemPrice: editItemPrice,
-              itemID: editMenuItemID,
+              itemID: `${editMenuItemID}`,
             },
           }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res.data);
           setLoadData(true);
           setEditItemName('');
           setEditItemPrice(0.0);
@@ -84,10 +77,10 @@ const OwnerMenu = () => {
     event.preventDefault();
     axios
       .delete('http://localhost:3001/api/restaurant-menu/delete-menu-item', {
-        params: { itemID: deleteMenuItemID },
+        params: { itemID: `${deleteMenuItemID}` },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res.data);
         setLoadData(true);
         setDeleteMenuItemID('');
       });
@@ -107,14 +100,14 @@ const OwnerMenu = () => {
       axios
         .post('http://localhost:3001/api/restaurant-menu/add-menu-item', {
           itemID: ID,
-          restaurantID: 5,
+          restaurantID: `${ownerRestaurant[0].ID}`,
           itemName: menuItemName,
           itemDescription: menuItemDescription,
           itemPrice: menuItemPrice,
-          restaurantName: 'Taco Shell',
+          restaurantName: ownerRestaurant[0].Name,
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res.data);
           setLoadData(true);
           setMenuItemName('');
           setMenuItemPrice(0.0);
@@ -129,97 +122,101 @@ const OwnerMenu = () => {
   useEffect(() => {
     if (appUser.type === 'owner') {
       axios
-        .get(
-          'http://localhost:3001/api/restaurant-menu/restaurant-menu-items',
-          {
-            params: { restaurantName: 'Taco Shell' },
-          }
-        )
+        .get('http://localhost:3001/api/restaurant/all-restaurants')
         .then((res) => {
-          setMenuItems(res.data);
+          // console.log(res.data);
           setLoadData(false);
+          axios
+            .get('http://localhost:3001/api/restaurant/owner-info', {
+              params: { ownerEmail: appUser.email },
+            })
+            .then((res1) => {
+              setLoadData(false);
+              const tempOwnerRestaurant = res.data.filter(
+                (restaurant) =>
+                  restaurant.Name.trim() === res1.data[0].Restaurant_Name
+              );
+              setOwnerRestaurant(tempOwnerRestaurant);
+              axios
+                .get(
+                  'http://localhost:3001/api/restaurant-menu/restaurant-menu-items',
+                  {
+                    params: { restaurantName: tempOwnerRestaurant[0].Name },
+                  }
+                )
+                .then((res) => {
+                  setMenuItems(res.data);
+                  setLoadData(false);
+                });
+            });
         });
     }
-  }, [loadData]);
+  }, [loadData, appUser.email, appUser.type]);
 
   return (
     <>
       {appUser.type === 'owner' ? (
         <div className="container-fluid text-center">
           <div className="mx-5">
-            {currentRestaurant.map((item, i) => (
-              <img
-                key={i}
-                className="img-fluid restaurantBanner"
-                src={
-                  'data:image/jpeg;base64,' +
-                  new Buffer(item.Display_Pic_Banner)
-                }
-                alt="Banner"
-              />
-            ))}
-            <div className="container">
-              <div className="pl-1">
-                <>
-                  <br />
-                  <div
-                    className="alert alert-warning alert-dismissible fade show text-center pending-alert w-75 mx-auto"
-                    role="alert"
-                  >
-                    <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
+            {ownerRestaurant.map((item, i) => (
+              <div key={i}>
+                <img
+                  className="img-fluid restaurantBanner"
+                  src={
+                    'data:image/jpeg;base64,' +
+                    new Buffer(item.Display_Pic_Banner)
+                  }
+                  alt="Banner"
+                />
+                <div className="container">
+                  {item.Approved === 0 ? (
+                    <div
+                      className="alert alert-warning fade show text-center pending-alert w-75 mx-auto mt-4"
+                      role="alert"
                     >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div
-                    className="alert alert-warning alert-dismissible fade show text-center live-alert w-75 mx-auto"
-                    role="alert"
-                  >
-                    <strong> Your restaurant is now live! </strong>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  {/* map through restaurant details */}
-                  {currentRestaurant.map((item, index) => (
-                    <div key={index}>
-                      <p className="primaryTextPage h1">{item.Name} </p>
-                      <p className="text-muted mt-2">
-                        {item.Price_Level} • {item.Cuisine}, {item.Tags}
-                        <br />
-                        <span className="text-muted">{item.Address}</span>{' '}
-                      </p>
+                      <strong> PENDING ADMIN APPROVAL WITHIN 24 HOURS </strong>
                     </div>
-                  ))}
-                  <div className="rp-info secondaryTextPage mx-auto">
-                    <table height="90px" className="mx-auto">
+                  ) : (
+                    <div
+                      className="alert alert-warning alert-dismissible fade show text-center live-alert w-75 mx-auto mt-4"
+                      role="alert"
+                    >
+                      <strong> YOUR RESTAURANT IS NOW LIVE ! </strong>
+                      <button
+                        type="button"
+                        className="close close-live text-warning"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  )}
+                  <div>
+                    <p className="primaryTextPage h1 mt-2">{item.Name} </p>
+                  </div>
+                  <div className="restaurant-info secondaryTextPage mx-auto">
+                    <table className="mx-auto">
                       <tbody>
                         <tr>
                           <td className="align-middle primaryTextPage">
-                            <p>
-                              $1.99 <br /> delivery fee
+                            <p className="m-1">
+                              {item.Price_Level} • {item.Cuisine}, {item.Tags}
+                            </p>
+                            <p className="m-1">{item.Address}</p>
+                            <p className="m-1">
+                              Delivery fee : ${item.Delivery_Fee}
                             </p>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                </>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
           <hr />
-
           <div className="container ">
             <div className="rp-menu-items m-4 ">
               <h4 className="text-center pb-3 pt-3"> Menu </h4>
@@ -317,7 +314,6 @@ const OwnerMenu = () => {
               )}
             </div>
           </div>
-
           {/* Add Item Modal */}
           <div
             className="modal fade"
@@ -367,7 +363,7 @@ const OwnerMenu = () => {
                       <div className="col-6">
                         <label> Price </label>
                       </div>
-                      <div className="col-4">
+                      <div className="col-6">
                         <input
                           type="number"
                           id="addItemPrice"
@@ -408,7 +404,7 @@ const OwnerMenu = () => {
                     <br />
                     <button
                       type="submit"
-                      className="btn save-btn btn-lg btn-block"
+                      className="btn bg-warning btn-lg btn-block"
                       value="Submit"
                       data-dismiss="modal"
                       onClick={handleAddMenuItem}
@@ -470,7 +466,7 @@ const OwnerMenu = () => {
                       <div className="col-6">
                         <label htmlFor="Item "> Price </label>
                       </div>
-                      <div className="col-4">
+                      <div className="col-6">
                         <input
                           type="number"
                           id="editItemPrice"
@@ -511,7 +507,7 @@ const OwnerMenu = () => {
                     <br />
                     <button
                       type="submit"
-                      className="btn save-btn btn-lg btn-block"
+                      className="btn bg-warning btn-lg btn-block"
                       value="Submit"
                       data-dismiss="modal"
                       onClick={handleEditMenuItem}
@@ -552,7 +548,7 @@ const OwnerMenu = () => {
                     <br />
                     <button
                       type="submit"
-                      className="btn save-btn btn-lg btn-block"
+                      className="btn bg-warning btn-lg btn-block"
                       value="Submit"
                       data-dismiss="modal"
                       onClick={handleDeleteMenuItem}

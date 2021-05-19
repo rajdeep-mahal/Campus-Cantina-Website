@@ -26,9 +26,9 @@ const Checkout = () => {
     (state) => state.searchReducer.allRestaurants
   );
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
-  const cartItemsTotalCount = useSelector(
-    (state) => state.cartItemsReducer.cartItemsTotalCount
-  );
+  // const cartItemsTotalCount = useSelector(
+  //   (state) => state.cartItemsReducer.cartItemsTotalCount
+  // );
   const cartTotal = useSelector((state) => state.cartItemsReducer.cartTotal);
   const cartDeliveryInstructions = useSelector(
     (state) => state.cartItemsReducer.cartDeliveryInstructions
@@ -70,8 +70,24 @@ const Checkout = () => {
         // get current restaurant for  restaurant Name, restaurant ID & restaurant Address
         const currentRestaurant = restaurantsList.filter(
           (restaurant) =>
-            restaurant.Name == filteredCartItems[i][0].itemRestaurantName
+            restaurant.Name === filteredCartItems[i][0].itemRestaurantName
         );
+        // calculate total value & service fee
+        let currentSubTotal = 0.0;
+        filteredCartItems[i].map((fItem, index) => {
+          currentSubTotal = parseFloat(
+            currentSubTotal + parseFloat(fItem.itemCalculatedPrice)
+          );
+        });
+        // console.log(currentRestaurant[0].Delivery_Fee);
+        // console.log((0.1 * parseFloat(currentSubTotal.toFixed(2))).toFixed(2));
+        // console.log(
+        //   (
+        //     parseFloat(currentSubTotal.toFixed(2)) +
+        //     parseFloat(0.1 * parseFloat(currentSubTotal.toFixed(2))) +
+        //     parseFloat(currentRestaurant[0].Delivery_Fee)
+        //   ).toFixed(2)
+        // );
         axios
           .post('http://localhost:3001/api/order/place-order', {
             orderID: ID,
@@ -84,15 +100,19 @@ const Checkout = () => {
             deliveryLocation: deliveryAddress,
             orderContents: JSON.stringify(filteredCartItems[i]),
             deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
-            serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
+            serviceFee: (0.1 * parseFloat(currentSubTotal.toFixed(2))).toFixed(
+              2
+            ),
             total: (
-              parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+              parseFloat(currentSubTotal.toFixed(2)) +
+              parseFloat(0.1 * parseFloat(currentSubTotal.toFixed(2))) +
+              parseFloat(currentRestaurant[0].Delivery_Fee)
             ).toFixed(2),
             deliveryInstructions: cartDeliveryInstructions,
             driverID: '0',
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (typeof res.data === 'string') {
               if (res.data.substring(0, 7) === 'Invalid') {
                 alert(
@@ -116,7 +136,7 @@ const Checkout = () => {
     else {
       let ID = nanoid();
       const currentRestaurant = restaurantsList.filter(
-        (restaurant) => restaurant.Name == cartRestaurantsList[0]
+        (restaurant) => restaurant.Name === cartRestaurantsList[0]
       );
       axios
         .post('http://localhost:3001/api/order/place-order', {
@@ -132,13 +152,15 @@ const Checkout = () => {
           deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
           serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
           total: (
-            parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+            parseFloat(cartTotal) +
+            parseFloat(0.1 * parseFloat(cartTotal)) +
+            parseFloat(cartDeliveryFee)
           ).toFixed(2),
           deliveryInstructions: cartDeliveryInstructions,
           driverID: '0',
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (typeof res.data === 'string') {
             if (res.data.substring(0, 7) === 'Invalid') {
               alert(
@@ -149,9 +171,9 @@ const Checkout = () => {
             alert(
               'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
             );
+            history.push('/');
             dispatch(setCartItems([]));
             dispatch(setCartItemsTotalCount(0));
-            history.push('/');
           }
         });
     }
@@ -159,25 +181,30 @@ const Checkout = () => {
 
   useEffect(() => {
     if (appUser.type === 'customer') {
-      let source = axios.CancelToken.source();
-      axios
-        .get('http://localhost:3001/api/sfsucustomer/customer-info', {
-          params: { customerEmail: appUser.email },
-          cancelToken: source.token,
-        })
-        .then((res) => setUserInfo(res.data))
-        .catch((err) => err);
-      return () => {
-        source.cancel();
-      };
+      if (cartItems.length !== 0) {
+        let source = axios.CancelToken.source();
+        axios
+          .get('http://localhost:3001/api/sfsucustomer/customer-info', {
+            params: { customerEmail: appUser.email },
+            cancelToken: source.token,
+          })
+          .then((res) => setUserInfo(res.data))
+          .catch((err) => err);
+        return () => {
+          source.cancel();
+        };
+      }
     }
-  }, []);
+  }, [appUser.email, appUser.type, cartItems.length]);
 
   return (
     <>
       {appUser.type === 'customer' ? (
-        !cartItemsTotalCount > 0 ? (
-          <Redirect to="/" />
+        cartItems.length === 0 ? (
+          <>
+            {/* {alert(`No Cart Items to checkout.. \n Redirecting to Home page`)} */}
+            <Redirect to="/" />
+          </>
         ) : (
           <div className="container text-center mb-5">
             <div className="h1 checkout-border border-bottom p-2 m-4 primary-color font-weight-bold">
@@ -291,7 +318,8 @@ const Checkout = () => {
                                 {
                                   restaurantsList.filter(
                                     (restaurant) =>
-                                      restaurant.Name == item.itemRestaurantName
+                                      restaurant.Name ===
+                                      item.itemRestaurantName
                                   )[0].Delivery_Fee
                                 }
                                 )
@@ -342,7 +370,8 @@ const Checkout = () => {
                       &#36;
                       {(
                         parseFloat(cartTotal) +
-                        parseFloat(0.1 * parseFloat(cartTotal))
+                        parseFloat(0.1 * parseFloat(cartTotal)) +
+                        parseFloat(cartDeliveryFee)
                       ).toFixed(2)}
                     </span>
                   </li>
@@ -361,7 +390,7 @@ const Checkout = () => {
                     type="button"
                     className="btn confirm-order btn-block mx-auto text-white w-75 my-2"
                     onClick={(e) => {
-                      if (deliveryAddress == '') {
+                      if (deliveryAddress === '') {
                         setShowAlert(true);
                       } else {
                         setShowAlert(false);
@@ -376,14 +405,8 @@ const Checkout = () => {
             </div>
           </div>
         )
-      ) : appUser.type === 'guest' || appUser.type === undefined ? (
-        <Redirect to="/sfsulogin" />
-      ) : appUser.type === 'owner' ? (
-        <Redirect to="/owner/menu" />
-      ) : appUser.type === 'driver' ? (
-        <Redirect to="/driver/current-orders" />
       ) : (
-        <> </>
+        <Redirect to="/sfsulogin" />
       )}
     </>
   );

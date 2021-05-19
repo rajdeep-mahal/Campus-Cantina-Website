@@ -41,10 +41,10 @@ router.post('/add-menu-item', (req, res) => {
     res.send('Invalid restaurant ID');
   } else if (!validator.isAlphanumeric(req.body.itemName.replace(/\s/g, ''))) {
     res.send('Invalid item name');
-  } else if (
-    !validator.isAlphanumeric(req.body.itemDescription.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid item description');
+    // } else if (
+    //   !validator.isAlphanumeric(req.body.itemDescription.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid item description');
   } else if (!validator.isFloat(req.body.itemPrice)) {
     res.send('Invalid item price');
   } else if (
@@ -102,10 +102,10 @@ router.post('/edit-menu-item', (req, res) => {
   // Validate data
   if (!validator.isAlphanumeric(req.query.itemName.replace(/\s/g, ''))) {
     res.send('Invalid item name');
-  } else if (
-    !validator.isAlphanumeric(req.query.itemDescription.replace(/\s/g, ''))
-  ) {
-    res.send('Invalid item description');
+    // } else if (
+    //   !validator.isAlphanumeric(req.query.itemDescription.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid item description');
   } else if (!validator.isFloat(req.query.itemPrice)) {
     res.send('Invalid item price');
   } else if (!validator.isInt(req.query.itemID)) {

@@ -259,14 +259,8 @@ const CustomerOrders = () => {
             </div>
           </div>
         </div>
-      ) : appUser.type === 'guest' || appUser.type === undefined ? (
-        <Redirect to="/sfsulogin" />
-      ) : appUser.type === 'owner' ? (
-        <Redirect to="/owner/menu" />
-      ) : appUser.type === 'driver' ? (
-        <Redirect to="/driver/current-orders" />
       ) : (
-        <> </>
+        <Redirect to="/sfsulogin" />
       )}
     </>
   );

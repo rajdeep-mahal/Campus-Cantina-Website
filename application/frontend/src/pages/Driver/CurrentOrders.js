@@ -1,6 +1,5 @@
 // import { getMaxListeners } from "../../../backend/db";
 import '../../assets/css/driver.css';
-import map_sample from '../../assets/img/map_customerorder.png';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MyMap from '../../components/MyMap';
@@ -57,22 +56,12 @@ const CurrentOrders = () => {
             });
         });
     }
-  }, [loadData]);
+  }, [loadData, appUser.email, appUser.type]);
 
   return (
     <>
       {appUser.type === 'driver' ? (
         <div className="container-fluid">
-          {showAlert ? (
-            <div
-              className="text-center mx-auto mt-2 alert alert-success fade show w-50"
-              role="alert"
-            >
-              <strong>Success!</strong> Order Delivered
-            </div>
-          ) : (
-            <></>
-          )}
           <div className="container mt-3">
             <div className=" text-center h5">
               <span className="font-weight-bold">Hello, </span>
@@ -85,6 +74,16 @@ const CurrentOrders = () => {
                 {driverDetails.Restaurant}{' '}
               </span>
             </div>
+            {showAlert ? (
+              <div
+                className="text-center mx-auto mt-2 alert alert-success fade show w-50"
+                role="alert"
+              >
+                <strong>Success!</strong> Order Delivered
+              </div>
+            ) : (
+              <></>
+            )}
             <div
               className="modal fade"
               id="viewOrder"
@@ -168,9 +167,9 @@ const CurrentOrders = () => {
                 </div>
               </div>
             </div>
-            {orders.filter((order) => order.Completed == 0).length > 0 ? (
+            {orders.filter((order) => order.Completed === 0).length > 0 ? (
               orders
-                .filter((order) => order.Completed == 0)
+                .filter((order) => order.Completed === 0)
                 .map((item, i) => (
                   <div
                     className="card border card_customerorder_body my-3"
@@ -207,11 +206,11 @@ const CurrentOrders = () => {
                                     onClick={(e) => {
                                       orders
                                         .filter((order) => order.ID === item.ID)
-                                        .map((item, i) => {
+                                        .map((item, i) =>
                                           setModalItems(
                                             JSON.parse(item.Order_Contents)
-                                          );
-                                        });
+                                          )
+                                        );
                                     }}
                                   >
                                     View
@@ -246,7 +245,9 @@ const CurrentOrders = () => {
                           </table>
                         </div>
                         <div>
-                          <MyMap></MyMap>
+                          <div className="m-2 restaurant-home-map">
+                            <MyMap></MyMap>
+                          </div>
                         </div>
                       </div>
                       <div className="click_delivered text-center text-muted">
@@ -299,7 +300,7 @@ const CurrentOrders = () => {
                               <div className="mx-4">
                                 <button
                                   type="button"
-                                  className="btn save-btn btn-lg primary-color text-center m-1 signout-buttons"
+                                  className="btn bg-warning btn-lg primary-color text-center m-1 signout-buttons"
                                   data-dismiss="modal"
                                   onClick={(e) => {
                                     changeOrderStatus(clickedOrderID);
@@ -311,7 +312,7 @@ const CurrentOrders = () => {
                               <div className="mx-4">
                                 <button
                                   type="submit"
-                                  className="btn save-btn btn-lg  m-1 primary-color"
+                                  className="btn bg-warning btn-lg  m-1 primary-color"
                                   value="Submit"
                                   data-dismiss="modal"
                                 >

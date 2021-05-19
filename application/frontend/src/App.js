@@ -28,7 +28,6 @@ import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
 import OwnerSignupExtended from './pages/OwnerSignupExtended';
-import OwnerEditProfile from './pages/Owner/OwnerEditProfile';
 import OwnerProfile from './pages/Owner/OwnerProfile';
 import OwnerOrderHistory from './pages/Owner/OwnerOrderHistory';
 import OwnerMenu from './pages/Owner/OwnerMenu';
@@ -121,9 +120,6 @@ function App() {
           </Route>
           <Route path="/ownersignup2">
             <OwnerSignupExtended />
-          </Route>
-          <Route path="/owner/editprofile">
-            <OwnerEditProfile />
           </Route>
           <Route path="/owner/profile">
             <OwnerProfile />

@@ -157,7 +157,9 @@ const MenuSideBar = () => {
                   <p className="lblCartText">Cart</p>
                 </div>
               </>
-            ) : appUser.type === 'customer' ? (
+            ) : appUser.type === 'customer' ||
+              appUser.type === 'owner' ||
+              appUser.type === 'driver' ? (
               <>
                 <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
                   <b>Hello, {appUser.name}</b>
@@ -188,40 +190,6 @@ const MenuSideBar = () => {
                     </div>
                   </button>
                   <p className="lblCartText">Cart</p>
-                </div>
-              </>
-            ) : appUser.type === 'owner' ? (
-              <>
-                <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
-                  <b>Hello, {appUser.name}</b>
-                </p>
-                <div className="text-center">
-                  <button
-                    className="btn secondary-color-bg primary-color nav-btn-container "
-                    aria-hidden="true"
-                    data-toggle="modal"
-                    data-target="#signout"
-                  >
-                    <i className="fas fa-sign-out-alt h5 primary-color" />
-                  </button>
-                  <p className="lblCartText">Signout</p>
-                </div>
-              </>
-            ) : appUser.type === 'driver' ? (
-              <>
-                <p className="h6 secondary-color text-center my-auto d-none d-xl-block">
-                  <b>Hello, {appUser.name}</b>
-                </p>
-                <div className="text-center">
-                  <button
-                    className="btn secondary-color-bg primary-color nav-btn-container "
-                    aria-hidden="true"
-                    data-toggle="modal"
-                    data-target="#signout"
-                  >
-                    <i className="fas fa-sign-out-alt h5 primary-color" />
-                  </button>
-                  <p className="lblCartText">Signout</p>
                 </div>
               </>
             ) : (
@@ -337,7 +305,7 @@ const MenuSideBar = () => {
               <div className="d-flex justify-contents-center">
                 <button
                   type="button"
-                  className="btn save-btn btn-lg btn-block primary-color text-center m-1 signout-buttons"
+                  className="btn bg-warning btn-lg btn-block primary-color text-center m-1 signout-buttons"
                   data-dismiss="modal"
                   onClick={(e) => history.push('/signout')}
                 >
@@ -345,7 +313,7 @@ const MenuSideBar = () => {
                 </button>
                 <button
                   type="submit"
-                  className="btn save-btn btn-lg btn-block m-1 primary-color"
+                  className="btn bg-warning btn-lg btn-block m-1 primary-color"
                   value="Submit"
                   data-dismiss="modal"
                 >

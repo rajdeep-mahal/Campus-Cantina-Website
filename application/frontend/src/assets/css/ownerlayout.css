@@ -2,14 +2,15 @@
 
 .editprofile {
   color: white;
-  background-color: var(--primary-color-opac);
+  background-color: var(--primary-color);
+  opacity: 75%;
   border-radius: 15px;
-  padding: 3%;
+  padding: 2%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   font-size: 100%;
-  color: var(--primary-color);
+  color: white;
 }
 
 /* Ownerprofile/editprofile responsive */
@@ -24,17 +25,17 @@
   }
 }
 
-.cancel-btn:hover,
+/* .cancel-btn:hover,
 .edit-btn:hover {
   text-decoration: none;
 }
 
 .edit-btn {
   color: var(--primary-color);
-}
+} */
 
 /* save button */
-.save-btn {
+/* .save-btn {
   background-color: var(--secondary-color-opac);
   color: white;
 }
@@ -42,7 +43,7 @@
   border-radius: 5px;
   background-color: var(--secondary-color);
   color: white;
-}
+} */
 
 /* OwnerProfile */
 
@@ -50,9 +51,9 @@
 .profile-content {
   margin-left: auto;
 }
-.edit-link {
+/* .edit-link {
   text-decoration: none;
-}
+} */
 
 /* modal width */
 @media (max-width: 500px) {
@@ -79,9 +80,6 @@
   border: 5px solid var(--primary-color);
   border-radius: 10px;
   border-top: 0;
-  width: 700px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* table header */
@@ -161,7 +159,7 @@
   }
 }
 .menu-icon {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
 }
 .menu-icon-plus {
@@ -169,7 +167,7 @@
 }
 .menu-icon:hover,
 .menu-icon-plus:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   transition: all 0.5s ease;
 }
 
@@ -186,4 +184,27 @@
   font-size: 195%;
   font-weight: bold;
   color: var(--primary-color);
+}
+
+.restaurant-info {
+  border: solid 1px;
+  color: var(--secondary-color);
+  height: 100px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(154, 160, 185, 0.05),
+    0 2px 2px rgba(166, 173, 201, 0.2);
+}
+
+/* close icon in the alert */
+.close-live {
+  opacity: 1;
+}
+/* icons for assigning order to drivers */
+.assign-driver-icon {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.assign-driver-icon:hover {
+  color: var(--secondary-color);
 }

@@ -127,7 +127,7 @@ const SFSULogin = () => {
           <div className="m-3">
             <input id="redirect-input" type="hidden" name="redirect" />
             <h2 className="font-weight-bold primary-color text-center">
-              Login
+              SFSU Customer Login
             </h2>
             <label htmlFor="Email" className="login-label">
               Email

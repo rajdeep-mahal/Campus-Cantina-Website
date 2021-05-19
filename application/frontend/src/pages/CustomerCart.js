@@ -203,7 +203,8 @@ const CustomerCart = () => {
                     $
                     {(
                       parseFloat(cartTotal) +
-                      parseFloat(0.1 * parseFloat(cartTotal))
+                      parseFloat(0.1 * parseFloat(cartTotal)) +
+                      parseFloat(cartDeliveryFee)
                     ).toFixed(2)}
                   </td>
                 </tr>

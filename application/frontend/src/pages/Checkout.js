@@ -72,6 +72,22 @@ const Checkout = () => {
           (restaurant) =>
             restaurant.Name === filteredCartItems[i][0].itemRestaurantName
         );
+        // calculate total value & service fee
+        let currentSubTotal = 0.0;
+        filteredCartItems[i].map((fItem, index) => {
+          currentSubTotal = parseFloat(
+            currentSubTotal + parseFloat(fItem.itemCalculatedPrice)
+          );
+        });
+        // console.log(currentRestaurant[0].Delivery_Fee);
+        // console.log((0.1 * parseFloat(currentSubTotal.toFixed(2))).toFixed(2));
+        // console.log(
+        //   (
+        //     parseFloat(currentSubTotal.toFixed(2)) +
+        //     parseFloat(0.1 * parseFloat(currentSubTotal.toFixed(2))) +
+        //     parseFloat(currentRestaurant[0].Delivery_Fee)
+        //   ).toFixed(2)
+        // );
         axios
           .post('http://localhost:3001/api/order/place-order', {
             orderID: ID,
@@ -84,15 +100,19 @@ const Checkout = () => {
             deliveryLocation: deliveryAddress,
             orderContents: JSON.stringify(filteredCartItems[i]),
             deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
-            serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
+            serviceFee: (0.1 * parseFloat(currentSubTotal.toFixed(2))).toFixed(
+              2
+            ),
             total: (
-              parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+              parseFloat(currentSubTotal.toFixed(2)) +
+              parseFloat(0.1 * parseFloat(currentSubTotal.toFixed(2))) +
+              parseFloat(currentRestaurant[0].Delivery_Fee)
             ).toFixed(2),
             deliveryInstructions: cartDeliveryInstructions,
             driverID: '0',
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (typeof res.data === 'string') {
               if (res.data.substring(0, 7) === 'Invalid') {
                 alert(
@@ -132,13 +152,15 @@ const Checkout = () => {
           deliveryFee: `${currentRestaurant[0].Delivery_Fee}`,
           serviceFee: (0.1 * parseFloat(cartTotal)).toFixed(2),
           total: (
-            parseFloat(cartTotal) + parseFloat(0.1 * parseFloat(cartTotal))
+            parseFloat(cartTotal) +
+            parseFloat(0.1 * parseFloat(cartTotal)) +
+            parseFloat(cartDeliveryFee)
           ).toFixed(2),
           deliveryInstructions: cartDeliveryInstructions,
           driverID: '0',
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (typeof res.data === 'string') {
             if (res.data.substring(0, 7) === 'Invalid') {
               alert(
@@ -149,9 +171,9 @@ const Checkout = () => {
             alert(
               'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
             );
+            history.push('/');
             dispatch(setCartItems([]));
             dispatch(setCartItemsTotalCount(0));
-            history.push('/');
           }
         });
     }
@@ -180,7 +202,7 @@ const Checkout = () => {
       {appUser.type === 'customer' ? (
         cartItems.length === 0 ? (
           <>
-            {alert(`No Cart Items to checkout.. \n Redirecting to Home page`)}
+            {/* {alert(`No Cart Items to checkout.. \n Redirecting to Home page`)} */}
             <Redirect to="/" />
           </>
         ) : (
@@ -348,7 +370,8 @@ const Checkout = () => {
                       &#36;
                       {(
                         parseFloat(cartTotal) +
-                        parseFloat(0.1 * parseFloat(cartTotal))
+                        parseFloat(0.1 * parseFloat(cartTotal)) +
+                        parseFloat(cartDeliveryFee)
                       ).toFixed(2)}
                     </span>
                   </li>

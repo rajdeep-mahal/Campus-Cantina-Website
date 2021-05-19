@@ -25,10 +25,12 @@
   text-decoration: none;
 }
 
-/* .restaurantBanner {
+.restaurantBanner {
   object-fit: cover;
-  height: 250px;
-} */
+  height: auto;
+  width: 100%;
+  filter: contrast(120%);
+}
 
 .modal-div {
   margin-left: 7px;

@@ -165,7 +165,7 @@
     margin-top: -24px;
   }
 }
-@media (max-width: 1309px) {
+@media (max-width: 1302px) {
   .lblIconText {
     visibility: hidden;
   }
@@ -193,4 +193,8 @@
   .second-nav {
     display: none;
   }
+}
+
+.signout-buttons:hover {
+  text-decoration: none;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../assets/css/customer_cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -29,7 +29,7 @@ const CustomerCart = () => {
 
   return (
     <>
-      {cartItems.length == 0 ? (
+      {cartItems.length === 0 ? (
         <li style={{ marginTop: '10px' }}>
           <span className=" p-2 m-1 h5">Your Cart is empty</span>
           <p className="primary-color p-2 m-1">Add items to get started</p>
@@ -138,7 +138,7 @@ const CustomerCart = () => {
                         for (let i = 0; i < cartRestaurantsList.length; i++) {
                           const tempCurrentRestaurant = restaurantsList.filter(
                             (restaurant) =>
-                              restaurant.Name == cartRestaurantsList[i]
+                              restaurant.Name === cartRestaurantsList[i]
                           );
                           filteredCartRestaurants.push(tempCurrentRestaurant);
                         }
@@ -203,7 +203,8 @@ const CustomerCart = () => {
                     $
                     {(
                       parseFloat(cartTotal) +
-                      parseFloat(0.1 * parseFloat(cartTotal))
+                      parseFloat(0.1 * parseFloat(cartTotal)) +
+                      parseFloat(cartDeliveryFee)
                     ).toFixed(2)}
                   </td>
                 </tr>

@@ -7,7 +7,6 @@ import React from 'react';
 import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
 import CuisineRow from '../components/CuisineRow';
-// import ButtonsRow from '../components/ButtonsRow';
 import Banner1 from '../assets/img/Home_Banner1.jpg';
 import driverBanner from '../assets/img/Driver_Home_Banner.png';
 import ownerBanner from '../assets/img/Owner_Home_Banner.png';

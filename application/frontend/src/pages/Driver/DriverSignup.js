@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import '../assets/css/login_Signup.css';
+import '../../assets/css/login_Signup.css';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-
 import axios from 'axios';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('1234567890', 3);
@@ -50,15 +49,22 @@ const DriverSignup = () => {
         .post('http://localhost:3001/api/driver/driver-signup', {
           driverID: newDriverID,
           driverName: driverName,
-          driverPhone: driverContactNumber,
+          driverPhone: `${driverContactNumber}`,
           driverEmail: driverEmail,
           driverPassword: driverPassword,
           driverRestaurant: driverRestaurant,
         })
         .then((res) => {
-          console.log(res);
-          alert('Thank you for Registering');
-          history.push('/DriverLogin');
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              alert(
+                `Please Try Again.. Check for special characters  \n Error: ${res.data}`
+              );
+            }
+          } else {
+            alert('Thank you for Registering');
+            history.push('/DriverLogin');
+          }
         });
     }
   };
@@ -129,7 +135,10 @@ const DriverSignup = () => {
             value={driverContactNumber}
             onChange={(e) => setDriverContactNumber(e.target.value)}
             onBlur={(e) => {
-              setDriverContactNumber(parseInt(driverContactNumber));
+              if (!isNaN(driverContactNumber)) {
+                let temp = driverContactNumber.substring(0, 10);
+                setDriverContactNumber(parseInt(temp));
+              }
             }}
           />
           <br />

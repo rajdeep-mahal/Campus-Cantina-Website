@@ -25,53 +25,77 @@ router.get('/all-sfsu-customers', (req, res) => {
 router.post('/customer-signup', (req, res) => {
   console.log('Called customer-singnup endpoint');
 
-  // TODO: Validate driver data
+  // Validate data
+  if (!validator.isInt(req.body.customerID)) {
+    res.send('Invalid customer ID');
+    // }
+    // else if (
+    //   !validator.isAlphanumeric(req.body.customerName.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid customer name');
+    // else if (
+    //   !validator.isAlphanumeric(req.body.customerAddress.replace(/\s/g, ''))
+    // ) {
+    //   res.send('Invalid customer address');
+  } else if (
+    !validator.isAlphanumeric(req.body.customerType.replace(/\s/g, ''))
+  ) {
+    res.send('Invalid customer type');
+  } else if (!validator.isInt(req.body.customerPhone)) {
+    res.send('Invalid customer phone');
+  } else if (!validator.isEmail(req.body.customerEmail)) {
+    res.send('Invalid customer email');
+  } else {
+    // Encyprt password
+    let hash = bcrypt.hashSync(req.body.customerPassword, 10);
 
-  // Encyprt password
-  let hash = bcrypt.hashSync(req.body.customerPassword, 10);
+    // Generate SQL query with driver info
+    let query =
+      `INSERT INTO SFSU_Customers VALUES (` +
+      req.body.customerID +
+      `,"` +
+      req.body.customerName +
+      `","` +
+      req.body.customerAddress +
+      `","` +
+      req.body.customerType +
+      `","` +
+      req.body.customerPhone +
+      `","` +
+      req.body.customerEmail +
+      `","` +
+      hash +
+      `", "Active")`; // Status set to active, admin can deactivate
 
-  // Generate SQL query with driver info
-  let query =
-    `INSERT INTO SFSU_Customers VALUES (` +
-    req.body.customerID +
-    `,'` +
-    req.body.customerName +
-    `','` +
-    req.body.customerAddress +
-    `','` +
-    req.body.customerType +
-    `','` +
-    req.body.customerPhone +
-    `','` +
-    req.body.customerEmail +
-    `','` +
-    hash +
-    `', 'Active')`; // Status set to active, admin can deactivate
-
-  // Send driver query to db
-  database.query(query, (err, result) => {
-    console.log('Uploaded customer info to db');
-    res.send(result);
-  });
+    // Send driver query to db
+    database.query(query, (err, result) => {
+      console.log(query);
+      console.log('Uploaded customer info to db');
+      res.send(result);
+    });
+  }
 });
 
 // Get individual sfsu customer info
 router.get('/customer-info', (req, res) => {
   console.log('Called customer-info endpoint');
 
-  // TODO: Validate data
+  // Validate data
+  if (!validator.isEmail(req.query.customerEmail)) {
+    res.send('Invalid customer email');
+  } else {
+    // Generate SQL query
+    let query =
+      `SELECT * FROM SFSU_Customers WHERE Email = "` +
+      req.query.customerEmail +
+      `"`;
 
-  // Generate SQL query
-  let query =
-    `SELECT * FROM SFSU_Customers WHERE Email = '` +
-    req.query.customerEmail +
-    `'`;
-
-  // Send customer info query to db
-  database.query(query, (err, result) => {
-    console.log('Got individual customer info from db');
-    res.send(result);
-  });
+    // Send customer info query to db
+    database.query(query, (err, result) => {
+      console.log('Got individual customer info from db');
+      res.send(result);
+    });
+  }
 });
 
 module.exports = router;

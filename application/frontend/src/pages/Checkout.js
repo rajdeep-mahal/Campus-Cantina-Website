@@ -172,7 +172,7 @@ const Checkout = () => {
             alert(
               'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
             );
-            history.push('/');
+            history.push('/customer/orders');
             dispatch(setCartItems([]));
             dispatch(setCartItemsTotalCount(0));
           }

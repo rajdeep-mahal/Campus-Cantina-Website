@@ -62,16 +62,6 @@ const CurrentOrders = () => {
     <>
       {appUser.type === 'driver' ? (
         <div className="container-fluid">
-          {showAlert ? (
-            <div
-              className="text-center mx-auto mt-2 alert alert-success fade show w-50"
-              role="alert"
-            >
-              <strong>Success!</strong> Order Delivered
-            </div>
-          ) : (
-            <></>
-          )}
           <div className="container mt-3">
             <div className=" text-center h5">
               <span className="font-weight-bold">Hello, </span>
@@ -84,6 +74,16 @@ const CurrentOrders = () => {
                 {driverDetails.Restaurant}{' '}
               </span>
             </div>
+            {showAlert ? (
+              <div
+                className="text-center mx-auto mt-2 alert alert-success fade show w-50"
+                role="alert"
+              >
+                <strong>Success!</strong> Order Delivered
+              </div>
+            ) : (
+              <></>
+            )}
             <div
               className="modal fade"
               id="viewOrder"
@@ -245,7 +245,9 @@ const CurrentOrders = () => {
                           </table>
                         </div>
                         <div>
-                          <MyMap></MyMap>
+                          <div className="m-2 restaurant-home-map">
+                            <MyMap></MyMap>
+                          </div>
                         </div>
                       </div>
                       <div className="click_delivered text-center text-muted">

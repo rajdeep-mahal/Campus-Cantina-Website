@@ -46,7 +46,7 @@ const DriverAvailableOrders = () => {
           <div className="order_header h3 text-white text-center py-2">
             Order History
           </div>
-          {orders.length > 0 ? (
+          {orders.filter((order) => order.Completed === 1).length > 0 ? (
             <table className="table table_order mx-auto my-auto">
               <thead>
                 <tr className="table-dark primary-color">

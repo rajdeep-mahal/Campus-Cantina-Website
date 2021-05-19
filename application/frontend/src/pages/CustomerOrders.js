@@ -1,4 +1,3 @@
-
 import '../assets/css/about_individual.css';
 import '../assets/css/ownerlayout.css';
 import { useSelector } from 'react-redux';
@@ -10,12 +9,11 @@ const CustomerOrders = () => {
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
   const [orders, setOrders] = useState([]);
+  const [priceItems, setPriceItems] = useState([]);
   const [modalItems, setModalItems] = useState([]);
-
 
   useEffect(() => {
     if (appUser.type === 'customer') {
-      console.log(appUser.name)
       axios
         .get('http://localhost:3001/api/order/user-orders', {
           params: {
@@ -23,237 +21,198 @@ const CustomerOrders = () => {
           },
         })
         .then((res) => {
-          setOrders(res.data)
+          setOrders(res.data);
           // console.log(res.data)
         });
     }
   }, []);
-  // const orders = [
-  //   {
-  //     id: '122343',
-  //     restaurant: "Bob's Burgers",
-  //     item: 'Burger, fries, coke',
-  //     price: '$25',
-  //     date: '3/15/21',
-  //   },
-  //   {
-  //     id: '465440',
-  //     restaurant: 'Pizza Slice',
-  //     item: 'Pizza, wings',
-  //     price: '$20',
-  //     date: '3/3/21',
-  //   },
-  //   {
-  //     id: '378800',
-  //     restaurant: 'Planet Potatoes',
-  //     item: 'Chilli Fries',
-  //     price: '$12',
-  //     date: '2/10/21',
-  //   },
-  // ];
-  {
-    /* Renders each row for My Orders Table */
-  }
-  // const renderMenuItem = (order, index) => {
-  //   return (
-  //     <tr key={index}>
-  //       <td>{order.ID}</td>
-  //       <td>{order.restaurantName}</td>
-  //       <td>
-  //         <button
-  //           type="button"
-  //           class="btn btn-outline-dark view-btn"
-  //           data-toggle="modal"
-  //           data-target="#viewModal"
-  //         >
-  //           View
-  //         </button>
-  //       </td>
-  //       <td>{order.price}</td>
-  //       <td> {order.id}</td>
-  //       <td> Completed </td>
-  //     </tr>
-  //   );
-  // };
 
   return (
     <>
       {appUser.type === 'customer' ? (
-        <div className="container-fluid ">
+        <div className="container">
           <br />
           <h3 className="owner-heading text-center"> My Orders</h3>
-          <div className="table-responsive-sm order-table">
-            <table class="table table-striped">
+          <div className="table-responsive order-table text-center">
+            <table className="table table-striped">
               {/* Table Header */}
-              <thead class="table-header-menu">
+              <thead className="table-header-menu">
                 <tr>
                   <th scope="col"> Order # </th>
-                  <th scope="col"> Order Sub ID </th>
+                  {/* <th scope="col"> Order Sub ID </th> */}
                   <th scope="col"> Restaurant </th>
                   <th scope="col"> Items </th>
                   <th scope="col"> Price </th>
-                  <th scope="col"> Status </th>
                   <th scope="col"> Delivery Location </th>
+                  <th scope="col"> Status </th>
                 </tr>
               </thead>
               {/* Table Body */}
               <tbody>
-              {/*For pending orders*/}
-              {orders.filter((order) => order.Completed == 0).map((item, i) => (
-                <tr key={i}>
-                <td>{item.ID}</td>
-                <td>{item.Order_Sub_ID}</td>
-                <td>{item.Restaurant_Name}</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark view-btn"
-                    data-toggle="modal"
-                    data-target="#viewModal"
-                    onClick={(e) => {
-                      orders
-                        .filter((order) => order.ID === item.ID)
-                        .map((item, i) => {
+                {orders.map((item, i) => (
+                  <tr key={i}>
+                    <td>{item.ID}</td>
+                    {/* <td>{item.Order_Sub_ID}</td> */}
+                    <td>{item.Restaurant_Name}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="btn btn-outline-dark view-btn"
+                        data-toggle="modal"
+                        data-target="#viewModal"
+                        onClick={(e) => {
                           setModalItems(JSON.parse(item.Order_Contents));
-                        });
-                    }}
-                  >
-                    View
-                  </button>
-                </td>
-                <td><span className = "font-weight-bold">&#36;</span>{item.Total}</td>
-                <td className = "font-italic"> Pending </td>
-                <td> {item.Delivery_Location} </td>
-              </tr>
-              )
-          )}
-          {/*For completed orders*/}
-          {orders.filter((order) => order.Completed == 1).map((item, i) => (
-                <tr key={i}>
-                <td>{item.ID}</td>
-                <td className = "text-center">{item.Order_Sub_ID}</td>
-                <td>{item.Restaurant_Name}</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark view-btn"
-                    data-toggle="modal"
-                    data-target="#viewModal"
-                  >
-                    View
-                  </button>
-                </td>
-                <td><span className = "font-weight-bold">&#36;</span>{item.Total}</td>
-                <td className = "font-italic"> Completed </td>
-                <td>{item.Delivery_Location}</td>
-              </tr>
-              )
-          )}
+                        }}
+                      >
+                        View
+                      </button>
+                    </td>
+                    <td className="font-weight-bold">
+                      ${item.Total}
+                      <span>
+                        <i
+                          style={{ cursor: 'pointer' }}
+                          className="fas fa-info-circle pl-4 h5"
+                          data-toggle="modal"
+                          data-target="#priceModal"
+                          onClick={(e) => {
+                            const tempPriceItems = [];
+                            const subTotal = (
+                              item.Total -
+                              item.Delivery_Fee -
+                              item.Service_Fee
+                            ).toFixed(2);
+                            tempPriceItems.push(parseFloat(subTotal));
+                            tempPriceItems.push(item.Service_Fee);
+                            tempPriceItems.push(item.Delivery_Fee);
+                            tempPriceItems.push(item.Total);
+                            // console.log(tempPriceItems);
+                            setPriceItems(tempPriceItems);
+                          }}
+                        />
+                      </span>
+                    </td>
+                    <td> {item.Delivery_Location} </td>
+                    {item.Completed === 1 ? (
+                      <td className="font-italic"> Completed </td>
+                    ) : (
+                      <td className="font-italic"> Processing </td>
+                    )}
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           {/* View Modal */}
           <div
-            class="modal fade"
+            className="modal fade"
             id="viewModal"
-            data-backdrop="static"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="viewModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog " role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="viewModalLabel">
+            <div className="modal-dialog " role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="viewModalLabel">
                     Ordered Items
                   </h5>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  
-                  {/* {modalItems.map((item, i) => (
-                        <ul class="list-group list-group-flush" key={i}>
-                           <li class="list-group-item">1 x Cheeseburger </li>
-                           <li class="list-group-item">{item.itemCount} x Large Diet Coke </li>
-                           <li class="list-group-item">
-                      Special Instructions: No Onions
-                    </li>
-                        </ul>
-                      ))} */}
-                    {/* <li class="list-group-item">1 x Cheeseburger </li>
-                    <li class="list-group-item">1 x Large Diet Coke </li>
-                    <li class="list-group-item">
-                      Special Instructions: No Onions
-                    </li> */}
-                    <table className="table-responsive">
+                <div className="modal-body table-responsive">
+                  <table className="table text-center">
                     <thead>
-                      <tr>
-                        <th className="font-italic border border_purple p-2 text-center">
-                          {' '}
-                          Restaurant{' '}
-                        </th>
-                        <th className="font-italic border border_purple text-center">
-                          {' '}
-                          Item{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Item Price{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Quantity{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-2 text-center">
-                          {' '}
-                          Comments{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Item Total Price{' '}
-                        </th>
+                      <tr className="bg-warning">
+                        <th scope="col"> Item Name</th>
+                        <th scope="col"> Comments </th>
+                        <th scope="col"> Item Price </th>
+                        <th scope="col"></th>
+                        <th scope="col"> Quantity </th>
+                        <th scope="col"> Total </th>
                       </tr>
                     </thead>
                     <tbody>
                       {modalItems.map((item, i) => (
                         <tr key={i}>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemRestaurantName}
-                          </td>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemName}
-                          </td>
-                          <td className="border border_purple text-center">
-                            <span className="font-weight-bold">&#36;</span>
+                          <td>{item.itemName}</td>
+                          <td>{item.itemComments}</td>
+                          <td>
+                            <span>&#36;</span>
                             {item.itemPrice}
                           </td>
-                          <td className="border border_purple text-center">
-                            {item.itemCount}
-                          </td>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemComments}
-                          </td>
-                          <td className="border border_purple text-center">
-                            &#36;{item.itemCalculatedPrice}
-                          </td>
+                          <td> x </td>
+                          <td>{item.itemCount}</td>
+
+                          <td>&#36;{item.itemCalculatedPrice}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn modal-confirm-btn">
-                    Confirm
+              </div>
+            </div>
+          </div>
+
+          {/* Price Breakdown Modal */}
+          <div
+            className="modal fade"
+            id="priceModal"
+            tabIndex="-1"
+            role="dialog"
+            aria-labelledby="priceModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog " role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="priceModalLabel">
+                    Price Breakdown
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
                   </button>
+                </div>
+                <div className="modal-body">
+                  <table className="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Sub Total : </th>
+                        <td>{priceItems[0]}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Tax : </th>
+                        <td>{priceItems[1]}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Delivery Fee : </th>
+                        <td>{priceItems[2]}</td>
+                      </tr>
+                      <tr className="bg-warning">
+                        <th
+                          scope="row"
+                          className="font-weight-bold h5 primary-color"
+                        >
+                          Total Price :{' '}
+                        </th>
+                        <td className="font-weight-bold h5 primary-color">
+                          {priceItems[3]}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

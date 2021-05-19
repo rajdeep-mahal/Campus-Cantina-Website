@@ -46,66 +46,74 @@ const DriverAvailableOrders = () => {
           <div className="order_header h3 text-white text-center py-2">
             Order History
           </div>
-          <table className="table table_order mx-auto my-auto">
-            <thead>
-              <tr className="table-dark primary-color">
-                <th className="border border_header">
-                  <span className="font-italic "> Order ID</span>
-                </th>
-                <th className="border border_header">
-                  <span className="font-italic">Customer Name</span>
-                </th>
-                <th className="border border_header">
-                  <span className="font-italic">Delivery Address</span>
-                </th>
-                <th className="border border_header">
-                  <span className="font-italic">Order Status</span>
-                </th>
-                <th className="border border_header">
-                  <span className="font-italic">Order Total</span>
-                </th>
-                <th className="border border_header">
-                  <span className="font-italic">Order Details</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders
-                .filter((order) => order.Completed === 1)
-                .map((item, i) => (
-                  <tr key={i}>
-                    <td className="border border_purple">{item.ID}</td>
-                    <td className="border border_purple">
-                      {item.Customer_Name}
-                    </td>
-                    <td className="border border_purple">
-                      {item.Delivery_Location}
-                    </td>
-                    <td className="border border_purple">
-                      <span className="text-info font-italic">Completed</span>
-                    </td>
-                    <td className="border border_purple">&#36;{item.Total}</td>
-                    <td className="border border_purple">
-                      <button
-                        type="button"
-                        className="btn btn-warning btn-sm border border_header"
-                        data-toggle="modal"
-                        data-target="#viewOrder"
-                        onClick={(e) => {
-                          orders
-                            .filter((order) => order.ID === item.ID)
-                            .map((item, i) =>
-                              setModalItems(JSON.parse(item.Order_Contents))
-                            );
-                        }}
-                      >
-                        View
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          {orders.length > 0 ? (
+            <table className="table table_order mx-auto my-auto">
+              <thead>
+                <tr className="table-dark primary-color">
+                  <th className="border border_header">
+                    <span className="font-italic "> Order ID</span>
+                  </th>
+                  <th className="border border_header">
+                    <span className="font-italic">Customer Name</span>
+                  </th>
+                  <th className="border border_header">
+                    <span className="font-italic">Delivery Address</span>
+                  </th>
+                  <th className="border border_header">
+                    <span className="font-italic">Order Status</span>
+                  </th>
+                  <th className="border border_header">
+                    <span className="font-italic">Order Total</span>
+                  </th>
+                  <th className="border border_header">
+                    <span className="font-italic">Order Details</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders
+                  .filter((order) => order.Completed === 1)
+                  .map((item, i) => (
+                    <tr key={i}>
+                      <td className="border border_purple">{item.ID}</td>
+                      <td className="border border_purple">
+                        {item.Customer_Name}
+                      </td>
+                      <td className="border border_purple">
+                        {item.Delivery_Location}
+                      </td>
+                      <td className="border border_purple">
+                        <span className="text-info font-italic">Completed</span>
+                      </td>
+                      <td className="border border_purple">
+                        &#36;{item.Total}
+                      </td>
+                      <td className="border border_purple">
+                        <button
+                          type="button"
+                          className="btn btn-warning btn-sm border border_header"
+                          data-toggle="modal"
+                          data-target="#viewOrder"
+                          onClick={(e) => {
+                            orders
+                              .filter((order) => order.ID === item.ID)
+                              .map((item, i) =>
+                                setModalItems(JSON.parse(item.Order_Contents))
+                              );
+                          }}
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="text-center font-weight-bold primary-color h4 mt-5">
+              No Orders Yet.. Please check back
+            </div>
+          )}
           {/* View Order Details*/}
           <div
             className="modal fade"

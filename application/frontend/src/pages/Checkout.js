@@ -127,7 +127,7 @@ const Checkout = () => {
                 );
                 dispatch(setCartItems([]));
                 dispatch(setCartItemsTotalCount(0));
-                history.push('/');
+                history.push('/customer/orders');
               }
             }
           });

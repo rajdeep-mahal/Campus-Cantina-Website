@@ -69,28 +69,26 @@ const CustomerOrders = () => {
                     </td>
                     <td className="font-weight-bold">
                       ${item.Total}
-                      <span>
-                        <i
-                          style={{ cursor: 'pointer' }}
-                          className="fas fa-info-circle pl-4 h5"
-                          data-toggle="modal"
-                          data-target="#priceModal"
-                          onClick={(e) => {
-                            const tempPriceItems = [];
-                            const subTotal = (
-                              item.Total -
-                              item.Delivery_Fee -
-                              item.Service_Fee
-                            ).toFixed(2);
-                            tempPriceItems.push(parseFloat(subTotal));
-                            tempPriceItems.push(item.Service_Fee);
-                            tempPriceItems.push(item.Delivery_Fee);
-                            tempPriceItems.push(item.Total);
-                            // console.log(tempPriceItems);
-                            setPriceItems(tempPriceItems);
-                          }}
-                        />
-                      </span>
+                      <i
+                        style={{ cursor: 'pointer' }}
+                        className="fas fa-info-circle pl-4 h5"
+                        data-toggle="modal"
+                        data-target="#priceModal"
+                        onClick={(e) => {
+                          const tempPriceItems = [];
+                          const subTotal = (
+                            item.Total -
+                            item.Delivery_Fee -
+                            item.Service_Fee
+                          ).toFixed(2);
+                          tempPriceItems.push(parseFloat(subTotal));
+                          tempPriceItems.push(item.Service_Fee);
+                          tempPriceItems.push(item.Delivery_Fee);
+                          tempPriceItems.push(item.Total);
+                          // console.log(tempPriceItems);
+                          setPriceItems(tempPriceItems);
+                        }}
+                      />
                     </td>
                     <td> {item.Delivery_Location} </td>
                     {item.Completed === 1 ? (

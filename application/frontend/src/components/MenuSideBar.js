@@ -305,7 +305,7 @@ const MenuSideBar = () => {
               <div className="d-flex justify-contents-center">
                 <button
                   type="button"
-                  className="btn save-btn btn-lg btn-block primary-color text-center m-1 signout-buttons"
+                  className="btn bg-warning btn-lg btn-block primary-color text-center m-1 signout-buttons"
                   data-dismiss="modal"
                   onClick={(e) => history.push('/signout')}
                 >
@@ -313,7 +313,7 @@ const MenuSideBar = () => {
                 </button>
                 <button
                   type="submit"
-                  className="btn save-btn btn-lg btn-block m-1 primary-color"
+                  className="btn bg-warning btn-lg btn-block m-1 primary-color"
                   value="Submit"
                   data-dismiss="modal"
                 >

@@ -299,7 +299,7 @@ const CurrentOrders = () => {
                               <div className="mx-4">
                                 <button
                                   type="button"
-                                  className="btn save-btn btn-lg primary-color text-center m-1 signout-buttons"
+                                  className="btn bg-warning btn-lg primary-color text-center m-1 signout-buttons"
                                   data-dismiss="modal"
                                   onClick={(e) => {
                                     changeOrderStatus(clickedOrderID);
@@ -311,7 +311,7 @@ const CurrentOrders = () => {
                               <div className="mx-4">
                                 <button
                                   type="submit"
-                                  className="btn save-btn btn-lg  m-1 primary-color"
+                                  className="btn bg-warning btn-lg  m-1 primary-color"
                                   value="Submit"
                                   data-dismiss="modal"
                                 >

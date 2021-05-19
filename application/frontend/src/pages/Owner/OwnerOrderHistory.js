@@ -270,7 +270,7 @@ const OwnerOrderHistory = () => {
                   <div className="d-flex justify-content-center">
                     <button
                       type="button"
-                      className="btn save-btn btn-lg btn-block primary-color text-center mt-5 w-25"
+                      className="btn bg-warning btn-lg btn-block primary-color text-center mt-5 w-25"
                       data-dismiss="modal"
                       onClick={handleAssignDriver}
                     >

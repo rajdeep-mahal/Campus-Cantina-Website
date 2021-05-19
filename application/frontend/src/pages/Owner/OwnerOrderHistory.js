@@ -96,9 +96,9 @@ const OwnerOrderHistory = () => {
                     <th scope="col">Order #</th>
                     <th scope="col">Items</th>
                     <th scope="col">Customer</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col">Order Status</th>
+                    {/* <th scope="col">Total Price</th> */}
                     <th scope="col">Delivery Address</th>
+                    <th scope="col">Order Status</th>
                     <th scope="col">Driver</th>
                   </tr>
                 </thead>
@@ -122,8 +122,9 @@ const OwnerOrderHistory = () => {
                           </button>
                         </td>
 
-                        <td>{item.Customer_Name}</td>
-                        <td>${item.Total}</td>
+                        <td style={{ width: 150 }}>{item.Customer_Name}</td>
+                        {/* <td>${item.Total}</td> */}
+                        <td style={{ width: 300 }}>{item.Delivery_Location}</td>
                         <td>
                           {item.Completed === 0 ? (
                             <label> Pending</label>
@@ -131,7 +132,7 @@ const OwnerOrderHistory = () => {
                             <label> Completed</label>
                           )}
                         </td>
-                        <td style={{ width: 300 }}>{item.Delivery_Location}</td>
+
                         <td>
                           {item.Driver_ID !== 0 ? (
                             driversList
@@ -139,7 +140,7 @@ const OwnerOrderHistory = () => {
                               .map((d1) => d1.Name)
                           ) : (
                             <>
-                              TBD
+                              <span className="font-weight-bold">TBD</span>
                               <i
                                 className="fas fa-edit assign-driver-icon ml-3 h4"
                                 data-toggle="modal"
@@ -210,7 +211,7 @@ const OwnerOrderHistory = () => {
                         <tr key={index}>
                           <td>{items.itemName}</td>
                           <td>{items.itemComments}</td>
-                          <td>{items.itemPrice}</td>
+                          <td>${items.itemPrice}</td>
                           <td> x </td>
                           <td>{items.itemCount}</td>
                           <td>

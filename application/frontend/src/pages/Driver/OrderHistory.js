@@ -130,58 +130,33 @@ const DriverAvailableOrders = () => {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div className="modal-body">
-                  <table className="table-responsive">
+                <div className="modal-body table-responsive">
+                  <table className="table text-center">
                     <thead>
-                      <tr>
-                        <th className="font-italic border border_purple p-2 text-center">
-                          {' '}
-                          Restaurant{' '}
-                        </th>
-                        <th className="font-italic border border_purple text-center">
-                          {' '}
-                          Item{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Item Price{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Quantity{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-2 text-center">
-                          {' '}
-                          Comments{' '}
-                        </th>
-                        <th className="font-italic border border_purple p-1 text-center">
-                          {' '}
-                          Item Total Price{' '}
-                        </th>
+                      <tr
+                        className="table-warning"
+                        className="order-list-title"
+                      >
+                        <th scope="col"> Item </th>
+                        <th scope="col"> Comments </th>
+                        <th scope="col"> Item Price </th>
+                        <th scope="col"> Quantity </th>
+                        <th scope="col"></th>
+                        <th scope="col"> Total </th>
                       </tr>
                     </thead>
                     <tbody>
                       {modalItems.map((item, i) => (
                         <tr key={i}>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemRestaurantName}
-                          </td>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemName}
-                          </td>
-                          <td className="border border_purple text-center">
-                            <span className="font-weight-bold">&#36;</span>
+                          <td>{item.itemName}</td>
+                          <td>{item.itemComments}</td>
+                          <td>
+                            <span>&#36;</span>
                             {item.itemPrice}
                           </td>
-                          <td className="border border_purple text-center">
-                            {item.itemCount}
-                          </td>
-                          <td className="border border_purple p-2 text-center">
-                            {item.itemComments}
-                          </td>
-                          <td className="border border_purple text-center">
-                            &#36;{item.itemCalculatedPrice}
-                          </td>
+                          <td>{item.itemCount}</td>
+                          <td> x </td>
+                          <td>&#36;{item.itemCalculatedPrice}</td>
                         </tr>
                       ))}
                     </tbody>

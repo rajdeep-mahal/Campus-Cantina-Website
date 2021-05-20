@@ -3,14 +3,16 @@ import '../assets/css/ownerlayout.css';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import '../assets/css/customer_orders.css';
 import React, { useState, useEffect } from 'react';
 
 const CustomerOrders = () => {
   // redux global variable
   const appUser = useSelector((state) => state.appUserReducer.appUser);
-  const [orders, setOrders] = useState([]);
   const [priceItems, setPriceItems] = useState([]);
   const [modalItems, setModalItems] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
+  const [uniqueOrders, setUniqueOrders] = useState([]);
 
   useEffect(() => {
     if (appUser.type === 'customer') {
@@ -21,11 +23,14 @@ const CustomerOrders = () => {
           },
         })
         .then((res) => {
-          setOrders(res.data);
-          // console.log(res.data)
+          setAllOrders(res.data);
+          const tempUniqueOrders = [
+            ...new Set(res.data.map((order) => order.Order_Sub_ID)),
+          ];
+          setUniqueOrders(tempUniqueOrders);
         });
     }
-  }, []);
+  }, [appUser.type, appUser.name]);
 
   return (
     <>
@@ -34,12 +39,11 @@ const CustomerOrders = () => {
           <br />
           <h3 className="owner-heading text-center"> My Orders</h3>
           <div className="table-responsive order-table text-center">
-            <table className="table table-striped">
+            <table className="table table-bordered">
               {/* Table Header */}
               <thead className="table-header-menu">
                 <tr>
                   <th scope="col"> Order # </th>
-                  {/* <th scope="col"> Order Sub ID </th> */}
                   <th scope="col"> Restaurant </th>
                   <th scope="col"> Items </th>
                   <th scope="col"> Price </th>
@@ -49,55 +53,79 @@ const CustomerOrders = () => {
               </thead>
               {/* Table Body */}
               <tbody>
-                {orders.map((item, i) => (
-                  <tr key={i}>
-                    <td>{item.ID}</td>
-                    {/* <td>{item.Order_Sub_ID}</td> */}
-                    <td>{item.Restaurant_Name}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-outline-dark view-btn"
-                        data-toggle="modal"
-                        data-target="#viewModal"
-                        onClick={(e) => {
-                          setModalItems(JSON.parse(item.Order_Contents));
-                        }}
-                      >
-                        View
-                      </button>
-                    </td>
-                    <td className="font-weight-bold">
-                      ${item.Total}
-                      <i
-                        style={{ cursor: 'pointer' }}
-                        className="fas fa-info-circle pl-4 h5"
-                        data-toggle="modal"
-                        data-target="#priceModal"
-                        onClick={(e) => {
-                          const tempPriceItems = [];
-                          const subTotal = (
-                            item.Total -
-                            item.Delivery_Fee -
-                            item.Service_Fee
-                          ).toFixed(2);
-                          tempPriceItems.push(parseFloat(subTotal));
-                          tempPriceItems.push(item.Service_Fee);
-                          tempPriceItems.push(item.Delivery_Fee);
-                          tempPriceItems.push(item.Total);
-                          // console.log(tempPriceItems);
-                          setPriceItems(tempPriceItems);
-                        }}
-                      />
-                    </td>
-                    <td> {item.Delivery_Location} </td>
-                    {item.Completed === 1 ? (
-                      <td className="font-italic"> Completed </td>
-                    ) : (
-                      <td className="font-italic"> Processing </td>
-                    )}
-                  </tr>
-                ))}
+                {uniqueOrders.map((uOrder, i) =>
+                  allOrders
+                    .filter((order) => order.Order_Sub_ID === uniqueOrders[i])
+                    .map((order, index) => (
+                      <>
+                        {index === 0 ? (
+                          <tr>
+                            <td
+                              colSpan="7"
+                              className="font-weight-bold h5 bg-parent-order"
+                            >
+                              Group Order #: {order.Order_Sub_ID}
+                            </td>
+                          </tr>
+                        ) : (
+                          <></>
+                        )}
+                        <tr key={index}>
+                          <td className="font-weight-bold">{order.ID}</td>
+                          <td>{order.Restaurant_Name}</td>
+                          <td>
+                            <button
+                              type="button"
+                              className="btn btn-outline-dark view-btn"
+                              data-toggle="modal"
+                              data-target="#viewModal"
+                              onClick={(e) => {
+                                setModalItems(JSON.parse(order.Order_Contents));
+                              }}
+                            >
+                              View
+                            </button>
+                          </td>
+                          <td>
+                            ${order.Total}
+                            <i
+                              className="fas fa-info-circle pl-4 h5 text-info price-icon"
+                              data-toggle="modal"
+                              data-target="#priceModal"
+                              onClick={(e) => {
+                                const tempPriceItems = [];
+                                const subTotal = (
+                                  order.Total -
+                                  order.Delivery_Fee -
+                                  order.Service_Fee
+                                ).toFixed(2);
+                                tempPriceItems.push(parseFloat(subTotal));
+                                tempPriceItems.push(order.Service_Fee);
+                                tempPriceItems.push(order.Delivery_Fee);
+                                tempPriceItems.push(order.Total);
+                                // console.log(tempPriceItems);
+                                setPriceItems(tempPriceItems);
+                              }}
+                            />
+                          </td>
+                          <td className="width-delivery-loc">
+                            {order.Delivery_Location}
+                          </td>
+                          {order.Completed === 1 ? (
+                            <td className="font-italic font-weight-bold bg-completed-order">
+                              {' '}
+                              Completed{' '}
+                            </td>
+                          ) : (
+                            <td className="font-italic font-weight-bold bg-light">
+                              {' '}
+                              Processing{' '}
+                            </td>
+                          )}
+                        </tr>
+                      </>
+                    ))
+                )}
               </tbody>
             </table>
           </div>

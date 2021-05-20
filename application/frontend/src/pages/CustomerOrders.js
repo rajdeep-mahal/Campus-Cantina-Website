@@ -76,7 +76,7 @@ const CustomerOrders = () => {
                           <td>
                             <button
                               type="button"
-                              className="btn btn-outline-dark view-btn"
+                              className="btn btn-outline-dark view-btn bg-warning"
                               data-toggle="modal"
                               data-target="#viewModal"
                               onClick={(e) => {

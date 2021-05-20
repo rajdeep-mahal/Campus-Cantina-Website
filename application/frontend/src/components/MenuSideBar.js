@@ -274,7 +274,7 @@ const MenuSideBar = () => {
               <i className="nav-link fas fa-times primary-color float-left h4"></i>
             </Link>
           </li>
-          <CustomerCart />
+          <CustomerCart params={showCart} />
         </div>
         <br />
       </nav>

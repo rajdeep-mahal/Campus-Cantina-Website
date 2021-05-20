@@ -74,11 +74,12 @@ const Checkout = () => {
         );
         // calculate total value & service fee
         let currentSubTotal = 0.0;
-        filteredCartItems[i].map((fItem, index) => {
-          currentSubTotal = parseFloat(
-            currentSubTotal + parseFloat(fItem.itemCalculatedPrice)
-          );
-        });
+        filteredCartItems[i].map(
+          (fItem, index) =>
+            (currentSubTotal = parseFloat(
+              currentSubTotal + parseFloat(fItem.itemCalculatedPrice)
+            ))
+        );
         // console.log(currentRestaurant[0].Delivery_Fee);
         // console.log((0.1 * parseFloat(currentSubTotal.toFixed(2))).toFixed(2));
         // console.log(
@@ -126,7 +127,7 @@ const Checkout = () => {
                 );
                 dispatch(setCartItems([]));
                 dispatch(setCartItemsTotalCount(0));
-                history.push('/');
+                history.push('/customer/orders');
               }
             }
           });
@@ -171,7 +172,7 @@ const Checkout = () => {
             alert(
               'Thank you..!! Your Order is on the Way.. \n Please handover the payment to the Delivery Driver..'
             );
-            history.push('/');
+            history.push('/customer/orders');
             dispatch(setCartItems([]));
             dispatch(setCartItemsTotalCount(0));
           }

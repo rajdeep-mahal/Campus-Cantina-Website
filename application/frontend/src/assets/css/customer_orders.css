@@ -1,0 +1,19 @@
+.bg-parent-order {
+  background-color: var(--primary-color);
+  opacity: 50%;
+  color: white;
+}
+
+.price-icon {
+  cursor: pointer;
+}
+
+.bg-completed-order {
+  background-color: green;
+  opacity: 40%;
+  color: white;
+}
+
+.width-delivery-loc {
+  width: 250px;
+}

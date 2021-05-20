@@ -96,7 +96,7 @@ const SFSUSignup = () => {
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
           <h2 className="font-weight-bold primary-color text-center">
-            Sign Up
+            SFSU Customer Registration
           </h2>
           <p className="mt-3 text-info text-center">All fields are Mandatory</p>
           <label htmlFor="username" className="login-label first-label">
@@ -281,7 +281,7 @@ const SFSUSignup = () => {
             value="Register"
             onClick={comparePasswords}
           >
-            Sign up
+            Register
           </button>
         </div>
       </form>

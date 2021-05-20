@@ -145,8 +145,8 @@ const DriverAvailableOrders = () => {
                         <th scope="col"> Item </th>
                         <th scope="col"> Comments </th>
                         <th scope="col"> Item Price </th>
-                        <th scope="col"> Quantity </th>
                         <th scope="col"></th>
+                        <th scope="col"> Quantity </th>
                         <th scope="col"> Total </th>
                       </tr>
                     </thead>
@@ -159,8 +159,8 @@ const DriverAvailableOrders = () => {
                             <span>&#36;</span>
                             {item.itemPrice}
                           </td>
-                          <td>{item.itemCount}</td>
                           <td> x </td>
+                          <td>{item.itemCount}</td>
                           <td>&#36;{item.itemCalculatedPrice}</td>
                         </tr>
                       ))}

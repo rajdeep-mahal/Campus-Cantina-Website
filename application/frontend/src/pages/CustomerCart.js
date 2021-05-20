@@ -10,7 +10,7 @@ import {
   setCartDeliveryFee,
 } from '../redux/actions/cartItemsActions';
 
-const CustomerCart = () => {
+const CustomerCart = ({ params }) => {
   const dispatch = useDispatch();
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
@@ -216,6 +216,7 @@ const CustomerCart = () => {
               <button
                 type="button"
                 className="checkout_btn btn btn-lg btn-block text-white"
+                onClick={params}
               >
                 Checkout
               </button>

@@ -1,5 +1,5 @@
 /* OwnerEditProfile */
-
+@import '../css/index.css';
 .editprofile {
   color: white;
   background-color: var(--primary-color);

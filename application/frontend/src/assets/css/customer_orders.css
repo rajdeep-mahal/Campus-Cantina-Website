@@ -1,3 +1,4 @@
+@import '../css/index.css';
 .bg-parent-order {
   background-color: var(--primary-color);
   opacity: 50%;

@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import { setAppUser } from '../redux/actions/appUserActions';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SFSULogin = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,9 @@ const SFSULogin = () => {
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
   const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] =
     useState(false);
+
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
+  const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
 
   const onCheckEmailSuffix = () => {
     if (customerEmail.endsWith('sfsu.edu')) {
@@ -56,7 +59,6 @@ const SFSULogin = () => {
               // 'Password matches!'
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
-              history.push('/');
               loginAppUser(customerEmail, res.data[0].Name);
             }
           }
@@ -79,6 +81,13 @@ const SFSULogin = () => {
       })
       .then((res) => {
         dispatch(setAppUser(res.data));
+        if (cartItems.length === 0) {
+          // console.log(appUser.type);
+          history.push('/');
+        } else {
+          // console.log(appUser.type);
+          history.push('/checkout');
+        }
       });
   };
 

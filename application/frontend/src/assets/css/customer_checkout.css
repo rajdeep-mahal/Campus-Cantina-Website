@@ -1,3 +1,4 @@
+@import '../css/index.css';
 .primary-color {
   color: var(--primary-color);
 }

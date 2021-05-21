@@ -57,7 +57,7 @@ const CustomerOrders = () => {
                   allOrders
                     .filter((order) => order.Order_Sub_ID === uniqueOrders[i])
                     .map((order, index) => (
-                      <>
+                      <React.Fragment key={index}>
                         {index === 0 ? (
                           <tr>
                             <td
@@ -70,7 +70,7 @@ const CustomerOrders = () => {
                         ) : (
                           <></>
                         )}
-                        <tr key={index}>
+                        <tr>
                           <td className="font-weight-bold">{order.ID}</td>
                           <td>{order.Restaurant_Name}</td>
                           <td>
@@ -123,7 +123,7 @@ const CustomerOrders = () => {
                             </td>
                           )}
                         </tr>
-                      </>
+                      </React.Fragment>
                     ))
                 )}
               </tbody>

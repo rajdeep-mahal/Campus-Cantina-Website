@@ -1,6 +1,7 @@
+@import '../css/index.css';
 .bg-parent-order {
   background-color: var(--primary-color);
-  opacity: 50%;
+  opacity: 0.6;
   color: white;
 }
 
@@ -10,7 +11,7 @@
 
 .bg-completed-order {
   background-color: green;
-  opacity: 40%;
+  opacity: 0.5;
   color: white;
 }
 

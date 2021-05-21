@@ -11,6 +11,7 @@ import Banner1 from '../assets/img/Home_Banner1.jpg';
 import driverBanner from '../assets/img/Driver_Home_Banner.png';
 import ownerBanner from '../assets/img/Owner_Home_Banner.png';
 import AllRestaurants from '../components/AllRestaurants';
+import CookieConsent from 'react-cookie-consent';
 
 const Home = () => {
   const restaurantsList = useSelector(
@@ -19,6 +20,17 @@ const Home = () => {
 
   return (
     <div>
+      {/* Cookies Disclaimer */}
+      <CookieConsent
+        location="bottom"
+        buttonText="Alright!"
+        cookieName="myAwesomeCookieName2"
+        style={{ background: '#2B373B' }}
+        buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+        expires={150}
+      >
+        This website uses cookies, make sure you have cookies enabled in your browser.{' '}
+      </CookieConsent>
       {/* Marketing Banner */}
       <div className="carousel">
         <div className="carousel-item active">

@@ -1,5 +1,6 @@
 /*Assigned orders header background color*/
 /*Order details header background*/
+@import '../css/index.css';
 .order_header {
   background-color: var(--primary-color);
   opacity: 0.9;

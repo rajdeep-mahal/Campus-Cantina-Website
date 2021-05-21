@@ -1,3 +1,4 @@
+@import '../css/index.css';
 .rp-info {
   border: solid 1px;
   color: var(--secondary-color);

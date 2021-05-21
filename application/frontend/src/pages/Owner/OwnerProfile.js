@@ -43,7 +43,7 @@ const OwnerProfile = () => {
   return (
     <>
       {appUser.type === 'owner' ? (
-        <div className="container-fluid">
+        <div className="container">
           <br />
 
           <div className="text-center">

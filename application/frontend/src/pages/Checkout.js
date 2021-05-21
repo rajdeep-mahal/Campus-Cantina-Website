@@ -382,6 +382,7 @@ const Checkout = () => {
                   <p className="text-center"> Delivery Instructions:</p>
                   <textarea
                     className="mb-3 w-100"
+                    placeholder="Eg: Dorm # 123"
                     value={cartDeliveryInstructions}
                     onChange={(e) => {
                       dispatch(setCartDeliveryInstructions(e.target.value));

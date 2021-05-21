@@ -59,7 +59,6 @@ const SFSULogin = () => {
               // 'Password matches!'
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
-              loginAppUser(customerEmail);
               if (cartItems.length === 0) {
                 console.log(appUser.type);
                 history.push('/');
@@ -67,6 +66,8 @@ const SFSULogin = () => {
                 console.log(appUser.type);
                 history.push('/checkout');
               }
+              // history.push('/');
+              loginAppUser(customerEmail, res.data[0].Name);
             }
           }
         );
@@ -77,12 +78,13 @@ const SFSULogin = () => {
       });
   };
 
-  const loginAppUser = (email) => {
+  const loginAppUser = (useremail, username) => {
     axios
-      .get('http://localhost:3001/api/appuser/customer-login', {
+      .get('/start-session', {
         params: {
-          appUserEmail: email,
-          appUserType: 'customer',
+          email: useremail,
+          type: 'customer',
+          name: username,
         },
       })
       .then((res) => {

@@ -7,15 +7,11 @@ import { Redirect } from 'react-router-dom';
 const Signout = () => {
   const dispatch = useDispatch();
 
-  axios
-  .get('http://localhost:3001/api/appuser/signout')
-  .then((res) => {
+  axios.get('/stop-session').then((res) => {
     dispatch(setAppUser(res.data));
   });
 
-  return (
-    <Redirect to="/" />
-  );
-}
+  return <Redirect to="/" />;
+};
 
 export default Signout;

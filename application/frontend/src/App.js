@@ -28,24 +28,26 @@ import SFSUSignup from './pages/SFSUSignup';
 import OwnerLogin from './pages/OwnerLogin';
 import OwnerSignup from './pages/OwnerSignup';
 import OwnerSignupExtended from './pages/OwnerSignupExtended';
-import OwnerEditProfile from './pages/Owner/OwnerEditProfile';
 import OwnerProfile from './pages/Owner/OwnerProfile';
 import OwnerOrderHistory from './pages/Owner/OwnerOrderHistory';
 import OwnerMenu from './pages/Owner/OwnerMenu';
-import DriverLogin from './pages/DriverLogin';
-import DriverSignup from './pages/DriverSignup';
+import DriverLogin from './pages/Driver/DriverLogin';
+import DriverSignup from './pages/Driver/DriverSignup';
 import ScrollToTop from './components/ScrollToTop';
 import CuisineResults from './pages/CuisineResults';
+import CustomerOrder from './pages/CustomerOrders';
 import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAllRestaurants } from './redux/actions/searchActions';
-import DisplayCart from './pages/CustomerCart';
-import DriverAvailableOrders from './pages/DriverAvailableOrders';
-import DriverOrderDelivered from './pages/DriverOrderDelivered';
+import { setAppUser } from './redux/actions/appUserActions';
+import CustomerCart from './pages/CustomerCart';
+import OrderHistory from './pages/Driver/OrderHistory';
+import CurrentOrders from './pages/Driver/CurrentOrders';
 import MenuSideBar from './components/MenuSideBar';
 import RestaurantPage from './pages/RestaurantPage';
 import Checkout from './pages/Checkout';
+import Signout from './pages/Signout';
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +60,11 @@ function App() {
       .then((res) => {
         dispatch(setAllRestaurants(res.data));
       });
+
+    axios.get('/check-session').then((res) => {
+      // console.log(res.data)
+      dispatch(setAppUser(res.data));
+    });
   });
 
   return (
@@ -66,6 +73,9 @@ function App() {
         <MenuSideBar />
         <ScrollToTop />
         <Switch>
+          <Route path="/signout">
+            <Signout />
+          </Route>
           <Route path="/searchresults">
             <SearchResults />
           </Route>
@@ -111,9 +121,6 @@ function App() {
           <Route path="/ownersignup2">
             <OwnerSignupExtended />
           </Route>
-          <Route path="/owner/editprofile">
-            <OwnerEditProfile />
-          </Route>
           <Route path="/owner/profile">
             <OwnerProfile />
           </Route>
@@ -130,16 +137,19 @@ function App() {
             <DriverSignup />
           </Route>
           <Route path="/customerdisplaycart">
-            <DisplayCart />
+            <CustomerCart />
+          </Route>
+          <Route path="/customer/orders">
+            <CustomerOrder />
           </Route>
           <Route path="/checkout">
             <Checkout />
           </Route>
           <Route path="/driver/orderhistory">
-            <DriverAvailableOrders />
+            <OrderHistory />
           </Route>
-          <Route path="/driver/currentorder">
-            <DriverOrderDelivered />
+          <Route path="/driver/current-orders">
+            <CurrentOrders />
           </Route>
           <Route path="/">
             <Home />

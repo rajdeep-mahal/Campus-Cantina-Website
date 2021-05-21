@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../assets/css/customer_cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import {
   setCartDeliveryFee,
 } from '../redux/actions/cartItemsActions';
 
-const CustomerCart = () => {
+const CustomerCart = ({ params }) => {
   const dispatch = useDispatch();
   const restaurantsList = useSelector(
     (state) => state.searchReducer.allRestaurants
@@ -29,7 +29,7 @@ const CustomerCart = () => {
 
   return (
     <>
-      {cartItems.length == 0 ? (
+      {cartItems.length === 0 ? (
         <li style={{ marginTop: '10px' }}>
           <span className=" p-2 m-1 h5">Your Cart is empty</span>
           <p className="primary-color p-2 m-1">Add items to get started</p>
@@ -138,7 +138,7 @@ const CustomerCart = () => {
                         for (let i = 0; i < cartRestaurantsList.length; i++) {
                           const tempCurrentRestaurant = restaurantsList.filter(
                             (restaurant) =>
-                              restaurant.Name == cartRestaurantsList[i]
+                              restaurant.Name === cartRestaurantsList[i]
                           );
                           filteredCartRestaurants.push(tempCurrentRestaurant);
                         }
@@ -173,6 +173,7 @@ const CustomerCart = () => {
               <span>Delivery Instructions: </span>
               <textarea
                 className="w-100"
+                placeholder="Eg: Dorm # 123"
                 value={cartDeliveryInstructions}
                 onChange={(e) => {
                   dispatch(setCartDeliveryInstructions(e.target.value));
@@ -203,7 +204,8 @@ const CustomerCart = () => {
                     $
                     {(
                       parseFloat(cartTotal) +
-                      parseFloat(0.1 * parseFloat(cartTotal))
+                      parseFloat(0.1 * parseFloat(cartTotal)) +
+                      parseFloat(cartDeliveryFee)
                     ).toFixed(2)}
                   </td>
                 </tr>
@@ -215,6 +217,7 @@ const CustomerCart = () => {
               <button
                 type="button"
                 className="checkout_btn btn btn-lg btn-block text-white"
+                onClick={params}
               >
                 Checkout
               </button>

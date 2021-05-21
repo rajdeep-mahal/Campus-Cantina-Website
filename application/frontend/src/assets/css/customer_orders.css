@@ -1,0 +1,20 @@
+@import '../css/index.css';
+.bg-parent-order {
+  background-color: var(--primary-color);
+  opacity: 0.6;
+  color: white;
+}
+
+.price-icon {
+  cursor: pointer;
+}
+
+.bg-completed-order {
+  background-color: green;
+  opacity: 0.5;
+  color: white;
+}
+
+.width-delivery-loc {
+  width: 250px;
+}

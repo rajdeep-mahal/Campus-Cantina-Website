@@ -64,14 +64,23 @@ const SFSUSignup = () => {
           customerName: customerName,
           customerAddress: customerAddress,
           customerType: customerType,
-          customerPhone: customerPhone,
+          customerPhone: `${customerPhone}`,
           customerEmail: customerEmail,
           customerPassword: customerPassword,
         })
         .then((res) => {
-          console.log(res);
-          alert('Thank you for Registering');
-          history.push('/SFSULogin');
+          if (typeof res.data === 'string') {
+            if (res.data.substring(0, 7) === 'Invalid') {
+              console.log(res.data);
+              alert(
+                `Please Try Again.. Check for special characters \n Error: ${res.data}`
+              );
+            }
+          } else {
+            console.log(res.data);
+            alert('Thank you for Registering');
+            history.push('/SFSULogin');
+          }
         });
     }
   };
@@ -87,7 +96,7 @@ const SFSUSignup = () => {
         <div className="m-3">
           <input id="redirect-input" type="hidden" name="redirect" />
           <h2 className="font-weight-bold primary-color text-center">
-            Sign Up
+            SFSU Customer Registration
           </h2>
           <p className="mt-3 text-info text-center">All fields are Mandatory</p>
           <label htmlFor="username" className="login-label first-label">
@@ -164,7 +173,10 @@ const SFSUSignup = () => {
             value={customerPhone}
             onChange={(e) => setCustomerPhone(e.target.value)}
             onBlur={(e) => {
-              setCustomerPhone(parseInt(customerPhone));
+              if (!isNaN(customerPhone)) {
+                let temp = customerPhone.substring(0, 10);
+                setCustomerPhone(parseInt(temp));
+              }
             }}
           />
           <br />
@@ -269,7 +281,7 @@ const SFSUSignup = () => {
             value="Register"
             onClick={comparePasswords}
           >
-            Sign up
+            Register
           </button>
         </div>
       </form>

@@ -95,13 +95,16 @@ const OwnerSignup = () => {
             className="login_input-field"
             type="number"
             placeholder="e.g. 4159999999"
-            min="0"
+            min="1"
             required
             name="Restaurant Owner Contact Number"
             value={ownerContactNumber}
             onChange={(e) => dispatch(setOwnerContactNumber(e.target.value))}
             onBlur={(e) => {
-              setOwnerContactNumber(parseInt(ownerContactNumber));
+              if (!isNaN(ownerContactNumber)) {
+                let temp = ownerContactNumber.substring(0, 10);
+                dispatch(setOwnerContactNumber(parseInt(temp)));
+              }
             }}
           />
           <label htmlFor="ownerEmail" className="login-label">

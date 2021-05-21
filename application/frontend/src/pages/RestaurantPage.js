@@ -9,7 +9,6 @@ import axios from 'axios';
 import '../assets/css/restaurant_page.css';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Banner from '../assets/img/restaurant/Restaurant_Banner.jpg';
 import Burger from '../assets/img/cuisines/Burger.png';
 import Chinese from '../assets/img/cuisines/Chinese.png';
 import Indian from '../assets/img/cuisines/Indian.png';
@@ -58,6 +57,7 @@ const RestaurantPage = () => {
       setShowAlert(false);
     }, 3000);
   }
+
   const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const RestaurantPage = () => {
     return () => {
       source.cancel();
     };
-  }, []);
+  }, [clickedRestaurantName]);
 
   return (
     <div className="container-fluid">
@@ -134,26 +134,26 @@ const RestaurantPage = () => {
         {/* to display cuisine images based on current restaurant's cuisine.. imported from CuisineRow */}
         <div className="m-4 ">
           <>
-            {new String(currentRestaurantCuisine).valueOf() ===
-            new String('Burgers').valueOf() ? (
+            {String(currentRestaurantCuisine).valueOf() ===
+            String('Burgers').valueOf() ? (
               <img src={Burger} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Chinese').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Chinese').valueOf() ? (
               <img src={Chinese} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Indian').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Indian').valueOf() ? (
               <img src={Indian} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Italian').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Italian').valueOf() ? (
               <img src={Italian} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Mexican').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Mexican').valueOf() ? (
               <img src={Mexican} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Pizza').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Pizza').valueOf() ? (
               <img src={Pizza} alt="logo" height="55" className="rounded" />
-            ) : new String(currentRestaurantCuisine).valueOf() ===
-              new String('Vietnamese').valueOf() ? (
+            ) : String(currentRestaurantCuisine).valueOf() ===
+              String('Vietnamese').valueOf() ? (
               <img
                 src={Vietnamese}
                 alt="logo"
@@ -372,7 +372,7 @@ const RestaurantPage = () => {
                         for (let i = 0; i < cartRestaurantsList.length; i++) {
                           const tempCurrentRestaurant = restaurantsList.filter(
                             (restaurant) =>
-                              restaurant.Name == cartRestaurantsList[i]
+                              restaurant.Name === cartRestaurantsList[i]
                           );
                           filteredCartRestaurants.push(tempCurrentRestaurant);
                         }

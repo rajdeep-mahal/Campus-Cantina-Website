@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  useJsApiLoader,
-} from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import config from '../config.js';
 
 const MyMap = () => {
@@ -19,14 +14,14 @@ const MyMap = () => {
     lng: -122.47965529711159,
   };
 
-  const [map, setMap] = React.useState(null);
+  // const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    setMap(map);
+    // setMap(map);
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
+    // setMap(null);
   }, []);
 
   return isLoaded ? (

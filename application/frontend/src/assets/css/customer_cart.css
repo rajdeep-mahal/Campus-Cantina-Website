@@ -1,4 +1,5 @@
 /*Checkout background color*/
+@import '../css/index.css';
 .checkout_btn {
   background-color: var(--primary-color) !important;
 }

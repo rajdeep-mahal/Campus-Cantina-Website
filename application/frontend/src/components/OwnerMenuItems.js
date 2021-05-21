@@ -1,18 +1,23 @@
 export const OwnerMenuItems = [
   {
     title: 'Home',
-    path: '/owner/menu',
+    path: '/',
     cName: 'primary-color fas fa-home',
+  },
+  {
+    title: 'Menu Items',
+    path: '/owner/menu',
+    cName: 'primary-color fas fa-utensils',
+  },
+  {
+    title: 'Orders',
+    path: '/owner/orders',
+    cName: 'primary-color fas fa-list-alt',
   },
   {
     title: 'Profile',
     path: '/owner/profile',
     cName: 'primary-color fas fa-user-circle',
-  },
-  {
-    title: 'Orders',
-    path: '/owner/orders',
-    cName: 'primary-color fas fa-utensils',
   },
   {
     title: 'About Us',
@@ -21,7 +26,7 @@ export const OwnerMenuItems = [
   },
   {
     title: 'Sign out',
-    path: '/',
+    path: '/signout',
     cName: 'primary-color fas fa-sign-out-alt',
   },
 ];

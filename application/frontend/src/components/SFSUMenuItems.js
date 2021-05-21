@@ -5,18 +5,19 @@ export const SFSUMenuItems = [
     cName: 'primary-color fas fa-home',
   },
   {
+    title: 'Orders',
+    path: '/customer/orders',
+    cName: 'primary-color fas fa-utensils',
+  },
+  {
     title: 'About Us',
     path: '/about',
     cName: 'primary-color fas fa-users',
   },
-  {
-    title: 'Orders',
-    path: '/owner/orders',
-    cName: 'primary-color fas fa-utensils',
-  },
+
   {
     title: 'Sign out',
-    path: '/',
+    path: '/signout',
     cName: 'primary-color fas fa-sign-out-alt',
   },
 ];

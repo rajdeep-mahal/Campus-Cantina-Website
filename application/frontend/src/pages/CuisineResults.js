@@ -11,7 +11,6 @@ import '../assets/css/home.css';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CuisineRow from '../components/CuisineRow';
-import ButtonsRow from '../components/ButtonsRow';
 import AllRestaurants from '../components/AllRestaurants';
 
 const CuisineResults = () => {

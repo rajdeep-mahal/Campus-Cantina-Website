@@ -31,25 +31,25 @@ router.get('/search', (req, res) => {
     if (searchTerm != '' && cuisine != '') {
       // When search term is not empty and cusine type selected
       query =
-        `SELECT * FROM Restaurants WHERE Cuisine = '` +
+        `SELECT * FROM Restaurants WHERE Cuisine = "` +
         cuisine +
-        `' AND ( Name LIKE '%` +
+        `" AND ( Name LIKE "%` +
         searchTerm +
-        `%' OR Tags LIKE '%` +
+        `%" OR Tags LIKE "%` +
         searchTerm +
-        `%' OR Cuisine LIKE '%` +
+        `%" OR Cuisine LIKE "%` +
         searchTerm +
-        `%')`;
+        `%")`;
     } else if (searchTerm != '' && cuisine == '') {
       // When search term is not empty no cuisine type selected
       query =
-        `SELECT * FROM Restaurants WHERE Name LIKE '%` +
+        `SELECT * FROM Restaurants WHERE Name LIKE "%` +
         searchTerm +
-        `%' OR Tags LIKE '%` +
+        `%" OR Tags LIKE "%` +
         searchTerm +
-        `%' OR Cuisine LIKE '%` +
+        `%" OR Cuisine LIKE "%` +
         searchTerm +
-        `%'`;
+        `%"`;
     } else if (searchTerm == '' && cuisine != '') {
       // When search term is empty and cuisine type selected
       query = `SELECT * FROM Restaurants WHERE Cuisine = '` + cuisine + `'`;

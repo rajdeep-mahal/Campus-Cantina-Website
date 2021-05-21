@@ -3,8 +3,11 @@ import '../assets/css/login_Signup.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
+import { setAppUser } from '../redux/actions/appUserActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const SFSULogin = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
@@ -14,6 +17,9 @@ const SFSULogin = () => {
   const [showInvalidEmailAlert, setShowInvalidEmailAlert] = useState(false);
   const [showInvalidPasswordAlert, setShowInvalidPasswordAlert] =
     useState(false);
+
+  const appUser = useSelector((state) => state.appUserReducer.appUser);
+  const cartItems = useSelector((state) => state.cartItemsReducer.cartItems);
 
   const onCheckEmailSuffix = () => {
     if (customerEmail.endsWith('sfsu.edu')) {
@@ -53,7 +59,7 @@ const SFSULogin = () => {
               // 'Password matches!'
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
-              history.push('/');
+              loginAppUser(customerEmail, res.data[0].Name);
             }
           }
         );
@@ -61,6 +67,27 @@ const SFSULogin = () => {
       .catch((err) => {
         setShowInvalidEmailAlert(true);
         setShowInvalidPasswordAlert(false);
+      });
+  };
+
+  const loginAppUser = (useremail, username) => {
+    axios
+      .get('/start-session', {
+        params: {
+          email: useremail,
+          type: 'customer',
+          name: username,
+        },
+      })
+      .then((res) => {
+        dispatch(setAppUser(res.data));
+        if (cartItems.length === 0) {
+          // console.log(appUser.type);
+          history.push('/');
+        } else {
+          // console.log(appUser.type);
+          history.push('/checkout');
+        }
       });
   };
 
@@ -110,7 +137,7 @@ const SFSULogin = () => {
           <div className="m-3">
             <input id="redirect-input" type="hidden" name="redirect" />
             <h2 className="font-weight-bold primary-color text-center">
-              Login
+              SFSU Customer Login
             </h2>
             <label htmlFor="Email" className="login-label">
               Email

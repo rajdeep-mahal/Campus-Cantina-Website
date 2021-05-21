@@ -157,7 +157,7 @@ const OwnerMenu = () => {
     <>
       {appUser.type === 'owner' ? (
         <div className="container text-center">
-          <div className="mx-5">
+          <div>
             {ownerRestaurant.map((item, i) => (
               <div key={i}>
                 <img

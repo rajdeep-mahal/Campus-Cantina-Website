@@ -173,6 +173,7 @@ const CustomerCart = ({ params }) => {
               <span>Delivery Instructions: </span>
               <textarea
                 className="w-100"
+                placeholder="Eg: Dorm # 123"
                 value={cartDeliveryInstructions}
                 onChange={(e) => {
                   dispatch(setCartDeliveryInstructions(e.target.value));

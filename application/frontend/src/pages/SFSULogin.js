@@ -59,14 +59,6 @@ const SFSULogin = () => {
               // 'Password matches!'
               setShowInvalidEmailAlert(false);
               setShowInvalidPasswordAlert(false);
-              if (cartItems.length === 0) {
-                console.log(appUser.type);
-                history.push('/');
-              } else {
-                console.log(appUser.type);
-                history.push('/checkout');
-              }
-              // history.push('/');
               loginAppUser(customerEmail, res.data[0].Name);
             }
           }
@@ -89,6 +81,13 @@ const SFSULogin = () => {
       })
       .then((res) => {
         dispatch(setAppUser(res.data));
+        if (cartItems.length === 0) {
+          // console.log(appUser.type);
+          history.push('/');
+        } else {
+          // console.log(appUser.type);
+          history.push('/checkout');
+        }
       });
   };
 

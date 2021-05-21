@@ -3,7 +3,7 @@
 .editprofile {
   color: white;
   background-color: var(--primary-color);
-  opacity: 75%;
+  opacity: 0.75;
   border-radius: 15px;
   padding: 2%;
   height: auto;

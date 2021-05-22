@@ -173,18 +173,10 @@ const RestaurantPage = () => {
           )}
           {showAlert ? (
             <div
-              className="text-center mx-auto mt-2 alert alert-success alert-dismissible fade show w-50"
+              className="text-center mx-auto mt-2 alert alert-success  fade show w-50"
               role="alert"
             >
               <strong>Success!</strong> Added Item to the Cart
-              <button
-                type="button"
-                className="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
           ) : (
             <> </>

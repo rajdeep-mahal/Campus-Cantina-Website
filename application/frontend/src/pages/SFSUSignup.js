@@ -71,13 +71,13 @@ const SFSUSignup = () => {
         .then((res) => {
           if (typeof res.data === 'string') {
             if (res.data.substring(0, 7) === 'Invalid') {
-              console.log(res.data);
+              // console.log(res.data);
               alert(
                 `Please Try Again.. Check for special characters \n Error: ${res.data}`
               );
             }
           } else {
-            console.log(res.data);
+            // console.log(res.data);
             alert('Thank you for Registering');
             history.push('/SFSULogin');
           }

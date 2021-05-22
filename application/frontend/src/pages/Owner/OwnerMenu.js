@@ -222,18 +222,10 @@ const OwnerMenu = () => {
               <h4 className="text-center pb-3 pt-3"> Menu </h4>
               {showMandatoryFieldsAlert ? (
                 <div
-                  className="text-center mt-2 alert alert-danger alert-dismissible fade show w-75 mx-auto"
+                  className="text-center mt-2 alert alert-danger fade show w-75 mx-auto"
                   role="alert"
                 >
                   Please enter/update all fields to continue
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                 </div>
               ) : (
                 <> </>
@@ -299,7 +291,7 @@ const OwnerMenu = () => {
                 </div>
               ) : (
                 <div
-                  className="text-center mt-2 alert alert-warning alert-dismissible fade show w-75 mx-auto"
+                  className="text-center mt-2 alert alert-warning fade show w-75 mx-auto"
                   role="alert"
                 >
                   Add new items to your menu

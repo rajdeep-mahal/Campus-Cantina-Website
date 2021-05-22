@@ -233,7 +233,9 @@ const CurrentOrders = () => {
                                 <th scope="row" className="current-order-text">
                                   Delivery Location :
                                 </th>
-                                <td>{item.Delivery_Location}</td>
+                                <td className="delivery-address-width">
+                                  {item.Delivery_Location}
+                                </td>
                               </tr>
                               <tr>
                                 <th scope="row" className="current-order-text">
